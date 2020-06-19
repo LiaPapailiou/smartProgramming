@@ -1,0 +1,29 @@
+{
+  "name": "clientprogrammingplanner",
+  "version": "1.0.0",
+  "description": "A planner to help with client monthly workout programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiaPapailiou/clientProgrammingPlanner.git"
+  },
+  "author": "Lia Papailiou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LiaPapailiou/clientProgrammingPlanner/issues"
+  },
+  "homepage": "https://github.com/LiaPapailiou/clientProgrammingPlanner#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "mongoose": "^5.9.19",
+    "node": "^14.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

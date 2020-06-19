@@ -4,6 +4,8 @@
   "description": "A planner to help with client monthly workout programming",
   "main": "index.js",
   "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

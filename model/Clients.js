@@ -14,13 +14,13 @@ const clientSchema = new mongoose.Schema({
   oneRM: {
     benchPress: [
       {
-      type: "int",
+      type: Number,
       required: true,
       },
     ],
     squat: [
       {
-        type: "int",
+        type: Number,
         required: true,
       },
     ],

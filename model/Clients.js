@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
 
 const clientSchema = new mongoose.Schema({
-  firstName: {
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  clientFirstName: {
     type: String,
     required: true,
   },
-  lastName: {
+  clientLastName: {
     type: String,
   },
-  sport: {
+  clientSport: {
     type: String,
   },
-  oneRM: {
+  clientOneRM: {
     benchPress: [
       {
       type: Number,

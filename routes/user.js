@@ -24,10 +24,12 @@ router.post('/',[
 
     if (user) return res.status(400).json({ errors: [{ msg: 'User allready exists in the database' }] });
 
+    user =  new User({ name, email, password });
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
     
-    user =  await User.create({ name, email, password });
+    await user.save();
+
     const payload = {  user: { id: user.id }};
     const privateKey =  fs.readFileSync(path.join(__dirname, '../jwtkeys/jwtRS256.key'), 'utf8');
     const signOptions = {

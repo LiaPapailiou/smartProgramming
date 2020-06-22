@@ -8,7 +8,7 @@ const User = require('../model/User');
 const auth = require('../middleware/auth');
 const router = express.Router();
 
-// Check if user exists
+// Authenticate user and get token
 router.post('/', [
   check('email', 'Please include a valid email').isEmail(),
   check('password', 'Please enter a password between 6 to 12 long').isLength({ min: 6, max: 12}),
@@ -41,7 +41,7 @@ router.post('/', [
   }
 });
 
-// Authorize user
+// Auth user
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');

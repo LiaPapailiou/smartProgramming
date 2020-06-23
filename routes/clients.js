@@ -3,11 +3,12 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
+const User = require('../model/User');
 
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
   try {
-    const clients = await Clients.find().populate('Clients', [ 'clientFirstName', 'clientLastName' ]);
+    const clients = await Clients.find({user: req.user.id}).populate('Clients', [ 'clientFirstName', 'clientLastName' ]);
     res.json(clients);
   } catch (err) {
     res.status(500).send('Internal Server Error');
@@ -39,6 +40,7 @@ router.post('/edit/:client_id', auth, async (req, res) => {
       { _id: req.params.client_id },
       {
         $set: {
+          user: req.user.id,
           clientFirstName,
           clientLastName,
           "clientOneRM.benchPress": benchPress,
@@ -75,10 +77,12 @@ router.put('/add',[ auth,
     } = req.body;
 
     try {
+      const user = await User.findById(req.user.id);
       let client = await Clients.findOne({ clientFirstName, clientLastName });
       if (client) return res.status(409).json({ errors: [{ msg: 'Client already exists' }] });
 
       client = await Clients.create({
+        user: req.user.id,
         clientFirstName,
         clientLastName,
         "clientOneRM.benchPress": benchPress,

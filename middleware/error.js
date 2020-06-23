@@ -1,15 +1,18 @@
 const { runInThisContext } = require("vm");
 
 class Err extends Error {
-  constructor (message, statusCode) {
-    super(message);
-    
+  constructor (statusCode, message) {
+    super();
     this.statusCode = statusCode;
-    this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
-    this.isOperational = true;
-
-    Error.captureStackTrace(this, this.constructor);
+    this.message = message;
   }
 }
 
-module.exports = Err;
+const handleError = (err, res) => {
+  const { statusCode, message } = err;
+  res.status(statusCode).json({ status: "error", statusCode, message });
+}
+module.exports = { 
+  Err,
+  handleError
+};

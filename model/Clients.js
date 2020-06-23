@@ -16,18 +16,14 @@ const clientSchema = new mongoose.Schema({
     type: String,
   },
   clientOneRM: {
-    benchPress: [
-      {
-      type: Number,
-      required: true,
-      },
-    ],
-    squat: [
-      {
-        type: Number,
-        required: true,
-      },
-    ],
+      benchPress: {
+          type: Number,
+          required: true,
+          },
+      squat: {
+          type: Number,
+          required: true,
+          },
   },
   createdAt: {
     type: Date,

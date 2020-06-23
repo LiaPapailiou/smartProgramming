@@ -33,7 +33,7 @@ router.post('/',[
     const payload = {  user: { id: user.id }};
     const privateKey =  fs.readFileSync(path.join(__dirname, '../jwtkeys/jwtRS256.key'), 'utf8');
     const signOptions = {
-      expiresIn: '7d',
+      expiresIn: '3d',
       algorithm: 'RS256',
     };
     jwt.sign(payload, privateKey, signOptions, (err, token) => {

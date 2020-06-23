@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  clients: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Clients'
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -1,7 +1,7 @@
 const { runInThisContext } = require("vm");
 
 class Err extends Error {
-  constructor (statusCode, message) {
+  constructor(statusCode, message) {
     super();
     this.statusCode = statusCode;
     this.message = message;
@@ -10,9 +10,9 @@ class Err extends Error {
 
 const handleError = (err, res) => {
   const { statusCode, message } = err;
-  res.status(statusCode).json({ status: "error", statusCode, message });
-}
-module.exports = { 
+  res.status(statusCode).json({ status: 'error', statusCode, message });
+};
+module.exports = {
   Err,
-  handleError
+  handleError,
 };

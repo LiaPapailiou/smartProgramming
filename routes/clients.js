@@ -7,7 +7,7 @@ const Clients = require('../model/Clients');
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
   try {
-    const clients = await Clients.find({user: req.user.id}).populate('Clients', [ 'clientFirstName', 'clientLastName' ]);
+    const clients = await Clients.find({user: req.user.id}).sort({ clientLastName: 1, clientFirstName: 1}).populate('Clients', [ 'clientFirstName', 'clientLastName' ]);
     res.json(clients);
   } catch (err) {
     res.status(500).send('Internal Server Error');
@@ -31,6 +31,9 @@ router.post('/edit/:client_id', auth, async (req, res) => {
   const { 
     clientFirstName,
     clientLastName,
+    clientPhone,
+    clientEmail,
+    clientSport,
     benchPress,
     squat,
   } = req.body;
@@ -74,6 +77,9 @@ router.put('/add',[ auth,
     const { 
       clientFirstName,
       clientLastName,
+      clientPhone,
+      clientEmail,
+      clientSport,
       benchPress,
       squat,
     } = req.body;

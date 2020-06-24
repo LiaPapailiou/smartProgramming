@@ -5,6 +5,7 @@ const router = express.Router();
 const Clients = require('../model/Clients');
 const User = require('../model/User');
 
+
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
   try {
@@ -76,8 +77,7 @@ router.put('/add',[ auth,
       squat,
     } = req.body;
 
-    try {
-      
+    try {    
       let client = await Clients.findOne({user: req.user.id, clientFirstName, clientLastName });
       if (client) return res.status(409).json({ errors: [{ msg: 'Client already exists' }] });
 
@@ -88,6 +88,7 @@ router.put('/add',[ auth,
         "clientOneRM.benchPress": benchPress,
         "clientOneRM.squat": squat,
       });
+
       res.json(client);
     } catch (err) {
       res.status(500).send('Internal Server Error');

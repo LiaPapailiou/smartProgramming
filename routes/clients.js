@@ -77,8 +77,8 @@ router.put('/add',[ auth,
     } = req.body;
 
     try {
-      const user = await User.findById(req.user.id);
-      let client = await Clients.findOne({ clientFirstName, clientLastName });
+      
+      let client = await Clients.findOne({user: req.user.id, clientFirstName, clientLastName });
       if (client) return res.status(409).json({ errors: [{ msg: 'Client already exists' }] });
 
       client = await Clients.create({

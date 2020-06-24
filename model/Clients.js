@@ -21,7 +21,8 @@ const clientSchema = new mongoose.Schema({
   clientSport: {
     type: String,
   },
-  clientOneRM: {
+  clientOneRM: [
+    {
       benchPress: {
           type: Number,
           required: true,
@@ -30,8 +31,9 @@ const clientSchema = new mongoose.Schema({
           type: Number,
           required: true,
           },
-  },
-  createdAt: {
+    },
+  ],
+ createdAt: {
     type: Date,
     default: Date.now,
   }

@@ -12,6 +12,12 @@ const clientSchema = new mongoose.Schema({
   clientLastName: {
     type: String,
   },
+  clientPhone: {
+    type: String,
+  },
+  clientEmail: {
+    type: String,
+  },
   clientSport: {
     type: String,
   },

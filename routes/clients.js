@@ -3,8 +3,6 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
-const User = require('../model/User');
-
 
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
@@ -44,6 +42,9 @@ router.post('/edit/:client_id', auth, async (req, res) => {
           user: req.user.id,
           clientFirstName,
           clientLastName,
+          clientPhone,
+          clientEmail,
+          clientSport,
           "clientOneRM.benchPress": benchPress,
           "clientOneRM.squat": squat,
         },
@@ -85,6 +86,9 @@ router.put('/add',[ auth,
         user: req.user.id,
         clientFirstName,
         clientLastName,
+        clientPhone,
+        clientEmail,
+        clientSport,
         "clientOneRM.benchPress": benchPress,
         "clientOneRM.squat": squat,
       });

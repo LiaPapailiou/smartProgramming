@@ -11,13 +11,13 @@ const User = require('../model/User');
 // Register user
 router.post('/',
   [
-    check('name', 'Name is required').not().isEmpty(),
+    check('firstName', 'Please enter your name').not().isEmpty(),
     check('email', 'Please provide a valid email').isEmail(),
     check('password', 'Passwords must be between 6 to 12 characters long')
       .isLength({ min: 6, max: 12 }),
   ],
   async (req, res) => {
-    const { name, email, password } = req.body;
+    const { firstName, email, password } = req.body;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
@@ -27,7 +27,7 @@ router.post('/',
 
       if (user) return res.status(400).json({ errors: [{ msg: 'User allready exists in the database'}] });
 
-      user = new User({ name, email, password });
+      user = new User({ firstName, lastName, email, password });
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 

@@ -347,7 +347,7 @@ button {
 }
 
 .container {
-  margin-top: 380px;
+  margin-top: 315px;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -364,7 +364,8 @@ button {
 
 .card-header {
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 .card-header h3 {
@@ -397,7 +398,7 @@ input:focus {
 }
 
 .links {
-  color: white;
+  color: #e7dfdf;
 }
   
 .links a {
@@ -409,8 +410,7 @@ input:focus {
 }
 
 .button {
-  margin-left: 35px;
-  height: 18px;
+  margin-left: 33px;
 }
 /* Profiles Page */
 .profile {

@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
 /* Global Styles */
 :root {
-  --primary-color: #9eb6ca;
+  --primary-color: #93aabd;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -162,6 +163,7 @@ img {
 .alert-primary {
   background: var(--primary-color);
   color: #fff;
+  height: 35px;
 }
 
 .btn-light,
@@ -272,7 +274,7 @@ button {
   width: 4rem;
 }
 
-.form .social-input i.fa-twitter {
+/* .form .social-input i.fa-twitter {
   color: #38a1f3;
 }
 .form .social-input i.fa-facebook {
@@ -286,7 +288,7 @@ button {
 }
 .form .social-input i.fa-linkedin {
   color: #0077b5;
-}
+} */
 
 .table th,
 .table td {
@@ -335,20 +337,81 @@ button {
   position: relative;
   background: url('./images/weights.jpg') no-repeat center center/cover; 
   height: 100vh;
-}
-
-.landing-inner {
-  color: #fff;
-  height: 100%;
-  width: 80%;
-  margin: auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
+  align-content: center;
   text-align: center;
 }
 
+.container {
+  margin-top: 380px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: baseline;
+}
+  
+.card {
+  height: 360px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.card-header {
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.card-header h3 {
+  color: #f4f4f4;
+  padding-right: 240px;
+  font-family: 'Numans', sans-serif;
+  font-size: 35px;
+}
+
+.input-group form-group {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+i {
+  color: #fcab10;
+  padding-right: 1em;
+}
+
+.form-control {
+  width: 220px;
+  margin-bottom: 25px;
+  height: 30px;
+}
+
+input:focus {
+  outline: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+}
+
+.links {
+  color: white;
+}
+  
+.links a {
+  margin-left: 4px;
+}
+
+.card-footer {
+  margin-top: 40px;
+}
+
+.button {
+  margin-left: 35px;
+  height: 18px;
+}
 /* Profiles Page */
 .profile {
   display: grid;

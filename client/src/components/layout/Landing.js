@@ -14,11 +14,11 @@ const Landing = () => {
               <form>
                 <div className="input-group form-group">
                   <span className="input-group-text"><i className="fas fa-user"></i>
-                    <input type="text" className="form-control" placeholder="username" />
+                    <input type="text" className="form-control" placeholder=" email" />
                   </span>
                   <br />
                   <span className="input-group-text"><i className="fas fa-key"></i>
-                    <input type="password" className="form-control" placeholder="password" />
+                    <input type="password" className="form-control" placeholder=" password" />
                   </span>
 
                 </div>

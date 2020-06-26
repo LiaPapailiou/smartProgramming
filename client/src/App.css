@@ -274,21 +274,6 @@ button {
   width: 4rem;
 }
 
-/* .form .social-input i.fa-twitter {
-  color: #38a1f3;
-}
-.form .social-input i.fa-facebook {
-  color: #3b5998;
-}
-.form .social-input i.fa-instagram {
-  color: #3f729b;
-}
-.form .social-input i.fa-youtube {
-  color: #c4302b;
-}
-.form .social-input i.fa-linkedin {
-  color: #0077b5;
-} */
 
 .table th,
 .table td {
@@ -364,7 +349,6 @@ button {
   border-top-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
-  /* box-shadow: 3px 3px 3px 3px #00000070; */
 }
 
 .card-header {
@@ -417,8 +401,6 @@ input:focus {
 .btn-login {
   height: 20px;
   width: 50px;
-  margin-top: 40px;
-  /* box-sizing: border-box; */
   appearance: none;
   background-color: transparent;
   border: 2px solid #fff;
@@ -428,18 +410,13 @@ input:focus {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: normal;
-  margin: 20px;
-  padding: 1.2em 2.8em;
+  margin: 30px;
+  padding: .85em 2.8em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-}
-
-.btn-long a {
-  margin-top: 1em;
-  max-height: 20px;
+  font-family: 'Numans', sans-serif;
+  font-weight: 500;
 }
 
 .btn-login {
@@ -449,8 +426,54 @@ input:focus {
 .btn-login:hover {
   box-shadow: 0 0 40px 40px #93aabd inset;
 }
+/* Register Page */
+.register {
+    position: relative;
+    background: url('./images/gloves.jpg') no-repeat center center/cover; 
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.register-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.register-card {
+  padding-top: 20px;
+  border: solid #fff;
+  height: 400px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: #00000080;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
 
 
+.register-card-header h3 {
+  color: #fff;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  padding-right: 230px;
+  font-family: 'Numans', sans-serif;
+  font-size: 35px;
+}
+
+.register-input-group-text .form-control {
+  border: 1px solid #1d1c1c;
+}
 /* Profiles Page */
 .profile {
   display: grid;

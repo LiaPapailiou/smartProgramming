@@ -359,7 +359,12 @@ button {
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: #00000080;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  /* box-shadow: 3px 3px 3px 3px #00000070; */
 }
 
 .card-header {
@@ -409,9 +414,43 @@ input:focus {
   margin-top: 40px;
 }
 
-.button {
-  margin-left: 33px;
+.btn-login {
+  height: 20px;
+  width: 50px;
+  margin-top: 40px;
+  /* box-sizing: border-box; */
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 0.6em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: normal;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
+
+.btn-long a {
+  margin-top: 1em;
+  max-height: 20px;
+}
+
+.btn-login {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.btn-login:hover {
+  box-shadow: 0 0 40px 40px #93aabd inset;
+}
+
+
 /* Profiles Page */
 .profile {
   display: grid;

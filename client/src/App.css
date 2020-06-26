@@ -228,7 +228,7 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #00000098;
   position: absolute;
   top: 0;
   left: 0;
@@ -320,7 +320,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./images/weights.jpg') no-repeat center center/cover; 
+  background: url('./images/gloves.jpg') no-repeat center center/cover; 
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -344,6 +344,7 @@ button {
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
+  border: 2px solid #fff;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -449,7 +450,7 @@ input:focus {
 
 .register-card {
   padding-top: 20px;
-  border: solid #fff;
+  border: solid #fff 2px;
   height: 400px;
   margin-top: auto;
   margin-bottom: auto;

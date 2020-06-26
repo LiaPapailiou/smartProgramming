@@ -35,7 +35,7 @@ export const Register = () => {
           </div>
           <div className="card-footer">
             <div className="d-flex justify-content-center links">
-              Have an account?<Link to="/register">Login</Link>
+              Have an account?<Link to="/login">Login</Link>
             </div>
           </div>
         </div>

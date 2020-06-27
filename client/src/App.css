@@ -4,7 +4,7 @@
   --primary-color: #93aabd;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
-  --danger-color: #dc3545;
+  --danger-color: #f79617;
   --success-color: #28a745;
 }
 
@@ -150,11 +150,18 @@ img {
 }
 
 .alert {
+  width: 400px;
+  border-radius: 5px;
+  align-self: center;
   padding: 0.8rem;
   margin: 1rem 0;
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+}
+
+.alert i {
+  color: #fff;
 }
 
 .btn-primary,
@@ -510,6 +517,10 @@ a:hover {
 .card-footer {
   margin-top: 10px;
 }
+register-input-group-text i {
+  margin-right: -45px;
+}
+
 /* Profiles Page */
 .profile {
   display: grid;
@@ -520,7 +531,6 @@ a:hover {
   line-height: 1.8;
   margin-bottom: 1rem;
 }
-
 /* Profile Page */
 .profile-grid {
   display: grid;

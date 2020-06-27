@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
+import Alert from '../layout/Alert';
 
-const Register = () => {
+
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -16,14 +22,15 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== passwordRepeat) {
-      console.log('passwords do not much');
+      setAlert('Passwords do not much', 'danger');
     } else {
-      console.log('success');
+      register({ firstName, lastName, email, password });
     }
   };
 
   return (
     <div className="register">
+      <Alert />
       <div className="register-container">
         <div className="register-card">
           <div className="register-card-header">
@@ -41,11 +48,12 @@ const Register = () => {
                 <span className="register-input-group-text">
                   <input type="text" required className="form-control" name="email" value={ email } onChange={ (e) => onChange(e) } placeholder=" Email" />
                 </span>
-                <br />
+
                 <span className="register-input-group-text">
                   <input type="password" required className="form-control" name="password" minLength="6" value={ password } onChange={ (e) => onChange(e) } placeholder=" Password" />
                 </span>
                 <span className="register-input-group-text">
+
                   <input type="password" required className="form-control" name="passwordRepeat" minLength="6" value={ passwordRepeat } onChange={ (e) => onChange(e) } placeholder=" Confirm password" />
                 </span>
 
@@ -65,4 +73,9 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert, register })(Register);

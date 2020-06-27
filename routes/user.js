@@ -17,7 +17,7 @@ router.post('/',
       .isLength({ min: 6, max: 12 }),
   ],
   async (req, res) => {
-    const { firstName, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
@@ -25,7 +25,7 @@ router.post('/',
     try {
       let user = await User.findOne({ email });
 
-      if (user) return res.status(400).json({ errors: [{ msg: 'User allready exists in the database'}] });
+      if (user) return res.status(400).json({ errors: [{ msg: 'User allready exists in the database' }] });
 
       user = new User({ firstName, lastName, email, password });
       const salt = await bcrypt.genSalt(10);
@@ -44,6 +44,7 @@ router.post('/',
         res.json({ token });
       });
     } catch (err) {
+      console.log(err.message);
       res.status(500).send('Internal Server Error');
     }
   }

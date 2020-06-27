@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = formData;
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('success');
+  };
   return (
     <section className="landing">
       <div className="dark-overlay">
@@ -11,23 +21,21 @@ const Landing = () => {
               <h3>Sign In</h3>
             </div>
             <div className="card-body">
-              <form>
+              <form onSubmit={ (e) => onSubmit(e) }>
                 <div className="input-group form-group">
                   <span className="input-group-text"><i className="fas fa-user"></i>
-                    <input type="text" className="form-control" placeholder=" email" />
+                    <input type="text" required className="form-control" name="email" value={ email } onChange={ (e) => onChange(e) } placeholder=" Email" />
                   </span>
                   <br />
                   <span className="input-group-text"><i className="fas fa-key"></i>
-                    <input type="password" className="form-control" placeholder=" password" />
+                    <input type="password" className="form-control" required name="password" value={ password } minLength="6" maxLength="12" onChange={ (e) => onChange(e) } placeholder=" Password" />
                   </span>
 
                 </div>
-                <div className="button">
-                  <Link to="/login" className="btn-login">Login</Link>
-                </div>
+                <input type="submit" className="input-login" value="Login" />
               </form>
             </div>
-            <div className="card-footer">
+            <div className="login-card-footer">
               <div className="d-flex justify-content-center links">
                 Don't have an account?<Link to="/register">Sign Up</Link>
               </div>

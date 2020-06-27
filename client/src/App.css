@@ -399,9 +399,8 @@ input:focus {
   margin-top: 40px;
 }
 
-.btn-login {
-  height: 20px;
-  width: 50px;
+.input-login {
+  padding-top: 15px;
   appearance: none;
   background-color: transparent;
   border: 2px solid #fff;
@@ -411,7 +410,6 @@ input:focus {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: normal;
-  margin: 30px;
   padding: .85em 2.8em;
   text-decoration: none;
   text-align: center;
@@ -420,12 +418,19 @@ input:focus {
   font-weight: 500;
 }
 
-.btn-login {
+.input-login {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
-.btn-login:hover {
+.input-login:hover {
   box-shadow: 0 0 40px 40px #93aabd inset;
+}
+
+.login-card-footer {
+  margin-top: 25px;
+}
+a:hover {
+  color: #4696db;
 }
 /* Register Page */
 .register {
@@ -451,7 +456,7 @@ input:focus {
 .register-card {
   padding-top: 20px;
   border: solid #fff 2px;
-  height: 400px;
+  height: 460px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
@@ -474,6 +479,36 @@ input:focus {
 
 .register-input-group-text .form-control {
   border: 1px solid #1d1c1c;
+}
+
+.input-register {
+  padding-top: 15px;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 0.6em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.85em 2.8em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Numans', sans-serif;
+  font-weight: 500;
+}
+
+.input-register {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.input-register:hover {
+  box-shadow: 0 0 40px 40px #93aabd inset;
+}
+
+.card-footer {
+  margin-top: 10px;
 }
 /* Profiles Page */
 .profile {

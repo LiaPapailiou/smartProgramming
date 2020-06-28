@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -34,7 +34,7 @@ const Register = ({ setAlert, register }) => {
       });
     }
   };
-
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
   return (
     <div className="register">
       <Alert />
@@ -108,6 +108,11 @@ const Register = ({ setAlert, register }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProp = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProp, { setAlert, register })(Register);

@@ -9,7 +9,7 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 // Authenticate user and get token
-router.post('/', 
+router.post('/',
   [
     check('email', 'Please provide a valid email').isEmail(),
     check('password', 'Please enter a password between 6 to 12 long').isLength({ min: 6, max: 12 }),
@@ -51,6 +51,7 @@ router.get('/', auth, async (req, res) => {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {
+    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 });

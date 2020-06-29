@@ -1,24 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
+const Navbar = ({ logout }) => {
 
-const Navbar = () => {
   return (
-
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/index"><i className="fas fa-dumbbell"></i> Client Programming</Link>
+        <Link to="/index"><i className="fas fa-dumbbell" style={ { color: '#717568' } }></i> Smart Programming</Link>
       </h1>
       <ul>
-        <li><Link to="/clients">Clients</Link></li>
         <li><Link to="/add">Add a client</Link></li>
-        <li><Link to="/#">Logout</Link></li>
+        <li><Link onClick={ logout } to="/">
+          <i className="fas fa-sign-out-alt" style={ { color: '#fff' } }></i>
+          <span className="hide-sm">Logout</span>
+        </Link></li>
       </ul>
-      {/* <form inline>
-        <input type="text" placeholder="Search" className="mr-sm-2" />
-        <button variant="outline-light">Search</button>
-      </form> */}
     </nav>
   );
 };
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
 
-export default Navbar;
+export default connect(null, { logout })(Navbar);

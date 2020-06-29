@@ -533,6 +533,47 @@ register-input-group-text i {
   justify-content: center;
 }
 
+/* Add a client */
+.add-container {
+  margin-top: 315px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-card {
+  padding-top: 20px;
+  border: solid #fff 2px;
+  height: 460px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: yepx;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+
+.add-card-header h3 {
+  color: #000;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  padding-right: 230px;
+  font-family: 'Numans', sans-serif;
+  font-size: 35px;
+}
+
+.add-input-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Profiles Page */
 .profile {
   display: grid;

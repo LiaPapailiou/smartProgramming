@@ -8,14 +8,26 @@ const Navbar = ({ logout }) => {
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/index"><i className="fas fa-dumbbell" style={ { color: '#717568' } }></i> Smart Programming</Link>
+        <i className="fas fa-dumbbell" style={ { color: '#93aabd' } }></i> Smart Programming
       </h1>
       <ul>
-        <li><Link to="/add">Add a client</Link></li>
+        <li>
+          <Link to="/dashboard">
+            <i className="fas fa-user" style={ { color: '#fff' } }></i>
+            <span className="hide-sm">Clients</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/add">
+            <i className="fas fa-address-card" style={ { color: '#fff' } }></i>
+            <span className="hide-sm">Add a client</span>
+          </Link>
+        </li>
         <li><Link onClick={ logout } to="/">
           <i className="fas fa-sign-out-alt" style={ { color: '#fff' } }></i>
           <span className="hide-sm">Logout</span>
-        </Link></li>
+        </Link>
+        </li>
       </ul>
     </nav>
   );

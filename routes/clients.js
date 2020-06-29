@@ -3,11 +3,12 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
+const User = require('../model/User');
 
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
   try {
-    const clients = await Clients.find({user: req.user.id}).sort({ clientLastName: 1, clientFirstName: 1}).populate('Clients', [ 'clientFirstName', 'clientLastName' ]);
+    const clients = await Clients.find({ user: req.user.id }).sort({ clientLastName: 1, clientFirstName: 1 }).populate('Clients', ['clientFirstName', 'clientLastName']);
     res.json(clients);
   } catch (err) {
     res.status(500).send('Internal Server Error');
@@ -28,7 +29,7 @@ router.get('/search/:client_id', auth, async (req, res) => {
 
 // Edit client's information
 router.post('/edit/:client_id', auth, async (req, res) => {
-  const { 
+  const {
     clientFirstName,
     clientLastName,
     clientPhone,
@@ -63,43 +64,43 @@ router.post('/edit/:client_id', auth, async (req, res) => {
 });
 
 // Add a new RM
-router.post('/add/:client_id', [ auth,
+router.post('/add/:client_id', [auth,
   [
-  check('benchPress', 'Bench Press 1RM is required').not().isEmpty(),
-  check('squat', 'Squat 1RM is required').not().isEmpty(),
+    check('benchPress', 'Bench Press 1RM is required').not().isEmpty(),
+    check('squat', 'Squat 1RM is required').not().isEmpty(),
   ],
- ], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
-    const {
-      benchPress,
-      squat,
-    } = req.body;
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  const {
+    benchPress,
+    squat,
+  } = req.body;
 
-    const newRM = { benchPress, squat };
-    try {
-      const client = await Clients.findById(req.params.client_id);
-      client.clientOneRM.unshift(newRM);
-      await client.save();
-      res.json(client);
-    } catch (err) {
-      res.status(500).send('Internal Server Error');
-    }
+  const newRM = { benchPress, squat };
+  try {
+    const client = await Clients.findById(req.params.client_id);
+    client.clientOneRM.unshift(newRM);
+    await client.save();
+    res.json(client);
+  } catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // Insert a client into the DB
-router.put('/insert',[ auth,
-    [
-      check('clientFirstName', 'First name is required').not().isEmpty(),
-      check('clientLastName', 'Last name is required').not().isEmpty(),
-      check('benchPress', 'Bench Press 1RM is required').not().isEmpty(),
-      check('squat', 'Squat 1RM is required').not().isEmpty(),
-    ],
+router.put('/insert', [auth,
+  [
+    check('clientFirstName', 'First name is required').not().isEmpty(),
+    check('clientLastName', 'Last name is required').not().isEmpty(),
+    check('benchPress', 'Bench Press 1RM is required').not().isEmpty(),
+    check('squat', 'Squat 1RM is required').not().isEmpty(),
   ],
+],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
-    const { 
+    const {
       clientFirstName,
       clientLastName,
       clientPhone,
@@ -109,17 +110,17 @@ router.put('/insert',[ auth,
       squat,
     } = req.body;
 
-    try {    
-      let client = await Clients.findOne({user: req.user.id, clientFirstName, clientLastName });
+    try {
+      let client = await Clients.findOne({ user: req.user.id, clientFirstName, clientLastName });
       if (client) return res.status(409).json({ errors: [{ msg: 'Client already exists' }] });
 
       const clientFields = {};
-      clientFields.user =  req.user.id;
+      clientFields.user = req.user.id;
       clientFields.clientFirstName = clientFirstName;
       clientFields.clientLastName = clientLastName;
-      if(clientEmail) clientFields.clientEmail = clientEmail;
-      if(clientPhone) clientFields.clientPhone = clientPhone;
-      if(clientSport) clientFields.clientSport = clientSport;
+      if (clientEmail) clientFields.clientEmail = clientEmail;
+      if (clientPhone) clientFields.clientPhone = clientPhone;
+      if (clientSport) clientFields.clientSport = clientSport;
       const oneRM = {
         benchPress,
         squat,
@@ -131,11 +132,11 @@ router.put('/insert',[ auth,
         clientPhone,
         clientEmail,
         clientSport,
-        clientOneRM : oneRM,
+        clientOneRM: oneRM,
       });
-
       res.json(client);
     } catch (err) {
+      console.log(err.message);
       res.status(500).send('Internal Server Error');
     }
   }

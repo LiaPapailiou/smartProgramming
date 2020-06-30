@@ -14,19 +14,19 @@ const Navbar = ({ logout }) => {
       <ul>
         <li>
           <Link to="/dashboard">
-            <i className="fas fa-user" style={ { color: '#fff' } }></i>
-            <span className="hide-sm">Clients</span>
+            <i className="fas fa-user" style={ { color: '#fff', paddingRight: 5 } }></i>
+            <span className="hide-sm" style={ { paddingRight: '10px', fontSize: 16 } }>Clients</span>
           </Link>
         </li>
         <li>
           <Link to="/add">
-            <i className="fas fa-address-card" style={ { color: '#fff' } }></i>
-            <span className="hide-sm">Add a client</span>
+            <i className="fas fa-address-card" style={ { color: '#fff', paddingRight: 5 } }></i>
+            <span className="hide-sm" style={ { paddingRight: '10px', fontSize: 16 } }>Add a client</span>
           </Link>
         </li>
         <li><Link onClick={ logout } to="/">
-          <i className="fas fa-sign-out-alt" style={ { color: '#fff' } }></i>
-          <span className="hide-sm">Logout</span>
+          <i className="fas fa-sign-out-alt" style={ { color: '#fff', paddingRight: 5 } }></i>
+          <span className="hide-sm" style={ { paddingRight: '10px', fontSize: 16 } }>Logout</span>
         </Link>
         </li>
       </ul>

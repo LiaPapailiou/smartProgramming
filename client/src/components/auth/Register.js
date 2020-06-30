@@ -53,7 +53,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     name="firstName"
                     value={ firstName }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" First name"
+                    placeholder=" First Name"
                     required />
                   <input
                     type="text"
@@ -61,7 +61,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     name="lastName"
                     value={ lastName }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Last name (optional)" />
+                    placeholder=" Last Name (optional)" />
                   <input
                     type="text"
                     className="form-control"
@@ -86,7 +86,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     minLength="6"
                     value={ passwordRepeat }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Confirm password"
+                    placeholder=" Confirm Password"
                     required />
                 </div>
                 <input

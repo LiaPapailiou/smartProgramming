@@ -476,12 +476,15 @@ a:hover {
   border-top-right-radius: 0.3em;
 }
 
+.register-card-header {
+  align-items: flex-start;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
 
 .register-card-header h3 {
-  color: #fff;
-  margin-top: -15px;
-  margin-bottom: 15px;
-  padding-right: 230px;
+  color: #f4f4f4;
+  padding-right: 200px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
@@ -492,6 +495,7 @@ a:hover {
 
 .input-register {
   padding-top: 15px;
+  padding-bottom: 15px;
   appearance: none;
   background-color: transparent;
   border: 2px solid #fff;
@@ -534,8 +538,20 @@ register-input-group-text i {
 }
 
 /* Add a client */
+.add {
+  position: relative;
+  background: url('./images/gloves.jpg') no-repeat center center/cover; 
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
 .add-container {
-  margin-top: 315px;
+  margin-top: 270px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -544,24 +560,26 @@ register-input-group-text i {
 }
 
 .add-card {
-  padding-top: 20px;
+  padding-top: 10px;
   border: solid #fff 2px;
-  height: 460px;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: yepx;
+  height: 520px;
+  width: 400px;
+  background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
 }
+.add-card-header {
+  align-items: flex-start;
+  padding-bottom: 20px;
+}
 
 
 .add-card-header h3 {
-  color: #000;
-  margin-top: -15px;
-  margin-bottom: 15px;
-  padding-right: 230px;
+  color: #f4f4f4;
+  margin-top: -10px;
+  padding-right: 160px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
@@ -574,6 +592,36 @@ register-input-group-text i {
   align-items: center;
 }
 
+.add-input-group-text .form-control {
+  border: 1px solid #1d1c1c;
+}
+
+.input-add {
+  margin-top: 5px;
+  appearance: none;
+  background-color:#00000080;
+  border: 2px solid #fff;
+  border-radius: 0.6em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.85em 2.8em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Numans', sans-serif;
+  font-weight: 600;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.input-add:hover {
+  box-shadow: 0 0 40px 40px #93aabd inset;
+}
+
+a:hover {
+  color: #4696db;
+}
 /* Profiles Page */
 .profile {
   display: grid;

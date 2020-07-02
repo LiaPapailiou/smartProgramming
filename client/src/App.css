@@ -636,11 +636,13 @@ a:hover {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 800px;
+  width: 600px;
+  height: 150px;
   margin-bottom: 1rem;
   align-content: flex-start;
   padding: 1em;
   font-family: 'Montserrat', sans-serif;
+  box-shadow: 10px 10px 5px -5px #8f8d8f;
 }
 .profile h2 {
 font-size: 25px;
@@ -649,12 +651,17 @@ font-size: 25px;
 .profile span {
   padding-right: 1em;
   color: #5c5b5b;
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.client-inner {
+  margin-top: -10px;
+  margin-bottom: 30px;
 }
 
 .client-links a {
   padding-right: 1em;
-  font-size: 12px;
+  font-size: 14px;
 }
 .profile-top {
   grid-area: top;

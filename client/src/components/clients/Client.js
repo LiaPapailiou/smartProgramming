@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProfile } from '../../actions/profile';
-import EditClientProfile from './EditClientProfile';
 
-const Client = ({ match, getClientProfile, profile: { profile } }) => {
+const Client = ({ match, getClientProfile, clientProfile: { profile } }) => {
 
   useEffect(() => {
     getClientProfile(match.params.id);
@@ -14,16 +13,16 @@ const Client = ({ match, getClientProfile, profile: { profile } }) => {
   return (
     <div>
       <p>Client</p>
-      { match.params.id }
+      { profile ? 'has' : 'no' }
     </div>
   );
 };
 
 Client.propTypes = {
-  profile: PropTypes.object.isRequired,
   getClientProfile: PropTypes.func.isRequired,
+  clientProfile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
-  profile: state.profile,
+  clientProfile: state.profile,
 });
 export default connect(mapStateToProps, { getClientProfile })(Client);

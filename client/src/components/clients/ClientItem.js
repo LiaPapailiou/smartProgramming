@@ -11,7 +11,7 @@ const ClientItem = ({
     clientPhone,
     clientEmail,
     clientSport,
-  }
+  },
 }) => {
   return (
     <div className='profile bg-light'>

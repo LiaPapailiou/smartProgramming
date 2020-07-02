@@ -4,6 +4,7 @@ import {
   CLEAR_PROFILE,
   GET_ALL_PROFILES,
   PROFILES_ERROR,
+  UPDATE_RM,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
@@ -16,6 +17,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_CLIENT_PROFILE:
+    case UPDATE_RM:
       return {
         ...state,
         clientProfile: payload,
@@ -32,8 +34,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         error: payload,
-        clientProfile: null,
-        clientProfiles: [],
         loading: false,
       };
     case CLEAR_PROFILE:

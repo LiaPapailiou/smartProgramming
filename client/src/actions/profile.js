@@ -6,7 +6,9 @@ import {
   CLEAR_PROFILE,
   GET_ALL_PROFILES,
   PROFILES_ERROR,
+  UPDATE_RM,
 } from './types';
+
 
 // Get single profile
 export const getClientProfile = (client_id) => async (dispatch) => {
@@ -45,3 +47,82 @@ export const getAllProfiles = () => async (dispatch) => {
   }
 };
 
+// Insert client profile 
+export const insertClient = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.put('/clients/insert', formData, config);
+    dispatch({
+      type: GET_CLIENT_PROFILE,
+      payload: res.data,
+    });
+    dispatch(setAlert('Client added successfully', 'success'));
+    history.push('/dashboard');
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+    }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+
+// Edit client profile
+export const editClient = (formData, client_id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`/clients/edit/${client_id}`, formData, config);
+    dispatch({
+      type: GET_CLIENT_PROFILE,
+      payload: res.data,
+    });
+    dispatch(setAlert('Client updated successfully', 'success'));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+    }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add new RM
+export const addRM = (formData, client_id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`/clients/add/${client_id}`, formData, config);
+    dispatch({
+      type: UPDATE_RM,
+      payload: res.data,
+    });
+    dispatch(setAlert('New RM added', 'success'));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+    }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};

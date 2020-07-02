@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { insertClient } from '../../actions/profile';
+import { editClient, getClientProfile } from '../../actions/profile';
 import Navbar from '../layout/Navbar';
-const AddClient = ({ insertClient, history }) => {
+import { withRouter } from 'react-router-dom';
+
+const EditClientProfile = ({ match, clientid, editClient, getClientProfile, clientProfile: { profile, loading } }) => {
   const [formData, setFormData] = useState({
     clientFirstName: '',
     clientLastName: '',
@@ -14,6 +15,21 @@ const AddClient = ({ insertClient, history }) => {
     benchPress: '',
     squat: '',
   });
+
+  useEffect(() => {
+    getClientProfile(match.params.id);
+    console.log(match.params.id);
+    setFormData({
+      clientFirstName: loading || !profile.clientFirstName ? '' : profile.clientFirstName,
+      clientLastName: loading || !profile.clientLastName ? '' : profile.clientLastName,
+      clientPhone: loading || !profile.clientPhone ? '' : profile.clientPhone,
+      clientEmail: loading || !profile.clientEmail ? '' : profile.clientEmail,
+      clientSport: loading || !profile.clientSport ? '' : profile.clientSport,
+      benchPress: loading || !profile.clientOneRM ? '' : profile.clientOneRM.benchPress,
+      squat: loading || !profile.clientOneRM ? '' : profile.clientOneRM.squat,
+    });
+  }, [loading]);
+
   const {
     clientFirstName,
     clientLastName,
@@ -22,13 +38,12 @@ const AddClient = ({ insertClient, history }) => {
     clientSport,
     benchPress,
     squat,
-
   } = formData;
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    insertClient(formData, history);
+    editClient(formData, clientid);
     setFormData({
       clientFirstName: '',
       clientLastName: '',
@@ -39,7 +54,6 @@ const AddClient = ({ insertClient, history }) => {
       squat: '',
     });
   };
-
   return (
     <div className="add-client">
       <div className="add">
@@ -48,7 +62,7 @@ const AddClient = ({ insertClient, history }) => {
           <div className="add-container">
             <div className="add-card">
               <div className="add-card-header">
-                <h3>Add Client</h3>
+                <h3>Edit</h3>
               </div>
               <div className="add-card-body">
                 <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
@@ -112,7 +126,7 @@ const AddClient = ({ insertClient, history }) => {
                   <input
                     type="submit"
                     className="input-add"
-                    value="Add" />
+                    value="Edit" />
                 </form>
               </div>
             </div>
@@ -123,8 +137,12 @@ const AddClient = ({ insertClient, history }) => {
   );
 };
 
-AddClient.propTypes = {
-  insertClient: PropTypes.func.isRequired,
+EditClientProfile.propTypes = {
+  editClient: PropTypes.func.isRequired,
+  getClientProfile: PropTypes.func.isRequired,
+  clientProfile: PropTypes.object.isRequired,
 };
-
-export default connect(null, { insertClient })(withRouter(AddClient));
+const mapStateToProps = (state) => ({
+  clientProfile: state.profile,
+});
+export default connect(mapStateToProps, { editClient, getClientProfile })(withRouter(EditClientProfile));

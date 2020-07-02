@@ -24,16 +24,22 @@ const clientSchema = new mongoose.Schema({
   clientOneRM: [
     {
       benchPress: {
-          type: Number,
-          required: true,
-          },
+        type: Number,
+        required: true,
+      },
       squat: {
-          type: Number,
-          required: true,
-          },
+        type: Number,
+        required: true,
+      },
     },
   ],
- createdAt: {
+  min: {
+    type: Number,
+  },
+  max: {
+    type: Number,
+  },
+  createdAt: {
     type: Date,
     default: Date.now,
   }

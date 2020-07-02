@@ -5,29 +5,26 @@ import { connect } from 'react-redux';
 import { getAllProfiles } from '../../actions/profile';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
+import ShowAllClients from '../clients/ShowAllClients';
 
 const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) => {
   useEffect(() => {
     getAllProfiles();
-  }, []);
+  }, [getAllProfiles]);
   return (
     <div>
       <Navbar />
       <div className="dash-container">
         {
           loading && clientProfiles === []
-            ?
-            <Spinner />
-            :
-            <Fragment>
-              <h1 className="large text-primary">Clients</h1>
-            </Fragment>
+          &&
+          <Spinner />
         }
         {
           clientProfiles !== []
             ?
             <Fragment>
-              has
+              <ShowAllClients />
             </Fragment>
             :
             <Fragment>

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addRM, getClientProfile } from '../../actions/profile';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const AddNewRM = ({ match, clientId, addRM, clientProfile: { profile, loading } }) => {
+const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, loading } }) => {
   const [formData, setFormData] = useState({
     benchPress: '',
     squat: '',
@@ -12,19 +12,14 @@ const AddNewRM = ({ match, clientId, addRM, clientProfile: { profile, loading } 
 
   useEffect(() => {
     getClientProfile(match.params.id);
-    console.log(match.params.id);
-    setFormData({
-      benchPress: loading || !profile.clientOneRM ? '' : profile.clientOneRM.benchPress,
-      squat: loading || !profile.clientOneRM ? '' : profile.clientOneRM.squat,
-    });
-  }, [loading]);
+  }, [loading, getClientProfile, match.params.id]);
 
   const { benchPress, squat } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
-    addRM(formData, clientId);
+    addRM(formData, clientProfile._id);
     setFormData({
       benchPress: '',
       squat: '',
@@ -71,9 +66,9 @@ const AddNewRM = ({ match, clientId, addRM, clientProfile: { profile, loading } 
 AddNewRM.propTypes = {
   addRM: PropTypes.func.isRequired,
   getClientProfile: PropTypes.func.isRequired,
-  clientProfile: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
-  clientProfile: state.profile,
+  profile: state.profile,
 });
 export default connect(mapStateToProps, { getClientProfile, addRM })(withRouter(AddNewRM));

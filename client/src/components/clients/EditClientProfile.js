@@ -5,30 +5,29 @@ import { editClient, getClientProfile } from '../../actions/profile';
 import Navbar from '../layout/Navbar';
 import { withRouter } from 'react-router-dom';
 
-const EditClientProfile = ({ match, clientid, editClient, getClientProfile, clientProfile: { profile, loading } }) => {
+const EditClientProfile = ({ match, getClientProfile, editClient, profile: { clientProfile, loading } }) => {
   const [formData, setFormData] = useState({
     clientFirstName: '',
     clientLastName: '',
     clientPhone: '',
     clientEmail: '',
-    clientSport: '',
+    clientPhone: '',
     benchPress: '',
     squat: '',
   });
 
   useEffect(() => {
     getClientProfile(match.params.id);
-    console.log(match.params.id);
     setFormData({
-      clientFirstName: loading || !profile.clientFirstName ? '' : profile.clientFirstName,
-      clientLastName: loading || !profile.clientLastName ? '' : profile.clientLastName,
-      clientPhone: loading || !profile.clientPhone ? '' : profile.clientPhone,
-      clientEmail: loading || !profile.clientEmail ? '' : profile.clientEmail,
-      clientSport: loading || !profile.clientSport ? '' : profile.clientSport,
-      benchPress: loading || !profile.clientOneRM ? '' : profile.clientOneRM.benchPress,
-      squat: loading || !profile.clientOneRM ? '' : profile.clientOneRM.squat,
+      clientFirstName: loading || !clientProfile.clientFirstName ? '' : clientProfile.clientFirstName,
+      clientLastName: loading || !clientProfile.clientLastName ? '' : clientProfile.clientLastName,
+      clientPhone: loading || !clientProfile.clientPhone ? '' : clientProfile.clientPhone,
+      clientEmail: loading || !clientProfile.clientEmail ? '' : clientProfile.clientEmail,
+      clientSport: loading || !clientProfile.clientSport ? '' : clientProfile.clientSport,
+      benchPress: loading || !clientProfile.clientOneRM[0].benchPress ? '' : clientProfile.clientOneRM[0].benchPress,
+      squat: loading || !clientProfile.clientOneRM[0].squat ? '' : clientProfile.clientOneRM[0].squat,
     });
-  }, [loading]);
+  }, [loading, getClientProfile, match.params.id]);
 
   const {
     clientFirstName,
@@ -43,7 +42,7 @@ const EditClientProfile = ({ match, clientid, editClient, getClientProfile, clie
 
   const onSubmit = (e) => {
     e.preventDefault();
-    editClient(formData, clientid);
+    editClient(formData, clientProfile._id);
     setFormData({
       clientFirstName: '',
       clientLastName: '',
@@ -140,9 +139,9 @@ const EditClientProfile = ({ match, clientid, editClient, getClientProfile, clie
 EditClientProfile.propTypes = {
   editClient: PropTypes.func.isRequired,
   getClientProfile: PropTypes.func.isRequired,
-  clientProfile: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
-  clientProfile: state.profile,
+  profile: state.profile,
 });
-export default connect(mapStateToProps, { editClient, getClientProfile })(withRouter(EditClientProfile));
+export default connect(mapStateToProps, { getClientProfile, editClient })(withRouter(EditClientProfile));

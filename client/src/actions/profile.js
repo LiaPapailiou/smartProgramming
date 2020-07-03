@@ -30,7 +30,6 @@ export const getClientProfile = (client_id) => async (dispatch) => {
 
 // Get all profiles
 export const getAllProfiles = () => async (dispatch) => {
-  dispatch({ type: CLEAR_PROFILE });
 
   try {
 

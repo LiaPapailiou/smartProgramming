@@ -3,32 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { editClient, getClientProfile } from '../../actions/profile';
 import Navbar from '../layout/Navbar';
-import { withRouter } from 'react-router-dom';
 
-const EditClientProfile = ({ match, getClientProfile, editClient, profile: { clientProfile, loading } }) => {
+const EditClientProfile = ({ match, editClient, getClientProfile, profile: { clientProfile, loading } }) => {
+
   const [formData, setFormData] = useState({
     clientFirstName: '',
     clientLastName: '',
     clientPhone: '',
     clientEmail: '',
-    clientPhone: '',
+    clientSport: '',
     benchPress: '',
     squat: '',
   });
-
-  useEffect(() => {
-    getClientProfile(match.params.id);
-    setFormData({
-      clientFirstName: loading || !clientProfile.clientFirstName ? '' : clientProfile.clientFirstName,
-      clientLastName: loading || !clientProfile.clientLastName ? '' : clientProfile.clientLastName,
-      clientPhone: loading || !clientProfile.clientPhone ? '' : clientProfile.clientPhone,
-      clientEmail: loading || !clientProfile.clientEmail ? '' : clientProfile.clientEmail,
-      clientSport: loading || !clientProfile.clientSport ? '' : clientProfile.clientSport,
-      benchPress: loading || !clientProfile.clientOneRM[0].benchPress ? '' : clientProfile.clientOneRM[0].benchPress,
-      squat: loading || !clientProfile.clientOneRM[0].squat ? '' : clientProfile.clientOneRM[0].squat,
-    });
-  }, [loading, getClientProfile, match.params.id]);
-
   const {
     clientFirstName,
     clientLastName,
@@ -38,6 +24,7 @@ const EditClientProfile = ({ match, getClientProfile, editClient, profile: { cli
     benchPress,
     squat,
   } = formData;
+
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
@@ -53,6 +40,21 @@ const EditClientProfile = ({ match, getClientProfile, editClient, profile: { cli
       squat: '',
     });
   };
+
+  useEffect(() => {
+
+    getClientProfile(match.params.id);
+    setFormData({
+      clientFirstName: loading || !clientProfile.clientFirstName ? '' : clientProfile.clientFirstName,
+      clientLastName: loading || !clientProfile.clientLastName ? '' : clientProfile.clientLastName,
+      clientPhone: loading || !clientProfile.clientPhone ? '' : clientProfile.clientPhone,
+      clientEmail: loading || !clientProfile.clientEmail ? '' : clientProfile.clientEmail,
+      clientSport: loading || !clientProfile.clientSport ? '' : clientProfile.clientSport,
+      benchPress: loading || !clientProfile.clientOneRM[0].benchPress ? '' : clientProfile.clientOneRM[0].benchPress,
+      squat: loading || !clientProfile.clientOneRM[0].squat ? '' : clientProfile.clientOneRM[0].squat,
+    });
+  }, [getClientProfile, match.params.id, loading,]);
+
   return (
     <div className="add-client">
       <div className="add">
@@ -144,4 +146,4 @@ EditClientProfile.propTypes = {
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
-export default connect(mapStateToProps, { getClientProfile, editClient })(withRouter(EditClientProfile));
+export default connect(mapStateToProps, { getClientProfile, editClient })(EditClientProfile);

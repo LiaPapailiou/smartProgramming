@@ -7,6 +7,7 @@ import {
   GET_ALL_PROFILES,
   PROFILES_ERROR,
   UPDATE_RM,
+  EDIT_CLIENT_PROFILE,
 } from './types';
 
 
@@ -30,6 +31,7 @@ export const getClientProfile = (client_id) => async (dispatch) => {
 
 // Get all profiles
 export const getAllProfiles = () => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
 
   try {
 
@@ -84,7 +86,7 @@ export const editClient = (formData, client_id) => async (dispatch) => {
     };
     const res = await axios.post(`/clients/edit/${client_id}`, formData, config);
     dispatch({
-      type: GET_CLIENT_PROFILE,
+      type: EDIT_CLIENT_PROFILE,
       payload: res.data,
     });
     dispatch(setAlert('Client updated successfully', 'success'));

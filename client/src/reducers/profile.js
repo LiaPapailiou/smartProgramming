@@ -5,6 +5,7 @@ import {
   GET_ALL_PROFILES,
   PROFILES_ERROR,
   UPDATE_RM,
+  EDIT_CLIENT_PROFILE,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
@@ -17,6 +18,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_CLIENT_PROFILE:
+    case EDIT_CLIENT_PROFILE:
     case UPDATE_RM:
       return {
         ...state,

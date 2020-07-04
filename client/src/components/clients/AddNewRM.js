@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addRM, getClientProfile } from '../../actions/profile';
 import { withRouter } from 'react-router-dom';
+import Navbar from '../layout/Navbar';
 
 const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, loading } }) => {
   const [formData, setFormData] = useState({
@@ -27,36 +28,42 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
   };
 
   return (
-    <div className="add-rm-container">
-      <div className="add-card">
-        <div className="add-card-header">
-          <h3>Add new RM</h3>
-        </div>
-        <div className="add-card-body">
-          <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
-            <div className="add-input-group">
-              <input
-                type="text"
-                className="form-control"
-                name="benchPress"
-                value={ benchPress }
-                onChange={ (e) => onChange(e) }
-                placeholder=" Bench Press"
-                required />
-              <input
-                type="text"
-                className="form-control"
-                name="squat"
-                value={ squat }
-                onChange={ (e) => onChange(e) }
-                placeholder=" Squat"
-                required />
+    <div className="add-new-rm">
+      <div className="add-rm">
+        <Navbar />
+
+        <div className="add-rm-container">
+          <div className="add-card">
+            <div className="add-card-header">
+              <h3>Add new RM</h3>
             </div>
-            <input
-              type="submit"
-              className="input-add-rm"
-              value="Submit" />
-          </form>
+            <div className="add-card-body">
+              <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
+                <div className="add-input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="benchPress"
+                    value={ benchPress }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Bench Press"
+                    required />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="squat"
+                    value={ squat }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Squat"
+                    required />
+                </div>
+                <input
+                  type="submit"
+                  className="input-add-rm"
+                  value="Submit" />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

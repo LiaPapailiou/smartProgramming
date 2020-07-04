@@ -24,11 +24,11 @@ const Client = ({ match, getClientProfile, profile: { clientProfile, loading } }
             <h2>
               { clientProfile.clientFirstName }
             </h2>
-            { clientProfile.clientOneRM.map((rm) =>
-              <span>
-                Bench Press One RM { rm.benchPress }
+            { clientProfile.clientOneRM.map((rm, idx) =>
+              <span key={ idx } className="p-1">
+                Bench Press: { rm.benchPress }
                 <br />
-               Squat One RM { rm.squat }
+               Squat: { rm.squat }
               </span>
             ) }</div>) }
       </Fragment>

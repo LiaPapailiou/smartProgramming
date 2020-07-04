@@ -38,10 +38,13 @@ router.post('/edit/:client_id', auth, async (req, res) => {
     benchPress,
     squat,
   } = req.body;
+
   try {
     const newRM = { benchPress, squat };
     client = await Clients.findByIdAndUpdate(
-      { _id: req.params.client_id },
+      {
+        _id: req.params.client_id,
+      },
       {
         $set: {
           user: req.user.id,
@@ -50,7 +53,7 @@ router.post('/edit/:client_id', auth, async (req, res) => {
           clientPhone,
           clientEmail,
           clientSport,
-          clientOneRM: newRM,
+          'clientOneRM.0': newRM,
         },
       },
       { new: true, upsert: true }

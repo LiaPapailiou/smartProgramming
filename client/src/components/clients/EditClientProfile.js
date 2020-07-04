@@ -61,8 +61,8 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
         <Navbar />
         <div className="dark-overlay">
           <div className="add-container">
-            <div className="add-card">
-              <div className="add-card-header">
+            <div className="edit-card">
+              <div className="edit-card-header">
                 <h3>Edit</h3>
               </div>
               <div className="add-card-body">

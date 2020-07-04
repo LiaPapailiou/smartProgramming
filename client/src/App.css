@@ -303,10 +303,10 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  opacity: 0.9;
+  /* opacity: 0.9; */
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
-  /* background-color: transparent; */
+  background-color: transparent;
   height: 80px;
 }
 
@@ -365,13 +365,13 @@ button {
 
 .card-header {
   align-items: flex-start;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 40px;
 }
 
 .card-header h3 {
   color: #f4f4f4;
-  padding-right: 240px;
+  padding-right: 220px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
@@ -468,7 +468,7 @@ a:hover {
 .register-card {
   padding-top: 20px;
   border: solid #fff 2px;
-  height: 460px;
+  height: 480px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
@@ -481,13 +481,13 @@ a:hover {
 
 .register-card-header {
   align-items: flex-start;
-  margin-top: -10px;
+  margin-top: 5px;
   margin-bottom: 30px;
 }
 
 .register-card-header h3 {
   color: #f4f4f4;
-  padding-right: 200px;
+  padding-right: 180px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
@@ -531,6 +531,18 @@ register-input-group-text i {
 }
 
 /* Dashboard */
+.clients{
+  position: relative;
+  background: url('./images/gloves.jpg') no-repeat center center/cover; 
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
 .dash-container {
   margin-top: 80px;
   display: flex;
@@ -565,7 +577,7 @@ register-input-group-text i {
 .add-card {
   padding-top: 10px;
   border: solid #fff 2px;
-  height: 520px;
+  height: 540px;
   width: 400px;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
@@ -581,8 +593,8 @@ register-input-group-text i {
 
 .add-card-header h3 {
   color: #f4f4f4;
-  margin-top: -10px;
-  padding-right: 160px;
+  margin-top: 5px;
+  padding-right: 150px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
@@ -672,121 +684,104 @@ font-size: 25px;
   padding-right: 1em;
   font-size: 14px;
 }
-.profile-top {
-  grid-area: top;
+
+/* Edit */
+.edit-card {
+  padding-top: 10px;
+  border: solid #fff 2px;
+  height: 540px;
+  width: 360px;
+  background-color: #00000080;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+.edit-card-header {
+  align-items: flex-start;
+  padding-bottom: 20px;
+}
+
+
+.edit-card-header h3 {
+  color: #f4f4f4;
+  margin-top: 5px;
+  padding-right: 230px;
+  font-family: 'Numans', sans-serif;
+  font-size: 35px;
+}
+
+/* Add RM */
+.add-rm{
+  position: relative;
+  background: url('./images/gloves.jpg') no-repeat center center/cover; 
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.add-rm-container {
+  margin-top: 270px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
-.profile-top img {
-  width: 250px;
+.add-rm-card {
+  padding-top: 10px;
+  border: solid #fff 2px;
+  height: 300px;
+  width: 400px;
+  background-color: #00000080;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+.add-rm-card-header {
+  align-items: flex-start;
+  padding-bottom: 20px;
 }
 
-.profile-top .icons a {
-  color: #fff;
-  margin: 0 0.3rem;
+
+.add-rm-card-header h3 {
+  color: #f4f4f4;
+  margin-top: 10px;
+  padding-right: 100px;
+  font-family: 'Numans', sans-serif;
+  font-size: 35px;
 }
 
-.profile-top .icons a:hover {
-  color: var(--dark-color);
+.input-add-rm {
+  margin-top: 5px;
+  appearance: none;
+  background-color:#00000080;
+  border: 2px solid #f4f4f4;
+  border-radius: 0.6em;
+  color: #f4f4f4;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.85em 2.8em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Numans', sans-serif;
+  font-weight: 600;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.input-add-rm:hover {
+  box-shadow: 0 0 40px 40px #93aabd inset;
 }
 
-.profile-about {
-  grid-area: about;
-  text-align: center;
-}
-
-.profile-about .skills {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.profile-exp {
-  grid-area: exp;
-}
-
-.profile-edu {
-  grid-area: edu;
-}
-
-.profile-exp h2,
-.profile-edu h2 {
-  margin-bottom: 1rem;
-}
-
-.profile-exp > div,
-.profile-edu > div {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: #ccc 1px dotted;
-}
-
-.profile-exp > div:last-child,
-.profile-edu > div:last-child {
-  border: 0;
-}
-
-.profile-exp p,
-.profile-edu p {
-  margin: 0.5rem 0;
-}
-
-.profile-github {
-  grid-area: github;
-}
-
-.profile-github .repo {
-  display: flex;
-}
-
-.profile-github .repo > div:first-child {
-  flex: 7;
-  flex-basis: 70%;
-}
-
-.profile-github > div:last-child {
-  flex: 3;
-  flex-basis: 20%;
-}
-
-/* Posts Page */
-.post-form .post-form-header {
-  background: var(--primary-color);
-  padding: 0.5rem;
-}
-
-.post {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-gap: 2rem;
-  align-items: center;
-}
-
-.post > div:first-child {
-  text-align: center;
-}
-
-.post img {
-  width: 100px;
-}
-
-.post .comment-count {
-  background: var(--light-color);
-  color: var(--primary-color);
-  padding: 0.1rem 0.2rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-}
-
-.post .post-date {
-  color: #aaa;
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
+a:hover {
+  color: #4696db;
 }
 
 /* Mobile Styles */

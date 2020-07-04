@@ -29,7 +29,9 @@ const ClientItem = ({
             <i className="fas fa-user-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit Profile</Link>
           <Link to={ `/add-rm/${_id}` }>
-            <i className="fas fa-weight-hanging" style={ { color: '#61c9a8', paddingRight: 8 } }></i>Add new RM</Link>
+            <i className="fas fa-weight-hanging" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+            Add new RM
+            </Link>
         </span>
       </div>
     </div >

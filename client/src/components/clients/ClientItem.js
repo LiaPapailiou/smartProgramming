@@ -14,27 +14,25 @@ const ClientItem = ({
   },
 }) => {
   return (
-    <div className='profile bg-light'>
+    <div className="clients-card">
       <div className="client-container">
-        <h2>{ clientFirstName } { !clientLastName ? '' : clientLastName }</h2>
-        <div className="client-inner">
-          { clientPhone && <span><strong>Phone </strong> { clientPhone } </span> }
-          { clientEmail && <span><strong>Email </strong> { clientEmail } </span> }
-          { clientSport && <span><strong>Sport </strong> { clientSport } </span> }
+        <div className="client-container header">
+          <h2>{ clientFirstName } { !clientLastName ? '' : clientLastName } <span className="client-links">
+            <Link to={ `/client/${_id}` } >
+              <i className="far fa-eye" style={ { color: '#61c9a8', padding: '1em', fontSize: '13px', marginTop: '-12px' } }></i></Link>
+          </span></h2>
         </div>
-        <span className="client-links">
-          <Link to={ `/client/${_id}` } >
-            <i className="far fa-eye" style={ { color: '#61c9a8', paddingRight: 8 } }></i>View</Link>
-          <Link to={ `/edit/${_id}` }>
-            <i className="fas fa-user-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
-              Edit Profile</Link>
-          <Link to={ `/add-rm/${_id}` }>
-            <i className="fas fa-weight-hanging" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
-            Add new RM
-            </Link>
-        </span>
+        <div className="client-container-body">
+          <div className="clients-inner">
+            { clientPhone ? <span><strong>Phone </strong> { clientPhone } </span> : <span>Phone { 'n/a' }</span> }
+            <br />
+            { clientEmail ? <span><strong>Email </strong> { clientEmail } </span> : <span>Email { 'n/a' }</span> }
+            <br />
+            { clientSport ? <span><strong>Sport </strong> { clientSport } </span> : <span>Sport { 'n/a' }</span> }
+          </div>
+        </div>
       </div>
-    </div >
+    </div>
   );
 };
 

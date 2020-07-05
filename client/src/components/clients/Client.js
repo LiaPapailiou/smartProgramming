@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from 'react';
 import Spinner from '../layout/Spinner';
 import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getClientProfile } from '../../actions/profile';
 
@@ -16,21 +17,41 @@ const Client = ({ match, getClientProfile, profile: { clientProfile, loading } }
   }, [getClientProfile, match.params.id]);
 
   return (
-    <div>
+    <div className="client">
       <Navbar />
       <Fragment>
         { clientProfile === null || loading ? <Spinner /> :
-          (<div className="client-details-container">
-            <h2>
-              { clientProfile.clientFirstName }
-            </h2>
-            { clientProfile.clientOneRM.map((rm, idx) =>
-              <span key={ idx } className="p-1">
-                Bench Press: { rm.benchPress }
-                <br />
-               Squat: { rm.squat }
-              </span>
-            ) }</div>) }
+          (<div className="dark-overlay">
+            <div className="client-details-container">
+              <div className="client-card">
+                <div className="client-header">
+                  <h3>
+                    { clientProfile.clientFirstName }
+                  </h3>
+                  <span className="client-header-links">
+                    <Link to={ `/edit/${match.params.id}` }>
+                      <i className="fas fa-user-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+              Edit Profile</Link>
+                    <Link to={ `/add-rm/${match.params.id}` }>
+                      <i className="fas fa-weight-hanging" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+            Add new RM
+            </Link>
+                  </span>
+                </div>
+                <div className="client-card-body">
+                  { clientProfile.clientOneRM.map((rm, idx) =>
+                    idx === 0 &&
+                    (<span key={ idx } className="elem">
+                      Current Bench Press 1RM: { rm.benchPress }
+                      <br />
+                        Current Squat 1RM: { rm.squat }
+                    </span>)
+                  ) }
+                </div>
+              </div>
+            </div>
+          </div>)
+        }
       </Fragment>
     </div>
   );

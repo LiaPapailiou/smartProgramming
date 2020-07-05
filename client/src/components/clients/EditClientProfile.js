@@ -40,7 +40,9 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       squat: '',
     });
   };
-
+  const onClick = (e) => {
+    window.history.back();
+  };
   useEffect(() => {
 
     getClientProfile(match.params.id);
@@ -124,6 +126,11 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
                       placeholder=" Squat One RM"
                       required />
                   </div>
+                  <input
+                    type="button"
+                    className="input-add"
+                    onClick={ (e) => onClick(e) }
+                    value="Go Back" />
                   <input
                     type="submit"
                     className="input-add"

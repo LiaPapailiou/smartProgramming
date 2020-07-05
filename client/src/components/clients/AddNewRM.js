@@ -28,6 +28,9 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
       squat: '',
     });
   };
+  const onClick = (e) => {
+    window.history.back();
+  };
 
   return (
     <div className="add-new-rm">
@@ -59,6 +62,11 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
                       placeholder=" Squat"
                       required />
                   </div>
+                  <input
+                    type="button"
+                    className="input-add"
+                    onClick={ (e) => onClick(e) }
+                    value="Go Back" />
                   <input
                     type="submit"
                     className="input-add-rm"

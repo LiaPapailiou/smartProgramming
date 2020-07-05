@@ -15,17 +15,19 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
       { loading ? (
         <Spinner />
       ) : (
-          <Fragment>
-            <div className='clients'>
-              { clientProfiles.length > 0 ? (
-                clientProfiles.map((client) => (
-                  <ClientItem key={ client._id } client={ client } />
-                ))
-              ) : (
-                  <h4>No profiles found...</h4>
-                ) }
-            </div>
-          </Fragment>
+
+          <div className='clients'>
+
+            { clientProfiles.length > 0 ? (
+              clientProfiles.map((client) => (
+                <ClientItem key={ client._id } client={ client } />
+              ))
+            ) : (
+                <h4>No profiles found...</h4>
+              ) }
+          </div>
+
+
         ) }
     </Fragment>
   );

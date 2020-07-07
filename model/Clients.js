@@ -33,12 +33,6 @@ const clientSchema = new mongoose.Schema({
       },
     },
   ],
-  min: {
-    type: Number,
-  },
-  max: {
-    type: Number,
-  },
   createdAt: {
     type: Date,
     default: Date.now,

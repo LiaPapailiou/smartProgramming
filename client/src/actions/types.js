@@ -14,4 +14,5 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const GET_ALL_PROFILES = 'GET_ALL_PROFILES';
 export const PROFILES_ERROR = 'PROFILES_ERROR';
 export const UPDATE_RM = 'UPDATE_RM';
+export const DELETE_CLIENT = 'DELETE_CLIENT';
 

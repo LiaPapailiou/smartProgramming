@@ -22,7 +22,6 @@ const AddClient = ({ insertClient, history }) => {
     clientSport,
     benchPress,
     squat,
-
   } = formData;
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -67,7 +66,8 @@ const AddClient = ({ insertClient, history }) => {
                       name="clientLastName"
                       value={ clientLastName }
                       onChange={ (e) => onChange(e) }
-                      placeholder=" Last Name (optional)" />
+                      placeholder=" Last Name"
+                      required />
                     <input
                       type="text"
                       className="form-control"

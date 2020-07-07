@@ -8,6 +8,7 @@ import {
   PROFILES_ERROR,
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
+  DELETE_CLIENT
 } from './types';
 
 
@@ -126,4 +127,20 @@ export const addRM = (formData, client_id) => async (dispatch) => {
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
+};
+
+// Delete client
+export const deleteClient = (client_id) => async (dispatch) => {
+  if (window.confirm('Are you sure? This will be permanent.'))
+    try {
+      await axios.delete(`/clients/delete/${client_id}`);
+      dispatch({
+        type: DELETE_CLIENT,
+      });
+    } catch (err) {
+      dispatch({
+        type: CLIENT_PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status },
+      });
+    }
 };

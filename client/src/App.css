@@ -881,6 +881,9 @@ a:hover {
   border-top-right-radius: 0.3em;
 }
 
+.client-card-body {
+  padding: 1em;
+}
 .client-header {
   align-items: flex-start;
   padding-bottom: 20px;
@@ -888,8 +891,8 @@ a:hover {
 
 .client-header h3 {
   color: #f4f4f4;
-  margin-top: 10px;
-  padding-right: 180px;
+  text-align: justify;
+  padding-left: 0.75em;
   font-family: 'Numans', sans-serif;
   font-size: 30px;
 }

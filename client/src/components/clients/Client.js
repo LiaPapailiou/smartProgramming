@@ -4,10 +4,10 @@ import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getClientProfile } from '../../actions/profile';
+import { getClientProfile, deleteClient } from '../../actions/profile';
 
 
-const Client = ({ match, getClientProfile, profile: { clientProfile, loading } }) => {
+const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfile, loading } }) => {
 
 
 
@@ -16,6 +16,10 @@ const Client = ({ match, getClientProfile, profile: { clientProfile, loading } }
     console.log(match.params.id);
   }, [getClientProfile, match.params.id]);
 
+  const onClick = () => {
+    deleteClient(match.params.id);
+    window.history.back();
+  };
   return (
     <div className="client">
       <Navbar />
@@ -30,12 +34,15 @@ const Client = ({ match, getClientProfile, profile: { clientProfile, loading } }
                   </h3>
                   <span className="client-header-links">
                     <Link to={ `/edit/${match.params.id}` }>
-                      <i className="fas fa-user-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
-              Edit Profile</Link>
+                      <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+              Edit</Link>
                     <Link to={ `/add-rm/${match.params.id}` }>
-                      <i className="fas fa-weight-hanging" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
-            Add new RM
+                      <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+            Add RM
             </Link>
+                    <Link onClick={ () => onClick() }>
+                      <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>Delete
+                    </Link>
                   </span>
                 </div>
                 <div className="client-card-body">
@@ -59,9 +66,10 @@ const Client = ({ match, getClientProfile, profile: { clientProfile, loading } }
 
 Client.propTypes = {
   getClientProfile: PropTypes.func.isRequired,
+  deleteClient: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
-export default connect(mapStateToProps, { getClientProfile })(Client);
+export default connect(mapStateToProps, { getClientProfile, deleteClient })(Client);

@@ -6,6 +6,7 @@ import {
   PROFILES_ERROR,
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
+  DELETE_CLIENT,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
@@ -39,6 +40,7 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case CLEAR_PROFILE:
+    case DELETE_CLIENT:
       return {
         ...state,
         clientProfile: null,

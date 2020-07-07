@@ -39,13 +39,16 @@ router.put('/insert',
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-    const { exercise } = req.body;
+    const { exercise, body, min, max } = req.body;
     try {
       let exerciseToInsert = await Exercises.findOne({ exercise });
       if (exerciseToInsert) return res.status(409).json({ msg: 'Exercise already exists' });
 
       exerciseToInsert = await Exercises.create({
         exercise,
+        body,
+        min,
+        max,
       });
       res.json(exerciseToInsert);
     } catch (err) {
@@ -56,7 +59,7 @@ router.put('/insert',
 
 // Edit
 router.post('/edit/:ex_id', async (req, res) => {
-  const { exercise } = req.body;
+  const { exercise, body, min, max } = req.body;
   try {
     const exerciseToEdit = await Exercises.findByIdAndUpdate({
       _id: req.params.ex_id,
@@ -64,6 +67,9 @@ router.post('/edit/:ex_id', async (req, res) => {
       {
         $set: {
           exercise,
+          body,
+          min,
+          max,
         },
       },
       { new: true, upsert: true });

@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
+const Exercises = require('../model/Exercises');
 
 
 // Get the list of all clients in the DB
@@ -165,4 +166,13 @@ router.delete('/delete/:client_id', auth, async (req, res) => {
   }
 });
 
+
+// Get min-max estimates by client
+router.get('/estimates/:client_id', auth, async (req, res) => {
+
+  // find client and get the current min max
+  // loop over the exercises and calculate for every the min - max value
+  // send results to front end
+
+});
 module.exports = router;

@@ -8,6 +8,15 @@ const exerciseSchema = new mongoose.Schema({
   body: {
     type: String,
   },
+  min: {
+    type: Number,
+  },
+  max: {
+    type: Number,
+  },
+  factor: {
+    type: Boolean,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -5,10 +5,6 @@ const clientSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  exercise: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Exercises',
-  },
   clientFirstName: {
     type: String,
     required: true,

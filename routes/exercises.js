@@ -8,6 +8,7 @@ const Exercises = require('../model/Exercises');
 router.get('/', async (req, res) => {
   try {
     const exercises = await Exercises.find().sort({ exercise: 1 });
+
     res.json(exercises);
 
   } catch (err) {
@@ -15,6 +16,22 @@ router.get('/', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+// Get squat & true
+// router.get('/squat-true', async (req, res) => {
+//   try {
+//     const squatHasFactor = await Exercises.find({ body: "Squat", factor: true }).select({ _id: 0, exercise: 1, min: 1, max: 1 }).sort();
+
+//     const squatNoFactor = await Exercises.find({ body: "Squat", factor: false }).select({ min: 1, max: 1 }).sort();
+//     const benchHasFactor = await Exercises.find({ body: "Bench", factor: true }).select({ min: 1, max: 1 }).sort();
+//     const benchNoFactor = await Exercises.find({ body: "Bench", factor: false }).select({ min: 1, max: 1 }).sort();
+
+//     res.json(squatHasFactor);
+//   } catch (err) {
+//     console.log(err.message);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
 
 // Get by ID
 router.get('/search/:ex_id', async (req, res) => {
@@ -39,7 +56,7 @@ router.put('/insert',
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-    const { exercise, body, min, max } = req.body;
+    const { exercise, body, min, max, factor } = req.body;
     try {
       let exerciseToInsert = await Exercises.findOne({ exercise });
       if (exerciseToInsert) return res.status(409).json({ msg: 'Exercise already exists' });
@@ -49,6 +66,7 @@ router.put('/insert',
         body,
         min,
         max,
+        factor,
       });
       res.json(exerciseToInsert);
     } catch (err) {
@@ -59,9 +77,11 @@ router.put('/insert',
 
 // Edit
 router.post('/edit/:ex_id', async (req, res) => {
-  const { exercise, body, min, max } = req.body;
+  const { exercise, body, min, max, factor } = req.body;
   try {
-    const exerciseToEdit = await Exercises.findByIdAndUpdate({
+    let exerciseToEdit = await Exercises.findOne({ _id: req.params.ex_id });
+    if (!exerciseToEdit) return res.status(404).json({ msg: 'Exercise not found in the database' });
+    exercisesToEdit = await Exercises.findByIdAndUpdate({
       _id: req.params.ex_id,
     },
       {
@@ -70,6 +90,7 @@ router.post('/edit/:ex_id', async (req, res) => {
           body,
           min,
           max,
+          factor,
         },
       },
       { new: true, upsert: true });

@@ -20,7 +20,10 @@ router.get('/', auth, async (req, res) => {
 // Get client by id
 router.get('/search/:client_id', auth, async (req, res) => {
   try {
-    const client = await Clients.findById(req.params.client_id);
+    let client = await Clients.findById(req.params.client_id);
+    // const rmBench = client.clientOneRM[0].benchPress;
+    // const rmSquat = client.clientOneRM[0].squat;
+    // console.log(rmBench, rmSquat);
 
     if (!client)
       return res.status(404).json({ msg: 'Client not found in the database' });
@@ -168,4 +171,80 @@ router.delete('/delete/:client_id', auth, async (req, res) => {
   }
 });
 
+// Get min - max estimates
+router.post('/calculate/:client_id', auth, async (req, res) => {
+  const { level } = req.body;
+  try {
+    // Get client by ID
+    const client = await Clients.findById(req.params.client_id);
+    if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
+
+    // Save RMs in seperate vars
+    const benchRM = client.clientOneRM[0].benchPress;
+    const squatRM = client.clientOneRM[0].squat;
+
+    const exercisesLower = await Exercises.find({ body: "Squat" }).select({ _id: 0, exercise: 1, min: 1, max: 1, factor: 1 }).sort();
+    const exercisesUpper = await Exercises.find({ body: "Bench" }).select({ _id: 0, exercise: 1, min: 1, max: 1, factor: 1 }).sort();
+
+    const estimates = [];
+
+    exercisesLower.map((exercise) => {
+      let min = Math.round(exercise.min * squatRM * 100) / 100;
+      let max = Math.round(exercise.max * squatRM * 100) / 100;
+      let name = exercise.exercise;
+      let { factor } = exercise;
+      estimates.push({ name, min, max, factor });
+    });
+    exercisesUpper.map((exercise) => {
+      let min = Math.round(exercise.min * benchRM * 100) / 100;
+      let max = Math.round(exercise.max * benchRM * 100) / 100;
+      let name = exercise.exercise;
+      let { factor } = exercise;
+      estimates.push({ name, min, max, factor });
+    });
+
+    if (level !== undefined) {
+      estimates.map((ex) => {
+        if (ex.factor === true && level !== undefined) {
+          if (level === 0.6) {
+            ex.min = Math.round(ex.min * level * 100) / 100;
+            ex.max = Math.round(ex.max * level * 100) / 100;
+          }
+          else if (level === 0.75) {
+            ex.min = Math.round(ex.min * level * 100) / 100;
+            ex.max = Math.round(ex.max * level * 100) / 100;
+          }
+          else if (level === 0.9) {
+            ex.min = Math.round(ex.min * level * 100) / 100;
+            ex.max = Math.round(ex.max * level * 100) / 100;
+          }
+          else if (level === 1) {
+            ex.min = Math.round(ex.min * 100) / 100;
+            ex.max = Math.round(ex.max * 100) / 100;
+          }
+          else if (level === 1.1) {
+            ex.min = Math.round(ex.min * level * 100) / 100;
+            ex.max = Math.round(ex.max * level * 100) / 100;
+          }
+          else {
+            ex.min = 0;
+            ex.max = 0;
+          }
+        }
+      });
+    }
+    else {
+      estimates.map((ex) => {
+        if (ex.factor === true) {
+          ex.min = 0;
+          ex.max = 0;
+        }
+      });
+    }
+    res.json(estimates);
+  } catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
+
+});
 module.exports = router;

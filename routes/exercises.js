@@ -17,16 +17,77 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get squat & true
-// router.get('/squat-true', async (req, res) => {
+// Test
+// router.post('/squat-true', async (req, res) => {
+//   const { level } = req.body;
 //   try {
-//     const squatHasFactor = await Exercises.find({ body: "Squat", factor: true }).select({ _id: 0, exercise: 1, min: 1, max: 1 }).sort();
 
-//     const squatNoFactor = await Exercises.find({ body: "Squat", factor: false }).select({ min: 1, max: 1 }).sort();
-//     const benchHasFactor = await Exercises.find({ body: "Bench", factor: true }).select({ min: 1, max: 1 }).sort();
-//     const benchNoFactor = await Exercises.find({ body: "Bench", factor: false }).select({ min: 1, max: 1 }).sort();
+//     const benchRM = 130;
+//     const squatRM = 180;
 
-//     res.json(squatHasFactor);
+//     // Get exercises with min - max
+//     const exercisesLower = await Exercises.find({ body: "Squat" }).select({ _id: 0, exercise: 1, min: 1, max: 1, factor: 1 }).sort();
+//     const exercisesUpper = await Exercises.find({ body: "Bench" }).select({ _id: 0, exercise: 1, min: 1, max: 1, factor: 1 }).sort();
+//     const estimates = [];
+//     exercisesLower.map((exercise) => {
+//       let min = Math.round(exercise.min * squatRM * 100) / 100;
+//       let max = Math.round(exercise.max * squatRM * 100) / 100;
+//       let name = exercise.exercise;
+//       let { factor } = exercise;
+//       estimates.push({ name, min, max, factor });
+//     });
+//     exercisesUpper.map((exercise) => {
+//       let min = Math.round(exercise.min * benchRM * 100) / 100;
+//       let max = Math.round(exercise.max * benchRM * 100) / 100;
+//       let name = exercise.exercise;
+//       let { factor } = exercise;
+//       estimates.push({ name, min, max, factor });
+//     });
+//     console.log('BEFORE', estimates);
+
+//     if (level !== undefined) {
+//       estimates.map((ex) => {
+//         if (ex.factor === true && level !== undefined) {
+//           if (level === 0.6) {
+//             ex.min = Math.round(ex.min * level * 100) / 100;
+//             ex.max = Math.round(ex.max * level * 100) / 100;
+//           }
+//           else if (level === 0.75) {
+//             ex.min = Math.round(ex.min * level * 100) / 100;
+//             ex.max = Math.round(ex.max * level * 100) / 100;
+//           }
+//           else if (level === 0.9) {
+//             ex.min = Math.round(ex.min * level * 100) / 100;
+//             ex.max = Math.round(ex.max * level * 100) / 100;
+//           }
+//           else if (level === 1) {
+//             ex.min = Math.round(ex.min * 100) / 100;
+//             ex.max = Math.round(ex.max * 100) / 100;
+//           }
+//           else if (level === 1.1) {
+//             ex.min = Math.round(ex.min * level * 100) / 100;
+//             ex.max = Math.round(ex.max * level * 100) / 100;
+//           }
+//           else {
+//             ex.min = 0;
+//             ex.max = 0;
+//           }
+//         }
+//       });
+//     }
+//     else {
+//       estimates.map((ex) => {
+//         if (ex.factor === true) {
+//           ex.min = 0;
+//           ex.max = 0;
+//         }
+//       });
+//     }
+
+//     console.log('AFTER', estimates);
+
+
+//     res.json(estimates);
 //   } catch (err) {
 //     console.log(err.message);
 //     res.status(500).send('Internal Server Error');
@@ -39,7 +100,9 @@ router.get('/search/:ex_id', async (req, res) => {
     const exercise = await Exercises.findById(req.params.ex_id);
 
     if (!exercise) return res.status(404).json({ msg: 'Exercise not found in the database' });
-
+    // const min = exercise.min;
+    // const max = exercise.max;
+    // console.log(min, max);
     res.json(exercise);
 
   } catch (err) {

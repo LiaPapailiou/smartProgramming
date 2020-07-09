@@ -226,7 +226,7 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
             ex.min = Math.round(ex.min * level * 100) / 100;
             ex.max = Math.round(ex.max * level * 100) / 100;
           }
-          else {
+          else if (level === 0) {
             ex.min = 0;
             ex.max = 0;
           }

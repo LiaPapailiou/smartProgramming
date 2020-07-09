@@ -7,10 +7,12 @@ import {
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
   DELETE_CLIENT,
+  GET_CLIENT_ESTIMATES,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
   clientProfiles: [],
+  exerciseList: [],
   loading: true,
   error: {}
 };
@@ -24,6 +26,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         clientProfile: payload,
+        loading: false,
+      };
+    case GET_CLIENT_ESTIMATES:
+      return {
+        ...state,
+        exerciseList: payload,
         loading: false,
       };
     case GET_ALL_PROFILES:

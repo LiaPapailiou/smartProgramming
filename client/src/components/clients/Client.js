@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
+import ClientEstimates from './ClientEstimates';
 
 
 const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfile, loading } }) => {
@@ -55,6 +56,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                     </span>)
                   ) }
                 </div>
+                <ClientEstimates clientId={ match.params.id } />
               </div>
             </div>
           </div>)

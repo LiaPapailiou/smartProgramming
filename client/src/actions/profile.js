@@ -8,7 +8,8 @@ import {
   PROFILES_ERROR,
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
-  DELETE_CLIENT
+  DELETE_CLIENT,
+  GET_CLIENT_ESTIMATES
 } from './types';
 
 
@@ -143,4 +144,29 @@ export const deleteClient = (client_id) => async (dispatch) => {
         payload: { msg: err.response.statusText, status: err.response.status },
       });
     }
+};
+
+// Get estimates
+export const getEstimates = (formData, client_id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`/clients/calculate/${client_id}`, formData, config);
+    dispatch({
+      type: GET_CLIENT_ESTIMATES,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+    }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
 };

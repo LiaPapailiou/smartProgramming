@@ -13,6 +13,7 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store';
 import './App.css';
+import ShowAllExercises from './components/exercises/ShowAllExercises';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -27,6 +28,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Route exact path='/' component={ Landing } />
+          <Route exact path='/exercises' component={ ShowAllExercises } />
           <section className="app-container">
             <Switch>
               <Route exact path='/register' component={ Register } />

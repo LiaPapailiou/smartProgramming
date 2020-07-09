@@ -206,27 +206,27 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
     if (level !== undefined) {
       estimates.map((ex) => {
         if (ex.factor === true && level !== undefined) {
-          if (level === 0.6) {
-            ex.min = Math.round(ex.min * level * 100) / 100;
-            ex.max = Math.round(ex.max * level * 100) / 100;
+          if (level == 0.6) {
+            console.log(level);
+            ex.min = Math.round(ex.min * 0.6 * 100) / 100;
+            ex.max = Math.round(ex.max * 0.6 * 100) / 100;
           }
-          else if (level === 0.75) {
-            ex.min = Math.round(ex.min * level * 100) / 100;
-            ex.max = Math.round(ex.max * level * 100) / 100;
+          else if (level == 0.75) {
+            ex.min = Math.round(ex.min * 0.75 * 100) / 100;
+            ex.max = Math.round(ex.max * 0.75 * 100) / 100;
           }
-          else if (level === 0.9) {
-            ex.min = Math.round(ex.min * level * 100) / 100;
-            ex.max = Math.round(ex.max * level * 100) / 100;
+          else if (level == 0.9) {
+            ex.min = Math.round(ex.min * 0.9 * 100) / 100;
+            ex.max = Math.round(ex.max * 0.9 * 100) / 100;
           }
-          else if (level === 1) {
+          else if (level == 1) {
             ex.min = Math.round(ex.min * 100) / 100;
             ex.max = Math.round(ex.max * 100) / 100;
           }
-          else if (level === 1.1) {
-            ex.min = Math.round(ex.min * level * 100) / 100;
-            ex.max = Math.round(ex.max * level * 100) / 100;
-          }
-          else if (level === 0) {
+          else if (level == 1.1) {
+            ex.min = Math.round(ex.min * 1.1 * 100) / 100;
+            ex.max = Math.round(ex.max * 1.1 * 100) / 100;
+          } else {
             ex.min = 0;
             ex.max = 0;
           }

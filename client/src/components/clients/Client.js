@@ -27,36 +27,38 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
       <Fragment>
         { clientProfile === null || loading ? <Spinner /> :
           (<div className="dark-overlay">
-            <div className="client-details-container">
-              <div className="client-card">
-                <div className="client-header">
-                  <h3>
-                    { clientProfile.clientFirstName }
-                  </h3>
-                  <span className="client-header-links">
-                    <Link to={ `/edit/${match.params.id}` }>
-                      <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+            <div className="client-container">
+              <div className="client-details-container">
+                <div className="client-card">
+                  <div className="client-header">
+                    <h3>
+                      { clientProfile.clientFirstName }
+                    </h3>
+                    <span className="client-header-links">
+                      <Link to={ `/edit/${match.params.id}` }>
+                        <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit</Link>
-                    <Link to={ `/add-rm/${match.params.id}` }>
-                      <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+                      <Link to={ `/add-rm/${match.params.id}` }>
+                        <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
-                    <Link onClick={ () => onClick() }>
-                      <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>Delete
+                      <Link onClick={ () => onClick() }>
+                        <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>Delete
                     </Link>
-                  </span>
+                    </span>
+                  </div>
+                  <div className="client-card-body">
+                    { clientProfile.clientOneRM.map((rm, idx) =>
+                      idx === 0 &&
+                      (<span key={ idx } className="elem">
+                        Bench Press:  { rm.benchPress }
+                        <br />
+                    Squat:  { rm.squat }
+                      </span>)
+                    ) }
+                  </div>
+                  <ClientEstimates clientId={ match.params.id } />
                 </div>
-                <div className="client-card-body">
-                  { clientProfile.clientOneRM.map((rm, idx) =>
-                    idx === 0 &&
-                    (<span key={ idx } className="elem">
-                      Current Bench Press 1RM: { rm.benchPress }
-                      <br />
-                        Current Squat 1RM: { rm.squat }
-                    </span>)
-                  ) }
-                </div>
-                <ClientEstimates clientId={ match.params.id } />
               </div>
             </div>
           </div>)

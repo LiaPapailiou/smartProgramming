@@ -18,9 +18,9 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
           <div className='exercises' style={ { border: '1px solid  black' } }>
             { exercises.length > 0 ? (
               <div className="exercise-headers">
-                <span style={ { paddingRight: '1em', fontSize: 20, backgroundColor: 'lightgrey' } }>Exercise</span>
-                <span style={ { paddingRight: '1em', fontSize: 20, backgroundColor: 'lightgrey' } }>Min</span>
-                <span style={ { paddingRight: '1em', fontSize: 20, backgroundColor: 'lightgrey' } }>Max</span>
+                <span style={ { paddingRight: '1em', fontSize: 20 } }>Exercise</span>
+                <span style={ { paddingRight: '1em', fontSize: 20 } }>Min</span>
+                <span style={ { paddingRight: '1em', fontSize: 20 } }>Max</span>
                 {
                   exercises.map((exerciseItem) => (
                     <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />

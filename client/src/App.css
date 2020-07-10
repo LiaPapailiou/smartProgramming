@@ -856,21 +856,31 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-items: baseline;
-  justify-content: center;
-  align-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: space-around;
   text-align: center;
 }
-.client-details-container {
-  margin-top: 315px;
+
+.client-container {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* align-content: center; */
+}
+.client-details-container {
+  margin-top: 130px;
+  margin-left: 10px;
+  display: flex;
+  /* margin-left: -1500px; */
   align-content: center;
   justify-content: center;
   align-items: baseline;
 }
 
 .client-card {  
-  padding-top: 10px;
+  padding-top: 1em;
   border: solid #fff 2px;
   height: 300px;
   width: 320px;
@@ -892,7 +902,7 @@ a:hover {
 .client-header h3 {
   color: #f4f4f4;
   text-align: justify;
-  padding-left: 0.75em;
+  padding-left: 1.2em;
   font-family: 'Numans', sans-serif;
   font-size: 30px;
 }
@@ -907,9 +917,62 @@ a:hover {
 .elem {
   color: #f4f4f4;
   font-size: 16px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  padding: 1em;
+  padding-right: 0.5em;
+  text-align: start;
 }
 
+.calculate-form {
+padding: 1em;
+}
+.calculate-form label {
+  padding-right: 0.75em;
+}
+
+.calculate {
+  margin-top: 5px;
+  appearance: none;
+  background-color:#00000080;
+  border: 2px solid #f4f4f4;
+  border-radius: 0.6em;
+  color: #f4f4f4;
+  cursor: pointer;
+  font-size: 0.5rem;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.70em 2.6em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Numans', sans-serif;
+  font-weight: 300;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.calculate:hover {
+  box-shadow: 0 0 40px 40px #61c9a8af inset;
+}
+
+a:hover {
+  color: #4696db;
+}
+
+.exercise-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  width: 320px;
+  padding-top: 0.15em;
+  margin-top: -260px;
+  margin-left: 360px;
+}
+
+.exercise-container-lists span {
+ padding-right: 1em;
+}
 
 /* Exercise List */
 .exercises {

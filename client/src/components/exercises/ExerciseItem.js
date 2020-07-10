@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const ExerciseItem = ({
   exerciseItem: {
     _id,
-    exercise,
+    name,
     min,
     max,
     factor
@@ -14,14 +14,10 @@ const ExerciseItem = ({
   return (
     <Fragment>
 
-      <div className="exercise-container">
-        <table>
-          <tr>
-            <td style={ { color: '#000', paddingRight: '1em' } }>{ exercise }</td>
-            <td style={ { color: '#000', paddingRight: '1em' } }>{ min }</td>
-            <td style={ { color: '#000', paddingRight: '1em' } }>{ max }</td>
-          </tr>
-        </table >
+      <div className="exercise-container-lists">
+        <ul>
+          <li style={ { color: '#fff', padding: '.25em', fontSize: 14 } }> <span><strong>{ name }</strong></span> <span>{ min }</span> <span>{ max }</span> </li>
+        </ul>
       </div>
     </Fragment>
   );

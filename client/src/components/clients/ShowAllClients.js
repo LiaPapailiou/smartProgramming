@@ -23,7 +23,7 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
                 <ClientItem key={ client._id } client={ client } />
               ))
             ) : (
-                <h4>No profiles found...</h4>
+                <h4 style={ { color: '#fff', fontSize: 18 } }>No clients found. Please add a client...</h4>
               ) }
           </div>
 

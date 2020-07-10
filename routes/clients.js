@@ -21,9 +21,7 @@ router.get('/', auth, async (req, res) => {
 router.get('/search/:client_id', auth, async (req, res) => {
   try {
     let client = await Clients.findById(req.params.client_id);
-    // const rmBench = client.clientOneRM[0].benchPress;
-    // const rmSquat = client.clientOneRM[0].squat;
-    // console.log(rmBench, rmSquat);
+
 
     if (!client)
       return res.status(404).json({ msg: 'Client not found in the database' });

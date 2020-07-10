@@ -31,6 +31,10 @@ const clientSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      added: {
+        type: Date,
+        default: Date.now,
+      }
     },
   ],
   notes: {

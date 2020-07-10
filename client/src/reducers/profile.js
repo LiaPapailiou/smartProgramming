@@ -53,6 +53,7 @@ export default function (state = initialState, action) {
         ...state,
         clientProfile: null,
         clientProfiles: [],
+        exerciseList: [],
         loading: false,
       };
     default:

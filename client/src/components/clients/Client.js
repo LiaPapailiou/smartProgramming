@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
 import ClientEstimates from './ClientEstimates';
+import OneRMChart from './OneRMChart';
 
 
 const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfile, loading } }) => {
@@ -51,14 +52,15 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                     { clientProfile.clientOneRM.map((rm, idx) =>
                       idx === 0 &&
                       (<span key={ idx } className="elem">
-                        Bench Press:  { rm.benchPress }
+                        Bench Press:  { rm.benchPress } kg
                         <br />
-                    Squat:  { rm.squat }
+                    Squat:  { rm.squat } kg
                       </span>)
                     ) }
                   </div>
                   <ClientEstimates clientId={ match.params.id } />
                 </div>
+                <OneRMChart clientId={ match.params.id } />
               </div>
             </div>
           </div>)

@@ -13,7 +13,7 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
 
   useEffect(() => {
     getClientProfile(clientId);
-  }, [getClientProfile]);
+  }, [getClientProfile, clientId]);
 
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });

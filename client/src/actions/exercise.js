@@ -3,7 +3,7 @@ import {
   GET_EXERCISES,
   GET_EXERCISE,
   GET_EXERCISES_ERROR,
-  GET_EXERCISES_CLEAR,
+  // GET_EXERCISES_CLEAR,
 } from './types';
 
 

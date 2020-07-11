@@ -13,24 +13,29 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
   }, [getClientProfile]);
 
   const formatXAxis = (tickItem) => {
-    return moment(tickItem).format('YY/MM/dd');
+    return moment(tickItem).format('MMM / YY');
+  };
+
+  const formatColour = (value, entry) => {
+    const { color } = entry;
+    return <span style={ { color, fontSize: 15, paddingRight: '0.25em' } }>{ value }</span>;
   };
   return (
     <LineChart
       width={ 500 }
       height={ 300 }
-      data={ clientProfile.clientOneRM.reverse() }
+      data={ clientProfile.clientOneRM }
       margin={ {
         top: 5, right: 30, left: 20, bottom: 5,
       } }
     >
       <CartesianGrid vertical={ false } strokeDasharray="3 3" />
-      <XAxis dataKey="added" tickFormatter={ formatXAxis } />
-      <YAxis unit=" kg" />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="benchPress" stroke="#8884d8" activeDot={ { r: 8 } } color="#fff" />
-      <Line type="monotone" dataKey="squat" stroke="#82ca9d" />
+      <XAxis dataKey="added" tickFormatter={ formatXAxis } tick={ { fontSize: 12, fill: '#fff' } } />
+      <YAxis unit=" kg" tick={ { fontSize: 12, fill: '#fff' } } />
+      <Tooltip labelFormatter={ (t) => new Date(t).toLocaleString() } />
+      <Legend formatter={ formatColour } />
+      <Line type="monotone" dataKey="benchPress" name="Bench Press" stroke="#8884d8" activeDot={ { r: 8 } } />
+      <Line type="monotone" dataKey="squat" name="Squat" stroke="#82ca9d" />
     </LineChart>
   );
 };

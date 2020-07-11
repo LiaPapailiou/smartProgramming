@@ -87,7 +87,7 @@ router.post('/add/:client_id', [auth,
   const newRM = { benchPress, squat };
   try {
     const client = await Clients.findById(req.params.client_id);
-    client.clientOneRM.unshift(newRM);
+    client.clientOneRM.push(newRM);
     await client.save();
     res.json(client);
   } catch (err) {

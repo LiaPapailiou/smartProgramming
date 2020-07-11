@@ -50,7 +50,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                   </div>
                   <div className="client-card-body">
                     { clientProfile.clientOneRM.map((rm, idx) =>
-                      idx === 0 &&
+                      idx === clientProfile.clientOneRM.length - 1 &&
                       (<span key={ idx } className="elem">
                         Bench Press:  { rm.benchPress } kg
                         <br />

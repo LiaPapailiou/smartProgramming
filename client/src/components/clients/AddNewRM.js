@@ -15,7 +15,7 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
 
   useEffect(() => {
     getClientProfile(match.params.id);
-  }, [loading, getClientProfile, match.params.id]);
+  }, [loading, getClientProfile]);
 
   const { benchPress, squat } = formData;
 

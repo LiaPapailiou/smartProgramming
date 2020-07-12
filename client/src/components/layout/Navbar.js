@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import { wrap } from 'module';
 
 const Navbar = ({ logout }) => {
 
   return (
-    <nav className="navbar bg-dark">
-      <h1>
-        <i className="fas fa-dumbbell" style={ { color: '#93aabd' } }></i> Smart Programming
-      </h1>
+    <nav className="navbar bg-dark" style={ { display: 'flex', flexDirection: 'ro', flexWrap: 'wrap', justifyContent: 'flex-end' } }>
       <ul>
         <li>
           <Link to="/exercises">

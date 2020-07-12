@@ -8,11 +8,13 @@ import {
   EDIT_CLIENT_PROFILE,
   DELETE_CLIENT,
   GET_CLIENT_ESTIMATES,
+  GET_CLIENT_NOTES,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
   clientProfiles: [],
   exerciseList: [],
+  notes: null,
   loading: true,
   error: {}
 };
@@ -32,6 +34,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         exerciseList: payload,
+        loading: false,
+      };
+    case GET_CLIENT_NOTES:
+      return {
+        ...state,
+        notes: payload,
         loading: false,
       };
     case GET_ALL_PROFILES:
@@ -54,6 +62,7 @@ export default function (state = initialState, action) {
         clientProfile: null,
         clientProfiles: [],
         exerciseList: [],
+        notes: null,
         loading: false,
       };
     default:

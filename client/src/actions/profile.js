@@ -9,7 +9,8 @@ import {
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
   DELETE_CLIENT,
-  GET_CLIENT_ESTIMATES
+  GET_CLIENT_ESTIMATES,
+  GET_CLIENT_NOTES,
 } from './types';
 
 
@@ -164,6 +165,28 @@ export const getEstimates = (formData, client_id) => async (dispatch) => {
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
     }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Edit/Insert client notes
+export const addNotes = (formData, client_id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`/clients/notes/${client_id}`, formData, config);
+    dispatch({
+      type: GET_CLIENT_NOTES,
+      payload: res.data,
+    });
+  } catch (err) {
+
     dispatch({
       type: CLIENT_PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

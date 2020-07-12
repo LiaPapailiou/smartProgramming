@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
 import ClientEstimates from './ClientEstimates';
 import OneRMChart from './OneRMChart';
+import ClientNotes from './ClientNotes';
 
 
 const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfile, loading } }) => {
@@ -50,7 +51,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                   </div>
                   <div className="client-card-body">
                     { clientProfile.clientOneRM.map((rm, idx) =>
-                      idx === clientProfile.clientOneRM.length - 1 &&
+                      idx === 0 &&
                       (<span key={ idx } className="elem">
                         Bench Press:  { rm.benchPress } kg
                         <br />
@@ -61,6 +62,11 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                   <ClientEstimates clientId={ match.params.id } />
                 </div>
                 <OneRMChart clientId={ match.params.id } />
+                <ClientNotes />
+                <div style={ { color: '#fff', paddingRight: 8, border: 'solid white 1px', fontSize: 13 } }>
+                  <h2 style={ { color: '#61c9a8' } }>notes</h2>
+                  { clientProfile.notes }
+                </div>
               </div>
             </div>
           </div>)

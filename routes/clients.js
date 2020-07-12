@@ -44,7 +44,9 @@ router.post('/edit/:client_id', auth, async (req, res) => {
 
   try {
     const newRM = { benchPress, squat };
-    const client = await Clients.findByIdAndUpdate(
+    let client = await Clients.find({ _id: req.params.id });
+    if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
+    client = await Clients.findByIdAndUpdate(
       {
         _id: req.params.client_id,
       },
@@ -62,7 +64,6 @@ router.post('/edit/:client_id', auth, async (req, res) => {
       { new: true, upsert: true }
     );
 
-    if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
     res.json(client);
   } catch (err) {
     res.status(500).send('Internal Server Error');
@@ -86,7 +87,7 @@ router.post('/add/:client_id', [auth,
   const newRM = { benchPress, squat };
   try {
     const client = await Clients.findById(req.params.client_id);
-    client.clientOneRM.push(newRM);
+    client.clientOneRM.unshift(newRM);
     await client.save();
     res.json(client);
   } catch (err) {
@@ -98,7 +99,9 @@ router.post('/add/:client_id', [auth,
 router.post('/notes/:client_id', auth, async (req, res) => {
   const { notes } = req.body;
   try {
-    const client = await Clients.findByIdAndUpdate(
+    let client = await Clients.find({ _id: req.params.id });
+    if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
+    client = await Clients.findByIdAndUpdate(
       { _id: req.params.client_id },
       { $set: { notes } },
       { new: true, upsert: true },

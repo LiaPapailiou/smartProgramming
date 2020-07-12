@@ -3,6 +3,8 @@ import {
   GET_EXERCISE,
   GET_EXERCISES_ERROR,
   GET_EXERCISES_CLEAR,
+  EDIT_EXERCISE,
+  DELETE_EXERCISE,
 } from '../actions/types';
 
 const initialState = {
@@ -16,6 +18,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_EXERCISE:
+    case EDIT_EXERCISE:
       return {
         ...state,
         exercise: payload,
@@ -34,6 +37,7 @@ export default function (state = initialState, action) {
         error: payload,
       };
     case GET_EXERCISES_CLEAR:
+    case DELETE_EXERCISE:
       return {
         ...state,
         exercise: null,

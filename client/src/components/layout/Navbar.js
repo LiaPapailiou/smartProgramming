@@ -13,6 +13,16 @@ const Navbar = ({ logout }) => {
       </h1>
       <ul>
         <li>
+          <Link to="/exercises">
+            <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>EXERCISE LIST</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/add-exercise">
+            <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>ADD EXERCISE</span>
+          </Link>
+        </li>
+        <li>
           <Link to="/dashboard">
             <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>CLIENTS</span>
           </Link>

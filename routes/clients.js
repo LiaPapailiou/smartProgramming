@@ -4,7 +4,6 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
 const Exercises = require('../model/Exercises');
-const { Mongoose } = require('mongoose');
 
 
 // Get the list of all clients in the DB
@@ -186,28 +185,27 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
 
     const estimates = [];
 
-    exercisesLower.map((exercise) => {
-      let min = Math.round(exercise.min * squatRM * 100) / 100;
-      let max = Math.round(exercise.max * squatRM * 100) / 100;
-      let name = exercise.exercise;
-      let { factor } = exercise;
-      let id = exercise._id;
-      estimates.push({ id, name, min, max, factor });
+    exercisesLower.map((ex) => {
+      let min = Math.round(ex.min * squatRM * 100) / 100;
+      let max = Math.round(ex.max * squatRM * 100) / 100;
+      let { exercise } = ex;
+      let { factor } = ex;
+      let id = ex._id;
+      estimates.push({ id, exercise, min, max, factor });
     });
-    exercisesUpper.map((exercise) => {
-      let min = Math.round(exercise.min * benchRM * 100) / 100;
-      let max = Math.round(exercise.max * benchRM * 100) / 100;
-      let name = exercise.exercise;
-      let { factor } = exercise;
-      let id = exercise._id;
-      estimates.push({ id, name, min, max, factor });
+    exercisesUpper.map((ex) => {
+      let min = Math.round(ex.min * benchRM * 100) / 100;
+      let max = Math.round(ex.max * benchRM * 100) / 100;
+      let { exercise } = ex;
+      let { factor } = ex;
+      let id = ex._id;
+      estimates.push({ id, exercise, min, max, factor });
     });
 
     if (level !== undefined) {
       estimates.map((ex) => {
         if (ex.factor === true && level !== undefined) {
           if (level == 0.6) {
-            console.log(level);
             ex.min = Math.round(ex.min * 0.6 * 100) / 100;
             ex.max = Math.round(ex.max * 0.6 * 100) / 100;
           }

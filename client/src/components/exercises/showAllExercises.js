@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import { getExercises } from '../../actions/exercise';
 import ExerciseItem from './ExerciseItem';
 
+
 const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) => {
   useEffect(() => {
     getExercises();

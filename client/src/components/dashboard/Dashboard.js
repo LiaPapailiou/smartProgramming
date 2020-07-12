@@ -13,7 +13,6 @@ const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) =>
   }, [getAllProfiles]);
   return (
     <div>
-
       <Navbar />
 
       {
@@ -22,6 +21,7 @@ const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) =>
         <Spinner />
       }
       {
+
         clientProfiles !== []
           ?
 

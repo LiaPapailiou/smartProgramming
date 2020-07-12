@@ -14,28 +14,37 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
     <Fragment>
       { loading ? (
         <Spinner />
-      ) : (
+      ) :
 
-          <div className='exercises' style={ { border: '1px solid  black' } }>
-            { exercises.length > 0 ? (
-              <div className="exercise-headers">
-                <span style={ { paddingRight: '1em', fontSize: 20 } }>Exercise</span>
-                <span style={ { paddingRight: '1em', fontSize: 20 } }>Min</span>
-                <span style={ { paddingRight: '1em', fontSize: 20 } }>Max</span>
-                {
-                  exercises.map((exerciseItem) => (
-                    <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />
-                  ))
-                }
-              </div>
-            ) : (
-                <h4>No exercises found...</h4>
-              ) }
-          </div>
+        <div className='exercises'>
+          { exercises.length > 0 ? (
+            <div className="exercise-headers">
+              <table>
+                <thead>
+                  <tr className="head">
+                    <th>Exercise</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    exercises.map((exerciseItem) => (
+                      <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
+          ) : (
+              <h4>No exercises found...</h4>
+            ) }
+        </div>
 
 
-        ) }
-    </Fragment>
+
+      }
+    </Fragment >
   );
 };
 

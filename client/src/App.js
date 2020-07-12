@@ -10,12 +10,14 @@ import AddExercise from './components/exercises/AddExercise';
 import EditClientProfile from './components/clients/EditClientProfile';
 import AddNewRM from './components/clients/AddNewRM';
 import Client from './components/clients/Client';
+// import Exercise from './components/exercises/Exercise';
 import { Provider } from 'react-redux';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store';
 import './App.css';
 import ShowAllExercises from './components/exercises/ShowAllExercises';
+
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -36,6 +38,7 @@ const App = () => {
               <PrivateRoute exact path='/dashboard' component={ Dashboard } />
               <PrivateRoute exact path='/exercises' component={ ShowAllExercises } />
               <PrivateRoute exact path='/client/:id' component={ Client } />
+              {/* <PrivateRoute exact path='/exercise/:id' component={ Exercise } /> */ }
               <PrivateRoute exact path='/add' component={ AddClient } />
               <PrivateRoute exact path='/add-exercise' component={ AddExercise } />
               {/* <PrivateRoute exact path='/edit-exercise/:id' component={ EditExercise } /> */ }

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../layout/Navbar';
 import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
-const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exercise, loading } }) => {
+const EditExercise = ({ match, getExerciseById, editExercise, exercise: { loading } }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -30,7 +29,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exerci
     window.history.back();
   };
   useEffect(() => {
-    getExerciseById(exercise._id);
+    getExerciseById(match.params.id);
     setFormData({
       exercise: loading || !exercise.exercise ? '' : exercise.exercise,
       body: loading || !exercise.body ? '' : exercise.body,
@@ -41,7 +40,6 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exerci
   }, [getExerciseById, match.params.id, loading]);
   return (
     <div className="edit-exercise">
-      <Navbar />
       <div className="edit-exercise-container">
         <div className="edit-exercise-card">
           <h2>Edit</h2>

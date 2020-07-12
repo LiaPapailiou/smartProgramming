@@ -16,7 +16,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
 
   useEffect(() => {
     getClientProfile(match.params.id);
-    console.log(match.params.id);
+
   }, [getClientProfile, match.params.id]);
 
   const onClick = () => {

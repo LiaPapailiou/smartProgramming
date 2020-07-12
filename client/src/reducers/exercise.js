@@ -22,6 +22,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         exercise: payload,
+        exercises: [],
         loading: false,
       };
     case GET_EXERCISES:

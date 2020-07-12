@@ -237,6 +237,10 @@ img {
 /* Overlay */
 .dark-overlay {
   background-color: #00000098;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: baseline;
   position: absolute;
   top: 0;
   left: 0;
@@ -303,9 +307,7 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  /* opacity: 0.9; */
   font-family: 'Inter', sans-serif;
-  /* font-family: 'Montserrat', sans-serif; */
   font-size: 20px;
   background-color: transparent;
   height: 80px;
@@ -321,14 +323,6 @@ button {
   margin: 0 0.25rem;
 }
 
-.navbar a:hover {
-  color: var(--primary-color);
-}
-
-.navbar .welcome span {
-  margin-right: 0.6rem;
-}
-
 /* Landing Page */
 .landing {
   position: relative;
@@ -341,14 +335,6 @@ button {
   justify-content: center;
   align-content: center;
   text-align: center;
-}
-
-.container {
-  margin-top: 315px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: baseline;
 }
   
 .card {
@@ -364,15 +350,11 @@ button {
   border-top-right-radius: 0.3em;
 }
 
-.card-header {
-  align-items: flex-start;
-  margin-top: 15px;
-  margin-bottom: 40px;
-}
-
-.card-header h3 {
+ .card h3 {
   color: #f4f4f4;
+  padding: 0.50em;
   padding-right: 220px;
+  padding-bottom: 1.25em;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
@@ -534,7 +516,7 @@ register-input-group-text i {
 /* Dashboard */
 .clients{
   position: relative;
-  background: url('./images/gloves.jpg') no-repeat center center/cover; 
+  background: url('./images/gloves.jpg') no-repeat center center/cover;
   height: 100vh; 
   display: flex;
   flex-wrap: wrap;
@@ -546,20 +528,26 @@ register-input-group-text i {
   margin: auto;
 }
 
-/* .dash-container {
+.client-table {
+  border: solid #fff 2px;
+  max-width: 800px;
   background-color: #00000080;
-  position: relative;
-  background: url('./images/gloves.jpg') no-repeat center center/cover; 
-  height: 100vh;
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  text-align: center; 
-} */
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.client-table thead {
+  background-color: #00000080;
+  border-bottom: 1px solid;
+}
+.client-table tr{
+  background-color: #00000080;
+  border-bottom: 1px solid;
+}
 
 /* Add a client */
 .add {
@@ -972,19 +960,39 @@ a:hover {
   margin-left: 360px;
 }
 
-.exercise-container-lists span {
- padding-right: 1em;
+.exercise-container-lists td {
+ padding-right: 1.5em;
+ font-size: 14px;
 }
-
 /* Exercise List */
 .exercises {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  align-content: stretch;
-  max-width: 350px;
+  align-content: stretch; */
+  width: 326px;
+}
+.exercise-headers th {
+  padding-right: 1em;
+  font-size: 20px;
+  text-align: left;
+}
+
+.exercise-headers table {
+  border-collapse: collapse;
+}
+.exercise-headers td {
+  padding: 0;
+  text-align: left;
+  margin-bottom:0;
+}
+.exercise-headers tr:nth-child(even) {
+  background-color: #e4e0e0;
+}
+.head th{
+  background-color: #84ebc3;
 }
 /* Mobile Styles */
 @media (max-width: 700px) {

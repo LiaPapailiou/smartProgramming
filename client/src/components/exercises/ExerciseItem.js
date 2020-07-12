@@ -15,14 +15,11 @@ const ExerciseItem = ({
   return (
     <Fragment>
 
-      <div className="exercise-container-lists">
-        <ul>
-          <li style={ { color: '#000', padding: '.25em', fontSize: 14 } }> <span><strong>{ exercise }</strong></span> <span>{ min }</span> <span>{ max }</span> </li>
-          {/* <Link to={ `/edit-exercise/${_id}` }>
-            <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
-              Edit</Link> */}
-        </ul>
-      </div>
+      <tr>
+        <td>{ exercise }</td>
+        <td>{ min }</td>
+        <td>{ max }</td>
+      </tr>
     </Fragment>
   );
 };

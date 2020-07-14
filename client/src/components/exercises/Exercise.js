@@ -18,10 +18,10 @@ const Exercise = ({ match, getExerciseById, exercise: { exercise, loading } }) =
       <Fragment>
         { exercise === null || loading ? <Spinner /> :
           (<div className="exercise-container" style={ { color: '#000', border: '1px solid #000' } }>
-            <h3>hello</h3>
-            {/* <Link to={ `/edit-exercise/${match.params.id}` }>
+            <h3>{ exercise.min }</h3>
+            <Link to={ `/edit-exercise/${match.params.id}` }>
               <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
-              Edit</Link> */}
+              Edit</Link>
           </div>) }
       </Fragment>
     </div>

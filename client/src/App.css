@@ -300,8 +300,9 @@ button {
 /* Navbar */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0.7rem 2rem;
   position: fixed;
   z-index: 1;
@@ -323,6 +324,14 @@ button {
   margin: 0 0.25rem;
 }
 
+.navbar a:hover {
+  color: #93aabd;
+}
+.navbar  span {
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
 /* Landing Page */
 .landing {
   position: relative;
@@ -514,9 +523,13 @@ register-input-group-text i {
 }
 
 /* Dashboard */
-.clients{
+.dashboard {
   position: relative;
-  background: url('./images/gloves.jpg') no-repeat center center/cover;
+   background: url('./images/gloves.jpg') no-repeat center center/cover;
+   height: 100vh; 
+  display: flex;
+}
+.clients{
   height: 100vh; 
   display: flex;
   flex-wrap: wrap;
@@ -529,13 +542,11 @@ register-input-group-text i {
 }
 
 .client-table {
-  border: solid #fff 2px;
+  /* position: relative; */
+ 
   max-width: 800px;
   background-color: #00000080;
-  border-bottom-left-radius: 0.3em;
-  border-top-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-  border-top-right-radius: 0.3em;
+ 
   text-align: left;
   border-collapse: collapse;
 }
@@ -547,8 +558,36 @@ register-input-group-text i {
 .client-table tr{
   background-color: #00000080;
   border-bottom: 1px solid;
+  max-height: 90px;
+}
+.table-wrapper {
+  position: relative;
+  overflow: auto;
+  max-height: 800px;
+  border: solid #fff 2px;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+/* Scrollbar */
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
 }
 
+.table-wrapper::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #808080; 
+  border-radius: 10px;
+}
+ 
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #26272773; 
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #949596; 
+}
 /* Add a client */
 .add {
   position: relative;
@@ -562,16 +601,10 @@ register-input-group-text i {
   align-content: center;
   text-align: center;
 }
-.add-container {
-  margin-top: 270px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
 
 .add-card {
+  margin-top: auto;
+  margin-bottom: auto;
   padding-top: 10px;
   border: solid #fff 2px;
   height: 540px;
@@ -582,19 +615,16 @@ register-input-group-text i {
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
 }
-.add-card-header {
+.add-card h3 {
   align-items: flex-start;
   padding-bottom: 20px;
-}
-
-
-.add-card-header h3 {
   color: #f4f4f4;
   margin-top: 5px;
   padding-right: 150px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
+
 
 .add-input-group {
   display: flex;
@@ -726,31 +756,7 @@ font-size: 25px;
   font-size: 14px;
 }
 
-/* Edit */
-.edit-card {
-  padding-top: 10px;
-  border: solid #fff 2px;
-  height: 540px;
-  width: 360px;
-  background-color: #00000080;
-  border-bottom-left-radius: 0.3em;
-  border-top-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-  border-top-right-radius: 0.3em;
-}
-.edit-card-header {
-  align-items: flex-start;
-  padding-bottom: 20px;
-}
-
-
-.edit-card-header h3 {
-  color: #f4f4f4;
-  margin-top: 5px;
-  padding-right: 230px;
-  font-family: 'Numans', sans-serif;
-  font-size: 35px;
-}
+/* Add Exercise */
 
 /* Add RM */
 .add-rm{
@@ -777,7 +783,7 @@ font-size: 25px;
 .add-rm-card {
   padding-top: 10px;
   border: solid #fff 2px;
-  height: 300px;
+  height: 320px;
   width: 400px;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
@@ -785,19 +791,16 @@ font-size: 25px;
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
 }
-.add-rm-card-header {
+.add-rm-card h3{
   align-items: flex-start;
-  padding-bottom: 20px;
-}
-
-
-.add-rm-card-header h3 {
+  padding-bottom: 30px;
   color: #f4f4f4;
-  margin-top: 10px;
+  margin-top: 15px;
   padding-right: 100px;
   font-family: 'Numans', sans-serif;
   font-size: 35px;
 }
+
 
 .input-add-rm {
   margin-top: 5px;
@@ -823,6 +826,16 @@ font-size: 25px;
 
 a:hover {
   color: #4696db;
+}
+/* Pagination */
+.pagination  ul  {
+  list-style:none;
+  margin:0px 0px;
+  padding:0px 0px;
+}
+.pagination li {
+  float:left;
+  padding:4px 4px;
 }
 
 /* Client */
@@ -958,6 +971,9 @@ a:hover {
   padding-top: 0.15em;
   margin-top: -260px;
   margin-left: 360px;
+}
+.exercise-container-inner {
+  margin-top: 40px;
 }
 
 .exercise-container-lists td {

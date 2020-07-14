@@ -27,63 +27,65 @@ const AddExercise = ({ insertExercise, history }) => {
     });
   };
   return (
-    <div className="add-exercise">
+    <div className="add">
       <Navbar />
-      <div className="add-exercise-container">
-        <div className="add-exercise-card">
-          <h2>Add an exercise</h2>
-          <form className="add-exercise-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: 300 } }>
-            <div className="add-exercise-input-group">
+      <div className="dark-overlay">
+        <div className="add-card" style={ { height: 460 } }>
+          <h3 style={ { fontSize: 30, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.15em', paddingLeft: 0 } }>Add an exercise</h3>
+          <div className="add-card-body" style={ { marginTop: '2em', } }>
+            <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
+              <div className="add-input-group" >
+                <input
+                  type="text"
+                  className="form-control"
+                  name="exercise"
+                  value={ exercise }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" Exercise Name"
+                  required />
+                <input
+                  type="text"
+                  className="form-control"
+                  name="body"
+                  value={ body }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" Squat or Bench"
+                  required />
+                <input
+                  type="text"
+                  className="form-control"
+                  name="min"
+                  value={ min }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" Coefficient (min)"
+                  required
+                />
+                <input
+                  type="text"
+                  className="form-control"
+                  name="max"
+                  value={ max }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" Coefficient (max)"
+                  required />
+                <input
+                  type="text"
+                  className="form-control"
+                  name="factor"
+                  value={ factor }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" true / false"
+                  required />
+              </div>
               <input
-                type="text"
-                className="form-control"
-                name="exercise"
-                value={ exercise }
-                onChange={ (e) => onChange(e) }
-                placeholder=" Exercise Name"
-                required />
-              <input
-                type="text"
-                className="form-control"
-                name="body"
-                value={ body }
-                onChange={ (e) => onChange(e) }
-                placeholder=" Squat or Bench"
-                required />
-              <input
-                type="text"
-                className="form-control"
-                name="min"
-                value={ min }
-                onChange={ (e) => onChange(e) }
-                placeholder=" Coefficient (min)"
-                required
-              />
-              <input
-                type="text"
-                className="form-control"
-                name="max"
-                value={ max }
-                onChange={ (e) => onChange(e) }
-                placeholder=" Coefficient (max)"
-                required />
-              <input
-                type="text"
-                className="form-control"
-                name="factor"
-                value={ factor }
-                onChange={ (e) => onChange(e) }
-                placeholder=" true or false"
-                required />
-            </div>
-            <input
-              type="submit"
-              className="input-add"
-              value="Add" />
-          </form>
+                type="submit"
+                className="input-add"
+                value="Add" />
+            </form>
+          </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

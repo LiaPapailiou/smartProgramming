@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
-const EditExercise = ({ match, getExerciseById, editExercise, exercise: { loading } }) => {
+const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exercise, loading } }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -30,6 +30,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { loadin
   };
   useEffect(() => {
     getExerciseById(match.params.id);
+    console.log(match.params.id);
     setFormData({
       exercise: loading || !exercise.exercise ? '' : exercise.exercise,
       body: loading || !exercise.body ? '' : exercise.body,

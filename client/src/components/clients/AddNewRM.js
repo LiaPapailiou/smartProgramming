@@ -33,15 +33,13 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
   };
 
   return (
-    <div className="add-new-rm">
+    <section className="add-new-rm">
       <div className="add-rm">
         <Navbar />
         <div className="dark-overlay">
           <div className="add-rm-container">
             <div className="add-rm-card">
-              <div className="add-rm-card-header">
-                <h3>Add new RM</h3>
-              </div>
+              <h3>Add new RM</h3>
               <div className="add-card-body">
                 <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
                   <div className="add-input-group">
@@ -77,7 +75,7 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

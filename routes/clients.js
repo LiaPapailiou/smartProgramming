@@ -181,7 +181,9 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
 
     // Save RMs in seperate vars
     const benchRM = client.clientOneRM[0].benchPress;
+
     const squatRM = client.clientOneRM[0].squat;
+
 
     const exercisesLower = await Exercises.find({ body: "Squat" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
     const exercisesUpper = await Exercises.find({ body: "Bench" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
@@ -189,16 +191,16 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
     const estimates = [];
 
     exercisesLower.map((ex) => {
-      let min = Math.round(ex.min * squatRM * 100) / 100;
-      let max = Math.round(ex.max * squatRM * 100) / 100;
+      let min = Math.round(ex.min * squatRM * 10) / 10;
+      let max = Math.round(ex.max * squatRM * 10) / 10;
       let { exercise } = ex;
       let { factor } = ex;
       let id = ex._id;
       estimates.push({ id, exercise, min, max, factor });
     });
     exercisesUpper.map((ex) => {
-      let min = Math.round(ex.min * benchRM * 100) / 100;
-      let max = Math.round(ex.max * benchRM * 100) / 100;
+      let min = Math.round(ex.min * benchRM * 10) / 10;
+      let max = Math.round(ex.max * benchRM * 10) / 10;
       let { exercise } = ex;
       let { factor } = ex;
       let id = ex._id;

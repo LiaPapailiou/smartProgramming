@@ -58,90 +58,87 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
   }, [getClientProfile, loading,]);
 
   return (
-    <div className="add-client">
+    <section className="add-client">
       <div className="add">
         <Navbar />
         <div className="dark-overlay">
-          <div className="add-container">
-            <div className="edit-card">
-              <div className="edit-card-header">
-                <h3>Edit</h3>
-              </div>
-              <div className="add-card-body">
-                <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
-                  <div className="add-input-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="clientFirstName"
-                      value={ clientFirstName }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" First Name"
-                      required />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="clientLastName"
-                      value={ clientLastName }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Last Name (optional)" />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="clientEmail"
-                      value={ clientEmail }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Email (optional)"
-                    />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="clientPhone"
-                      value={ clientPhone }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Phone Number (optional"
-                    />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="clientSport"
-                      value={ clientSport }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Type of Sport (optional)"
-                    />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="benchPress"
-                      value={ benchPress }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Bench Press One RM"
-                      required />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="squat"
-                      value={ squat }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Squat One RM"
-                      required />
-                  </div>
+
+          <div className="add-card">
+            <h3 style={ { paddingRight: 240 } }>Edit</h3>
+            <div className="add-card-body">
+              <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
+                <div className="add-input-group">
                   <input
-                    type="button"
-                    className="input-add"
-                    onClick={ (e) => onClick(e) }
-                    value="Go Back" />
+                    type="text"
+                    className="form-control"
+                    name="clientFirstName"
+                    value={ clientFirstName }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" First Name"
+                    required />
                   <input
-                    type="submit"
-                    className="input-add"
-                    value="Edit" />
-                </form>
-              </div>
+                    type="text"
+                    className="form-control"
+                    name="clientLastName"
+                    value={ clientLastName }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Last Name (optional)" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientEmail"
+                    value={ clientEmail }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Email (optional)"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientPhone"
+                    value={ clientPhone }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Phone Number (optional"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientSport"
+                    value={ clientSport }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Type of Sport (optional)"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="benchPress"
+                    value={ benchPress }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Bench Press One RM"
+                    required />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="squat"
+                    value={ squat }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Squat One RM"
+                    required />
+                </div>
+                <input
+                  type="button"
+                  className="input-add"
+                  onClick={ (e) => onClick(e) }
+                  value="Go Back" />
+                <input
+                  type="submit"
+                  className="input-add"
+                  value="Edit" />
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { getAllProfiles } from '../../actions/profile';
 import ClientItem from './ClientItem';
@@ -9,7 +10,8 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
 
   useEffect(() => {
     getAllProfiles();
-  }, [getAllProfiles]);
+  }, [getAllProfiles, loading]);
+
   return (
     <Fragment>
       { loading ? (
@@ -17,7 +19,7 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
       ) :
         <div className='clients'>
           { clientProfiles.length > 0 ? (
-            <div className="client-headers">
+            <div className="table-wrapper">
               <table className="client-table">
                 <thead>
                   <tr>
@@ -26,7 +28,7 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
                     <th style={ { color: '#fff', padding: '1em' } }>View</th>
                   </tr>
                 </thead>
-                <tbody>{
+                <tbody >{
                   clientProfiles.map((client) => (
                     <ClientItem key={ client._id } client={ client } />
                   ))
@@ -34,8 +36,7 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
                 </tbody>
               </table>
             </div>) : (
-              <h4 style={ { color: '#fff', fontSize: 18 } }>No clients found. Please add a client...</h4>
-
+              <p style={ { color: '#fff', fontSize: 17 } }>There are currently no clients for this account. Click <Link to='/add'>here </Link> to add clients.</p>
             ) }
         </div>
       }

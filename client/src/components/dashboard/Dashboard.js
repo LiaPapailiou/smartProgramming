@@ -12,27 +12,24 @@ const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) =>
     getAllProfiles();
   }, [getAllProfiles]);
   return (
-    <div>
-      <Navbar />
+    <section className="dashboard">
+      <div className="dark-overlay">
+        <Navbar />
 
-      {
-        loading && clientProfiles === []
-        &&
-        <Spinner />
-      }
-      {
+        {
+          loading && clientProfiles === []
+          &&
+          <Spinner />
+        }
+        {
 
-        clientProfiles !== []
-          ?
+          clientProfiles !== []
+          &&
 
           <ShowAllClients />
-          :
-          <Fragment>
-            <p>There are currently no clients for this account.</p>
-            <Link to='/add' className="btn btn-primary">Click here to add clients.</Link>
-          </Fragment>
-      }
-    </div>
+        }
+      </div>
+    </section>
 
   );
 };

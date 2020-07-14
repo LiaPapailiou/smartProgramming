@@ -4,37 +4,38 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
-
 const Navbar = ({ logout }) => {
 
+
   return (
-    <nav className="navbar bg-dark" style={ { display: 'flex', flexDirection: 'ro', flexWrap: 'wrap', justifyContent: 'flex-end' } }>
+    <nav className="navbar">
       <ul>
         <li>
           <Link to="/exercises">
-            <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>EXERCISE LIST</span>
+            <span>EXERCISE LIST</span>
           </Link>
         </li>
         <li>
           <Link to="/add-exercise">
-            <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>ADD EXERCISE</span>
+            <span>ADD EXERCISE</span>
           </Link>
         </li>
         <li>
           <Link to="/dashboard">
-            <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>CLIENTS</span>
+            <span>CLIENTS</span>
           </Link>
         </li>
         <li>
           <Link to="/add">
-            <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>ADD A CLIENT</span>
+            <span>ADD A CLIENT</span>
           </Link>
         </li>
         <li><Link onClick={ logout } to="/">
-          <span style={ { paddingRight: '10px', fontSize: 16, fontWeight: 600 } }>LOGOUT</span>
+          <span>LOGOUT</span>
         </Link>
         </li>
       </ul>
+
     </nav>
   );
 };

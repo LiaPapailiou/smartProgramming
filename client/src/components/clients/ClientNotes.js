@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addNotes, getClientProfile } from '../../actions/profile';
 
 const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loading } }) => {
+  const [visible, setVisible] = useState(true);
   const [formData, setFormData] = useState({ notes: '' });
   const { notes } = formData;
   const onSubmit = (e) => {
@@ -16,18 +17,21 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
 
   }, [getClientProfile, loading, onSubmit]);
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
+  const onClick = () => setVisible(!visible);
   return (
-    <div className="note-container">
-      <form className="add-notes" onSubmit={ (e) => onSubmit(e) }>
-        <textarea placeholder="Add notes..." cols="30" rows="15" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%' } }>
-        </textarea>
-        <br />
-        <input
-          type="submit"
-          className="calculate"
-          value="Add" />
-      </form>
+    <div className="note-container" onClick={ onClick }> <i class="fas fa-plus" style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i>{
+      visible ?
+        <form className="add-notes" onSubmit={ (e) => onSubmit(e) }>
+          <textarea placeholder="Add notes..." cols="30" rows="15" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080' } }>
+          </textarea>
+          <br />
+          <input
+            type="submit"
+            className="calculate"
+            value="Add" />
+        </form> : null
+    }
+
     </div >
   );
 };

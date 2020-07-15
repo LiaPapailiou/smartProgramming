@@ -16,13 +16,9 @@ const ExerciseItem = ({
     <Fragment>
 
       <tr>
-        <td>{ exercise }</td>
+        <td onClick={ () => <Link to={ `/edit-exercise/${_id}` }></Link> }>{ exercise }</td>
         <td>{ min }</td>
         <td>{ max }</td>
-        <td style={ { paddingLeft: '1em' } }> <span className="client-links">
-          <Link to={ `/edit-exercise/${_id}` } >
-            <i className="far fa-eye" style={ { color: '#61c9a8', padding: '1em', fontSize: '13px', marginTop: '-12px' } }></i></Link>
-        </span></td>
       </tr>
     </Fragment>
   );

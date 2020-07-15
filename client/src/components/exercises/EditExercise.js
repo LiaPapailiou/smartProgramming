@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
-const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exercise, loading } }) => {
+const EditExercise = ({ match, getExerciseById, editExercise, }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -31,14 +31,14 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exerci
   useEffect(() => {
     getExerciseById(match.params.id);
     console.log(match.params.id);
-    setFormData({
-      exercise: loading || !exercise.exercise ? '' : exercise.exercise,
-      body: loading || !exercise.body ? '' : exercise.body,
-      min: loading || !exercise.min ? '' : exercise.min,
-      max: loading || !exercise.max ? '' : exercise.max,
-      factor: loading || !exercise.factor ? '' : exercise.factor,
-    });
-  }, [getExerciseById, match.params.id, loading]);
+    // setFormData({
+    //   exercise: loading || !exercise.exercise ? '' : exercise.exercise,
+    //   body: loading || !exercise.body ? '' : exercise.body,
+    //   min: loading || !exercise.min ? '' : exercise.min,
+    //   max: loading || !exercise.max ? '' : exercise.max,
+    //   factor: loading || !exercise.factor ? '' : exercise.factor,
+    // });
+  }, [getExerciseById]);
   return (
     <div className="edit-exercise">
       <div className="edit-exercise-container">

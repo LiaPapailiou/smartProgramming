@@ -863,8 +863,8 @@ a:hover {
   padding-top: 1em;
   overflow:auto;
   max-height: 300px;
-  width: 320px;
-  margin-left: -450px;
+  width: 340px;
+  margin-left: -480px;
   margin-top: 80px;
   align-self: flex-start;
 }
@@ -879,7 +879,6 @@ a:hover {
   color: #b4b1b1;
   font-weight: normal;
   overflow:auto;
-  /* background-color: #e4e0e0; */
   max-height: 100px;
   font-size:  11px;
   text-align: justify;
@@ -913,6 +912,8 @@ a:hover {
   padding-right: 8px;
   text-align: left;
   margin-top: 80px;
+  margin-left: 50px;
+  /* margin-right: -50px; */
   align-self: flex-start;
 }
 .rm-chart {
@@ -920,7 +921,6 @@ a:hover {
   align-self: center;
   float: right;
   align-self: flex-end;
-  
   margin-bottom: 120px;
   margin-left: -250px;
 }
@@ -963,7 +963,7 @@ a:hover {
   margin-top: 5px;
   appearance: none;
   background-color:#00000080;
-  border: 2px solid #f4f4f4;
+  border: 1px solid #f4f4f4;
   border-radius: 0.6em;
   color: #f4f4f4;
   cursor: pointer;
@@ -1018,7 +1018,7 @@ a:hover {
   color: #fff;
   width: 400px;
   font-size: 13px;
-  max-height: 800px;
+  max-height: 760px;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -1043,28 +1043,80 @@ a:hover {
 
 /* Exercise List */
 .exercises {
-  width: 326px;
+  position: relative;
+  background: url('./images/gloves.jpg') no-repeat center center/cover; 
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 }
 .exercise-headers th {
   padding-right: 1em;
   font-size: 20px;
-  text-align: left;
-}
-
-.exercise-headers table {
+  text-align: center;
   border-collapse: collapse;
 }
-.exercise-headers td {
-  padding: 0;
-  text-align: left;
-  margin-bottom:0;
+
+.exercises-container table {
+  max-width: 800px;
+  border-collapse: collapse;
 }
-.exercise-headers tr:nth-child(even) {
-  background-color: #e4e0e0;
+
+.exercises-container thead {
+  border-bottom: 1px solid #6d6d6d;
+
 }
-.head th{
-  background-color: #84ebc3;
+.exercises-container th {
+  font-weight: 300;
+  font-size: 22px;
+  color: #93aabd;
+  background-color: #00000080;
 }
+.exercises-container td {
+  text-align: center;
+  padding: 1em;
+  padding-left: 2em;
+  border-bottom: 1px solid #6d6d6d;
+}
+
+.exercises-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.exercises-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #103aad; 
+  border-radius: 10px;
+}
+ 
+.exercises-container::-webkit-scrollbar-thumb {
+  background: #4aaaaa73; 
+  border-radius: 10px;
+  box-shadow: 0 0 1px #ffffff80;
+}
+
+.exercises-container::-webkit-scrollbar-thumb:hover {
+  background: #3a74af; 
+}
+.exercises-container {
+  /* position: relative; */
+  background-color:#00000080;
+  overflow: auto;
+  color: #fff;
+  max-width: 450px;
+  font-size: 13px;
+  max-height: 580px;
+  border: solid #535252 1px;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  align-self: center;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {

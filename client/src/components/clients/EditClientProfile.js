@@ -63,7 +63,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
         <Navbar />
         <div className="dark-overlay">
 
-          <div className="add-card">
+          <div className="add-card" style={ { height: 600 } }>
             <h3 style={ { paddingRight: 240 } }>Edit</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) }>

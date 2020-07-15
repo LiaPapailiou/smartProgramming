@@ -13,7 +13,7 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
   }, [getClientProfile]);
 
   const formatXAxis = (tickItem) => {
-    return moment(tickItem).format('MMM / YY');
+    return moment(tickItem).format('DD / MMM / YY');
   };
 
   const formatColour = (value, entry) => {

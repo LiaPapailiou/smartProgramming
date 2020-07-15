@@ -25,7 +25,7 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
         <br />
         <input
           type="submit"
-          className="input-add"
+          className="calculate"
           value="Add" />
       </form>
     </div >

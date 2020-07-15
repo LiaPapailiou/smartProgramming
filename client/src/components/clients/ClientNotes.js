@@ -18,18 +18,17 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <div className="client-notes">
-      <div className="note-container">
-        <form className="add-notes" onSubmit={ (e) => onSubmit(e) }>
-          <textarea placeholder="Add notes..." cols="30" rows="5" name="notes" value={ notes } onChange={ (e) => onChange(e) }>
-          </textarea>
-          <input
-            type="submit"
-            className="input-add"
-            value="Add" />
-        </form>
-      </div>
-    </div>
+    <div className="note-container">
+      <form className="add-notes" onSubmit={ (e) => onSubmit(e) }>
+        <textarea placeholder="Add notes..." cols="30" rows="15" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%' } }>
+        </textarea>
+        <br />
+        <input
+          type="submit"
+          className="input-add"
+          value="Add" />
+      </form>
+    </div >
   );
 };
 

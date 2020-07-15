@@ -49,7 +49,7 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
         <input
           onClick={ (e) => onClick(e) }
           type="submit"
-          className="refresh"
+          className="calculate"
           value="Clear" />
       </form>
       <div className="exercise-container">
@@ -63,6 +63,7 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
             } </div>
         }
       </div>
+
     </Fragment>
 
   );

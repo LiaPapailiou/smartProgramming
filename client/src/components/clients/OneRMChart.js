@@ -28,6 +28,7 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
       margin={ {
         top: 5, right: 30, left: 20, bottom: 5,
       } }
+      className="rm-chart"
     >
       <CartesianGrid vertical={ false } strokeDasharray="3 3" />
       <XAxis dataKey="added" tickFormatter={ formatXAxis } tick={ { fontSize: 12, fill: '#fff' } } />

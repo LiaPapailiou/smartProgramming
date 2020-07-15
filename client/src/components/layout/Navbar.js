@@ -28,15 +28,16 @@ const Navbar = ({ logout }) => {
       </Menu.Item>
     </Menu>
   );
+  const onClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+  };
 
   return (
     <nav className="navbar">
       <Dropdown overlay={ menu } trigger={ ['click'] } className="dd-menu">
-        <Link className="dd-link" onClick={ (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          e.nativeEvent.stopImmediatePropagation();
-        } }>Menu</Link>
+        <Link className="dd-link" onClick={ (e) => onClick(e) }>Menu</Link>
       </Dropdown>
     </nav>
   );

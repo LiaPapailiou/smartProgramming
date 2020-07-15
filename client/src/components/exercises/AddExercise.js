@@ -30,8 +30,8 @@ const AddExercise = ({ insertExercise, history }) => {
     <div className="add">
       <Navbar />
       <div className="dark-overlay">
-        <div className="add-card" style={ { height: 460 } }>
-          <h3 style={ { fontSize: 30, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.15em', paddingLeft: 0 } }>Add an exercise</h3>
+        <div className="add-card" style={ { height: 480 } }>
+          <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.15em', paddingLeft: 0 } }>Add an exercise</h3>
           <div className="add-card-body" style={ { marginTop: '2em', } }>
             <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
               <div className="add-input-group" >

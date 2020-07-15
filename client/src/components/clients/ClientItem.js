@@ -16,8 +16,8 @@ const ClientItem = ({
   return (
     <Fragment>
       <tr>
-        <td style={ { color: '#fff', padding: '1em', fontSize: 13 } }> { clientFirstName } { clientLastName } </td>
-        <td style={ { color: '#fff', padding: '1em', fontSize: 13 } }>
+        <td style={ { color: '#fff', padding: '1em', fontSize: 13, textAlign: 'justify' } }> { clientFirstName } { clientLastName } </td>
+        <td style={ { color: '#fff', padding: '1em', fontSize: 13, textAlign: 'justify' } }>
           { clientPhone ? <span><strong>Phone </strong> { clientPhone } </span> : <span>{ '' }</span> }
           <br />
           { clientEmail ? <span><strong>Email </strong> { clientEmail } </span> : <span>{ '' }</span> }
@@ -25,7 +25,7 @@ const ClientItem = ({
           { clientSport ? <span><strong>Sport </strong> { clientSport } </span> : <span>{ '' }</span> }
           <br />
         </td>
-        <td style={ { paddingLeft: '1em' } }> <span className="client-links">
+        <td style={ { paddingLeft: '1em', textAlign: 'center' } }> <span className="client-links">
           <Link to={ `/client/${_id}` } >
             <i className="far fa-eye" style={ { color: '#61c9a8', padding: '1em', fontSize: '13px', marginTop: '-12px' } }></i></Link>
         </span></td>

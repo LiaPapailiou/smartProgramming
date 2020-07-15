@@ -44,7 +44,7 @@ const AddClient = ({ insertClient, history }) => {
       <div className="add">
         <Navbar />
         <div className="dark-overlay">
-          <div className="add-card">
+          <div className="add-card" style={ { height: 580 } }>
             <h3>Add Client</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) }>

@@ -13,18 +13,20 @@ const Exercise = ({ match, getExerciseById, exercise: { exercise, loading } }) =
   }, [getExerciseById, match.params.id]);
 
   return (
-    <div className="exercise">
+    <section className="exercises">
       <Navbar />
-      <Fragment>
-        { exercise === null || loading ? <Spinner /> :
-          (<div className="exercise-container" style={ { color: '#000', border: '1px solid #000' } }>
-            <h3>{ exercise.min }</h3>
-            <Link to={ `/edit-exercise/${match.params.id}` }>
-              <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+      <div className="dark-overlay">
+        <Fragment>
+          { exercise === null || loading ? <Spinner /> :
+            (<div className="exercise-container" style={ { color: '#fff', border: '1px solid #000' } }>
+              <span>{ exercise.exercise } { exercise.min }{ exercise.max }</span>
+              <Link to={ `/edit-exercise/${match.params.id}` }>
+                <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit</Link>
-          </div>) }
-      </Fragment>
-    </div>
+            </div>) }
+        </Fragment>
+      </div>
+    </section>
   );
 };
 

@@ -1018,7 +1018,7 @@ a:hover {
   color: #fff;
   width: 400px;
   font-size: 13px;
-  max-height: 760px;
+  max-height: 720px;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -1031,7 +1031,8 @@ a:hover {
 }
 
 .exercise-container-inner td {
-  padding-right: .8em;
+  padding-right: 1em;
+  padding: .5em;
   padding-left: 1.80em;
 }
 

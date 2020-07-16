@@ -10,7 +10,7 @@ import AddNewRM from './components/clients/AddNewRM';
 import Client from './components/clients/Client';
 import ShowAllExercises from './components/exercises/ShowAllExercises';
 import AddExercise from './components/exercises/AddExercise';
-import EditExercise from './components/exercises/EditExercise';
+// import EditExercise from './components/exercises/EditExercise';
 // import Exercise from './components/exercises/Exercise';
 import { Provider } from 'react-redux';
 import { loadUser } from './actions/auth';
@@ -38,8 +38,8 @@ const App = () => {
               <PrivateRoute exact path='/dashboard' component={ Dashboard } />
               <PrivateRoute exact path='/exercises' component={ ShowAllExercises } />
               <PrivateRoute exact path='/client/:id' component={ Client } />
-              {/* <PrivateRoute exact path='/exercise/:id' component={ Exercise } /> */ }
-              <PrivateRoute exact path='/edit-exercise/:id' component={ EditExercise } />
+              {/* <PrivateRoute exact path='/exercise/:id' component={ Exercise } />
+              <PrivateRoute exact path='/edit-exercise/:id' component={ EditExercise } /> */}
               <PrivateRoute exact path='/add' component={ AddClient } />
               <PrivateRoute exact path='/add-exercise' component={ AddExercise } />
               <PrivateRoute exact path='/add-rm/:id' component={ AddNewRM } />

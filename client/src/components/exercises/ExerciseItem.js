@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 
 const ExerciseItem = ({
   exerciseItem: {
@@ -12,11 +11,12 @@ const ExerciseItem = ({
     factor
   },
 }) => {
+
   return (
     <Fragment>
 
       <tr>
-        <td onClick={ () => <Link to={ `/edit-exercise/${_id}` }></Link> }>{ exercise }</td>
+        <td>{ exercise }</td>
         <td>{ min }</td>
         <td>{ max }</td>
       </tr>
@@ -24,11 +24,4 @@ const ExerciseItem = ({
   );
 };
 
-ExerciseItem.propTypes = {
-  singleExercise: PropTypes.object.isRequired,
-};
-const mapStateToProps = (state) => ({
-  singleExercise: state.exercise
-});
-
-export default connect(mapStateToProps)(ExerciseItem);
+export default connect(null)(ExerciseItem);

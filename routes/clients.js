@@ -244,6 +244,13 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
         }
       });
     }
+
+    // const ordered = estimates.sort((a, b) => {
+    //   const A = a.exercise.replace(/\s+/g, '');
+    //   const B = b.exercise.replace(/\s+/g, '');
+    //   A > B ? 1 : (B > A ? -1 : 0);
+    // });
+    // console.log(ordered);
     res.json(estimates);
   } catch (err) {
     res.status(500).send('Internal Server Error');

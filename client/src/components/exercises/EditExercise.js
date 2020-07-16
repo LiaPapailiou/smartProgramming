@@ -31,14 +31,14 @@ const EditExercise = ({ match, getExerciseById, editExercise, }) => {
   useEffect(() => {
     getExerciseById(match.params.id);
     console.log(match.params.id);
-    // setFormData({
-    //   exercise: loading || !exercise.exercise ? '' : exercise.exercise,
-    //   body: loading || !exercise.body ? '' : exercise.body,
-    //   min: loading || !exercise.min ? '' : exercise.min,
-    //   max: loading || !exercise.max ? '' : exercise.max,
-    //   factor: loading || !exercise.factor ? '' : exercise.factor,
-    // });
-  }, [getExerciseById]);
+    setFormData({
+      exercise: loading || !exercise.exercise ? '' : exercise.exercise,
+      body: loading || !exercise.body ? '' : exercise.body,
+      min: loading || !exercise.min ? '' : exercise.min,
+      max: loading || !exercise.max ? '' : exercise.max,
+      factor: loading || !exercise.factor ? '' : exercise.factor,
+    });
+  }, [getExerciseById, match.params.id, loading]);
   return (
     <div className="edit-exercise">
       <div className="edit-exercise-container">

@@ -291,9 +291,6 @@ button {
 /* Navbar */
 .navbar {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
   padding: 0.7rem 2rem;
   position: fixed;
   z-index: 1;
@@ -306,33 +303,7 @@ button {
 }
 
 
-.dd-menu {
-  color: #fff;
-  font-weight: 500;
-  
-}
 
-.ant-dropdown-menu {
-  color: #fff;
-  margin-left: 30px;
-  margin-top: 15px;
-  font-size: 15px;
-  
-}
-.dd-link a {
-  align-self: flex-end;
-}
-.dd-menu:hover {
-  color: #93aabd;
-}
-.ant-dropdown-menu a {
-  padding: .25em;
-  color: #fff;
-
-}
-.ant-dropdown-menu a:hover {
-  color: #93aabd;
-}
 /* Landing Page */
 .landing {
   position: relative;
@@ -542,12 +513,10 @@ register-input-group-text i {
 }
 
 .client-table thead {
-  background-color: #33313180;
   border-bottom: 1px solid;
 
 }
 .client-table tr{
-  background-color: #1d1c1c80;
   border-bottom: 1px solid;
   max-height: 90px;
   text-align: justify;
@@ -822,11 +791,11 @@ a:hover {
   background: url('./images/gloves.jpg') no-repeat center center/cover; 
   height: 100vh;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  align-content: center;
+  align-content: flex-start;
   text-align: center;
 }
 
@@ -860,20 +829,67 @@ a:hover {
 }
 
 .client-card {  
-  padding-top: 1em;
+  position: absolute;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  align-items: stretch;
+  padding: .5em;
+  background-color: #00000080;
   overflow:auto;
   max-height: 300px;
-  width: 340px;
-  margin-left: -480px;
-  margin-top: 80px;
-  align-self: flex-start;
+  width: 520px;
+  margin-top: 120px;
+  margin-left: -1100px;
+  max-width: 25%;
+  border: solid #535252 1px;
+}
+.rm-chart {
+  position: absolute;
+  align-self: flex-end;
+  max-height: 300px;
+  margin-left: -1300px;
+  margin-bottom: 60px;
+  max-width: 20%;
 }
 .calculate-form {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
   padding: 1em;
-  margin-top:0;
-  /* align-self: flex-start; */
-  margin-top: 400px;
-  margin-left: -300px;
+  margin-top: 40px;
+  align-self: center;
+  align-content: center;
+  margin-left: -1100px;
+  max-width: 20%; 
+}
+.note-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 50px;
+  font-size: 12px;
+  color: '#fff';
+  padding-right: 8px;
+  text-align: left;
+  margin-right: -1100px;
+  margin-top: 100px;
+  max-width: 20%;
+}
+
+.sublist {
+  position: absolute;
+}
+.sublist li {
+  height: 20px;
+  width: 200px;
+}
+.sublist a {
+  position: absolute;
+  color: #fff;
+  padding: 1em;
 }
 .notes {
   color: #b4b1b1;
@@ -882,7 +898,7 @@ a:hover {
   max-height: 100px;
   font-size:  11px;
   text-align: justify;
-  padding-left: 2.6em;
+  padding: 1em;
 }
 .notes::-webkit-scrollbar {
   width: 10px;
@@ -902,28 +918,7 @@ a:hover {
 .notes::-webkit-scrollbar-thumb:hover {
   background: #3a74af; 
 }
-.note-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-height: 50px;
-  font-size: 12px;
-  color: '#fff';
-  padding-right: 8px;
-  text-align: left;
-  margin-top: 80px;
-  margin-left: 50px;
-  /* margin-right: -50px; */
-  align-self: flex-start;
-}
-.rm-chart {
-  position: fixed;
-  align-self: center;
-  float: right;
-  align-self: flex-end;
-  margin-bottom: 120px;
-  margin-left: -250px;
-}
+
 .client-card-body {
   padding: 1em;
 }
@@ -1010,15 +1005,14 @@ a:hover {
   background: #3a74af; 
 }
 .exercise-container {
-  /* position: relative; */
+  position: absolute;
   overflow: auto;
-  margin-left: 400px;
-  margin-top: 80px;
-  margin-right: 200px;
+  margin-top: 120px;
   color: #fff;
   width: 400px;
   font-size: 13px;
-  max-height: 720px;
+  max-height: 600px;
+  max-width: 25%;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -1117,7 +1111,9 @@ a:hover {
   border-top-right-radius: 0.3em;
   align-self: center;
 }
-
+@-ms-viewport{
+  width: device-width;
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
@@ -1142,7 +1138,7 @@ a:hover {
   }
 
   /* Navbar */
-  .navbar {
+  /* .navbar {
     display: block;
     text-align: center;
    
@@ -1155,7 +1151,7 @@ a:hover {
 
   .navbar h1 {
     margin-bottom: 1rem;
-  }
+  } */
 
   /* Profiles Page */
   .profile {

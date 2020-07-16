@@ -25,10 +25,10 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
   };
   return (
     <section className="client">
-      <Navbar />
       <Fragment>
         { clientProfile === null || loading ? <Spinner /> :
           (<div className="dark-overlay">
+            <Navbar />
             <OneRMChart clientId={ match.params.id } />
             <div className="client-card">
               <div className="client-header">
@@ -59,7 +59,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                 ) }
               </p>
               <div className="notes">
-                <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em' } }>Notes for { clientProfile.clientFirstName }</h3>
+                <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
                 { clientProfile.notes }
               </div>
             </div>

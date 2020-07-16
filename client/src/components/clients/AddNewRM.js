@@ -35,8 +35,8 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
   return (
     <section className="add-new-rm">
       <div className="add-rm">
-        <Navbar />
         <div className="dark-overlay">
+          <Navbar />
           <div className="add-rm-container">
             <div className="add-rm-card">
               <h3>Add new RM</h3>

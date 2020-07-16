@@ -32,8 +32,8 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
   return (
     <Fragment>
       <form className="calculate-form" onSubmit={ (e) => onSubmit(e) }>
-        <label style={ { color: '#fff', fontSize: 13 } }>
-          <select name="level" onChange={ (e) => onChange(e) } value={ level }>
+        <label >
+          <select name="level" onChange={ (e) => onChange(e) } value={ level } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
             <option value="0">Level 0</option>
             <option value="0.6">Level 1</option>
             <option value="0.75">Level 2</option>

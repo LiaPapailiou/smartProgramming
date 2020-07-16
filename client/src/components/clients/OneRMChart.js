@@ -18,12 +18,12 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
 
   const formatColour = (value, entry) => {
     const { color } = entry;
-    return <span style={ { color, fontSize: 15, paddingRight: '0.25em' } }>{ value }</span>;
+    return <span style={ { color, fontSize: 14, paddingRight: '0.25em' } }>{ value }</span>;
   };
   return (
     <LineChart
       width={ 520 }
-      height={ 320 }
+      height={ 300 }
       data={ clientProfile.clientOneRM.reverse() }
       margin={ {
         top: 5, right: 30, left: 20, bottom: 5,

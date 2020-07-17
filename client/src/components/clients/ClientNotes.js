@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addNotes, getClientProfile } from '../../actions/profile';
 
 const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loading } }) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({ notes: '' });
   const { notes } = formData;
   const onSubmit = (e) => {
@@ -22,7 +22,7 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
     <div className="note-container" onClick={ onClick }> <i class="fas fa-plus" style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i>{
       visible ?
         <form className="add-notes" onSubmit={ (e) => onSubmit(e) }>
-          <textarea placeholder="Add notes..." cols="30" rows="15" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080' } }>
+          <textarea placeholder="Add notes..." cols="55" rows="10" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080' } }>
           </textarea>
           <br />
           <input

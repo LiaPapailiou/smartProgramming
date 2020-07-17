@@ -11,7 +11,6 @@ const ExerciseItem = ({
     factor
   },
 }) => {
-
   return (
     <Fragment>
 

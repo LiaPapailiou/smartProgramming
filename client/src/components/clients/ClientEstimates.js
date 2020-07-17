@@ -8,6 +8,7 @@ import ExerciseItem from '../exercises/ExerciseItem';
 
 const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { clientProfile, exerciseList } }) => {
   const [formData, setFormData] = useState({ level: '' });
+  const [visible, setVisible] = useState(false);
 
   const { level } = formData;
 
@@ -20,10 +21,10 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
   const onSubmit = (e) => {
     e.preventDefault();
     getEstimates(formData, clientProfile._id);
-    console.log(formData.level);
     setFormData({
       level: '',
     });
+    setVisible(true);
   };
 
   const onClick = (e) => {
@@ -52,17 +53,19 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
           className="calculate"
           value="Clear" />
       </form>
-      <div className="exercise-container">
-        {
-          exerciseList.length > 0 &&
-          <div className="exercise-container-inner">
-            {
-              exerciseList.map((exerciseItem) => (
-                <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />
-              ))
-            } </div>
-        }
-      </div>
+      { visible ?
+        <div className="exercise-container">
+          {
+            exerciseList.length > 0 &&
+            <div className="exercise-container-inner">
+              {
+                exerciseList.map((exerciseItem) => (
+                  <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />
+                ))
+              } </div>
+          }
+        </div> : null
+      }
 
     </Fragment>
 

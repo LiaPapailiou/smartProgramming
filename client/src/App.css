@@ -838,19 +838,20 @@ a:hover {
   background-color: #00000080;
   overflow:auto;
   max-height: 300px;
-  width: 520px;
-  margin-top: 120px;
-  margin-left: -1100px;
-  max-width: 25%;
+  width: 580px;
+  margin-top: 80px;
+  margin-left: -700px;
+  max-width: 38%;
   border: solid #535252 1px;
 }
 .rm-chart {
   position: absolute;
   align-self: flex-end;
-  max-height: 300px;
-  margin-left: -1300px;
-  margin-bottom: 60px;
-  max-width: 20%;
+  margin-left: -700px;
+  margin-bottom: 20px;
+  background-color: #00000080;
+  border: solid #535252 1px;
+  max-width: 40%
 }
 .calculate-form {
   position: absolute;
@@ -861,22 +862,23 @@ a:hover {
   margin-top: 40px;
   align-self: center;
   align-content: center;
-  margin-left: -1100px;
-  max-width: 20%; 
+  margin-left: -700px;
+  max-width: 20%;
 }
 .note-container {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: -600px;
   max-height: 50px;
   font-size: 12px;
   color: '#fff';
   padding-right: 8px;
   text-align: left;
-  margin-right: -1100px;
-  margin-top: 100px;
-  max-width: 20%;
+  margin-top: 500px;
+  max-width: 35%;
+  margin-bottom: 60px;
 }
 
 .sublist {
@@ -1005,20 +1007,22 @@ a:hover {
   background: #3a74af; 
 }
 .exercise-container {
+  background-color:#00000080;
   position: absolute;
   overflow: auto;
-  margin-top: 120px;
+  margin-top: 80px;
   color: #fff;
-  width: 400px;
+  width: 520px;
   font-size: 13px;
-  max-height: 600px;
-  max-width: 25%;
+  max-height: 400px;
+  max-width: 30%;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
   align-self: flex-start;
+  margin-right: -600px;
 }
 .exercise-container i {
   visibility: hidden;

@@ -22,11 +22,11 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
   };
   return (
     <LineChart
-      width={ 520 }
+      width={ 550 }
       height={ 300 }
       data={ clientProfile.clientOneRM.reverse() }
       margin={ {
-        top: 5, right: 30, left: 20, bottom: 5,
+        top: 5, right: 15, left: 5, bottom: 5,
       } }
       className="rm-chart"
     >

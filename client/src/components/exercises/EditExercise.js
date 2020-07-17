@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
-const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exercise, loading } }) => {
+const EditExercise = ({ match, getExerciseById, editExercise }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -16,7 +16,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exerci
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
-    editExercise(formData, exercise._id);
+    editExercise(formData, match.params.id);
     setFormData({
       exercise: '',
       body: '',
@@ -31,14 +31,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exerci
   useEffect(() => {
     getExerciseById(match.params.id);
     console.log(match.params.id);
-    setFormData({
-      exercise: loading || !exercise.exercise ? '' : exercise.exercise,
-      body: loading || !exercise.body ? '' : exercise.body,
-      min: loading || !exercise.min ? '' : exercise.min,
-      max: loading || !exercise.max ? '' : exercise.max,
-      factor: loading || !exercise.factor ? '' : exercise.factor,
-    });
-  }, [getExerciseById, match.params.id, loading]);
+  }, [getExerciseById, match.params.id]);
   return (
     <div className="edit-exercise">
       <div className="edit-exercise-container">
@@ -107,9 +100,6 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { exerci
 EditExercise.propTypes = {
   getExerciseById: PropTypes.func.isRequired,
   editExercise: PropTypes.func.isRequired,
-  exercise: PropTypes.object.isRequired,
 };
-const mapStateToProps = (state) => ({
-  exercise: state.exercise
-});
-export default connect(mapStateToProps, { getExerciseById, editExercise })(EditExercise);
+
+export default connect(null, { getExerciseById, editExercise })(EditExercise);

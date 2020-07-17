@@ -14,7 +14,13 @@ const AddExercise = ({ insertExercise, history }) => {
   });
 
   const { exercise, body, min, max, factor } = formData;
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    const value = e.target.value;
+    if (value === "true" || value === "false")
+      JSON.parse(value);
+    setFormData({ ...formData, [e.target.name]: value });
+  };
+  //  setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
     insertExercise(formData, history);
@@ -43,14 +49,14 @@ const AddExercise = ({ insertExercise, history }) => {
                   onChange={ (e) => onChange(e) }
                   placeholder=" Exercise Name"
                   required />
-                <input
+                {/* <input
                   type="text"
                   className="form-control"
                   name="body"
                   value={ body }
                   onChange={ (e) => onChange(e) }
                   placeholder=" Squat or Bench"
-                  required />
+                  required /> */}
                 <input
                   type="text"
                   className="form-control"
@@ -68,14 +74,30 @@ const AddExercise = ({ insertExercise, history }) => {
                   onChange={ (e) => onChange(e) }
                   placeholder=" Coefficient (max)"
                   required />
-                <input
-                  type="text"
-                  className="form-control"
-                  name="factor"
-                  value={ factor }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" true / false"
-                  required />
+                <label >
+                  <select
+                    type="text"
+                    className="form-control"
+                    name="body"
+                    value={ body }
+                    onChange={ (e) => onChange(e) }
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
+                    <option value="">One RM</option>
+                    <option value="Bench">Bench Press</option>
+                    <option value="Squat">Squat</option>
+                  </select>
+                  <select
+                    type="text"
+                    className="form-control"
+                    name="factor"
+                    value={ factor }
+                    onChange={ (e) => onChange(e) }
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
+                    <option value="">Level</option>
+                    <option value="true">Applicable</option>
+                    <option value="false">Not Applicable</option>
+                  </select>
+                </label>
               </div>
               <input
                 type="submit"

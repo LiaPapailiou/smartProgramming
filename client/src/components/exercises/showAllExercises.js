@@ -56,7 +56,7 @@ ShowAllExercises.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  exercise: state.exercise,
+  exercise: state.exercises,
 });
 
 export default connect(mapStateToProps, { getExercises })(ShowAllExercises);

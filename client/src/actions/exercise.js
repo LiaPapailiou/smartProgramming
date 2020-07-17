@@ -59,7 +59,7 @@ export const insertExercise = (formData, history) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert('Exercise added successfully', 'success'));
-    history.push('/dashboard');
+    history.push('/exercises');
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-// import { Link } from 'react-router-dom';;
+import { Link } from 'react-router-dom';
 
 
 const ExerciseItem = ({
@@ -19,7 +19,7 @@ const ExerciseItem = ({
         <td>{ exercise }</td>
         <td>{ min }</td>
         <td>{ max }</td>
-        {/* <td><Link to={ `/edit-exercise/${_id}` }>Edit</Link></td> */ }
+        <td><Link to={ `/edit-exercise/${_id}` }>Edit</Link></td>
       </tr>
     </Fragment>
   );

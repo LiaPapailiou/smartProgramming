@@ -65,7 +65,7 @@ router.put('/insert', [auth,
 router.post('/edit/:ex_id', auth, async (req, res) => {
   const { exercise, body, min, max, factor } = req.body;
   try {
-    let exerciseToEdit = await Exercises.findOne({ _id: req.params.ex_id });
+    let exerciseToEdit = await Exercises.find({ _id: req.params.ex_id });
     if (!exerciseToEdit) return res.status(404).json({ msg: 'Exercise not found in the database' });
     exercisesToEdit = await Exercises.findByIdAndUpdate({
       _id: req.params.ex_id,
@@ -81,11 +81,11 @@ router.post('/edit/:ex_id', auth, async (req, res) => {
       },
       { new: true, upsert: true });
 
-    if (!exerciseToEdit) return res.status(404).json({ msg: 'Exercise not found in the database' });
+
     res.json(exerciseToEdit);
   } catch (err) {
     console.log(err.message);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Internal Server Error here');
   }
 });
 

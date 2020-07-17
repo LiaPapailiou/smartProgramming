@@ -837,7 +837,7 @@ a:hover {
   padding: .5em;
   background-color: #00000080;
   overflow:auto;
-  max-height: 300px;
+  max-height: 40vh;
   width: 580px;
   margin-top: 80px;
   margin-left: -700px;
@@ -851,7 +851,8 @@ a:hover {
   margin-bottom: 20px;
   background-color: #00000080;
   border: solid #535252 1px;
-  max-width: 40%
+  max-width: 40vw;
+  min-width: 30vw;
 }
 .calculate-form {
   position: absolute;
@@ -863,7 +864,7 @@ a:hover {
   align-self: center;
   align-content: center;
   margin-left: -700px;
-  max-width: 20%;
+  max-width: 20vw;
 }
 .note-container {
   position: absolute;
@@ -871,13 +872,13 @@ a:hover {
   flex-direction: column;
   align-items: center;
   margin-right: -600px;
-  max-height: 50px;
+  max-height: 20vh;
   font-size: 12px;
   color: '#fff';
   padding-right: 8px;
   text-align: left;
   margin-top: 500px;
-  max-width: 35%;
+  max-width: 35vw;
   margin-bottom: 60px;
 }
 
@@ -1012,10 +1013,10 @@ a:hover {
   overflow: auto;
   margin-top: 80px;
   color: #fff;
-  width: 520px;
+  /* width: 40vw; */
   font-size: 13px;
-  max-height: 400px;
-  max-width: 30%;
+  max-height: 40vh;
+  max-width: 42vw;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;

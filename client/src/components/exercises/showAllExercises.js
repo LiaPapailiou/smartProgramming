@@ -29,6 +29,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
                         <th>Exercise</th>
                         <th>Min</th>
                         <th>Max</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>

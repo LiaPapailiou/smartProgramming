@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { deleteExercise } from '../../actions/exercise';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 const ExerciseItem = ({
@@ -10,7 +13,12 @@ const ExerciseItem = ({
     max,
     factor
   },
+  deleteExercise
 }) => {
+  const onClick = () => {
+    deleteExercise(_id);
+    window.location.reload();
+  };
   return (
     <Fragment>
 
@@ -18,10 +26,14 @@ const ExerciseItem = ({
         <td>{ exercise }</td>
         <td>{ min }</td>
         <td>{ max }</td>
-        <td><Link to={ `/edit-exercise/${_id}` }>Edit</Link></td>
+        <td><Link to={ `/edit-exercise/${_id}` }>Edit</Link> { '' }
+          <Link onClick={ () => onClick() }>Remove</Link></td>
       </tr>
     </Fragment>
   );
 };
 
-export default ExerciseItem;
+ExerciseItem.propTypes = {
+  deleteExercise: PropTypes.func.isRequired,
+};
+export default connect(null, { deleteExercise })(ExerciseItem);

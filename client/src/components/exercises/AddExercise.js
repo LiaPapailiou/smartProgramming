@@ -20,7 +20,6 @@ const AddExercise = ({ insertExercise, history }) => {
       JSON.parse(value);
     setFormData({ ...formData, [e.target.name]: value });
   };
-  //  setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
     insertExercise(formData, history);
@@ -49,14 +48,6 @@ const AddExercise = ({ insertExercise, history }) => {
                   onChange={ (e) => onChange(e) }
                   placeholder=" Exercise Name"
                   required />
-                {/* <input
-                  type="text"
-                  className="form-control"
-                  name="body"
-                  value={ body }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" Squat or Bench"
-                  required /> */}
                 <input
                   type="text"
                   className="form-control"

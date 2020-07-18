@@ -39,10 +39,10 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       benchPress: '',
       squat: '',
     });
-    window.history.back();
+    window.location.replace(`/client/${clientProfile._id}`);
   };
-  const onClick = (e) => {
-    window.history.back();
+  const onClick = () => {
+    window.location.replace(`/client/${clientProfile._id}`);
   };
   useEffect(() => {
 
@@ -63,7 +63,6 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       <div className="add">
         <Navbar />
         <div className="dark-overlay">
-
           <div className="add-card" style={ { height: 600 } }>
             <h3 style={ { paddingRight: 240 } }>Edit</h3>
             <div className="add-card-body">
@@ -128,7 +127,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
                 <input
                   type="button"
                   className="input-add"
-                  onClick={ (e) => onClick(e) }
+                  onClick={ () => onClick() }
                   value="Go Back" />
                 <input
                   type="submit"

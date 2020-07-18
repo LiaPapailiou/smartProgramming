@@ -36,7 +36,6 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
   };
   useEffect(() => {
     getExerciseById(match.params.id);
-
   }, [getExerciseById, match.params.id]);
   return (
     <div className="add">

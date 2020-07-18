@@ -28,9 +28,6 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
     setVisible(true);
   };
 
-  const onClick = (e) => {
-    window.location.reload();
-  };
   return (
     <Fragment>
       <form className="calculate-form" onSubmit={ (e) => onSubmit(e) }>
@@ -48,11 +45,6 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
           type="submit"
           className="calculate"
           value="Calculate" />
-        <input
-          onClick={ (e) => onClick(e) }
-          type="submit"
-          className="calculate"
-          value="Clear" />
       </form>
       { visible ?
         <div className="exercise-container">

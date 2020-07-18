@@ -762,6 +762,10 @@ a:hover {
   margin-left: -700px;
   max-width: 35%;
   border: solid #535252 1px;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
 }
 .rm-chart {
   position: absolute;
@@ -769,9 +773,13 @@ a:hover {
   margin-right: -600px;
   margin-top: 80px;
   background-color: #00000080;
-  border: solid #535252 1px;
   max-width: 40vw;
   min-width: 30vw;
+  border: solid #535252 1px;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
 }
 .calculate-form {
   position: absolute;
@@ -804,13 +812,14 @@ a:hover {
   position: absolute;
 }
 .sublist li {
-  height: 20px;
+  height: 10px;
+  padding: 0.75em;
   width: 200px;
+  
 }
 .sublist a {
-  position: absolute;
+  position: relative;
   color: #fff;
-  padding: 1em;
 }
 .notes {
   color: #b4b1b1;

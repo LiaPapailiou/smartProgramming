@@ -39,6 +39,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       benchPress: '',
       squat: '',
     });
+    window.history.back();
   };
   const onClick = (e) => {
     window.history.back();

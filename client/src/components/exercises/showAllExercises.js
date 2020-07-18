@@ -17,9 +17,10 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
       { loading ? (
         <Spinner />
       ) :
-
         <section className='exercises'>
+
           <div className="dark-overlay">
+
             <div className="exercises-container">
               { exercises.length > 0 && (
                 <div className="exercise-headers">

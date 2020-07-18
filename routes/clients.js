@@ -163,7 +163,6 @@ router.put('/insert', [auth,
 // Delete a client
 router.delete('/delete/:client_id', auth, async (req, res) => {
   try {
-
     await Clients.findByIdAndDelete(req.params.client_id);
     res.json({ msg: 'Client deleted successfully' });
   } catch (err) {
@@ -175,13 +174,11 @@ router.delete('/delete/:client_id', auth, async (req, res) => {
 router.post('/calculate/:client_id', auth, async (req, res) => {
   const { level } = req.body;
   try {
-    // Get client by ID
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
 
-    // Save RMs in seperate vars
-    const benchRM = client.clientOneRM[0].benchPress;
 
+    const benchRM = client.clientOneRM[0].benchPress;
     const squatRM = client.clientOneRM[0].squat;
 
 
@@ -245,12 +242,6 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
       });
     }
 
-    // const ordered = estimates.sort((a, b) => {
-    //   const A = a.exercise.replace(/\s+/g, '');
-    //   const B = b.exercise.replace(/\s+/g, '');
-    //   A > B ? 1 : (B > A ? -1 : 0);
-    // });
-    // console.log(ordered);
     res.json(estimates);
   } catch (err) {
     res.status(500).send('Internal Server Error');

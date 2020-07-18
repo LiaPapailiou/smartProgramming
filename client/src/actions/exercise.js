@@ -100,16 +100,16 @@ export const editExercise = (formData, ex_id) => async (dispatch) => {
 
 // Delete exercise
 export const deleteExercise = (ex_id) => async (dispatch) => {
-  if (window.confirm('Are you sure? This will be permanent.'))
-    try {
-      await axios.delete(`/exercises/delete/${ex_id}`);
-      dispatch({
-        type: DELETE_EXERCISE,
-      });
-    } catch (err) {
-      dispatch({
-        type: GET_EXERCISES_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status },
-      });
-    }
+  // if (window.confirm('Are you sure? This will be permanent.'))
+  try {
+    await axios.delete(`/exercises/delete/${ex_id}`);
+    dispatch({
+      type: DELETE_EXERCISE,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_EXERCISES_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
 };

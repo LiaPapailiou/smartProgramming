@@ -72,7 +72,8 @@ const AddExercise = ({ insertExercise, history }) => {
                     name="body"
                     value={ body }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                    required>
                     <option value="">One RM</option>
                     <option value="Bench">Bench Press</option>
                     <option value="Squat">Squat</option>
@@ -83,7 +84,8 @@ const AddExercise = ({ insertExercise, history }) => {
                     name="factor"
                     value={ factor }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                    required>
                     <option value="">Level</option>
                     <option value="true">Applicable</option>
                     <option value="false">Not Applicable</option>

@@ -33,7 +33,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
             <div className="client-card">
               <div className="client-header">
                 <h3>
-                  { clientProfile.clientFirstName }
+                  { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
                 </h3>
                 <span className="client-header-links">
                   <Link to={ `/edit/${match.params.id}` }>

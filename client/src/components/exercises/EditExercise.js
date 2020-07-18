@@ -32,7 +32,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
     });
   };
   const onClick = () => {
-    window.history.back();
+    window.location.replace('/exercises');
   };
   useEffect(() => {
     getExerciseById(match.params.id);
@@ -79,7 +79,8 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
                     name="body"
                     value={ body }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                    required>
                     <option value="">One RM</option>
                     <option value="Bench">Bench Press</option>
                     <option value="Squat">Squat</option>
@@ -90,7 +91,8 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
                     name="factor"
                     value={ factor }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em' } }>
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                    required>
                     <option value="">Level</option>
                     <option value="true">Applicable</option>
                     <option value="false">Not Applicable</option>

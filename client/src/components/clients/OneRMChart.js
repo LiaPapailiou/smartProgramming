@@ -10,7 +10,7 @@ import moment from 'moment';
 const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) => {
   useEffect(() => {
     getClientProfile(clientId);
-  }, [getClientProfile]);
+  }, [getClientProfile, clientId]);
 
   const formatXAxis = (tickItem) => {
     return moment(tickItem).format('DD / MMM / YY');

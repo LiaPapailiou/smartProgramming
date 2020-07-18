@@ -43,7 +43,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                     <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
-                  <Link onClick={ () => onClick() }>
+                  <Link to="#" onClick={ () => onClick() }>
                     <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>Delete
                     </Link>
                 </span>
@@ -62,8 +62,9 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                 <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
                 { clientProfile.notes }
               </div>
+              <ClientEstimates clientId={ match.params.id } />
             </div>
-            <ClientEstimates clientId={ match.params.id } />
+
             <ClientNotes />
           </div>)
         }

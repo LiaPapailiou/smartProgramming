@@ -1,9 +1,8 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from '../layout/Navbar';
 import { connect } from 'react-redux';
 import { getAllProfiles } from '../../actions/profile';
-import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import ShowAllClients from '../clients/ShowAllClients';
 

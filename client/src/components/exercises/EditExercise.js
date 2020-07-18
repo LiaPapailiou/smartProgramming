@@ -36,11 +36,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
   };
   useEffect(() => {
     getExerciseById(match.params.id);
-    setFormData({
-      exercise: exercise,
-      min: min,
-      max: max,
-    });
+
   }, [getExerciseById, match.params.id]);
   return (
     <div className="add">

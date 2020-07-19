@@ -1,27 +1,40 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import Spinner from '../layout/Spinner';
 import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
 import ClientEstimates from './ClientEstimates';
 import OneRMChart from './OneRMChart';
 import ClientNotes from './ClientNotes';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfile, loading } }) => {
 
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 
   useEffect(() => {
     getClientProfile(match.params.id);
-
-  }, [getClientProfile, match.params.id]);
+  }, [getClientProfile, match.params.id, loading]);
 
   const onClick = () => {
-    deleteClient(match.params.id);
-    window.history.back();
+    deleteClient(clientProfile._id);
+    window.location.replace('/dashboard');
   };
   return (
     <section className="client">
@@ -36,16 +49,38 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                   { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
                 </h3>
                 <span className="client-header-links">
-                  <Link to={ `/edit/${match.params.id}` }>
+                  <Link href={ `/edit/${match.params.id}` } style={ { color: '#61c9a8' } }>
                     <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit</Link>
-                  <Link to={ `/add-rm/${match.params.id}` }>
+                  <Link href={ `/add-rm/${match.params.id}` } style={ { color: '#61c9a8' } }>
                     <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
-                  <Link to="#" onClick={ () => onClick() }>
-                    <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>Delete
-                    </Link>
+                  <Link onClick={ handleClickOpen } style={ { color: '#61c9a8' } }>
+                    <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
+                    Delete</Link>
+                  <Dialog
+                    open={ open }
+                    onClose={ handleClose }
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogTitle id="alert-dialog-title"
+                      style={ { fontSize: 14 } }>{ "Delete client." }</DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        This is permanent, do you wish to continue?
+          </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={ handleClose } color="secondary">
+                        No
+          </Button>
+                      <Button onClick={ () => onClick() } color="primary" autoFocus>
+                        Yes
+          </Button>
+                    </DialogActions>
+                  </Dialog>
                 </span>
               </div>
               <p className="client-card-body">

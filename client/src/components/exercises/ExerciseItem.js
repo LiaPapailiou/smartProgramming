@@ -49,14 +49,15 @@ const ExerciseItem = ({
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">{ "Remove exercise." }</DialogTitle>
+            <DialogTitle id="alert-dialog-title"
+              style={ { fontSize: 14 } }>{ "Remove exercise." }</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 This is permanent, do you wish to continue?
           </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={ handleClose } color="primary">
+              <Button onClick={ handleClose } color="secondary">
                 No
           </Button>
               <Button onClick={ () => onClick() } color="primary" autoFocus>

@@ -59,7 +59,6 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
           }
         </div> : null
       }
-
     </Fragment>
 
   );

@@ -12,11 +12,12 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
     e.preventDefault();
     addNotes(formData, clientProfile._id);
     setFormData({ notes: '' });
+    window.location.replace(`/client/${clientProfile._id}`);
   };
 
   useEffect(() => {
     getClientProfile(clientProfile._id);
-  }, [getClientProfile, clientProfile._id, loading, handleSubmit]);
+  }, [getClientProfile, clientProfile._id, loading]);
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onClick = (e) => {

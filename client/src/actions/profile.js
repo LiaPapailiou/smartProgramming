@@ -16,9 +16,7 @@ import {
 
 // Get single profile
 export const getClientProfile = (client_id) => async (dispatch) => {
-
   try {
-
     const res = await axios.get(`/clients/search/${client_id}`);
     dispatch({
       type: GET_CLIENT_PROFILE,
@@ -133,18 +131,18 @@ export const addRM = (formData, client_id) => async (dispatch) => {
 
 // Delete client
 export const deleteClient = (client_id) => async (dispatch) => {
-  if (window.confirm('Are you sure? This will be permanent.'))
-    try {
-      await axios.delete(`/clients/delete/${client_id}`);
-      dispatch({
-        type: DELETE_CLIENT,
-      });
-    } catch (err) {
-      dispatch({
-        type: CLIENT_PROFILE_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status },
-      });
-    }
+  // if (window.confirm('Are you sure? This will be permanent.'))
+  try {
+    await axios.delete(`/clients/delete/${client_id}`);
+    dispatch({
+      type: DELETE_CLIENT,
+    });
+  } catch (err) {
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
 };
 
 // Get estimates

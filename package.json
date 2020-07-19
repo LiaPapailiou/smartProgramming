@@ -4,7 +4,8 @@
   "description": "A planner to help with client monthly workout programming",
   "main": "index.js",
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "npm": "6.x"
   },
   "scripts": {
     "server": "nodemon index.js",

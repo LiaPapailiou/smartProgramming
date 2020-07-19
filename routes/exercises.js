@@ -1,12 +1,12 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
-const auth = require('../middleware/auth');
+// const auth = require('../middleware/auth');
 const Exercises = require('../model/Exercises');
 
 
 // Get all
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const exercises = await Exercises.find().sort({ exercise: 1 });
 
@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 // Get by ID
-router.get('/search/:ex_id', auth, async (req, res) => {
+router.get('/search/:ex_id', async (req, res) => {
   try {
     const exercise = await Exercises.findById(req.params.ex_id);
 
@@ -34,34 +34,35 @@ router.get('/search/:ex_id', auth, async (req, res) => {
 });
 
 // Insert
-router.put('/insert', [auth,
+router.put('/insert',
   [
     check('exercise', 'Exercise name is required').not().isEmpty()
   ],
-], async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-  const { exercise, body, min, max, factor } = req.body;
-  try {
-    let exerciseToInsert = await Exercises.findOne({ exercise });
-    if (exerciseToInsert) return res.status(409).json({ errors: [{ msg: 'Exercise already exists' }] });
+    const { exercise, body, min, max, factor } = req.body;
+    try {
+      let exerciseToInsert = await Exercises.findOne({ exercise });
+      if (exerciseToInsert) return res.status(409).json({ errors: [{ msg: 'Exercise already exists' }] });
 
-    exerciseToInsert = await Exercises.create({
-      exercise,
-      body,
-      min,
-      max,
-      factor,
-    });
-    res.json(exerciseToInsert);
-  } catch (err) {
-    res.status(500).send('Internal Server Error');
-  }
-});
+      exerciseToInsert = await Exercises.create({
+        user: req.user.id,
+        exercise,
+        body,
+        min,
+        max,
+        factor,
+      });
+      res.json(exerciseToInsert);
+    } catch (err) {
+      res.status(500).send('Internal Server Error');
+    }
+  });
 
 // Edit
-router.post('/edit/:ex_id', auth, async (req, res) => {
+router.post('/edit/:ex_id', async (req, res) => {
   const { exercise, body, min, max, factor } = req.body;
   try {
     let exerciseToEdit = await Exercises.find({ _id: req.params.ex_id });
@@ -71,7 +72,6 @@ router.post('/edit/:ex_id', auth, async (req, res) => {
     },
       {
         $set: {
-          user: req.user.id,
           exercise,
           body,
           min,
@@ -90,7 +90,7 @@ router.post('/edit/:ex_id', auth, async (req, res) => {
 });
 
 // Remove
-router.delete('/delete/:ex_id', auth, async (req, res) => {
+router.delete('/delete/:ex_id', async (req, res) => {
   try {
     await Exercises.findByIdAndDelete(req.params.ex_id);
 

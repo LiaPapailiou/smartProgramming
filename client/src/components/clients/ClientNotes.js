@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNotes, getClientProfile } from '../../actions/profile';
+import { addNotes } from '../../actions/profile';
 
 
-const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loading } }) => {
+const ClientNotes = ({ addNotes, profile: { clientProfile, loading } }) => {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({ notes: '' });
   const { notes } = formData;
@@ -14,10 +14,6 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
     setFormData({ notes: '' });
     window.location.replace(`/client/${clientProfile._id}`);
   };
-
-  useEffect(() => {
-    getClientProfile(clientProfile._id);
-  }, [getClientProfile, clientProfile._id, loading]);
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onClick = (e) => {
@@ -44,7 +40,6 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
 
 ClientNotes.propTypes = {
   addNotes: PropTypes.func.isRequired,
-  getClientProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -52,4 +47,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { addNotes, getClientProfile })(ClientNotes);
+export default connect(mapStateToProps, { addNotes })(ClientNotes);

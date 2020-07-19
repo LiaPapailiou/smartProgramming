@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
-import { getClientProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) => {
-  useEffect(() => {
-    getClientProfile(clientId);
-  }, [getClientProfile, clientId]);
+const OneRMChart = ({ profile: { clientProfile } }) => {
 
   const formatXAxis = (tickItem) => {
     return moment(tickItem).format('DD / MMM / YY');
@@ -20,11 +16,15 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
     const { color } = entry;
     return <span style={ { color, fontSize: 14, paddingRight: '0.25em' } }>{ value }</span>;
   };
+  const invertedData = [];
+  for (let i = clientProfile.clientOneRM.length - 1;i >= 0;i -= 1) {
+    invertedData.push(clientProfile.clientOneRM[i]);
+  }
   return (
     <LineChart
       width={ 550 }
       height={ 300 }
-      data={ clientProfile.clientOneRM.reverse() }
+      data={ invertedData }
       margin={ {
         top: 5, right: 15, left: 5, bottom: 5,
       } }
@@ -41,10 +41,9 @@ const OneRMChart = ({ clientId, getClientProfile, profile: { clientProfile } }) 
   );
 };
 OneRMChart.propTypes = {
-  getClientProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
-export default connect(mapStateToProps, { getClientProfile })(OneRMChart);
+export default connect(mapStateToProps)(OneRMChart);

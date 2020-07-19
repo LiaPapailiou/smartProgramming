@@ -42,7 +42,6 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
         { clientProfile === null || loading ? <Spinner /> :
           (<div className="dark-overlay">
             <Navbar />
-            <OneRMChart clientId={ match.params.id } />
             <div className="client-card">
               <div className="client-header">
                 <h3>
@@ -101,6 +100,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
             </div>
 
             <ClientNotes />
+            <OneRMChart clientId={ clientProfile._id } />
           </div>)
         }
       </Fragment>

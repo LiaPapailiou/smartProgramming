@@ -1,27 +1,22 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getEstimates, getClientProfile } from '../../actions/profile';
+import { getEstimates } from '../../actions/profile';
 import ExerciseItem from '../exercises/ExerciseItem';
 
 
 
-const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { clientProfile, exerciseList } }) => {
+const ClientEstimates = ({ clientId, getEstimates, profile: { exerciseList } }) => {
   const [formData, setFormData] = useState({ level: '' });
   const [visible, setVisible] = useState(false);
 
 
   const { level } = formData;
 
-  useEffect(() => {
-    getClientProfile(clientId);
-  }, [getClientProfile, clientId]);
-
-
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
-    getEstimates(formData, clientProfile._id);
+    getEstimates(formData, clientId);
     setFormData({
       level: '',
     });
@@ -66,7 +61,6 @@ const ClientEstimates = ({ clientId, getClientProfile, getEstimates, profile: { 
 
 ClientEstimates.propTypes = {
   getEstimates: PropTypes.func.isRequired,
-  getClientProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -74,4 +68,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getEstimates, getClientProfile })(ClientEstimates);
+export default connect(mapStateToProps, { getEstimates })(ClientEstimates);

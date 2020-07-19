@@ -36,7 +36,7 @@ const AddExercise = ({ insertExercise, history }) => {
   };
 
   const onClick = () => {
-    window.location.replace('/exercises');
+    window.location.replace('http://localhost:3000/exercises');
   };
   return (
     <div className="add">

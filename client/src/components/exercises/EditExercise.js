@@ -33,7 +33,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
     });
   };
   const onClick = () => {
-    window.location.replace('/exercises');
+    window.location.replace('http://localhost:3000/exercises');
   };
   useEffect(() => {
     getExerciseById(match.params.id);

@@ -48,7 +48,7 @@ router.put('/insert',
       if (exerciseToInsert) return res.status(409).json({ errors: [{ msg: 'Exercise already exists' }] });
 
       exerciseToInsert = await Exercises.create({
-        user: req.user.id,
+        // user: req.user.id,
         exercise,
         body,
         min,

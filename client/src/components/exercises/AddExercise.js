@@ -33,7 +33,6 @@ const AddExercise = ({ insertExercise }) => {
       max: '',
       factor: '',
     });
-    window.location.replace('/exercises');
   };
 
   const onClick = () => {

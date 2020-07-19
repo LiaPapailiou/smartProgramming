@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A planner to help with client monthly workout programming",
   "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",

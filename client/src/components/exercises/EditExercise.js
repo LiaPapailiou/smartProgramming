@@ -31,9 +31,10 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
       max: '',
       factor: '',
     });
+    window.location.replace('/exercises');
   };
   const onClick = () => {
-    window.location.replace('http://localhost:3000/exercises');
+    window.location.replace('/exercises');
   };
   useEffect(() => {
     getExerciseById(match.params.id);

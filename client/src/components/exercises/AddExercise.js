@@ -7,7 +7,7 @@ import { insertExercise } from '../../actions/exercise';
 import CustomAlert from '../layout/CustomAlert';
 
 
-const AddExercise = ({ insertExercise, history }) => {
+const AddExercise = ({ insertExercise }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -33,10 +33,11 @@ const AddExercise = ({ insertExercise, history }) => {
       max: '',
       factor: '',
     });
+    window.location.replace('/exercises');
   };
 
   const onClick = () => {
-    window.location.replace('http://localhost:3000/exercises');
+    window.location.replace('/exercises');
   };
   return (
     <div className="add">

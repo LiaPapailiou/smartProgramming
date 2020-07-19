@@ -71,6 +71,7 @@ router.post('/edit/:ex_id', auth, async (req, res) => {
     },
       {
         $set: {
+          user: req.user.id,
           exercise,
           body,
           min,

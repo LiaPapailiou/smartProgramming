@@ -101,11 +101,11 @@ const AddExercise = ({ insertExercise }) => {
                   </select>
                 </label>
               </div>
-              <input
+              {/* <input
                 type="submit"
                 className="input-add"
                 onClick={ () => onClick() }
-                value="Back" />
+                value="Back" /> */}
               <input
                 type="submit"
                 className="input-add"

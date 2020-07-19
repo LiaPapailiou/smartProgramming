@@ -31,11 +31,11 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
       max: '',
       factor: '',
     });
-    window.location.replace('/exercises');
+    // window.location.replace('/exercises');
   };
-  const onClick = () => {
-    window.location.replace('/exercises');
-  };
+  // const onClick = () => {
+  //   window.location.replace('/exercises');
+  // };
   useEffect(() => {
     getExerciseById(match.params.id);
   }, [getExerciseById, match.params.id]);
@@ -102,11 +102,11 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
                   </select>
                 </label>
               </div>
-              <input
+              {/* <input
                 type="button"
                 className="input-add"
                 onClick={ () => onClick() }
-                value="Go Back" />
+                value="Go Back" /> */}
               <input
                 type="submit"
                 className="input-add"

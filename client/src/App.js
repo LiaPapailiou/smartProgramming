@@ -11,7 +11,6 @@ import Client from './components/clients/Client';
 import ShowAllExercises from './components/exercises/ShowAllExercises';
 import AddExercise from './components/exercises/AddExercise';
 import EditExercise from './components/exercises/EditExercise';
-// import Exercise from './components/exercises/Exercise';
 import { Provider } from 'react-redux';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';

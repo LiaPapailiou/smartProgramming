@@ -46,7 +46,7 @@ export const getExerciseById = (ex_id) => async (dispatch) => {
 };
 
 // Insert
-export const insertExercise = (formData, history) => async (dispatch) => {
+export const insertExercise = (formData) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -59,11 +59,11 @@ export const insertExercise = (formData, history) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert('Exercise added successfully', 'success'));
-    history.push('/exercises');
+
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: GET_EXERCISES_ERROR,
@@ -89,7 +89,7 @@ export const editExercise = (formData, ex_id) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: GET_EXERCISES_ERROR,
@@ -100,7 +100,6 @@ export const editExercise = (formData, ex_id) => async (dispatch) => {
 
 // Delete exercise
 export const deleteExercise = (ex_id) => async (dispatch) => {
-  // if (window.confirm('Are you sure? This will be permanent.'))
   try {
     await axios.delete(`/exercises/delete/${ex_id}`);
     dispatch({

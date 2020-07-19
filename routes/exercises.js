@@ -45,7 +45,7 @@ router.put('/insert', [auth,
   const { exercise, body, min, max, factor } = req.body;
   try {
     let exerciseToInsert = await Exercises.findOne({ exercise });
-    if (exerciseToInsert) return res.status(409).json({ msg: 'Exercise already exists' });
+    if (exerciseToInsert) return res.status(409).json({ errors: [{ msg: 'Exercise already exists' }] });
 
     exerciseToInsert = await Exercises.create({
       exercise,
@@ -56,7 +56,6 @@ router.put('/insert', [auth,
     });
     res.json(exerciseToInsert);
   } catch (err) {
-    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 });

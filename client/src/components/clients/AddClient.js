@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { insertClient } from '../../actions/profile';
 import Navbar from '../layout/Navbar';
+import CustomAlert from '../layout/CustomAlert';
+
 const AddClient = ({ insertClient, history }) => {
   const [formData, setFormData] = useState({
     clientFirstName: '',
@@ -43,6 +45,7 @@ const AddClient = ({ insertClient, history }) => {
     <section className="add-client">
       <div className="add">
         <Navbar />
+        <CustomAlert />
         <div className="dark-overlay">
           <div className="add-card" style={ { height: 580 } }>
             <h3>Add Client</h3>

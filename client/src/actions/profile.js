@@ -67,7 +67,7 @@ export const insertClient = (formData, history) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: CLIENT_PROFILE_ERROR,
@@ -94,7 +94,7 @@ export const editClient = (formData, client_id) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: CLIENT_PROFILE_ERROR,
@@ -120,7 +120,7 @@ export const addRM = (formData, client_id) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: CLIENT_PROFILE_ERROR,
@@ -161,7 +161,7 @@ export const getEstimates = (formData, client_id) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
     }
     dispatch({
       type: CLIENT_PROFILE_ERROR,

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
-import Alert from '../layout/Alert';
+import CustomAlert from '../layout/CustomAlert';
 
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -37,7 +37,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   if (isAuthenticated) return <Redirect to="/dashboard" />;
   return (
     <section className="register">
-      <Alert />
+      <CustomAlert />
       <div className="dark-overlay">
         <div className="register-container">
           <div className="register-card">
@@ -51,7 +51,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   value={ firstName }
                   onChange={ (e) => onChange(e) }
                   placeholder=" First Name"
-                  required />
+                />
                 <input
                   type="text"
                   className="form-control"
@@ -66,7 +66,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   value={ email }
                   onChange={ (e) => onChange(e) }
                   placeholder=" Email"
-                  required />
+                />
                 <input
                   type="password"
                   className="form-control"

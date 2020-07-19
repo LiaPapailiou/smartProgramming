@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
 import Navbar from '../layout/Navbar';
+import CustomAlert from '../layout/CustomAlert';
 const EditExercise = ({ match, getExerciseById, editExercise }) => {
   const [formData, setFormData] = useState({
     exercise: '',
@@ -40,6 +41,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
   return (
     <div className="add">
       <Navbar />
+      <CustomAlert />
       <div className="dark-overlay">
         <div className="add-card" style={ { height: 500 } }>
           <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '120px' } }>Edit Exercise</h3>
@@ -83,6 +85,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
                     <option value="">One RM</option>
                     <option value="Bench">Bench Press</option>
                     <option value="Squat">Squat</option>
+                    <option value="None">None</option>
                   </select>
                   <select
                     type="text"

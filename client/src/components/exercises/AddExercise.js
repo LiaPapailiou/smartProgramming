@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from '../layout/Navbar';
 import { insertExercise } from '../../actions/exercise';
+import CustomAlert from '../layout/CustomAlert';
+
+
 const AddExercise = ({ insertExercise, history }) => {
   const [formData, setFormData] = useState({
     exercise: '',
@@ -22,7 +25,7 @@ const AddExercise = ({ insertExercise, history }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    insertExercise(formData, history);
+    insertExercise(formData);
     setFormData({
       exercise: '',
       body: '',
@@ -31,9 +34,14 @@ const AddExercise = ({ insertExercise, history }) => {
       factor: '',
     });
   };
+
+  const onClick = () => {
+    window.location.replace('/exercises');
+  };
   return (
     <div className="add">
       <Navbar />
+      <CustomAlert />
       <div className="dark-overlay">
         <div className="add-card" style={ { height: 480 } }>
           <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.15em', paddingLeft: 0 } }>Add an exercise</h3>
@@ -77,6 +85,7 @@ const AddExercise = ({ insertExercise, history }) => {
                     <option value="">One RM</option>
                     <option value="Bench">Bench Press</option>
                     <option value="Squat">Squat</option>
+                    <option value="None">None</option>
                   </select>
                   <select
                     type="text"
@@ -92,6 +101,11 @@ const AddExercise = ({ insertExercise, history }) => {
                   </select>
                 </label>
               </div>
+              <input
+                type="submit"
+                className="input-add"
+                onClick={ () => onClick() }
+                value="Back" />
               <input
                 type="submit"
                 className="input-add"

@@ -175,7 +175,7 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
   const { level } = req.body;
   try {
     const client = await Clients.findById(req.params.client_id);
-    if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
+    if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });
 
 
     const benchRM = client.clientOneRM[0].benchPress;

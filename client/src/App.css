@@ -457,7 +457,6 @@ register-input-group-text i {
   border-top-right-radius: 0.3em;
 }
 /* Scrollbar */
-
 .table-wrapper::-webkit-scrollbar {
   width: 10px;
 }
@@ -764,7 +763,7 @@ a:hover {
   background-color: #00000080;
   height: 80vh;
   max-height: 80%;
-  /* width: 580px; */
+  width: 580px;
   margin-top: 80px;
   margin-left: -700px;
   max-width: 35%;
@@ -777,11 +776,11 @@ a:hover {
 .rm-chart {
   position: absolute;
   align-self: flex-start;
-  margin-right: -600px;
+  margin-right: -700px;
   margin-top: 80px;
   background-color: #00000080;
-  max-width: 40vw;
-  min-width: 30vw;
+  max-width: 25vw;
+  min-width: 25vw;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -804,7 +803,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: -600px;
+  margin-right: -700px;
   max-height: 20vh;
   font-size: 12px;
   color: '#fff';
@@ -1059,7 +1058,7 @@ a:hover {
 }
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
-  .client {
+  /* .client {
     position: relative;
     background: url('./images/gloves.jpg') no-repeat center center/cover; 
     height: 100vh;
@@ -1070,9 +1069,9 @@ a:hover {
     justify-content: center;
     align-content: flex-start;
     text-align: center;
-  }
+  } */
   
-  .exercise-container {
+  /* .exercise-container {
     background-color:#00000080;
     position: relative;
     overflow: auto;
@@ -1090,9 +1089,9 @@ a:hover {
     border-top-left-radius: 0.3em;
     border-bottom-right-radius: 0.3em;
     border-top-right-radius: 0.3em;
-  }
+  } */
 
-  .client-card {  
+  /* .client-card {  
     position: absolute;
     display: flex;
     align-self: flex-start;
@@ -1128,7 +1127,6 @@ a:hover {
     font-weight: normal;
     overflow:auto;
     align-self: center;
-    /* max-height: 25vh; */
     max-width: 35vw;
     font-size:  11px;
     text-align: justify;
@@ -1159,8 +1157,6 @@ a:hover {
     align-self: flex-start;
     margin-right: -500px;
     background-color: #00000080;
-    /* width: 30vw; */
-    /* max-width: 50vw; */
     border: solid #535252 1px;
     border-bottom-left-radius: 0.3em;
     border-top-left-radius: 0.3em;
@@ -1178,5 +1174,5 @@ a:hover {
     align-content: center;
     max-width: 15vw;
   }
-  
+   */
 }

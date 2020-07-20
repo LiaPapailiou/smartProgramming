@@ -31,7 +31,7 @@ const ExerciseItem = ({
 
   const onClick = () => {
     deleteExercise(_id);
-    window.location.reload();
+    window.location.href = window.location.href;
   };
 
   return (

@@ -9,16 +9,18 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import CustomAlert from '../layout/CustomAlert';
 
 const ExerciseItem = ({
   exerciseItem: {
     _id,
     exercise,
+    body,
     min,
     max,
     factor
   },
-  deleteExercise,
+  deleteExercise
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -31,16 +33,16 @@ const ExerciseItem = ({
 
   const onClick = () => {
     deleteExercise(_id);
-    window.location.href = 'https://smart-programming.herokuapp.com/exercises';
   };
 
   return (
     <Fragment>
-
+      <CustomAlert />
       <tr>
         <td>{ exercise }</td>
         <td>{ min }</td>
         <td>{ max }</td>
+        <td>{ body }</td>
         <td>
           <Link href={ `/edit-exercise/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link>{ ' ' }
           <Link onClick={ handleClickOpen } style={ { color: '#9cabb8' } }>Remove</Link>
@@ -66,7 +68,6 @@ const ExerciseItem = ({
               </Button>
             </DialogActions>
           </Dialog>
-
         </td>
       </tr>
     </Fragment>
@@ -75,7 +76,10 @@ const ExerciseItem = ({
 
 ExerciseItem.propTypes = {
   deleteExercise: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
-
-export default connect(null, { deleteExercise })(ExerciseItem);
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps, { deleteExercise })(ExerciseItem);

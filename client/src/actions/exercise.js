@@ -105,6 +105,7 @@ export const deleteExercise = (ex_id) => async (dispatch) => {
     dispatch({
       type: DELETE_EXERCISE,
     });
+    dispatch(setAlert('Exercise removed', 'success'));
   } catch (err) {
     dispatch({
       type: GET_EXERCISES_ERROR,

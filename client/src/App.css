@@ -831,10 +831,12 @@ a:hover {
   color: #b4b1b1;
   font-weight: normal;
   overflow:auto;
-  /* align-self: center; */
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
   max-height: 100px;
-  width: 25vw;
-  max-width: 25vw;
+  width: 23vw;
+  max-width: 23vw;
   font-size:  11px;
   text-align: justify;
   padding: 1em;

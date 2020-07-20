@@ -31,7 +31,7 @@ const ExerciseItem = ({
 
   const onClick = () => {
     deleteExercise(_id);
-    window.location.href = window.location.href;
+    window.location.href = 'https://smart-programming.herokuapp.com/exercises';
   };
 
   return (

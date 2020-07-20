@@ -24,7 +24,7 @@ const ClientNotes = ({ addNotes, profile: { clientProfile, loading } }) => {
     <div className="note-container" > <i className="fas fa-plus" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i>{
       visible &&
       <form className="add-notes" onSubmit={ handleSubmit }>
-        <textarea placeholder="Add notes..." cols="55" rows="10" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080', color: '#fff' } }>
+        <textarea placeholder="Add notes..." cols="55" rows="8" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080', color: '#fff' } }>
         </textarea>
         <br />
         <input

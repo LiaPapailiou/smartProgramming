@@ -22,7 +22,7 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
   }
   return (
     <LineChart
-      width={ 550 }
+      width={ 450 }
       height={ 300 }
       data={ invertedData }
       margin={ {

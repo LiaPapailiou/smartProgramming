@@ -719,7 +719,7 @@ a:hover {
   /* flex-wrap: wrap; */
   flex-direction: row;
   align-items: baseline;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: flex-start;
   text-align: center;
 }
@@ -762,9 +762,9 @@ a:hover {
   justify-content: flex-start;
   padding: .5em;
   background-color: #00000080;
-  height: 90vh;
-  max-height: 85%;
-  width: 580px;
+  height: 80vh;
+  max-height: 80%;
+  /* width: 580px; */
   margin-top: 80px;
   margin-left: -700px;
   max-width: 35%;
@@ -832,7 +832,9 @@ a:hover {
   color: #b4b1b1;
   font-weight: normal;
   overflow:auto;
+  align-self: center;
   max-height: 100px;
+  max-width: 25vw;
   font-size:  11px;
   text-align: justify;
   padding: 1em;
@@ -1055,87 +1057,126 @@ a:hover {
 @-ms-viewport{
   width: device-width;
 }
-/* Mobile Styles */
-@media (max-width: 700px) {
-  .container {
-    margin-top: 8rem;
-  }
-
-  .hide-sm {
-    display: none;
-  }
-
-  /* Text Styles */
-  .x-large {
-    font-size: 3rem;
-  }
-
-  .large {
-    font-size: 2rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-  }
-
-  /* Navbar */
-  /* .navbar {
-    display: block;
-    text-align: center;
-   
-  }
-
-  .navbar ul {
-    text-align: center;
+/* Responsive Styles */
+@media screen and (max-width: 800px) {
+  .client {
+    position: relative;
+    background: url('./images/gloves.jpg') no-repeat center center/cover; 
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-  }
-
-  .navbar h1 {
-    margin-bottom: 1rem;
-  } */
-
-  /* Profiles Page */
-  .profile {
-    grid-template-columns: 1fr;
+    align-content: flex-start;
     text-align: center;
   }
-
-  .profile ul {
-    display: none;
+  
+  .exercise-container {
+    background-color:#00000080;
+    position: relative;
+    overflow: auto;
+    align-self: center;
+    align-content: center;
+    margin-top: 50px;
+    color: #fff;
+    padding: 0;
+    font-size: 11px;
+    height: 60vh;
+    max-height: 60vh;
+    max-width: 40vw;
+    border: solid #535252 1px;
+    border-bottom-left-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    border-top-right-radius: 0.3em;
   }
 
-  /* Profile Page */
-
-  .profile-top img,
-  .profile img {
-    width: 200px;
-    margin: auto;
-  }
-
-  .profile-grid {
-    grid-template-areas:
-      'top'
-      'about'
-      'exp'
-      'edu'
-      'github';
-  }
-
-  .profile-about .skills {
+  .client-card {  
+    position: absolute;
+    display: flex;
+    align-self: flex-start;
     flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: .5em;
+    background-color: #00000080;
+    height: 80vh;
+    max-height: 80vh;
+    width: 25vw;
+    max-width: 25vw;
+    margin-left: -700px; 
+    border: solid #535252 1px;
+    border-bottom-left-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    border-top-right-radius: 0.3em;
   }
 
-  .dash-buttons a {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
+  .client-card h3 {
+    font-size: 20px;
+  }
+  .client-header {
+    padding-bottom: 0;
   }
 
-  .post {
-    grid-template-columns: 1fr;
+  .elem {
+  font-size: 14px;
+}
+  .notes {
+    color: #b4b1b1;
+    font-weight: normal;
+    overflow:auto;
+    align-self: center;
+    /* max-height: 25vh; */
+    max-width: 35vw;
+    font-size:  11px;
+    text-align: justify;
+    padding: 1em;
   }
-  .post a,
-  .post button {
-    padding: 0.3rem 0.4rem;
+
+  .notes h3 {
+    font-size: 13px;
   }
+  .note-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: -500px;
+    max-height: 40px;
+    font-size: 14px;
+    color: '#fff';
+    padding-right: 8px;
+    text-align: left;
+    width: 60vw;
+    max-width: 60vw;
+   margin-top: 400px;
+  }
+  
+  .rm-chart {
+    position: absolute;
+    align-self: flex-start;
+    margin-right: -500px;
+    background-color: #00000080;
+    /* width: 30vw; */
+    /* max-width: 50vw; */
+    border: solid #535252 1px;
+    border-bottom-left-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+  }
+  .calculate-form {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    padding: 1em;
+    margin-top: 60px;
+    align-self: center;
+    align-content: center;
+    max-width: 15vw;
+  }
+  
 }

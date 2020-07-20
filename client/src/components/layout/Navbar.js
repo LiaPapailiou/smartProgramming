@@ -14,7 +14,7 @@ const Navbar = ({ logout }) => {
       <ul style={ { color: '#fff', height: 120 } } onClick={ onClick }> Menu
       { visible ?
           <div className="sublist" style={ { fontSize: 15, color: '#fff', textAlign: 'left' } }>
-            <li><Link to="/exercises" rel="noopener noreferrer">Exercises</Link></li>
+            <li><Link to="/exercises" rel="noopener noreferrer">Exercise List</Link></li>
             <li> <Link to="/add-exercise" rel="noopener noreferrer">Add Exercise</Link></li>
             <li><Link to="/dashboard" rel="noopener noreferrer">Clients</Link></li>
             <li><Link to="/add" rel="noopener noreferrer">Add Client</Link></li>

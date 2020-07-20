@@ -11,7 +11,7 @@ import Navbar from '../layout/Navbar';
 const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) => {
   useEffect(() => {
     getExercises();
-  }, [getExercises]);
+  }, [getExercises, loading]);
   return (
     <Fragment>
       <Navbar />

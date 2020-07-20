@@ -77,9 +77,11 @@ const ExerciseItem = ({
 ExerciseItem.propTypes = {
   deleteExercise: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  exercise: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  exercise: state.exercises
 });
 export default connect(mapStateToProps, { deleteExercise })(ExerciseItem);

@@ -8,7 +8,7 @@ const Exercises = require('../model/Exercises');
 // Get all
 router.get('/', async (req, res) => {
   try {
-    const exercises = await Exercises.find().sort({ exercise: 1 });
+    const exercises = await Exercises.find().sort({ body: 1 });
 
     res.json(exercises);
 

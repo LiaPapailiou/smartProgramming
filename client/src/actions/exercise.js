@@ -99,11 +99,12 @@ export const editExercise = (formData, ex_id) => async (dispatch) => {
 };
 
 // Delete exercise
-export const deleteExercise = (ex_id) => async (dispatch) => {
+export const deleteExercise = (id) => async (dispatch) => {
   try {
-    await axios.delete(`/exercises/delete/${ex_id}`);
+    await axios.delete(`/exercises/delete/${id}`);
     dispatch({
       type: DELETE_EXERCISE,
+      payload: id
     });
     dispatch(setAlert('Exercise removed', 'success'));
   } catch (err) {

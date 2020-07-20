@@ -42,7 +42,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         exercise: null,
-        exercises: [],
+        exercises: state.exercises.filter((ex) => ex._id !== payload),
         loading: false,
       };
     default:

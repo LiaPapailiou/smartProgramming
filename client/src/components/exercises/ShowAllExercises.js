@@ -7,6 +7,7 @@ import ExerciseItem from './ExerciseItem';
 import Navbar from '../layout/Navbar';
 
 
+
 const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) => {
   useEffect(() => {
     getExercises();

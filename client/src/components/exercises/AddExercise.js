@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from '../layout/Navbar';
 import { insertExercise } from '../../actions/exercise';
@@ -35,9 +34,6 @@ const AddExercise = ({ insertExercise }) => {
     });
   };
 
-  const onClick = () => {
-    window.location.replace('/exercises');
-  };
   return (
     <div className="add">
       <Navbar />
@@ -101,11 +97,6 @@ const AddExercise = ({ insertExercise }) => {
                   </select>
                 </label>
               </div>
-              {/* <input
-                type="submit"
-                className="input-add"
-                onClick={ () => onClick() }
-                value="Back" /> */}
               <input
                 type="submit"
                 className="input-add"
@@ -122,5 +113,4 @@ AddExercise.propTypes = {
   insertExercise: PropTypes.func.isRequired,
 };
 
-
-export default connect(null, { insertExercise })(withRouter(AddExercise));
+export default connect(null, { insertExercise })(AddExercise);

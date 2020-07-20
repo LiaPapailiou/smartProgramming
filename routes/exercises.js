@@ -1,7 +1,7 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
-// const auth = require('../middleware/auth');
+const auth = require('../middleware/auth');
 const Exercises = require('../model/Exercises');
 
 
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get by ID
-router.get('/search/:ex_id', async (req, res) => {
+router.get('/search/:ex_id', auth, async (req, res) => {
   try {
     const exercise = await Exercises.findById(req.params.ex_id);
 
@@ -34,10 +34,11 @@ router.get('/search/:ex_id', async (req, res) => {
 });
 
 // Insert
-router.put('/insert',
+router.put('/insert', [auth,
   [
     check('exercise', 'Exercise name is required').not().isEmpty()
   ],
+],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
@@ -62,7 +63,7 @@ router.put('/insert',
   });
 
 // Edit
-router.post('/edit/:ex_id', async (req, res) => {
+router.post('/edit/:ex_id', auth, async (req, res) => {
   const { exercise, body, min, max, factor } = req.body;
   try {
     let exerciseToEdit = await Exercises.find({ _id: req.params.ex_id });
@@ -90,7 +91,7 @@ router.post('/edit/:ex_id', async (req, res) => {
 });
 
 // Remove
-router.delete('/delete/:ex_id', async (req, res) => {
+router.delete('/delete/:ex_id', auth, async (req, res) => {
   try {
     await Exercises.findByIdAndDelete(req.params.ex_id);
 

@@ -18,7 +18,7 @@ const ExerciseItem = ({
     max,
     factor
   },
-  deleteExercise
+  deleteExercise,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -41,7 +41,8 @@ const ExerciseItem = ({
         <td>{ exercise }</td>
         <td>{ min }</td>
         <td>{ max }</td>
-        <td><Link href={ `/edit-exercise/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link> { '' }
+        <td>
+          <Link href={ `/edit-exercise/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link>{ ' ' }
           <Link onClick={ handleClickOpen } style={ { color: '#9cabb8' } }>Remove</Link>
           <Dialog
             open={ open }
@@ -54,17 +55,18 @@ const ExerciseItem = ({
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 This is permanent, do you wish to continue?
-          </DialogContentText>
+              </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button onClick={ handleClose } color="secondary">
                 No
-          </Button>
+              </Button>
               <Button onClick={ () => onClick() } color="primary" autoFocus>
                 Yes
-          </Button>
+              </Button>
             </DialogActions>
           </Dialog>
+
         </td>
       </tr>
     </Fragment>
@@ -74,4 +76,6 @@ const ExerciseItem = ({
 ExerciseItem.propTypes = {
   deleteExercise: PropTypes.func.isRequired,
 };
+
+
 export default connect(null, { deleteExercise })(ExerciseItem);

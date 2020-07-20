@@ -779,7 +779,7 @@ a:hover {
   margin-right: -700px;
   margin-top: 80px;
   background-color: #00000080;
-  max-width: 25vw;
+  max-width: 30vw;
   min-width: 25vw;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
@@ -831,8 +831,9 @@ a:hover {
   color: #b4b1b1;
   font-weight: normal;
   overflow:auto;
-  align-self: center;
+  /* align-self: center; */
   max-height: 100px;
+  width: 25vw;
   max-width: 25vw;
   font-size:  11px;
   text-align: justify;

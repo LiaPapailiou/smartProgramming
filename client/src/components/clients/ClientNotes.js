@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNotes } from '../../actions/profile';
+import { addNotes, getClientProfile } from '../../actions/profile';
 
 
-const ClientNotes = ({ addNotes, profile: { clientProfile, loading } }) => {
+const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loading } }) => {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({ notes: '' });
   const { notes } = formData;
@@ -20,6 +20,13 @@ const ClientNotes = ({ addNotes, profile: { clientProfile, loading } }) => {
     console.log(e.currentTarget);
     setVisible(!visible);
   };
+
+  useEffect(() => {
+    getClientProfile(clientProfile._id);
+    setFormData({
+      notes: loading || !clientProfile.notes ? '' : clientProfile.notes
+    });
+  }, [getClientProfile, clientProfile._id, loading]);
   return (
     <div className="note-container" > <i className="fas fa-plus" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i>{
       visible &&
@@ -40,6 +47,7 @@ const ClientNotes = ({ addNotes, profile: { clientProfile, loading } }) => {
 
 ClientNotes.propTypes = {
   addNotes: PropTypes.func.isRequired,
+  getClientProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -47,4 +55,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { addNotes })(ClientNotes);
+export default connect(mapStateToProps, { addNotes, getClientProfile })(ClientNotes);

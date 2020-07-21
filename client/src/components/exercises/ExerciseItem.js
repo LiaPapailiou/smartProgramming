@@ -20,7 +20,7 @@ const ExerciseItem = ({
     max,
     factor
   },
-  deleteExercise
+  deleteExercise,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -76,12 +76,6 @@ const ExerciseItem = ({
 
 ExerciseItem.propTypes = {
   deleteExercise: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  exercise: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  exercise: state.exercises
-});
-export default connect(mapStateToProps, { deleteExercise })(ExerciseItem);
+export default connect(null, { deleteExercise })(ExerciseItem);

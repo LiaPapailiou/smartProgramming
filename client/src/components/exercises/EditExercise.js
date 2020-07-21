@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
 import Navbar from '../layout/Navbar';
 import CustomAlert from '../layout/CustomAlert';
-const EditExercise = ({ match, getExerciseById, editExercise }) => {
+import { useHistory } from 'react-router-dom';
+
+const EditExercise = ({ match, getExerciseById, editExercise, exercise: { _id } }) => {
+  let history = useHistory();
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -23,7 +26,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    editExercise(formData, match.params.id);
+    editExercise(formData, _id);
     setFormData({
       exercise: '',
       body: '',
@@ -36,6 +39,11 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
   useEffect(() => {
     getExerciseById(match.params.id);
   }, [getExerciseById, match.params.id]);
+
+
+  const onClick = () => {
+    history.push('/exercises');
+  };
   return (
     <div className="add">
       <Navbar />
@@ -100,6 +108,11 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
                 </label>
               </div>
               <input
+                type="button"
+                className="input-add"
+                onClick={ () => onClick() }
+                value="Go Back" />
+              <input
                 type="submit"
                 className="input-add"
                 value="Edit" />
@@ -114,6 +127,10 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
 EditExercise.propTypes = {
   getExerciseById: PropTypes.func.isRequired,
   editExercise: PropTypes.func.isRequired,
+  exercise: PropTypes.object.isRequired,
 };
 
-export default connect(null, { getExerciseById, editExercise })(EditExercise);
+const mapStateToProps = (state) => ({
+  exercise: state.exercises
+});
+export default connect(mapStateToProps, { getExerciseById, editExercise })(EditExercise);

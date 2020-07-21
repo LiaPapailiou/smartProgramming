@@ -18,12 +18,17 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_EXERCISE:
-    case EDIT_EXERCISE:
       return {
         ...state,
         exercise: payload,
         exercises: [],
         loading: false,
+      };
+    case EDIT_EXERCISE:
+      return {
+        ...state,
+        loading: false,
+        exercise: state.exercises.map((ex) => ex._id === payload)
       };
     case GET_EXERCISES:
       return {

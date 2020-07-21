@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import Navbar from '../layout/Navbar';
 import { insertExercise } from '../../actions/exercise';
 import CustomAlert from '../layout/CustomAlert';
+import { useHistory } from 'react-router-dom';
 
 
 const AddExercise = ({ insertExercise }) => {
+  let history = useHistory();
   const [formData, setFormData] = useState({
     exercise: '',
     body: '',
@@ -34,6 +36,9 @@ const AddExercise = ({ insertExercise }) => {
     });
   };
 
+  const onClick = () => {
+    history.push('/exercises');
+  };
   return (
     <div className="add">
       <Navbar />
@@ -97,6 +102,11 @@ const AddExercise = ({ insertExercise }) => {
                   </select>
                 </label>
               </div>
+              <input
+                type="button"
+                className="input-add"
+                onClick={ () => onClick() }
+                value="Go Back" />
               <input
                 type="submit"
                 className="input-add"

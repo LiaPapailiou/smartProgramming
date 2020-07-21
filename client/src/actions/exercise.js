@@ -80,10 +80,10 @@ export const editExercise = (formData, ex_id) => async (dispatch) => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.post(`/exercises/edit/${ex_id}`, formData, config);
+    await axios.post(`/exercises/edit/${ex_id}`, formData, config);
     dispatch({
       type: EDIT_EXERCISE,
-      payload: res.data,
+      payload: ex_id,
     });
     dispatch(setAlert('Exercise updated successfully', 'success'));
   } catch (err) {

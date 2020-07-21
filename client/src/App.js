@@ -31,7 +31,6 @@ const App = () => {
       <Router>
         <Fragment>
           <Route exact path='/' component={ Landing } />
-          <Route exact path='/exercises' component={ ShowAllExercises } />
           <section className="app-container">
             <Switch>
               <Route exact path='/register' component={ Register } />
@@ -40,9 +39,10 @@ const App = () => {
               <PrivateRoute exact path='/add' component={ AddClient } />
               <PrivateRoute exact path='/add-rm/:id' component={ AddNewRM } />
               <PrivateRoute exact path='/edit/:id' component={ EditClientProfile } />
+              <PrivateRoute exact path='/exercises' component={ ShowAllExercises } />
+              <PrivateRoute exact path='/add-exercise' component={ AddExercise } />
+              <PrivateRoute exact path='/edit-exercise/:id' component={ EditExercise } />
             </Switch>
-            <PrivateRoute exact path='/edit-exercise/:id' component={ EditExercise } />
-            <PrivateRoute exact path='/add-exercise' component={ AddExercise } />
           </section>
         </Fragment>
       </Router>

@@ -18,7 +18,7 @@ const ExerciseItem = ({
     body,
     min,
     max,
-    factor
+    factor,
   },
   deleteExercise,
 }) => {

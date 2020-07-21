@@ -5,8 +5,7 @@ import { getExerciseById, editExercise } from '../../actions/exercise';
 import Navbar from '../layout/Navbar';
 import CustomAlert from '../layout/CustomAlert';
 import { useHistory } from 'react-router-dom';
-
-const EditExercise = ({ match, getExerciseById, editExercise, exercise: { _id } }) => {
+const EditExercise = ({ match, getExerciseById, editExercise }) => {
   let history = useHistory();
   const [formData, setFormData] = useState({
     exercise: '',
@@ -26,7 +25,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { _id } 
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    editExercise(formData, _id);
+    editExercise(formData, match.params.id);
     setFormData({
       exercise: '',
       body: '',
@@ -39,7 +38,6 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { _id } 
   useEffect(() => {
     getExerciseById(match.params.id);
   }, [getExerciseById, match.params.id]);
-
 
   const onClick = () => {
     history.push('/exercises');
@@ -127,10 +125,6 @@ const EditExercise = ({ match, getExerciseById, editExercise, exercise: { _id } 
 EditExercise.propTypes = {
   getExerciseById: PropTypes.func.isRequired,
   editExercise: PropTypes.func.isRequired,
-  exercise: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  exercise: state.exercises
-});
-export default connect(mapStateToProps, { getExerciseById, editExercise })(EditExercise);
+export default connect(null, { getExerciseById, editExercise })(EditExercise);

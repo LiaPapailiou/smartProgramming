@@ -37,6 +37,9 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
 
   useEffect(() => {
     getExerciseById(match.params.id);
+    // setFormData({
+    //   exercise: exerciseName,
+    // });
   }, [getExerciseById, match.params.id]);
 
   const onClick = () => {

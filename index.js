@@ -12,7 +12,6 @@ app.use(express.json({ extended: false }));
 app.use('/clients', require('./routes/clients'));
 app.use('/user', require('./routes/user'));
 app.use('/exercises', require('./routes/exercises'));
-// app.use('/exercises-two', require('./routes/exercises-two'));
 app.use('/auth', require('./routes/auth'));
 
 if (process.env.NODE_ENV === 'production') {

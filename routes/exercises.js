@@ -8,7 +8,7 @@ const Exercises = require('../model/Exercises');
 // Get all
 router.get('/', auth, async (req, res) => {
   try {
-    const exercises = await Exercises.find().sort({ body: 1 });
+    const exercises = await Exercises.find({ user: req.user.id }).sort({ body: 1, exercise: 1 }).populate('Exercises');
 
     res.json(exercises);
 
@@ -49,7 +49,7 @@ router.put('/insert', [auth,
       if (exerciseToInsert) return res.status(409).json({ errors: [{ msg: 'Exercise already exists' }] });
 
       exerciseToInsert = await Exercises.create({
-        // user: req.user.id,
+        user: [req.user.id],
         exercise,
         body,
         min,
@@ -73,6 +73,7 @@ router.post('/edit/:ex_id', auth, async (req, res) => {
     },
       {
         $set: {
+          user: req.user.id,
           exercise,
           body,
           min,

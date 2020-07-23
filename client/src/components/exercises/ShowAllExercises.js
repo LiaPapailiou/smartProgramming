@@ -17,7 +17,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, isAu
       <Navbar />
       { loading ? (
         <Spinner />
-      ) : (isAuthenticated &&
+      ) :
         <section className='exercises'>
 
           <div className="dark-overlay">
@@ -47,7 +47,6 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, isAu
               ) }</div>
           </div>
         </section>
-        )
       }
     </Fragment >
   );

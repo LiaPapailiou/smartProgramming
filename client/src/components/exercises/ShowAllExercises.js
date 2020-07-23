@@ -8,7 +8,7 @@ import Navbar from '../layout/Navbar';
 
 
 
-const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) => {
+const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, isAuthenticated }) => {
   useEffect(() => {
     getExercises();
   }, [getExercises, loading]);
@@ -17,7 +17,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
       <Navbar />
       { loading ? (
         <Spinner />
-      ) :
+      ) : (isAuthenticated &&
         <section className='exercises'>
 
           <div className="dark-overlay">
@@ -47,8 +47,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
               ) }</div>
           </div>
         </section>
-
-
+        )
       }
     </Fragment >
   );
@@ -57,10 +56,12 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
 ShowAllExercises.propTypes = {
   getExercises: PropTypes.func.isRequired,
   exercise: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   exercise: state.exercises,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { getExercises })(ShowAllExercises);

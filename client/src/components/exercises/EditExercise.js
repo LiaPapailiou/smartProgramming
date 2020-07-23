@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
 import Navbar from '../layout/Navbar';
 import CustomAlert from '../layout/CustomAlert';
@@ -16,7 +16,7 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
   });
 
   const { exercise, body, min, max, factor } = formData;
-
+  const item = useSelector(state => state.exercises.exercise);
   const onChange = (e) => {
     const value = e.target.value;
     if (value === "true" || value === "false")
@@ -37,9 +37,13 @@ const EditExercise = ({ match, getExerciseById, editExercise }) => {
 
   useEffect(() => {
     getExerciseById(match.params.id);
-    // setFormData({
-    //   exercise: exerciseName,
-    // });
+    setFormData({
+      exercise: item.exercise,
+      body: item.body,
+      min: item.min,
+      max: item.max,
+      factor: item.factor,
+    });
   }, [getExerciseById, match.params.id]);
 
   const onClick = () => {

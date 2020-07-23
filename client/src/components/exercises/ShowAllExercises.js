@@ -8,7 +8,7 @@ import Navbar from '../layout/Navbar';
 
 
 
-const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, isAuthenticated }) => {
+const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) => {
   useEffect(() => {
     getExercises();
   }, [getExercises, loading]);
@@ -55,12 +55,10 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, isAu
 ShowAllExercises.propTypes = {
   getExercises: PropTypes.func.isRequired,
   exercise: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   exercise: state.exercises,
-  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { getExercises })(ShowAllExercises);

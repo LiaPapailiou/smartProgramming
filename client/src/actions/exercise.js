@@ -11,7 +11,7 @@ import {
 
 // Get all exercises
 export const getExercises = () => async (dispatch) => {
-  dispatch({ type: GET_EXERCISES_CLEAR });
+  // dispatch({ type: GET_EXERCISES_CLEAR });
 
   try {
 

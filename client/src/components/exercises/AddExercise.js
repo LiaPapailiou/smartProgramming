@@ -5,9 +5,11 @@ import Navbar from '../layout/Navbar';
 import { insertExercise } from '../../actions/exercise';
 import CustomAlert from '../layout/CustomAlert';
 import { useHistory } from 'react-router-dom';
+import Modal from 'react-modal';
 
 
 const AddExercise = ({ insertExercise }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   let history = useHistory();
   const [formData, setFormData] = useState({
     exercise: '',
@@ -34,16 +36,16 @@ const AddExercise = ({ insertExercise }) => {
       max: '',
       factor: '',
     });
+    // setModalIsOpen(!modalIsOpen);
   };
 
-  const onClick = () => {
-    history.push('/exercises');
-  };
   return (
     <div className="add">
       <Navbar />
       <CustomAlert />
       <div className="dark-overlay">
+        {/* <button className="input-add" onClick={ () => setModalIsOpen(!modalIsOpen) } style={ { marginTop: '100px' } }>Add</button>
+        <Modal isOpen={ modalIsOpen } className="add-modal"> */}
         <div className="add-card" style={ { height: 480 } }>
           <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.15em', paddingLeft: 0 } }>Add an exercise</h3>
           <div className="add-card-body" style={ { marginTop: '2em', } }>
@@ -105,7 +107,7 @@ const AddExercise = ({ insertExercise }) => {
               <input
                 type="button"
                 className="input-add"
-                onClick={ () => onClick() }
+                onClick={ () => history.push('/exercises') }
                 value="Go Back" />
               <input
                 type="submit"
@@ -114,6 +116,7 @@ const AddExercise = ({ insertExercise }) => {
             </form>
           </div>
         </div>
+        {/* </Modal> */ }
       </div>
     </div>
   );

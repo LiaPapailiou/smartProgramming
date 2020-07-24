@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import { getExercises } from '../../actions/exercise';
 import ExerciseItem from './ExerciseItem';
 import Navbar from '../layout/Navbar';
+import Sidebar from '../layout/Sidebar';
 
 
 
@@ -14,14 +15,14 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
   }, [getExercises, loading]);
   return (
     <Fragment>
-      <Navbar />
+      {/* <Navbar /> */ }
+      <Sidebar />
       { loading ? (
         <Spinner />
       ) :
         <section className='exercises'>
 
           <div className="dark-overlay">
-
             <div className="exercises-container">
               { exercises.length > 0 && (
                 <div className="exercise-headers">

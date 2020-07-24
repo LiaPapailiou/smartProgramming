@@ -225,6 +225,12 @@ button {
   background-color: transparent;
   height: 60px;
 }
+.toolbar {
+  opacity: 0.8;
+  background-color: #000;
+}
+
+
 /* Alert */
 
 
@@ -488,7 +494,21 @@ register-input-group-text i {
   align-content: center;
   text-align: center;
 }
+.add-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  background-color: #696666;
+  margin-top: 315px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18.5vw;
+  height: 44vh;
 
+}
 .add-card {
   margin-top: auto;
   margin-bottom: auto;
@@ -496,6 +516,7 @@ register-input-group-text i {
   border: solid #fff 1px;
   height: 540px;
   width: 400px;
+  /* background-color: rgb(24, 23, 23); */
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;

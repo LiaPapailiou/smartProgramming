@@ -16,8 +16,8 @@ const ClientItem = ({
   return (
     <Fragment>
       <tr>
-        <td style={ { color: '#fff', padding: '1em', fontSize: 13, textAlign: 'justify' } }> { clientFirstName } { clientLastName } </td>
-        <td style={ { color: '#fff', padding: '1em', fontSize: 13, textAlign: 'justify' } }>
+        <td style={ { color: '#fff', padding: '1em', fontSize: 15, textAlign: 'left', fontWeight: 300 } }> { clientFirstName } { clientLastName } </td>
+        <td style={ { color: '#fff', padding: '1em', fontSize: 15, textAlign: 'justify', fontWeight: 300 } }>
           { clientPhone ? <span><strong>Phone </strong> { clientPhone } </span> : <span>{ '' }</span> }
           <br />
           { clientEmail ? <span><strong>Email </strong> { clientEmail } </span> : <span>{ '' }</span> }

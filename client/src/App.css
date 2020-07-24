@@ -225,11 +225,9 @@ button {
   background-color: transparent;
   height: 60px;
 }
-.toolbar {
-  opacity: 0.8;
-  background-color: #000;
+.MuiToolbar-root {
+  background-color:#050404c5;
 }
-
 
 /* Alert */
 
@@ -444,8 +442,10 @@ register-input-group-text i {
 }
 
 .client-table thead {
-  border-bottom: 1px solid;
-
+  border-bottom: 1px solid #6d6d6d;
+}
+.client-table td {
+  border-bottom: 1px solid #6d6d6d;
 }
 .client-table tr{
   border-bottom: 1px solid;
@@ -1063,6 +1063,7 @@ a:hover {
   font-weight: 300;
   font-size: 22px;
   color: #93aabd;
+  border-bottom: 1px solid #6d6d6d;
   background-color: #00000080;
 }
 .exercises-container td {

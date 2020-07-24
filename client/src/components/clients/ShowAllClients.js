@@ -23,9 +23,9 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
               <table className="client-table">
                 <thead>
                   <tr>
-                    <th style={ { color: '#fff', padding: '1em' } }>Client Name</th>
-                    <th style={ { color: '#fff', padding: '1em' } }>Client Information</th>
-                    <th style={ { color: '#fff', padding: '1em' } }>View Client</th>
+                    <th style={ { color: '#93aabd', padding: '1em', backgroundColor: '#00000080', fontSize: 18, fontWeight: 300 } }>Client Name</th>
+                    <th style={ { color: '#93aabd', padding: '1em', backgroundColor: '#00000080', fontSize: 18, fontWeight: 30 } }>Client Information</th>
+                    <th style={ { color: '#93aabd', padding: '1em', backgroundColor: '#00000080', fontSize: 18, fontWeight: 30 } }>View Client</th>
                   </tr>
                 </thead>
                 <tbody >{

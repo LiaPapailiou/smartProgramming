@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../layout/Navbar';
+// import Navbar from '../layout/Navbar';
 import { connect } from 'react-redux';
 import { getAllProfiles } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import ShowAllClients from '../clients/ShowAllClients';
+import Sidebar from '../layout/Sidebar';
+
+
 
 const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) => {
   useEffect(() => {
@@ -13,7 +16,8 @@ const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) =>
   return (
     <section className="dashboard">
       <div className="dark-overlay">
-        <Navbar />
+        {/* <Navbar /> */ }
+        <Sidebar />
 
         {
           loading && clientProfiles === []

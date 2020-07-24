@@ -43,6 +43,12 @@ export default function (state = initialState, action) {
         error: payload,
       };
     case GET_EXERCISES_CLEAR:
+      return {
+        ...state,
+        exercise: null,
+        exercises: [],
+        loading: false,
+      };
     case DELETE_EXERCISE:
       return {
         ...state,

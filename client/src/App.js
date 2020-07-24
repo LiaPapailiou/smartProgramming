@@ -9,6 +9,7 @@ import EditClientProfile from './components/clients/EditClientProfile';
 import AddNewRM from './components/clients/AddNewRM';
 import Client from './components/clients/Client';
 import ShowAllExercises from './components/exercises/ShowAllExercises';
+import ShowLibrary from './components/exerciseLibrary/ShowLibrary';
 import AddExercise from './components/exercises/AddExercise';
 import EditExercise from './components/exercises/EditExercise';
 import { Provider } from 'react-redux';
@@ -40,6 +41,7 @@ const App = () => {
               <PrivateRoute exact path='/add-rm/:id' component={ AddNewRM } />
               <PrivateRoute exact path='/edit/:id' component={ EditClientProfile } />
               <PrivateRoute exact path='/exercises' component={ ShowAllExercises } />
+              <PrivateRoute exact path='/exercise-log' component={ ShowLibrary } />
               <PrivateRoute exact path='/add-exercise' component={ AddExercise } />
               <PrivateRoute exact path='/edit-exercise/:id' component={ EditExercise } />
             </Switch>

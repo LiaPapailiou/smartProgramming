@@ -23,10 +23,10 @@ const ShowLibrary = ({ getExerciseLibrary, exerciseLibrary: { exerciseLibraryLis
                   <table>
                     <thead>
                       <tr className="head">
-                        <th>Exercise Name</th>
-                        <th>Exercise Category</th>
-                        <th>Video Link</th>
-                        <th>Actions</th>
+                        <th style={ { fontSize: 18 } }>Exercise</th>
+                        <th style={ { fontSize: 18 } }>Category</th>
+                        <th style={ { fontSize: 18 } }>Video</th>
+                        <th style={ { fontSize: 18 } }>Actions</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -8,7 +8,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  singleExerciseName: null,
+  singleExercise: null,
   exerciseLibraryList: [],
   loading: true,
   error: {}
@@ -20,14 +20,15 @@ export default function (state = initialState, action) {
     case GET_SINGLE_EXERCISE:
       return {
         ...state,
-        singleExerciseName: payload,
+        singleExercise: payload,
         loading: false,
       };
+
     case EDIT_SINGLE_EXERCISE:
       return {
         ...state,
         loading: false,
-        singleExerciseName: state.exerciseLibraryList.map((ex) => ex._id === payload)
+        singleExercise: payload,
       };
     case GET_EXERCISE_LIBRARY:
       return {
@@ -42,16 +43,10 @@ export default function (state = initialState, action) {
         error: payload,
       };
     case GET_EXERCISE_LIBRARY_CLEAR:
-      return {
-        ...state,
-        singleExerciseName: null,
-        exerciseLibraryList: [],
-        loading: false,
-      };
     case DELETE_SINGLE_EXERCISE:
       return {
         ...state,
-        singleExerciseName: null,
+        singleExercise: null,
         exerciseLibraryList: state.exerciseLibraryList.filter((ex) => ex._id !== payload),
         loading: false,
       };

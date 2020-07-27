@@ -47,6 +47,7 @@ const Sidebar = ({ logout }) => {
             </IconButton>
           </div>
           <MenuList>
+            <MenuItem><Link href='/exercise-library' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Exercise Library</Link></MenuItem>
             <MenuItem><Link href='/exercises' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Exercise List</Link></MenuItem>
             <MenuItem><Link href='/add-exercise' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } } >Add Exercise</Link> </MenuItem>
             <MenuItem><Link href='/dashboard' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Client List</Link></MenuItem>

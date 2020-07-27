@@ -8,7 +8,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  exercise: null,
+  exerciseName: null,
   exercises: [],
   loading: true,
   error: {}
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
     case GET_EXERCISE:
       return {
         ...state,
-        exercise: payload,
+        exerciseName: payload,
         exercises: [],
         loading: false,
       };
@@ -28,7 +28,8 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
-        exercise: state.exercises.map((ex) => ex._id === payload)
+        exerciseName: payload,
+        // exercise: state.exercises.map((ex) => ex._id === payload)
       };
     case GET_EXERCISES:
       return {
@@ -43,16 +44,10 @@ export default function (state = initialState, action) {
         error: payload,
       };
     case GET_EXERCISES_CLEAR:
-      return {
-        ...state,
-        exercise: null,
-        exercises: [],
-        loading: false,
-      };
     case DELETE_EXERCISE:
       return {
         ...state,
-        exercise: null,
+        exerciseName: null,
         exercises: state.exercises.filter((ex) => ex._id !== payload),
         loading: false,
       };

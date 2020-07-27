@@ -6,13 +6,14 @@ import {
   EDIT_SINGLE_EXERCISE,
   DELETE_SINGLE_EXERCISE,
   GET_EXERCISE_LIBRARY_ERROR,
+  GET_EXERCISE_LIBRARY_CLEAR
 } from './types';
 
 // Get all exercises in the library
 export const getExerciseLibrary = () => async (dispatch) => {
   try {
-
-    const res = await axios.get(`/exercise-log`);
+    // dispatch({ type: GET_EXERCISE_LIBRARY_CLEAR });
+    const res = await axios.get(`/exercise-library`);
     dispatch({
       type: GET_EXERCISE_LIBRARY,
       payload: res.data,
@@ -29,7 +30,7 @@ export const getExerciseLibrary = () => async (dispatch) => {
 export const getSingleExercise = (ex_id) => async (dispatch) => {
   try {
 
-    const res = await axios.get(`/exercise-log/search/${ex_id}`);
+    const res = await axios.get(`/exercise-library/search/${ex_id}`);
     dispatch({
       type: GET_SINGLE_EXERCISE,
       payload: res.data,
@@ -50,7 +51,7 @@ export const insertSingleExercise = (formData) => async (dispatch) => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.put('/exercise-log/insert', formData, config);
+    const res = await axios.put('/exercise-library/insert', formData, config);
     dispatch({
       type: GET_SINGLE_EXERCISE,
       payload: res.data,
@@ -77,7 +78,7 @@ export const editSingleExercise = (formData, ex_id) => async (dispatch) => {
         'Content-Type': 'application/json'
       }
     };
-    await axios.post(`/exercise-log/edit/${ex_id}`, formData, config);
+    await axios.post(`/exercise-library/edit/${ex_id}`, formData, config);
     dispatch({
       type: EDIT_SINGLE_EXERCISE,
       payload: ex_id,
@@ -98,7 +99,7 @@ export const editSingleExercise = (formData, ex_id) => async (dispatch) => {
 // Delete exercise
 export const deleteSingleExercise = (id) => async (dispatch) => {
   try {
-    await axios.delete(`/exercise-log/delete/${id}`);
+    await axios.delete(`/exercise-library/delete/${id}`);
     dispatch({
       type: DELETE_SINGLE_EXERCISE,
       payload: id

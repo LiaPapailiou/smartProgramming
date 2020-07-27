@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Navbar from '../layout/Navbar';
+// import Navbar from '../layout/Navbar';
 import { insertExercise } from '../../actions/exercise';
 import CustomAlert from '../layout/CustomAlert';
 import { useHistory } from 'react-router-dom';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import Sidebar from '../layout/Sidebar';
 
 

@@ -6,6 +6,7 @@ import {
   GET_EXERCISES_ERROR,
   EDIT_EXERCISE,
   DELETE_EXERCISE,
+  GET_EXERCISES_CLEAR
 } from './types';
 
 // Get all exercises
@@ -29,6 +30,7 @@ export const getExercises = () => async (dispatch) => {
 export const getExerciseById = (ex_id) => async (dispatch) => {
   try {
 
+    // dispatch({ type: GET_EXERCISES_CLEAR });
     const res = await axios.get(`/exercises/search/${ex_id}`);
     dispatch({
       type: GET_EXERCISE,

@@ -8,8 +8,8 @@ const ExerciseLog = require('../model/ExerciseLog');
 // Get all
 router.get('/', auth, async (req, res) => {
   try {
-    // const exercises = await ExerciseLog.find({ user: req.user.id }).sort({ exerciseCategory: 1, exerciseName: 1 }).populate('ExerciseLog');
-    const exercises = await ExerciseLog.find().sort({ exerciseCategory: 1, exerciseName: 1 });
+    const exercises = await ExerciseLog.find({ user: req.user.id }).sort({ exerciseCategory: 1, exerciseName: 1 }).populate('ExerciseLog');
+    // const exercises = await ExerciseLog.find().sort({ exerciseCategory: 1, exerciseName: 1 });
 
     res.json(exercises);
   } catch (err) {
@@ -44,7 +44,7 @@ router.put('/insert', [auth, [
     let exercise = await ExerciseLog.findOne({ exerciseName });
     if (exercise) return res.status(409).json({ errors: [{ msg: 'Exercise already exists' }] });
     exercise = await ExerciseLog.create({
-      // user: [req.user.id],
+      user: [req.user.id],
       exerciseName,
       videoLink,
       exerciseCategory,
@@ -62,12 +62,12 @@ router.post('/edit/:ex_id', auth, async (req, res) => {
   try {
     let exercise = await ExerciseLog.find({ _id: req.params.ex_id });
     if (!exercise) return res.status(404).json({ msg: 'Exercise not found in the database' });
-    exercises = await ExerciseLog.findByIdAndUpdate({
+    exercise = await ExerciseLog.findByIdAndUpdate({
       _id: req.params.ex_id,
     },
       {
         $set: {
-          // user: req.user.id,
+          user: req.user.id,
           exerciseName,
           videoLink,
           exerciseCategory,

@@ -47,7 +47,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
       max: loading || !exerciseName.max ? '' : exerciseName.max,
       factor: loading || !exerciseName.factor ? '' : exerciseName.factor,
     });
-  }, [getExerciseById, match.params.id, loading, exerciseName]);
+  }, [getExerciseById, match.params.id, loading]);
 
   const onClick = () => {
     history.push('/exercises');

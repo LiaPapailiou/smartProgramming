@@ -69,7 +69,7 @@ const AddToLibrary = ({ insertSingleExercise }) => {
                 <input
                   type="button"
                   className="input-add"
-                  onClick={ () => history.push('/exercises') }
+                  onClick={ () => history.push('/exercise-library') }
                   value="Go Back" />
                 <input
                   type="submit"

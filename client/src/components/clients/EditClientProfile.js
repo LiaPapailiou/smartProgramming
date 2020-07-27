@@ -56,7 +56,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       benchPress: loading || !clientProfile.clientOneRM[0].benchPress ? '' : clientProfile.clientOneRM[0].benchPress,
       squat: loading || !clientProfile.clientOneRM[0].squat ? '' : clientProfile.clientOneRM[0].squat,
     });
-  }, [getClientProfile, loading,]);
+  }, [getClientProfile, match.params.id, loading, clientProfile]);
 
   return (
     <section className="add-client">

@@ -6,7 +6,7 @@ import {
   GET_EXERCISES_ERROR,
   EDIT_EXERCISE,
   DELETE_EXERCISE,
-  GET_EXERCISES_CLEAR
+  // GET_EXERCISES_CLEAR
 } from './types';
 
 // Get all exercises

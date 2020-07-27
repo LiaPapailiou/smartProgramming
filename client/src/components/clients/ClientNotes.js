@@ -26,7 +26,7 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
     setFormData({
       notes: loading || !clientProfile.notes ? '' : clientProfile.notes
     });
-  }, [getClientProfile, clientProfile._id, loading,]);
+  }, [getClientProfile, clientProfile._id, loading, clientProfile.notes]);
   return (
     <div className="note-container" > <i className="fas fa-plus" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i>{
       visible &&

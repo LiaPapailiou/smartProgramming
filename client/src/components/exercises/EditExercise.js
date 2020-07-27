@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { getExerciseById, editExercise } from '../../actions/exercise';
 import Sidebar from '../layout/Sidebar';
 import CustomAlert from '../layout/CustomAlert';
@@ -18,7 +18,6 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
   });
 
   const { exercise, body, min, max, factor } = formData;
-  // const item = useSelector(state => state.exercises.exercise);
 
   const onChange = (e) => {
     const value = e.target.value;
@@ -48,7 +47,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
       max: loading || !exerciseName.max ? '' : exerciseName.max,
       factor: loading || !exerciseName.factor ? '' : exerciseName.factor,
     });
-  }, [getExerciseById, match.params.id, loading]);
+  }, [getExerciseById, match.params.id, loading, exerciseName]);
 
   const onClick = () => {
     history.push('/exercises');

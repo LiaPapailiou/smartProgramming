@@ -36,7 +36,7 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
       exerciseCategory: loading || !singleExercise.exerciseCategory ? '' : singleExercise.exerciseCategory,
       videoLink: loading || !singleExercise.videoLink ? '' : singleExercise.videoLink,
     });
-  }, [getSingleExercise, match.params.id, loading]);
+  }, [getSingleExercise, match.params.id, loading, singleExercise]);
   const onClick = () => {
     history.push('/exercise-library');
   };

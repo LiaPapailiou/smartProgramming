@@ -29,7 +29,6 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         exerciseName: payload,
-        // exercise: state.exercises.map((ex) => ex._id === payload)
       };
     case GET_EXERCISES:
       return {

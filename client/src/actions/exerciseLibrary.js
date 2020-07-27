@@ -6,7 +6,7 @@ import {
   EDIT_SINGLE_EXERCISE,
   DELETE_SINGLE_EXERCISE,
   GET_EXERCISE_LIBRARY_ERROR,
-  GET_EXERCISE_LIBRARY_CLEAR
+  // GET_EXERCISE_LIBRARY_CLEAR
 } from './types';
 
 // Get all exercises in the library

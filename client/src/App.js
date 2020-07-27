@@ -11,6 +11,7 @@ import Client from './components/clients/Client';
 import ShowAllExercises from './components/exercises/ShowAllExercises';
 import ShowLibrary from './components/exerciseLibrary/ShowLibrary';
 import AddExercise from './components/exercises/AddExercise';
+import AddToLibrary from './components/exerciseLibrary/AddToLibrary';
 import EditExercise from './components/exercises/EditExercise';
 import EditLibrary from './components/exerciseLibrary/EditLibrary';
 import { Provider } from 'react-redux';
@@ -38,6 +39,7 @@ const App = () => {
               <Route exact path='/register' component={ Register } />
               <Route exact path='/exercise-library' component={ ShowLibrary } />
               <Route exact path='/edit-library/:id' component={ EditLibrary } />
+              <Route exact path='/add-library/' component={ AddToLibrary } />
               <PrivateRoute exact path='/dashboard' component={ Dashboard } />
               <PrivateRoute exact path='/client/:id' component={ Client } />
               <PrivateRoute exact path='/add' component={ AddClient } />

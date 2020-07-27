@@ -10,7 +10,7 @@ import Sidebar from '../layout/Sidebar';
 
 
 const AddExercise = ({ insertExercise }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   let history = useHistory();
   const [formData, setFormData] = useState({
     exercise: '',

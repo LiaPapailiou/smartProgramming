@@ -36,10 +36,10 @@ const App = () => {
           <Route exact path='/' component={ Landing } />
           <section className="app-container">
             <Switch>
-              <Route exact path='/register' component={ Register } />
-              <Route exact path='/exercise-library' component={ ShowLibrary } />
-              <Route exact path='/edit-library/:id' component={ EditLibrary } />
-              <Route exact path='/add-library/' component={ AddToLibrary } />
+              <PrivateRoute exact path='/register' component={ Register } />
+              <PrivateRoute exact path='/exercise-library' component={ ShowLibrary } />
+              <PrivateRoute exact path='/edit-library/:id' component={ EditLibrary } />
+              <PrivateRoute exact path='/add-library/' component={ AddToLibrary } />
               <PrivateRoute exact path='/dashboard' component={ Dashboard } />
               <PrivateRoute exact path='/client/:id' component={ Client } />
               <PrivateRoute exact path='/add' component={ AddClient } />

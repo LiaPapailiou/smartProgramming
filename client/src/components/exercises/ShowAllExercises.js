@@ -9,7 +9,7 @@ import Sidebar from '../layout/Sidebar';
 
 
 
-const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) => {
+const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, auth: { isAuthenticated } }) => {
   useEffect(() => {
     getExercises();
   }, [getExercises, loading]);
@@ -18,7 +18,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
       <Sidebar />
       { loading ? (
         <Spinner />
-      ) :
+      ) : (isAuthenticated &&
         <section className='exercises'>
           <div className="dark-overlay">
             {/* <Sidebar /> */ }
@@ -47,6 +47,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
               ) }</div>
           </div>
         </section>
+        )
       }
     </Fragment >
   );
@@ -55,10 +56,12 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
 ShowAllExercises.propTypes = {
   getExercises: PropTypes.func.isRequired,
   exercise: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   exercise: state.exercises,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getExercises })(ShowAllExercises);

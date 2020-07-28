@@ -28,20 +28,23 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
     });
   }, [getClientProfile, clientProfile._id, loading, clientProfile.notes]);
   return (
-    <div className="note-container" > <i className="fas fa-plus" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i>{
-      visible &&
-      <form className="add-notes" onSubmit={ handleSubmit }>
-        <textarea placeholder="Add notes..." cols="64" rows="8" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080', color: '#fff' } }>
-        </textarea>
-        <br />
-        <input
-          type="submit"
-          className="calculate"
-          value="Add" />
-      </form>
-    }
+    <>
+      <div className="icon-static"><i className="fas fa-plus" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i></div>
+      <div className="note-container" > {
+        visible &&
+        <form className="add-notes" onSubmit={ handleSubmit }>
+          <textarea placeholder="Add notes..." cols="64" rows="8" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080', color: '#fff' } }>
+          </textarea>
+          <br />
+          <input
+            type="submit"
+            className="calculate"
+            value="Add" />
+        </form>
+      }
 
-    </div >
+      </div >
+    </>
   );
 };
 

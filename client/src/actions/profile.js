@@ -63,7 +63,7 @@ export const insertClient = (formData, history) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert('Client added successfully', 'success'));
-    history.push('/dashboard');
+    history.push('/dashboard/clients');
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

@@ -415,7 +415,7 @@ register-input-group-text i {
   display: flex;
 }
 .clients{
-  height: 100vh; 
+  height: 80vh; 
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -427,7 +427,7 @@ register-input-group-text i {
 }
 
 .client-table {
-  max-width: 800px;
+  width: 33vw;
   background-color: #00000080;
   border-collapse: collapse;
 }
@@ -440,13 +440,13 @@ register-input-group-text i {
 }
 .client-table tr{
   border-bottom: 1px solid;
-  max-height: 90px;
+  max-height: 10vh;
   text-align: justify;
 }
 .table-wrapper {
   position: relative;
   overflow: auto;
-  max-height: 800px;
+  max-height: 50vh;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -781,11 +781,11 @@ a:hover {
   padding: .5em;
   background-color: #00000080;
   height: 80vh;
-  max-height: 80%;
-  width: 580px;
+  max-height: 80vh;
+  width:25vw;
   margin-top: 80px;
-  margin-left: -700px;
-  max-width: 35%;
+  margin-left: 220px;
+  max-width: 25vw;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -795,7 +795,7 @@ a:hover {
 .rm-chart {
   position: absolute;
   align-self: flex-start;
-  margin-right: -700px;
+  margin-left: 900px;
   margin-top: 80px;
   background-color: #00000080;
   max-width: 30vw;
@@ -824,9 +824,9 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  margin-right: -698px;
+  margin-left: 900px;
   max-height: 20vh;
-  font-size: 12px;
+  font-size: 14px;
   color: '#fff';
   padding-right: 8px;
   text-align: left;
@@ -835,6 +835,11 @@ a:hover {
   margin-bottom: 60px;
 }
 
+.icon-static {
+  position: absolute;
+  margin-left:1100px ;
+  margin-top: 470px;
+}
 .add-notes {
   overflow: auto;
 }

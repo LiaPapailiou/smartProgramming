@@ -13,6 +13,7 @@ import {
 import AddClient from '../clients/AddClient';
 import EditClientProfile from '../clients/EditClientProfile';
 import AddNewRM from '../clients/AddNewRM';
+import AddWeight from '../clients/AddWeight';
 import Client from '../clients/Client';
 import ShowAllExercises from '../exercises/ShowAllExercises';
 import ShowLibrary from '../exerciseLibrary/ShowLibrary';
@@ -36,6 +37,7 @@ const Dashboard = () => {
           <PrivateRoute exact path='/dashboard/client/:id' component={ Client } />
           <PrivateRoute exact path='/dashboard/add' component={ AddClient } />
           <PrivateRoute exact path='/dashboard/add-rm/:id' component={ AddNewRM } />
+          <PrivateRoute exact path='/dashboard/add-weight/:id' component={ AddWeight } />
           <PrivateRoute exact path='/dashboard/edit/:id' component={ EditClientProfile } />
           <PrivateRoute exact path='/dashboard/exercises' component={ ShowAllExercises } />
           <PrivateRoute exact path='/dashboard/add-exercise' component={ AddExercise } />

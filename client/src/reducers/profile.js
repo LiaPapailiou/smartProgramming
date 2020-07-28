@@ -9,6 +9,7 @@ import {
   DELETE_CLIENT,
   GET_CLIENT_ESTIMATES,
   GET_CLIENT_NOTES,
+  UPDATE_WEIGHT,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
@@ -25,6 +26,7 @@ export default function (state = initialState, action) {
     case GET_CLIENT_PROFILE:
     case EDIT_CLIENT_PROFILE:
     case UPDATE_RM:
+    case UPDATE_WEIGHT:
       return {
         ...state,
         clientProfile: payload,

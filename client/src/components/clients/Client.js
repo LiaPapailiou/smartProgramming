@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
 import ClientEstimates from './ClientEstimates';
 import OneRMChart from './OneRMChart';
+import WeightChart from './WeightChart';
 import ClientNotes from './ClientNotes';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
@@ -53,6 +54,10 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                     <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
+                  <Link href={ `/dashboard/add-weight/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                    <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+            Add Weight
+            </Link>
                   <Link onClick={ handleClickOpen } style={ { color: '#61c9a8' } }>
                     <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
                     Delete</Link>
@@ -99,6 +104,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
 
             <ClientNotes />
             <OneRMChart clientId={ clientProfile._id } />
+            <WeightChart clientId={ clientProfile._id } />
           </div>)
         }
       </Fragment>

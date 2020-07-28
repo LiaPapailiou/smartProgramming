@@ -12,6 +12,7 @@ const AddClient = ({ insertClient, history }) => {
     clientPhone: '',
     clientEmail: '',
     clientSport: '',
+    clientWeight: '',
     benchPress: '',
     squat: '',
   });
@@ -21,6 +22,7 @@ const AddClient = ({ insertClient, history }) => {
     clientPhone,
     clientEmail,
     clientSport,
+    clientWeight,
     benchPress,
     squat,
   } = formData;
@@ -35,6 +37,7 @@ const AddClient = ({ insertClient, history }) => {
       clientPhone: '',
       clientEmail: '',
       clientSport: '',
+      clientWeight: '',
       benchPress: '',
       squat: '',
     });
@@ -89,6 +92,14 @@ const AddClient = ({ insertClient, history }) => {
                     value={ clientSport }
                     onChange={ (e) => onChange(e) }
                     placeholder=" Type of Sport (optional)"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientWeight"
+                    value={ clientWeight }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Starting Weight (optional)"
                   />
                   <input
                     type="text"

@@ -1,30 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addRM, getClientProfile } from '../../actions/profile';
+import { addWeight, getClientProfile } from '../../actions/profile';
 import { withRouter } from 'react-router-dom';
 
-
-const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, loading } }) => {
+const AddWeight = ({ match, addWeight, getClientProfile, profile: { clientProfile, loading } }) => {
   const [formData, setFormData] = useState({
-    clientFirstName: '',
-    benchPress: '',
-    squat: '',
+    weight: '',
   });
-
   useEffect(() => {
     getClientProfile(match.params.id);
   }, [loading, getClientProfile, match.params.id]);
-
-  const { benchPress, squat } = formData;
-
+  const { weight } = formData;
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
-    addRM(formData, clientProfile._id);
+    addWeight(formData, clientProfile._id);
     setFormData({
-      benchPress: '',
-      squat: '',
+      weight: '',
     });
     window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
@@ -45,18 +38,10 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
                     <input
                       type="text"
                       className="form-control"
-                      name="benchPress"
-                      value={ benchPress }
+                      name="weight"
+                      value={ weight }
                       onChange={ (e) => onChange(e) }
-                      placeholder=" Bench Press"
-                      required />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="squat"
-                      value={ squat }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Squat"
+                      placeholder=" Weight in kg"
                       required />
                   </div>
                   <input
@@ -78,12 +63,12 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
   );
 };
 
-AddNewRM.propTypes = {
-  addRM: PropTypes.func.isRequired,
+AddWeight.propTypes = {
+  addWeight: PropTypes.func.isRequired,
   getClientProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
-export default connect(mapStateToProps, { getClientProfile, addRM })(withRouter(AddNewRM));
+export default connect(mapStateToProps, { addWeight, getClientProfile })(withRouter(AddWeight));

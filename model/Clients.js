@@ -21,6 +21,17 @@ const clientSchema = new mongoose.Schema({
   clientSport: {
     type: String,
   },
+  clientWeight: [
+    {
+      weight: {
+        type: Number,
+      },
+      added: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   clientOneRM: [
     {
       benchPress: {

@@ -38,6 +38,7 @@ router.post('/edit/:client_id', auth, async (req, res) => {
     clientPhone,
     clientEmail,
     clientSport,
+    clientWeight,
     benchPress,
     squat,
   } = req.body;
@@ -58,6 +59,7 @@ router.post('/edit/:client_id', auth, async (req, res) => {
           clientPhone,
           clientEmail,
           clientSport,
+          clientWeight,
           'clientOneRM.0': newRM,
         },
       },
@@ -91,6 +93,29 @@ router.post('/add/:client_id', [auth,
     await client.save();
     res.json(client);
   } catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+// Add weight
+router.post('/add-weight/:client_id', [auth,
+  [
+    check('weight', 'Client weight is required').not().isEmpty(),
+  ],
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  const {
+    weight
+  } = req.body;
+
+  const newWeight = { weight };
+  try {
+    const client = await Clients.findById(req.params.client_id);
+    client.clientWeight.push(newWeight);
+    await client.save();
+    res.json(client);
+  } catch (err) {
+    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 });
@@ -131,6 +156,7 @@ router.put('/insert', [auth,
       clientPhone,
       clientEmail,
       clientSport,
+      clientWeight,
       benchPress,
       squat,
     } = req.body;
@@ -150,6 +176,7 @@ router.put('/insert', [auth,
         clientPhone,
         clientEmail,
         clientSport,
+        clientWeight,
         clientOneRM: oneRM,
       });
       res.json(client);
@@ -181,9 +208,6 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
     const benchRM = client.clientOneRM[0].benchPress;
     const squatRM = client.clientOneRM[0].squat;
 
-
-    // const exercisesLower = await Exercises.find({ body: "Squat" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
-    // const exercisesUpper = await Exercises.find({ body: "Bench" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
     const exercisesLower = await Exercises.find({ user: req.user.id, body: "Squat" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
     const exercisesUpper = await Exercises.find({ user: req.user.id, body: "Bench" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
 

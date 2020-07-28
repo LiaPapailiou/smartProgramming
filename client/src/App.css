@@ -505,7 +505,7 @@ register-input-group-text i {
   margin-bottom: auto;
   padding-top: 10px;
   border: solid #fff 1px;
-  height: 55vh;
+  height: 58vh;
   width: 18vw;
   margin-left: auto;
   margin-right: auto;
@@ -797,6 +797,20 @@ a:hover {
   align-self: flex-start;
   margin-left: 900px;
   margin-top: 80px;
+  background-color: #00000080;
+  max-width: 30vw;
+  min-width: 25vw;
+  border: solid #535252 1px;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+.weight-chart {
+  position: absolute;
+  align-self: flex-start;
+  margin-left: 1500px;
+  margin-top: -300px;
   background-color: #00000080;
   max-width: 30vw;
   min-width: 25vw;

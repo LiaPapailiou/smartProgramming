@@ -47,18 +47,18 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                 </h3>
                 <span className="client-header-links">
                   <Link href={ `/dashboard/edit/${match.params.id}` } style={ { color: '#61c9a8' } }>
-                    <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+                    <i className="fas fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit</Link>
                   <Link href={ `/dashboard/add-rm/${match.params.id}` } style={ { color: '#61c9a8' } }>
-                    <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+                    <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
                   <Link href={ `/dashboard/add-weight/${match.params.id}` } style={ { color: '#61c9a8' } }>
-                    <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+                    <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add Weight
             </Link>
                   <Link onClick={ handleClickOpen } style={ { color: '#61c9a8' } }>
-                    <i className="far fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
+                    <i className="fas fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
                     Delete</Link>
                   <Dialog
                     open={ open }

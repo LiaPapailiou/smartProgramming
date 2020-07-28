@@ -17,7 +17,7 @@ const WeightChart = ({ profile: { clientProfile } }) => {
     return <span style={ { color, fontSize: 14, paddingRight: '0.25em' } }>{ value }</span>;
   };
   const data = clientProfile.clientWeight;
-  console.log(data);
+
   return (
     <LineChart
       width={ 450 }

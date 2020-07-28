@@ -41,7 +41,7 @@ const SingleExerciseItem = ({
         <td>{ exerciseCategory }</td>
         <td><Link rel="noopener noreferrer" href={ videoLink } target="_blank"><i className="fab fa-youtube" style={ { color: '#f22727' } }></i></Link></td>
         <td>
-          <Link href={ `/edit-library/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link>{ ' ' }
+          <Link href={ `/dashboard/edit-library/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link>{ ' ' }
           <Link onClick={ handleClickOpen } style={ { color: '#9cabb8' } }>Remove</Link>
           <Dialog
             open={ open }

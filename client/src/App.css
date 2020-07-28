@@ -152,11 +152,6 @@ img {
 /* Overlay */
 .dark-overlay {
   background-color: #00000098;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: baseline;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -247,10 +242,12 @@ button {
 }
   
 .card {
-  height: 340px;
-  margin-top: auto;
+  margin-top: 320px;
   margin-bottom: auto;
-  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18vw;
+  height: 32vh;
   border: 1px solid #fff;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
@@ -345,22 +342,16 @@ a:hover {
     text-align: center;
 }
 
-.register-container {
-  /* margin-top: auto; */
-  display: flex;
-  align-self: center;
-  align-content: center;
-  justify-content: center;
-  align-items: baseline;
-}
 
 .register-card {
   padding-top: 20px;
   border: solid #fff 1px;
-  height: 500px;
-  margin-top: auto;
+  height: 45vh;
+  margin-top: 320px;
   margin-bottom: auto;
-  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18vw;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -510,13 +501,14 @@ register-input-group-text i {
 
 }
 .add-card {
-  margin-top: auto;
+  margin-top: 200px;
   margin-bottom: auto;
   padding-top: 10px;
   border: solid #fff 1px;
-  height: 540px;
-  width: 400px;
-  /* background-color: rgb(24, 23, 23); */
+  height: 55vh;
+  width: 18vw;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -574,6 +566,12 @@ a:hover {
   color: #4696db;
 }
 
+.add-select {
+  margin-left: 82px; 
+}
+.lib-buttons {
+ margin-left: 75px;
+}
 /* Client list */
 .client-inner span {
   font-size: 12px;
@@ -998,7 +996,6 @@ a:hover {
   background-color:#00000080;
   position: relative;
   overflow: auto;
-  align-self: center;
   align-content: center;
   margin-top: 150px;
   color: #fff;
@@ -1092,13 +1089,17 @@ a:hover {
   background: #3a74af; 
 }
 .exercises-container {
-  /* position: relative; */
+  position: relative;
   background-color:#00000080;
+  margin-top: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
   overflow: auto;
   color: #fff;
-  max-width: 500px;
+  max-width: 25vw;
   font-size: 13px;
-  max-height: 580px;
+  max-height: 55vh;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;

@@ -26,7 +26,7 @@ const ClientItem = ({
           <br />
         </td>
         <td style={ { paddingLeft: '1em', textAlign: 'center' } }> <span className="client-links">
-          <Link to={ `/client/${_id}` } >
+          <Link to={ `/dashboard/client/${_id}` } >
             <i className="far fa-eye" style={ { color: '#61c9a8', padding: '1em', fontSize: '13px', marginTop: '-12px' } }></i></Link>
         </span></td>
       </tr>

@@ -20,7 +20,7 @@ const Landing = ({ login, isAuthenticated }) => {
     });
   };
 
-  if (isAuthenticated) return <Redirect to="/dashboard" />;
+  if (isAuthenticated) return <Redirect to="/dashboard/clients" />;
 
   return (
     <section className="landing">

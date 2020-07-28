@@ -1,51 +1,52 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-// import Navbar from '../layout/Navbar';
 import { connect } from 'react-redux';
-import { getAllProfiles } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import ShowAllClients from '../clients/ShowAllClients';
 import Sidebar from '../layout/Sidebar';
+import {
+  withRouter,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
+import AddClient from '../clients/AddClient';
+import EditClientProfile from '../clients/EditClientProfile';
+import AddNewRM from '../clients/AddNewRM';
+import Client from '../clients/Client';
+import ShowAllExercises from '../exercises/ShowAllExercises';
+import ShowLibrary from '../exerciseLibrary/ShowLibrary';
+import AddExercise from '../exercises/AddExercise';
+import AddToLibrary from '../exerciseLibrary/AddToLibrary';
+import EditExercise from '../exercises/EditExercise';
+import EditLibrary from '../exerciseLibrary/EditLibrary';
+import PrivateRoute from '../routing/PrivateRoute';
 
+const Dashboard = () => {
 
-
-const Dashboard = ({ getAllProfiles, profiles: { clientProfiles, loading } }) => {
-  useEffect(() => {
-    getAllProfiles();
-  }, [getAllProfiles]);
   return (
     <section className="dashboard">
       <div className="dark-overlay">
-        {/* <Navbar /> */ }
         <Sidebar />
-
-        {
-          loading && clientProfiles === []
-          &&
-          <Spinner />
-        }
-        {
-
-          clientProfiles !== []
-          &&
-
-          <ShowAllClients />
-        }
+        <Switch>
+          <PrivateRoute exact path='/dashboard/exercise-library' component={ ShowLibrary } />
+          <PrivateRoute exact path='/dashboard/edit-library/:id' component={ EditLibrary } />
+          <PrivateRoute exact path='/dashboard/add-library' component={ AddToLibrary } />
+          <PrivateRoute exact path='/dashboard/clients' component={ ShowAllClients } />
+          <PrivateRoute exact path='/dashboard/client/:id' component={ Client } />
+          <PrivateRoute exact path='/dashboard/add' component={ AddClient } />
+          <PrivateRoute exact path='/dashboard/add-rm/:id' component={ AddNewRM } />
+          <PrivateRoute exact path='/dashboard/edit/:id' component={ EditClientProfile } />
+          <PrivateRoute exact path='/dashboard/exercises' component={ ShowAllExercises } />
+          <PrivateRoute exact path='/dashboard/add-exercise' component={ AddExercise } />
+          <PrivateRoute exact path='/dashboard/edit-exercise/:id' component={ EditExercise } />
+        </Switch>
       </div>
     </section>
 
   );
 };
 
-Dashboard.propTypes = {
-  getAllProfiles: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  profiles: PropTypes.object.isRequired,
-};
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  profiles: state.profile,
-});
 
-export default connect(mapStateToProps, { getAllProfiles })(Dashboard);
+export default withRouter(Dashboard);

@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getExercises } from '../../actions/exercise';
 import ExerciseItem from './ExerciseItem';
-// import Navbar from '../layout/Navbar';
-import Sidebar from '../layout/Sidebar';
 
 
 
@@ -15,38 +13,34 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, auth
   }, [getExercises, loading]);
   return (
     <Fragment>
-      <Sidebar />
       { loading ? (
         <Spinner />
       ) : (isAuthenticated &&
-        <section className='exercises'>
-          <div className="dark-overlay">
-            {/* <Sidebar /> */ }
-            <div className="exercises-container">
-              { exercises.length > 0 && (
-                <div className="exercise-headers">
-                  <table>
-                    <thead>
-                      <tr className="head">
-                        <th>Exercise</th>
-                        <th>Min</th>
-                        <th>Max</th>
-                        <th>Type</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        exercises.map((exerciseItem) => (
-                          <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />
-                        ))
-                      }
-                    </tbody>
-                  </table>
-                </div>
-              ) }</div>
-          </div>
-        </section>
+
+        <div className="exercises-container">
+          { exercises.length > 0 && (
+            <div className="exercise-headers">
+              <table>
+                <thead>
+                  <tr className="head">
+                    <th>Exercise</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    exercises.map((exerciseItem) => (
+                      <ExerciseItem key={ exerciseItem._id } exerciseItem={ exerciseItem } />
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
+          ) }</div>
+
         )
       }
     </Fragment >

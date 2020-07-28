@@ -39,10 +39,10 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       benchPress: '',
       squat: '',
     });
-    window.location.replace(`/client/${clientProfile._id}`);
+    window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
   const onClick = () => {
-    window.location.replace(`/client/${clientProfile._id}`);
+    window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
   useEffect(() => {
 

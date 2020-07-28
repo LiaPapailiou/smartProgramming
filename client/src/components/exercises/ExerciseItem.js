@@ -44,7 +44,7 @@ const ExerciseItem = ({
         <td>{ max }</td>
         <td>{ body }</td>
         <td>
-          <Link href={ `/edit-exercise/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link>{ ' ' }
+          <Link href={ `/dashboard/edit-exercise/${_id}` } style={ { color: '#9cabb8' } }>Edit</Link>{ ' ' }
           <Link onClick={ handleClickOpen } style={ { color: '#9cabb8' } }>Remove</Link>
           <Dialog
             open={ open }

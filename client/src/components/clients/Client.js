@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment, useState } from 'react';
 import Spinner from '../layout/Spinner';
-import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
@@ -34,24 +33,23 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
 
   const onClick = () => {
     deleteClient(clientProfile._id);
-    window.location.replace('/dashboard');
+    window.location.replace('/dashboard/clients');
   };
   return (
     <section className="client">
       <Fragment>
         { clientProfile === null || loading ? <Spinner /> :
-          (<div className="dark-overlay">
-            <Navbar />
+          (<>
             <div className="client-card">
               <div className="client-header">
                 <h3>
                   { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
                 </h3>
                 <span className="client-header-links">
-                  <Link href={ `/edit/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                  <Link href={ `/dashboard/edit/${match.params.id}` } style={ { color: '#61c9a8' } }>
                     <i className="far fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit</Link>
-                  <Link href={ `/add-rm/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                  <Link href={ `/dashboard/add-rm/${match.params.id}` } style={ { color: '#61c9a8' } }>
                     <i className="far fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
@@ -101,7 +99,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
 
             <ClientNotes />
             <OneRMChart clientId={ clientProfile._id } />
-          </div>)
+          </>)
         }
       </Fragment>
     </section>

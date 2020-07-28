@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Sidebar from '../layout/Sidebar';
 import CustomAlert from '../layout/CustomAlert';
 import { useHistory } from 'react-router-dom';
 import { getSingleExercise, editSingleExercise } from '../../actions/exerciseLibrary';
@@ -38,47 +37,47 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
     });
   }, [getSingleExercise, match.params.id, loading]);
   const onClick = () => {
-    history.push('/exercise-library');
+    history.push('/dashboard/exercise-library');
   };
   return (
     <>
-      <Sidebar />
-      <div className="add">
-        <CustomAlert />
-        { singleExercise === null || loading ?
-          <Spinner /> :
-          (<div className="dark-overlay">
-            <div className="add-card" style={ { height: 500 } }>
-              <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '120px' } }>Edit Library Item</h3>
-              <div className="add-card-body">
-                <form className="add-form" onSubmit={ (e) => onSubmit(e) } >
-                  <div className="add-input-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="exerciseName"
-                      value={ exerciseName }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Exercise Name"
-                      required />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="exerciseCategory"
-                      value={ exerciseCategory }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Category"
-                      required
-                    />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="videoLink"
-                      value={ videoLink }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Video Link"
-                      required />
-                  </div>
+
+      <CustomAlert />
+      { singleExercise === null || loading ?
+        <Spinner /> :
+        (
+          <div className="add-card" style={ { height: '33vh' } }>
+            <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em' } }>Edit Library</h3>
+            <div className="add-card-body">
+              <form className="add-form" onSubmit={ (e) => onSubmit(e) } >
+                <div className="add-input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="exerciseName"
+                    value={ exerciseName }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Exercise Name"
+                    required />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="exerciseCategory"
+                    value={ exerciseCategory }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Category"
+                    required
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="videoLink"
+                    value={ videoLink }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Video Link"
+                    required />
+                </div>
+                <div className="lib-buttons">
                   <input
                     type="button"
                     className="input-add"
@@ -88,11 +87,12 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
                     type="submit"
                     className="input-add"
                     value="Edit" />
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
-          </div >) }
-      </div>
+          </div>
+        ) }
+
     </>
   );
 };

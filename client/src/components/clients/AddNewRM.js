@@ -27,10 +27,10 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
       benchPress: '',
       squat: '',
     });
-    window.location.replace(`/client/${clientProfile._id}`);
+    window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
   const onClick = (e) => {
-    window.location.replace(`/client/${clientProfile._id}`);
+    window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
 
   return (

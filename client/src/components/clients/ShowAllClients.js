@@ -16,7 +16,8 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
     <Fragment>
       { loading ? (
         <Spinner />
-      ) :
+      ) : clientProfiles !== []
+        &&
         <div className='clients'>
           { clientProfiles.length > 0 ? (
             <div className="table-wrapper">

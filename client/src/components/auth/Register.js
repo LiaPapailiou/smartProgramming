@@ -34,67 +34,65 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       });
     }
   };
-  if (isAuthenticated) return <Redirect to="/dashboard" />;
+  if (isAuthenticated) return <Redirect to="/dashboard/clients" />;
   return (
     <section className="register">
       <CustomAlert />
       <div className="dark-overlay">
-        <div className="register-container">
-          <div className="register-card">
-            <h3>Register</h3>
-            <form className="register-form" onSubmit={ (e) => onSubmit(e) }>
-              <div className="register-input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="firstName"
-                  value={ firstName }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" First Name"
-                />
-                <input
-                  type="text"
-                  className="form-control"
-                  name="lastName"
-                  value={ lastName }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" Last Name (optional)" />
-                <input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  value={ email }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" Email"
-                />
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  minLength="6"
-                  value={ password }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" Password"
-                  required />
-                <input
-                  type="password"
-                  className="form-control"
-                  name="passwordRepeat"
-                  minLength="6"
-                  value={ passwordRepeat }
-                  onChange={ (e) => onChange(e) }
-                  placeholder=" Confirm Password"
-                  required />
-              </div>
+        <div className="register-card">
+          <h3>Register</h3>
+          <form className="register-form" onSubmit={ (e) => onSubmit(e) }>
+            <div className="register-input-group">
               <input
-                type="submit"
-                className="input-register"
-                value="Register" />
-            </form>
-            <div className="card-footer">
-              <div className="d-flex justify-content-center links">
-                Have an account?<Link to="/">Login</Link>
-              </div>
+                type="text"
+                className="form-control"
+                name="firstName"
+                value={ firstName }
+                onChange={ (e) => onChange(e) }
+                placeholder=" First Name"
+              />
+              <input
+                type="text"
+                className="form-control"
+                name="lastName"
+                value={ lastName }
+                onChange={ (e) => onChange(e) }
+                placeholder=" Last Name (optional)" />
+              <input
+                type="text"
+                className="form-control"
+                name="email"
+                value={ email }
+                onChange={ (e) => onChange(e) }
+                placeholder=" Email"
+              />
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                minLength="6"
+                value={ password }
+                onChange={ (e) => onChange(e) }
+                placeholder=" Password"
+                required />
+              <input
+                type="password"
+                className="form-control"
+                name="passwordRepeat"
+                minLength="6"
+                value={ passwordRepeat }
+                onChange={ (e) => onChange(e) }
+                placeholder=" Confirm Password"
+                required />
+            </div>
+            <input
+              type="submit"
+              className="input-register"
+              value="Register" />
+          </form>
+          <div className="card-footer">
+            <div className="d-flex justify-content-center links">
+              Have an account?<Link to="/">Login</Link>
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { insertClient } from '../../actions/profile';
-import Navbar from '../layout/Navbar';
 import CustomAlert from '../layout/CustomAlert';
 
 const AddClient = ({ insertClient, history }) => {
@@ -44,10 +43,9 @@ const AddClient = ({ insertClient, history }) => {
   return (
     <section className="add-client">
       <div className="add">
-        <Navbar />
         <CustomAlert />
         <div className="dark-overlay">
-          <div className="add-card" style={ { height: 580 } }>
+          <div className="add-card">
             <h3>Add Client</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) }>

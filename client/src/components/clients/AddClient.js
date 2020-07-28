@@ -4,8 +4,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { insertClient } from '../../actions/profile';
 import CustomAlert from '../layout/CustomAlert';
+import { useHistory } from 'react-router-dom';
 
 const AddClient = ({ insertClient, history }) => {
+  let localHistory = useHistory();
   const [formData, setFormData] = useState({
     clientFirstName: '',
     clientLastName: '',
@@ -118,6 +120,11 @@ const AddClient = ({ insertClient, history }) => {
                     placeholder=" Squat One RM"
                     required />
                 </div>
+                <input
+                  type="button"
+                  className="input-add"
+                  onClick={ () => localHistory.push('/dashboard/clients') }
+                  value="Go Back" />
                 <input
                   type="submit"
                   className="input-add"

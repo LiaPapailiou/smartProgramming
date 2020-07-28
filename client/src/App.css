@@ -749,18 +749,18 @@ a:hover {
 .client-card {  
   position: absolute;
   display: flex;
-  align-self: flex-start;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   padding: .5em;
   background-color: #00000080;
-  height: 80vh;
-  max-height: 80vh;
-  width:25vw;
-  margin-top: 80px;
-  margin-left: 220px;
-  max-width: 25vw;
+  height: 70vh;
+  max-height: 70vh;
+  width:28vw;
+  margin-top: 130px;
+  margin-left: 700px;
+  max-width: 28vw;
+  min-width: 28vw;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -769,9 +769,10 @@ a:hover {
 }
 .rm-chart {
   position: absolute;
-  align-self: flex-start;
-  margin-left: 900px;
-  margin-top: 80px;
+  /* align-self: flex-start; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 130px;
   background-color: #00000080;
   max-width: 30vw;
   min-width: 25vw;
@@ -781,19 +782,11 @@ a:hover {
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
 }
-.weight-chart {
-  position: absolute;
-  align-self: flex-start;
-  margin-left: 1500px;
-  margin-top: -300px;
-  background-color: #00000080;
-  max-width: 30vw;
-  min-width: 25vw;
-  border: solid #535252 1px;
-  border-bottom-left-radius: 0.3em;
-  border-top-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-  border-top-right-radius: 0.3em;
+
+.charts {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 .calculate-form {
   position: absolute;
@@ -813,21 +806,21 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  margin-left: 900px;
+  margin-left: 1300px;
   max-height: 20vh;
   font-size: 14px;
   color: '#fff';
   padding-right: 8px;
   text-align: left;
-  margin-top: 500px;
+  margin-top: 130px;
   max-width: 38vw;
   margin-bottom: 60px;
 }
 
 .icon-static {
   position: absolute;
-  margin-left:1100px ;
-  margin-top: 470px;
+  margin-left:1260px ;
+  margin-top: 140px;
 }
 .add-notes {
   overflow: auto;

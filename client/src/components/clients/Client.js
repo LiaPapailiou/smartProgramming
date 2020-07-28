@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
 import ClientEstimates from './ClientEstimates';
 import OneRMChart from './OneRMChart';
-import WeightChart from './WeightChart';
 import ClientNotes from './ClientNotes';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
@@ -99,12 +98,11 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
                 <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
                 { clientProfile.notes }
               </div>
-              <ClientEstimates clientId={ match.params.id } />
+              {/* <ClientEstimates clientId={ match.params.id } /> */ }
+              <OneRMChart clientId={ clientProfile._id } />
             </div>
 
             <ClientNotes />
-            <OneRMChart clientId={ clientProfile._id } />
-            <WeightChart clientId={ clientProfile._id } />
           </div>)
         }
       </Fragment>

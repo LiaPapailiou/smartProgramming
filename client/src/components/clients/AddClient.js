@@ -14,7 +14,16 @@ const AddClient = ({ insertClient, history }) => {
     clientPhone: '',
     clientEmail: '',
     clientSport: '',
-    clientWeight: '',
+    clientAge: '',
+    clientHeight: '',
+    weight: '',
+    clientYearsOfTrainingExperience: '',
+    pastInjuries: '',
+    currentInjuries: '',
+    longTermGoals: '',
+    shortTermGoals: '',
+    clientAdditionalInfo: '',
+    clientBodyScreening: '',
     benchPress: '',
     squat: '',
   });
@@ -24,7 +33,16 @@ const AddClient = ({ insertClient, history }) => {
     clientPhone,
     clientEmail,
     clientSport,
-    clientWeight,
+    clientAge,
+    clientHeight,
+    weight,
+    clientYearsOfTrainingExperience,
+    pastInjuries,
+    currentInjuries,
+    longTermGoals,
+    shortTermGoals,
+    clientAdditionalInfo,
+    clientBodyScreening,
     benchPress,
     squat,
   } = formData;
@@ -39,7 +57,16 @@ const AddClient = ({ insertClient, history }) => {
       clientPhone: '',
       clientEmail: '',
       clientSport: '',
-      clientWeight: '',
+      clientAge: '',
+      clientHeight: '',
+      weight: '',
+      clientYearsOfTrainingExperience: '',
+      pastInjuries: '',
+      currentInjuries: '',
+      longTermGoals: '',
+      shortTermGoals: '',
+      clientAdditionalInfo: '',
+      clientBodyScreening: '',
       benchPress: '',
       squat: '',
     });
@@ -61,7 +88,7 @@ const AddClient = ({ insertClient, history }) => {
                     name="clientFirstName"
                     value={ clientFirstName }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" First Name"
+                    placeholder=" First Name *"
                     required />
                   <input
                     type="text"
@@ -69,7 +96,7 @@ const AddClient = ({ insertClient, history }) => {
                     name="clientLastName"
                     value={ clientLastName }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Last Name"
+                    placeholder=" Last Name *"
                     required />
                   <input
                     type="text"
@@ -77,7 +104,7 @@ const AddClient = ({ insertClient, history }) => {
                     name="clientEmail"
                     value={ clientEmail }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Email (optional)"
+                    placeholder=" Email"
                   />
                   <input
                     type="text"
@@ -85,7 +112,7 @@ const AddClient = ({ insertClient, history }) => {
                     name="clientPhone"
                     value={ clientPhone }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Phone Number (optional"
+                    placeholder=" Phone Number"
                   />
                   <input
                     type="text"
@@ -93,15 +120,39 @@ const AddClient = ({ insertClient, history }) => {
                     name="clientSport"
                     value={ clientSport }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Type of Sport (optional)"
+                    placeholder=" Type of Sport"
                   />
                   <input
                     type="text"
                     className="form-control"
-                    name="clientWeight"
-                    value={ clientWeight }
+                    name="clientAge"
+                    value={ clientAge }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Starting Weight (optional)"
+                    placeholder=" Age"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="weight"
+                    value={ weight }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Weight"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientHeight"
+                    value={ clientHeight }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Height"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientYearsOfTrainingExperience"
+                    value={ clientYearsOfTrainingExperience }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Years of training experience"
                   />
                   <input
                     type="text"
@@ -109,7 +160,7 @@ const AddClient = ({ insertClient, history }) => {
                     name="benchPress"
                     value={ benchPress }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Bench Press One RM"
+                    placeholder=" Bench Press One RM *"
                     required />
                   <input
                     type="text"
@@ -117,8 +168,21 @@ const AddClient = ({ insertClient, history }) => {
                     name="squat"
                     value={ squat }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Squat One RM"
+                    placeholder=" Squat One RM *"
                     required />
+                  <textarea placeholder="Past injuries" cols="26" rows="5" name="pastInjuries" value={ pastInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Current injuries" cols="26" rows="5" name="currentInjuries" value={ currentInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Long Term Goals" cols="26" rows="5" name="longTermGoals" value={ longTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Short Term Goals" cols="26" rows="5" name="shortTermGoals" value={ shortTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Additional Information" cols="26" rows="5" name="clientAdditionalInfo" value={ clientAdditionalInfo } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Body Screening" cols="26" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+
                 </div>
                 <input
                   type="button"

@@ -12,6 +12,16 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
     clientPhone: '',
     clientEmail: '',
     clientSport: '',
+    clientAge: '',
+    clientHeight: '',
+    weight: '',
+    clientYearsOfTrainingExperience: '',
+    pastInjuries: '',
+    currentInjuries: '',
+    longTermGoals: '',
+    shortTermGoals: '',
+    clientAdditionalInfo: '',
+    clientBodyScreening: '',
     benchPress: '',
     squat: '',
   });
@@ -21,6 +31,16 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
     clientPhone,
     clientEmail,
     clientSport,
+    clientAge,
+    clientHeight,
+    weight,
+    clientYearsOfTrainingExperience,
+    pastInjuries,
+    currentInjuries,
+    longTermGoals,
+    shortTermGoals,
+    clientAdditionalInfo,
+    clientBodyScreening,
     benchPress,
     squat,
   } = formData;
@@ -36,6 +56,16 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       clientPhone: '',
       clientEmail: '',
       clientSport: '',
+      clientAge: '',
+      clientHeight: '',
+      weight: '',
+      clientYearsOfTrainingExperience: '',
+      pastInjuries: '',
+      currentInjuries: '',
+      longTermGoals: '',
+      shortTermGoals: '',
+      clientAdditionalInfo: '',
+      clientBodyScreening: '',
       benchPress: '',
       squat: '',
     });
@@ -53,6 +83,16 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       clientPhone: loading || !clientProfile.clientPhone ? '' : clientProfile.clientPhone,
       clientEmail: loading || !clientProfile.clientEmail ? '' : clientProfile.clientEmail,
       clientSport: loading || !clientProfile.clientSport ? '' : clientProfile.clientSport,
+      clientAge: loading || !clientProfile.clientAge ? '' : clientProfile.clientAge,
+      clientHeight: loading || !clientProfile.clientHeight ? '' : clientProfile.clientHeight,
+      weight: loading || !clientProfile.clientWeight[0].weight ? '' : clientProfile.clientWeight[0].weight,
+      clientYearsOfTrainingExperience: loading || !clientProfile.clientYearsOfTrainingExperience ? '' : clientProfile.clientYearsOfTrainingExperience,
+      pastInjuries: loading || !clientProfile.clientInjuries[0].pastInjuries ? '' : clientProfile.clientInjuries[0].pastInjuries,
+      currentInjuries: loading || !clientProfile.clientInjuries[0].currentInjuries ? '' : clientProfile.clientInjuries[0].currentInjuries,
+      longTermGoals: loading || !clientProfile.clientGoals[0].longTermGoals ? '' : clientProfile.clientGoals[0].longTermGoals,
+      shortTermGoals: loading || !clientProfile.clientGoals[0].shortTermGoals ? '' : clientProfile.clientGoals[0].shortTermGoals,
+      clientAdditionalInfo: loading || !clientProfile.clientAdditionalInfo ? '' : clientProfile.clientAdditionalInfo,
+      clientBodyScreening: loading || !clientProfile.clientBodyScreening ? '' : clientProfile.clientBodyScreening,
       benchPress: loading || !clientProfile.clientOneRM[0].benchPress ? '' : clientProfile.clientOneRM[0].benchPress,
       squat: loading || !clientProfile.clientOneRM[0].squat ? '' : clientProfile.clientOneRM[0].squat,
     });
@@ -110,10 +150,42 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
                   <input
                     type="text"
                     className="form-control"
+                    name="clientAge"
+                    value={ clientAge }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Age"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="weight"
+                    value={ weight }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Weight"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientHeight"
+                    value={ clientHeight }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Height"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="clientYearsOfTrainingExperience"
+                    value={ clientYearsOfTrainingExperience }
+                    onChange={ (e) => onChange(e) }
+                    placeholder=" Years of training experience"
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
                     name="benchPress"
                     value={ benchPress }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Bench Press One RM"
+                    placeholder=" Bench Press One RM *"
                     required />
                   <input
                     type="text"
@@ -121,8 +193,21 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
                     name="squat"
                     value={ squat }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Squat One RM"
+                    placeholder=" Squat One RM *"
                     required />
+                  <textarea placeholder="Past injuries" cols="26" rows="5" name="pastInjuries" value={ pastInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Current injuries" cols="26" rows="5" name="currentInjuries" value={ currentInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Long Term Goals" cols="26" rows="5" name="longTermGoals" value={ longTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Short Term Goals" cols="26" rows="5" name="shortTermGoals" value={ shortTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Additional Information" cols="26" rows="5" name="clientAdditionalInfo" value={ clientAdditionalInfo } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+                  <textarea placeholder="Body Screening" cols="26" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <br />
+
                 </div>
                 <input
                   type="button"

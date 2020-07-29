@@ -38,13 +38,31 @@ router.post('/edit/:client_id', auth, async (req, res) => {
     clientPhone,
     clientEmail,
     clientSport,
-    clientWeight,
+    clientAge,
+    clientHeight,
+    weight,
+    clientYearsOfTrainingExperience,
+    pastInjuries,
+    currentInjuries,
+    longTermGoals,
+    shortTermGoals,
+    clientAdditionalInfo,
+    clientBodyScreening,
     benchPress,
     squat,
   } = req.body;
 
   try {
     const newRM = { benchPress, squat };
+    const injuries = {
+      pastInjuries,
+      currentInjuries,
+    };
+    const goals = {
+      longTermGoals,
+      shortTermGoals,
+    };
+    const startingWeight = { weight };
     let client = await Clients.find({ _id: req.params.id });
     if (!client) return res.status(404).json({ msg: 'Client not found in the database' });
     client = await Clients.findByIdAndUpdate(
@@ -59,7 +77,14 @@ router.post('/edit/:client_id', auth, async (req, res) => {
           clientPhone,
           clientEmail,
           clientSport,
-          clientWeight,
+          clientAge,
+          clientHeight,
+          'clientWeight.0': startingWeight,
+          clientYearsOfTrainingExperience,
+          'clientGoals.0': goals,
+          'clientInjuries.0': injuries,
+          clientAdditionalInfo,
+          clientBodyScreening,
           'clientOneRM.0': newRM,
         },
       },
@@ -156,7 +181,16 @@ router.put('/insert', [auth,
       clientPhone,
       clientEmail,
       clientSport,
-      clientWeight,
+      clientAge,
+      clientHeight,
+      weight,
+      clientYearsOfTrainingExperience,
+      pastInjuries,
+      currentInjuries,
+      longTermGoals,
+      shortTermGoals,
+      clientAdditionalInfo,
+      clientBodyScreening,
       benchPress,
       squat,
     } = req.body;
@@ -169,6 +203,17 @@ router.put('/insert', [auth,
         benchPress,
         squat,
       };
+
+      const goals = {
+        longTermGoals,
+        shortTermGoals,
+      };
+      const injuries = {
+        pastInjuries,
+        currentInjuries,
+      };
+
+      const startingWeight = { weight };
       client = await Clients.create({
         user: req.user.id,
         clientFirstName,
@@ -176,7 +221,14 @@ router.put('/insert', [auth,
         clientPhone,
         clientEmail,
         clientSport,
-        clientWeight,
+        clientAge,
+        clientHeight,
+        clientWeight: startingWeight,
+        clientYearsOfTrainingExperience,
+        clientAdditionalInfo,
+        clientBodyScreening,
+        clientInjuries: injuries,
+        clientGoals: goals,
         clientOneRM: oneRM,
       });
       res.json(client);

@@ -21,6 +21,12 @@ const clientSchema = new mongoose.Schema({
   clientSport: {
     type: String,
   },
+  clientAge: {
+    type: Number,
+  },
+  clientHeight: {
+    type: Number,
+  },
   clientWeight: [
     {
       weight: {
@@ -32,6 +38,35 @@ const clientSchema = new mongoose.Schema({
       },
     },
   ],
+  clientYearsOfTrainingExperience: {
+    type: Number,
+  },
+  clientInjuries: [
+    {
+      pastInjuries: {
+        type: String,
+      },
+      currentInjuries: {
+        type: String,
+      },
+    }
+  ],
+  clientGoals: [
+    {
+      longTermGoals: {
+        type: String,
+      },
+      shortTermGoals: {
+        type: String,
+      },
+    }
+  ],
+  clientAdditionalInfo: {
+    type: String,
+  },
+  clientBodyScreening: {
+    type: String,
+  },
   clientOneRM: [
     {
       benchPress: {

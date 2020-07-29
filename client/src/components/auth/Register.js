@@ -45,44 +45,45 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             <div className="register-input-group">
               <input
                 type="text"
-                className="form-control"
+                className="form-control-extra"
                 name="firstName"
                 value={ firstName }
                 onChange={ (e) => onChange(e) }
-                placeholder=" First Name"
+                placeholder=" First Name *"
               />
               <input
                 type="text"
-                className="form-control"
+                className="form-control-extra"
                 name="lastName"
                 value={ lastName }
                 onChange={ (e) => onChange(e) }
-                placeholder=" Last Name (optional)" />
+                placeholder=" Last Name" />
               <input
                 type="text"
-                className="form-control"
+                className="form-control-extra"
                 name="email"
                 value={ email }
                 onChange={ (e) => onChange(e) }
-                placeholder=" Email"
+                placeholder=" Email *"
+                required
               />
               <input
                 type="password"
-                className="form-control"
+                className="form-control-extra"
                 name="password"
                 minLength="6"
                 value={ password }
                 onChange={ (e) => onChange(e) }
-                placeholder=" Password"
+                placeholder=" Password *"
                 required />
               <input
                 type="password"
-                className="form-control"
+                className="form-control-extra"
                 name="passwordRepeat"
                 minLength="6"
                 value={ passwordRepeat }
                 onChange={ (e) => onChange(e) }
-                placeholder=" Confirm Password"
+                placeholder=" Confirm Password *"
                 required />
             </div>
             <input

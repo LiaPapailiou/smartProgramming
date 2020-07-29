@@ -57,9 +57,9 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
       { exerciseName === null || loading ? <Spinner /> : (
 
         <div className="add-card" style={ { height: 500 } }>
-          <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em' } }>Edit Exercise</h3>
+          <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh' } }>Edit Exercise</h3>
           <div className="add-card-body">
-            <form className="add-form" onSubmit={ (e) => onSubmit(e) } >
+            <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
               <div className="add-input-group">
                 <input
                   type="text"
@@ -94,7 +94,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                       name="body"
                       value={ body }
                       onChange={ (e) => onChange(e) }
-                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
                       required>
                       <option value="">One RM</option>
                       <option value="Bench">Bench Press</option>
@@ -107,7 +107,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                       name="factor"
                       value={ factor }
                       onChange={ (e) => onChange(e) }
-                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
                       required>
                       <option value="">Level</option>
                       <option value="true">Applicable</option>

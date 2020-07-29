@@ -47,9 +47,9 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
         <Spinner /> :
         (
           <div className="add-card" style={ { height: '33vh' } }>
-            <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em' } }>Edit Library</h3>
+            <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh', marginBottom: '20px' } }>Edit Library</h3>
             <div className="add-card-body">
-              <form className="add-form" onSubmit={ (e) => onSubmit(e) } >
+              <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
                 <div className="add-input-group">
                   <input
                     type="text"

@@ -45,9 +45,12 @@ const AddExercise = ({ insertExercise }) => {
       {/* <button className="input-add" onClick={ () => setModalIsOpen(!modalIsOpen) } style={ { marginTop: '100px' } }>Add</button>
         <Modal isOpen={ modalIsOpen } className="add-modal"> */}
       <div className="add-card" style={ { height: '45vh' } }>
-        <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.15em', paddingLeft: '0.7em' } }>Add an exercise</h3>
-        <div className="add-card-body" style={ { marginTop: '2em', } }>
-          <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
+        <h3 style={ {
+          fontSize: 33, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.35em', paddingLeft: '0.7em', height: '6vh',
+          marginBottom: '20px'
+        } }>Add an exercise</h3>
+        <div className="add-card-body">
+          <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
             <div className="add-input-group" >
               <input
                 type="text"
@@ -82,7 +85,7 @@ const AddExercise = ({ insertExercise }) => {
                     name="body"
                     value={ body }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
                     required>
                     <option value="">One RM</option>
                     <option value="Bench">Bench Press</option>
@@ -95,7 +98,7 @@ const AddExercise = ({ insertExercise }) => {
                     name="factor"
                     value={ factor }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
                     required>
                     <option value="">Level</option>
                     <option value="true">Applicable</option>

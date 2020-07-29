@@ -31,9 +31,9 @@ const AddToLibrary = ({ insertSingleExercise }) => {
     <>
       <CustomAlert />
       <div className="add-card" style={ { height: '35vh' } }>
-        <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '1.8em', paddingBottom: '0.15em', paddingLeft: '0.7em' } }>Add to Library</h3>
+        <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '1.8em', paddingBottom: '0.15em', paddingLeft: '0.7em', marginBottom: '20px', height: '6vh' } }>Add to Library</h3>
         <div className="add-card-body" style={ { marginTop: '2em', } }>
-          <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
+          <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
             <div className="add-input-group" >
               <input
                 type="text"

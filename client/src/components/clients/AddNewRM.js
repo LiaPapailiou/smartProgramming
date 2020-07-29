@@ -44,7 +44,7 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
                   <div className="add-input-group">
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control-extra"
                       name="benchPress"
                       value={ benchPress }
                       onChange={ (e) => onChange(e) }
@@ -52,22 +52,24 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
                       required />
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control-extra"
                       name="squat"
                       value={ squat }
                       onChange={ (e) => onChange(e) }
                       placeholder=" Squat"
                       required />
                   </div>
-                  <input
-                    type="button"
-                    className="input-add"
-                    onClick={ (e) => onClick(e) }
-                    value="Go Back" />
-                  <input
-                    type="submit"
-                    className="input-add-rm"
-                    value="Submit" />
+                  <div className="lib-buttons-extra">
+                    <input
+                      type="button"
+                      className="input-add"
+                      onClick={ (e) => onClick(e) }
+                      value="Go Back" />
+                    <input
+                      type="submit"
+                      className="input-add-rm"
+                      value="Submit" />
+                  </div>
                 </form>
               </div>
             </div>

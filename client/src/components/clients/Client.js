@@ -3,7 +3,7 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient } from '../../actions/profile';
-import ClientEstimates from './ClientEstimates';
+// import ClientEstimates from './ClientEstimates';
 import OneRMChart from './OneRMChart';
 import ClientNotes from './ClientNotes';
 import Link from '@material-ui/core/Link';

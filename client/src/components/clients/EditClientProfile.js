@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { editClient, getClientProfile } from '../../actions/profile';
-import Navbar from '../layout/Navbar';
+import CustomAlert from '../layout/CustomAlert';
+
+
 
 const EditClientProfile = ({ match, editClient, getClientProfile, profile: { clientProfile, loading } }) => {
-
   const [formData, setFormData] = useState({
     clientFirstName: '',
     clientLastName: '',
@@ -101,123 +102,133 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
   return (
     <section className="add-client">
       <div className="add">
-        <Navbar />
+        <CustomAlert />
         <div className="dark-overlay">
-          <div className="add-card" style={ { height: 600 } }>
-            <h3 style={ { paddingRight: 240 } }>Edit</h3>
+          <div className="add-card">
+            <h3>Client Information</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
                 <div className="add-input-group">
+                  <h4>First Name *</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientFirstName"
                     value={ clientFirstName }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" First Name"
                     required />
+                  <h4>Last Name *</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientLastName"
                     value={ clientLastName }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Last Name (optional)" />
+                    required />
+                  <h4 style={ { marginLeft: -505 } }>Email</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientEmail"
                     value={ clientEmail }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Email (optional)"
                   />
+                  <h4 style={ { marginLeft: -500 } }>Phone</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientPhone"
                     value={ clientPhone }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Phone Number (optional"
                   />
+                  <h4 style={ { marginLeft: -500 } }>Sport</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientSport"
                     value={ clientSport }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Type of Sport (optional)"
                   />
+                  <span style={ { borderBottom: '1px solid #6d6d6d', width: '29vw', marginBottom: 10 } }></span>
+                  <h4 style={ { marginLeft: -520 } }>Age</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientAge"
                     value={ clientAge }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Age"
                   />
+                  <h4 style={ { marginLeft: -498 } }>Weight</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="weight"
                     value={ weight }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Weight"
                   />
+                  <h4 style={ { marginLeft: -498 } }>Height</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientHeight"
                     value={ clientHeight }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Height"
                   />
+                  <h4 style={ { marginLeft: -318 } }>Years of previous experience</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="clientYearsOfTrainingExperience"
                     value={ clientYearsOfTrainingExperience }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Years of training experience"
                   />
+                  <h4 style={ { marginLeft: -440 } }>Bench Press *</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="benchPress"
                     value={ benchPress }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Bench Press One RM *"
                     required />
+                  <h4 style={ { marginLeft: -494 } }>Squat *</h4>
                   <input
                     type="text"
                     className="form-control"
                     name="squat"
                     value={ squat }
                     onChange={ (e) => onChange(e) }
-                    placeholder=" Squat One RM *"
                     required />
-                  <textarea placeholder="Past injuries" cols="26" rows="5" name="pastInjuries" value={ pastInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <span style={ { borderBottom: '1px solid #6d6d6d', width: '29vw', marginBottom: 10 } }></span>
+                  <h4>Past Injuries</h4>
+                  <textarea cols="65" rows="5" name="pastInjuries" value={ pastInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
-                  <textarea placeholder="Current injuries" cols="26" rows="5" name="currentInjuries" value={ currentInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <h4 style={ { marginLeft: -425 } }>Current Injuries</h4>
+                  <textarea cols="65" rows="5" name="currentInjuries" value={ currentInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
-                  <textarea placeholder="Long Term Goals" cols="26" rows="5" name="longTermGoals" value={ longTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <h4 style={ { marginLeft: -415 } }>Long Term Goals</h4>
+                  <textarea cols="65" rows="5" name="longTermGoals" value={ longTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
-                  <textarea placeholder="Short Term Goals" cols="26" rows="5" name="shortTermGoals" value={ shortTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <h4 style={ { marginLeft: -415 } }>Short Term Goals</h4>
+                  <textarea cols="65" rows="5" name="shortTermGoals" value={ shortTermGoals } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
-                  <textarea placeholder="Additional Information" cols="26" rows="5" name="clientAdditionalInfo" value={ clientAdditionalInfo } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <h4 style={ { marginLeft: -435 } }>Additional Info</h4>
+                  <textarea cols="65" rows="5" name="clientAdditionalInfo" value={ clientAdditionalInfo } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
-                  <textarea placeholder="Body Screening" cols="26" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '70%', color: '#000' } } />
+                  <h4 style={ { marginLeft: -430 } }>Body Screening</h4>
+                  <textarea cols="65" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
-
                 </div>
-                <input
-                  type="button"
-                  className="input-add"
-                  onClick={ () => onClick() }
-                  value="Go Back" />
-                <input
-                  type="submit"
-                  className="input-add"
-                  value="Edit" />
+                <div className="lib-buttons">
+                  <input
+                    type="button"
+                    className="input-add"
+                    onClick={ () => onClick() }
+                    value="Go Back" />
+                  <input
+                    type="submit"
+                    className="input-add"
+                    value="Edit" />
+                </div>
               </form>
             </div>
           </div>

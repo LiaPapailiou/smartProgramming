@@ -1,14 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
 import ShowAllClients from '../clients/ShowAllClients';
 import Sidebar from '../layout/Sidebar';
 import {
   withRouter,
   Switch,
-  Route,
-  Redirect
 } from 'react-router-dom';
 import AddClient from '../clients/AddClient';
 import EditClientProfile from '../clients/EditClientProfile';

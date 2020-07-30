@@ -19,29 +19,89 @@ const programSchema = new mongoose.Schema({
     default: Date.now
   },
   weekOne: [{
-    numberOfWeek: {
+    percentageOne: {
       type: Number,
     },
-    percentage: {
-      type: Number,
-    },
-    reps_min: {
+    reps_minOne: {
       type: Number,
 
     },
-    reps_max: {
+    reps_maxOne: {
       type: Number,
 
     },
-    sets: {
+    setsOne: {
       type: Number,
     },
-    numberOfDay: {
+    exercisesOne: [{
+      exerciseListOne: [{
+        type: Array,
+        default: [],
+      }]
+    }]
+  }],
+  weekTwo: [{
+    percentageTwo: {
       type: Number,
     },
-    exercises: [{
-      exerciseList: [{
-        type: String,
+    reps_minTwo: {
+      type: Number,
+
+    },
+    reps_maxTwo: {
+      type: Number,
+
+    },
+    setsTwo: {
+      type: Number,
+    },
+    exercisesTwo: [{
+      exerciseListTwo: [{
+        type: Array,
+        default: [],
+      }]
+    }]
+  }],
+  weekThree: [{
+    percentageThree: {
+      type: Number,
+    },
+    reps_minThree: {
+      type: Number,
+
+    },
+    reps_maxThree: {
+      type: Number,
+
+    },
+    setsThree: {
+      type: Number,
+    },
+    exercisesThree: [{
+      exerciseListThree: [{
+        type: Array,
+        default: [],
+      }]
+    }]
+  }],
+  weekFour: [{
+    percentageFour: {
+      type: Number,
+    },
+    reps_minFour: {
+      type: Number,
+
+    },
+    reps_maxFour: {
+      type: Number,
+
+    },
+    setsFour: {
+      type: Number,
+    },
+    exercisesFour: [{
+      exerciseListFour: [{
+        type: Array,
         default: [],
       }]
     }]

@@ -32,13 +32,13 @@ router.get('/search/:program_id', async (req, res) => {
 
 // Add exercise
 router.post('/add/:program_id', async (req, res) => {
-  const { exercises } = req.body;
+  const { exerciseList } = req.body;
 
   try {
     let program = await Programs.findById(req.params.program_id);
     if (!program) return res.status(404).json({ msg: 'Program not found in the database' });
     console.log(program.week[0].exercises);
-    program.week[0].exercises.push(exercises);
+    program.week[0].exercises[0].exerciseList.push(exerciseList);
     await program.save();
     res.json(program);
 
@@ -56,11 +56,11 @@ router.put('/insert',
     check('reps_max', 'Maximum amount of reps is required').not().isEmpty(),
     check('sets', 'Number of sets is required').not().isEmpty(),
     check('numberOfDay', 'Day number is required').not().isEmpty(),
-    check('exercises', 'Exercise name is required').not().isEmpty(),
+    check('exerciseList', 'Exercise name is required').not().isEmpty(),
   ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
-    const { client_id, month, year, numberOfWeek, percentage, reps_min, reps_max, sets, numberOfDay, exercises } = req.body;
+    const { client_id, month, year, numberOfWeek, percentage, reps_min, reps_max, sets, numberOfDay, exerciseList } = req.body;
 
     try {
       // let program = await Programs.find({user: req.user.id, client:client_id, month, year });
@@ -83,7 +83,7 @@ router.put('/insert',
         month,
         year,
         week: week,
-        'week.0.exercises': exercises,
+        'week.0.exercises.0.exerciseList': exerciseList,
       });
 
       res.json(program);

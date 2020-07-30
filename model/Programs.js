@@ -18,7 +18,7 @@ const programSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  week: [{
+  weekOne: [{
     numberOfWeek: {
       type: Number,
     },
@@ -40,8 +40,10 @@ const programSchema = new mongoose.Schema({
       type: Number,
     },
     exercises: [{
-      type: String,
-      default: [],
+      exerciseList: [{
+        type: String,
+        default: [],
+      }]
     }]
   }],
 

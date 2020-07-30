@@ -13,6 +13,7 @@ app.use('/clients', require('./routes/clients'));
 app.use('/user', require('./routes/user'));
 app.use('/exercises', require('./routes/exercises'));
 app.use('/exercise-library', require('./routes/exerciseLog'));
+app.use('/programs', require('./routes/programs'));
 app.use('/auth', require('./routes/auth'));
 
 if (process.env.NODE_ENV === 'production') {

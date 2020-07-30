@@ -9,7 +9,6 @@ import moment from 'moment';
 const OneRMChart = ({ profile: { clientProfile } }) => {
   const [selected, setSelected] = useState({ type: 'true' });
 
-  console.log(selected.type);
   const formatXAxis = (tickItem) => {
     return moment(tickItem).format('DD / MMM / YY');
   };

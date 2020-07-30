@@ -4,6 +4,7 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
 const Exercises = require('../model/Exercises');
+// const Programs = require('../model/Programs');
 
 
 // Get the list of all clients in the DB
@@ -214,6 +215,7 @@ router.put('/insert', [auth,
       };
 
       const startingWeight = { weight };
+
       client = await Clients.create({
         user: req.user.id,
         clientFirstName,

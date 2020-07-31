@@ -10,11 +10,13 @@ import {
   GET_CLIENT_ESTIMATES,
   GET_CLIENT_NOTES,
   UPDATE_WEIGHT,
+  GET_CLIENT_PROGRAMS,
 } from '../actions/types';
 const initialState = {
   clientProfile: null,
   clientProfiles: [],
   exerciseList: [],
+  programs: [],
   notes: null,
   loading: true,
   error: {}
@@ -36,6 +38,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         exerciseList: payload,
+        loading: false,
+      };
+    case GET_CLIENT_PROGRAMS:
+      return {
+        ...state,
+        programs: payload,
         loading: false,
       };
     case GET_CLIENT_NOTES:
@@ -64,6 +72,7 @@ export default function (state = initialState, action) {
         clientProfile: null,
         clientProfiles: [],
         exerciseList: [],
+        programs: [],
         notes: null,
         loading: false,
       };

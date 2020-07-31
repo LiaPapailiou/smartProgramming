@@ -4,6 +4,7 @@ import auth from './auth';
 import profile from './profile';
 import exercises from './exercises';
 import exerciseLibrary from './exerciseLibrary';
+import programs from './programs';
 
 export default combineReducers({
   alert,
@@ -11,4 +12,5 @@ export default combineReducers({
   profile,
   exercises,
   exerciseLibrary,
+  programs,
 });

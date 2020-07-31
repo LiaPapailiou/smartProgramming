@@ -2,7 +2,7 @@ import React, { useEffect, Fragment, useState } from 'react';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getClientProfile, deleteClient } from '../../actions/profile';
+import { getClientProfile, deleteClient, getClientPrograms } from '../../actions/profile';
 // import ClientEstimates from './ClientEstimates';
 import OneRMChart from './OneRMChart';
 import ClientNotes from './ClientNotes';
@@ -15,7 +15,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfile, loading } }) => {
+const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, profile: { clientProfile, loading } }) => {
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -29,6 +29,7 @@ const Client = ({ match, getClientProfile, deleteClient, profile: { clientProfil
 
   useEffect(() => {
     getClientProfile(match.params.id);
+    getClientPrograms(match.params.id);
   }, [getClientProfile, match.params.id, loading]);
 
   const onClick = () => {
@@ -118,4 +119,4 @@ Client.propTypes = {
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
-export default connect(mapStateToProps, { getClientProfile, deleteClient })(Client);
+export default connect(mapStateToProps, { getClientProfile, deleteClient, getClientPrograms })(Client);

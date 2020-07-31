@@ -10,6 +10,7 @@ import {
   EDIT_CLIENT_PROFILE,
   DELETE_CLIENT,
   GET_CLIENT_ESTIMATES,
+  GET_CLIENT_PROGRAMS,
   GET_CLIENT_NOTES,
   UPDATE_WEIGHT,
 } from './types';
@@ -182,6 +183,26 @@ export const getEstimates = (formData, client_id) => async (dispatch) => {
     const res = await axios.post(`/clients/calculate/${client_id}`, formData, config);
     dispatch({
       type: GET_CLIENT_ESTIMATES,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
+    }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+// Get programs
+export const getClientPrograms = (client_id) => async (dispatch) => {
+  try {
+
+    const res = await axios.get(`/clients/get-programs/${client_id}`);
+    dispatch({
+      type: GET_CLIENT_PROGRAMS,
       payload: res.data,
     });
   } catch (err) {

@@ -35,7 +35,7 @@ const programSchema = new mongoose.Schema({
     },
     exercisesOne: [{
       exerciseListOne: {
-        type: mongoose.Schema.Types.Mixed,
+        type: Array
       }
     }]
   }],

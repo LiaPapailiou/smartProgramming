@@ -37,8 +37,11 @@ router.post('/add/:program_id', async (req, res) => {
   try {
     let program = await Programs.findById(req.params.program_id);
     if (!program) return res.status(404).json({ msg: 'Program not found in the database' });
-    console.log(program.week[0].exercises);
-    program.week[0].exercises[0].exerciseList.push(exerciseList);
+    // Add day
+    program.weekOne[0].exercisesOne[0].exerciseListOne.push(exerciseList);
+    program.markModified('exercisesOne[0].exerciseListOne');
+    // Add single exercise in day
+    // program.weekOne[0].exercisesOne[0].exerciseListOne[0].push(exerciseList);
     await program.save();
     res.json(program);
 
@@ -63,10 +66,8 @@ router.put('/insert',
     const { client_id, month, year, percentageOne, percentageTwo, percentageThree, percentageFour, reps_minOne, reps_minTwo, reps_minThree, reps_minOFour, reps_maxOne, reps_maxTwo, reps_maxThree, reps_maxFour, setsOne, setsTwo, setsThree, setsFour, exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
 
     try {
-      // let program = await Programs.find({user: req.user.id, client:client_id, month, year });
-      // let program = await Programs.find({ month: req.month, year: req.year });
+      // let program = await Programs.find({ client: client_id, month: month, year: year });
       // if (program) return res.status(409).json({ errors: [{ msg: 'Program for that client already exists' }] });
-
       const weekOne = {
         percentageOne,
         reps_minOne,

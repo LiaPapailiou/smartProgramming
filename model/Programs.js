@@ -34,10 +34,9 @@ const programSchema = new mongoose.Schema({
       type: Number,
     },
     exercisesOne: [{
-      exerciseListOne: [{
-        type: Array,
-        default: [],
-      }]
+      exerciseListOne: {
+        type: mongoose.Schema.Types.Mixed,
+      }
     }]
   }],
   weekTwo: [{
@@ -56,10 +55,9 @@ const programSchema = new mongoose.Schema({
       type: Number,
     },
     exercisesTwo: [{
-      exerciseListTwo: [{
+      exerciseListTwo: {
         type: Array,
-        default: [],
-      }]
+      }
     }]
   }],
   weekThree: [{
@@ -78,10 +76,9 @@ const programSchema = new mongoose.Schema({
       type: Number,
     },
     exercisesThree: [{
-      exerciseListThree: [{
+      exerciseListThree: {
         type: Array,
-        default: [],
-      }]
+      }
     }]
   }],
   weekFour: [{
@@ -100,10 +97,9 @@ const programSchema = new mongoose.Schema({
       type: Number,
     },
     exercisesFour: [{
-      exerciseListFour: [{
+      exerciseListFour: {
         type: Array,
-        default: [],
-      }]
+      }
     }]
   }],
 

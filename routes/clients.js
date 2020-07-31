@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
 const Exercises = require('../model/Exercises');
-// const Programs = require('../model/Programs');
+const Programs = require('../model/Programs');
 
 
 // Get the list of all clients in the DB
@@ -21,12 +21,23 @@ router.get('/', auth, async (req, res) => {
 router.get('/search/:client_id', auth, async (req, res) => {
   try {
     let client = await Clients.findById(req.params.client_id);
-
-
     if (!client)
       return res.status(404).json({ msg: 'Client not found in the database' });
     res.json(client);
   } catch (err) {
+
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Get programs for client 
+router.get(('/get-programs/:client_id'), auth, async (req, res) => {
+  try {
+    let program = await Programs.find({ client: req.params.client_id });
+    if (!program) return res.status(404).json({ msg: 'Program not found' });
+    res.json(program);
+  } catch (err) {
+    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 });

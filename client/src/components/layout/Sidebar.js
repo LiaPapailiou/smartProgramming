@@ -53,6 +53,7 @@ const Sidebar = ({ logout }) => {
             <MenuItem><Link href='/dashboard/add-exercise' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } } >Add Exercise</Link> </MenuItem>
             <MenuItem><Link href='/dashboard/clients' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Clients</Link></MenuItem>
             <MenuItem><Link href='/dashboard/add' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Intake Form</Link></MenuItem>
+            <MenuItem><Link href='/dashboard/create-programs' style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Program</Link></MenuItem>
             <MenuItem><Link onClick={ logout } href="/" style={ { color: '#535252', textDecoration: 'none', fontSize: 18, fontWeight: 500, padding: '0.5em' } }>Logout</Link></MenuItem>
           </MenuList>
         </Drawer>

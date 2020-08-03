@@ -1,6 +1,7 @@
 import {
   GET_PROGRAMS,
   GET_PROGRAM,
+  ADD_PROGRAM_EXERCISES,
   DELETE_PROGRAM,
   PROGRAM_ERROR,
 } from '../actions/types';
@@ -17,6 +18,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_PROGRAM:
+    case ADD_PROGRAM_EXERCISES:
       return {
         ...state,
         program: payload,

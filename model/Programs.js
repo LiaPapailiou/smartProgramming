@@ -5,101 +5,47 @@ const programSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  client: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
-  month: {
-    type: String
-  },
-  year: {
-    type: String
-  },
+  client: mongoose.Schema.Types.ObjectId,
+  month: String,
+  year: String,
   createdAt: {
     type: Date,
     default: Date.now
   },
   weekOne: [{
-    percentageOne: {
-      type: Number,
-    },
-    reps_minOne: {
-      type: Number,
-
-    },
-    reps_maxOne: {
-      type: Number,
-
-    },
-    setsOne: {
-      type: Number,
-    },
+    percentageOne: Number,
+    reps_minOne: Number,
+    reps_maxOne: Number,
+    setsOne: Number,
     exercisesOne: [{
-      exerciseListOne: {
-        type: Array
-      }
+      exerciseListOne: Array,
     }]
   }],
   weekTwo: [{
-    percentageTwo: {
-      type: Number,
-    },
-    reps_minTwo: {
-      type: Number,
-
-    },
-    reps_maxTwo: {
-      type: Number,
-
-    },
-    setsTwo: {
-      type: Number,
-    },
+    percentageTwo: Number,
+    reps_minTwo: Number,
+    reps_maxTwo: Number,
+    setsTwo: Number,
     exercisesTwo: [{
-      exerciseListTwo: {
-        type: Array,
-      }
+      exerciseListTwo: Array,
     }]
   }],
   weekThree: [{
-    percentageThree: {
-      type: Number,
-    },
-    reps_minThree: {
-      type: Number,
-
-    },
-    reps_maxThree: {
-      type: Number,
-
-    },
-    setsThree: {
-      type: Number,
-    },
+    percentageThree: Number,
+    reps_minThree: Number,
+    reps_maxThree: Number,
+    setsThree: Number,
     exercisesThree: [{
-      exerciseListThree: {
-        type: Array,
-      }
+      exerciseListThree: Array,
     }]
   }],
   weekFour: [{
-    percentageFour: {
-      type: Number,
-    },
-    reps_minFour: {
-      type: Number,
-
-    },
-    reps_maxFour: {
-      type: Number,
-
-    },
-    setsFour: {
-      type: Number,
-    },
+    percentageFour: Number,
+    reps_minFour: Number,
+    reps_maxFour: Number,
+    setsFour: Number,
     exercisesFour: [{
-      exerciseListFour: {
-        type: Array,
-      }
+      exerciseListFour: Array,
     }]
   }],
 

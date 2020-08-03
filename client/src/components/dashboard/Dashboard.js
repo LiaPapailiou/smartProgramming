@@ -16,6 +16,7 @@ import AddExercise from '../exercises/AddExercise';
 import AddToLibrary from '../exerciseLibrary/AddToLibrary';
 import EditExercise from '../exercises/EditExercise';
 import EditLibrary from '../exerciseLibrary/EditLibrary';
+import CreatePrograms from '../programs/CreatePrograms';
 import PrivateRoute from '../routing/PrivateRoute';
 
 const Dashboard = () => {
@@ -37,6 +38,7 @@ const Dashboard = () => {
           <PrivateRoute exact path='/dashboard/exercises' component={ ShowAllExercises } />
           <PrivateRoute exact path='/dashboard/add-exercise' component={ AddExercise } />
           <PrivateRoute exact path='/dashboard/edit-exercise/:id' component={ EditExercise } />
+          <PrivateRoute exact path='/dashboard/create-programs' component={ CreatePrograms } />
         </Switch>
       </div>
     </section>

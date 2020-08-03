@@ -9,7 +9,7 @@ module.exports = router;
 // Get all
 router.get('/', auth, async (req, res) => {
   try {
-    const programs = await Programs.find().sort({ month: 1 });
+    const programs = await Programs.find();
     res.json(programs);
   } catch (err) {
     res.status(500).send('Internal Server Error');
@@ -30,16 +30,17 @@ router.get('/search/:program_id', auth, async (req, res) => {
 
 // Add exercise
 router.post('/add/:program_id', auth, async (req, res) => {
-  const { exerciseList } = req.body;
+  const { exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
 
   try {
     let program = await Programs.findById(req.params.program_id);
     if (!program) return res.status(404).json({ msg: 'Program not found in the database' });
     // Add day
-    program.weekOne[0].exercisesOne[0].exerciseListOne.push(exerciseList);
-    program.markModified('exercisesOne[0].exerciseListOne');
-    // Add single exercise in day
-    // program.weekOne[0].exercisesOne[0].exerciseListOne[0].push(exerciseList);
+    program.weekOne[0].exercisesOne[0].exerciseListOne.push(exerciseListOne);
+    program.weekTwo[0].exercisesTwo[0].exerciseListTwo.push(exerciseListTwo);
+    program.weekThree[0].exercisesThree[0].exerciseListThree.push(exerciseListThree);
+    program.weekFour[0].exercisesFour[0].exerciseListFour.push(exerciseListFour);
+
     await program.save();
     res.json(program);
 
@@ -187,3 +188,4 @@ router.delete('/delete/:program_id', auth, async (req, res) => {
   }
 });
 
+module.exports = router;

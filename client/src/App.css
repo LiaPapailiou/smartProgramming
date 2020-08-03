@@ -230,6 +230,7 @@ button {
   border-top-right-radius: 0.3em;
 }
 
+
  .card h3 {
   color: #f4f4f4;
   padding: 0.50em;
@@ -752,6 +753,26 @@ a:hover {
 .pagination li {
   float:left;
   padding:4px 4px;
+}
+/*Program*/
+.program-form {
+  display: flex;
+  position: absolute;
+  margin-left: 800px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: space-around;
+  margin-top: 300px;
+  padding: 1em;
+  height: 36vh;
+  border: solid #535252 1px;
+  background-color: #00000080;
+  border-bottom-left-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-top-right-radius: 0.3em;
 }
 
 /* Client */

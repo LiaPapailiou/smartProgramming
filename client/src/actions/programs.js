@@ -3,6 +3,7 @@ import { setAlert } from './alert';
 import {
   GET_PROGRAMS,
   GET_PROGRAM,
+  ADD_PROGRAM_EXERCISES,
   DELETE_PROGRAM,
   PROGRAM_ERROR,
 } from './types';
@@ -26,7 +27,7 @@ export const getPrograms = () => async (dispatch) => {
 };;
 
 // Get by ID
-export const getPrograms = (program_id) => async (dispatch) => {
+export const getProgram = (program_id) => async (dispatch) => {
   try {
     const res = await axios.get(`/programs/search/${program_id}`);
     dispatch({
@@ -74,7 +75,28 @@ export const deleteProgram = (program_id) => async (dispatch) => {
     await axios.delete(`/programs/delete/${program_id}`);
     dispatch({
       type: DELETE_PROGRAM,
-      payload: id
+      payload: program_id
+    });
+    dispatch(setAlert('Program removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROGRAM_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+// Add days
+export const addExercisesAndDays = (formData, program_id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`/programs/add/${program_id}`, formData, config);
+    dispatch({
+      type: ADD_PROGRAM_EXERCISES,
+      payload: res.data
     });
     dispatch(setAlert('Program removed', 'success'));
   } catch (err) {

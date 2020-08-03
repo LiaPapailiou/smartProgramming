@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient, getClientPrograms } from '../../actions/profile';
 // import ClientEstimates from './ClientEstimates';
+// import ClientPrograms from './ClientPrograms';
 import OneRMChart from './OneRMChart';
 import ClientNotes from './ClientNotes';
 import Link from '@material-ui/core/Link';
@@ -15,7 +16,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, profile: { clientProfile, loading } }) => {
+const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, profile: { clientProfile, programs, loading } }) => {
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -30,12 +31,22 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
   useEffect(() => {
     getClientProfile(match.params.id);
     getClientPrograms(match.params.id);
-  }, [getClientProfile, match.params.id, loading]);
+  }, [getClientProfile, getClientPrograms, match.params.id, loading]);
 
   const onClick = () => {
     deleteClient(clientProfile._id);
     window.location.replace('/dashboard/clients');
   };
+
+  // programs.map((item) => {
+  //   item.weekOne.map((ex) => ex.exercisesOne.map((inner) => inner.exerciseListOne.map((list, day) => {
+  //     console.log(`exercises: ${list}, day of the week: ${day}`);
+  //   })));
+  // });
+  // programs.map((item) => {
+  //   item.weekOne.map((ex) => console.log(ex.percentageOne));
+  // });
+
   return (
     <section className="client">
       <Fragment>
@@ -104,6 +115,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
             </div>
 
             <ClientNotes />
+            {/* <ClientPrograms clientId={ match.params.id } /> */ }
           </div>)
         }
       </Fragment>
@@ -113,6 +125,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
 
 Client.propTypes = {
   getClientProfile: PropTypes.func.isRequired,
+  getClientPrograms: PropTypes.func.isRequired,
   deleteClient: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };

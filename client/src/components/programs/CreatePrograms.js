@@ -5,6 +5,7 @@ import { getAllProfiles, } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
 import { insertProgram } from '../../actions/programs';
 import { useHistory } from 'react-router-dom';
+import CustomeAlert from '../layout/CustomAlert';
 
 // import Select from 'react-select';
 // import AsyncSelect from 'react-select/async';
@@ -126,7 +127,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
       setsFour: '',
       exerciseListFour: [],
     });
-    history.push('/dashboard/clients');
+    // history.push(`/dashboard/select/:${match.params.id}`);
   };
   console.log(formData);
   // const optionsOne = exercises.map((exercise) => ({
@@ -140,7 +141,11 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
   //   value: exercise._id,
   // }));
   return (
-    <section className="program">
+    <>
+      <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
+        <CustomeAlert />
+      </div>
+
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
         <label>
           <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } }>
@@ -168,33 +173,23 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
             }
           </select>
         </label>
-        <table>
+        <table style={ {
+          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-evenly', alignContent: 'stretch', alignItems: 'center',
+
+        } }>
           <thead>
             <tr>
-              <th>
-                <th style={ { color: '#93aabd', padding: '1em', fontSize: 18, fontWeight: 300 } }>Week</th>
-                <th style={ { color: '#93aabd', padding: '1em', fontSize: 18, fontWeight: 300 } }>Percentages</th>
-                <th style={ { color: '#93aabd', padding: '1em', fontSize: 18, fontWeight: 30 } }>Min</th>
-                <th style={ { color: '#93aabd', padding: '1em', fontSize: 18, fontWeight: 30 } }>Max</th>
-                <th style={ { color: '#93aabd', padding: '1em', fontSize: 18, fontWeight: 30 } }>Sets</th>
-              </th>
+              <th style={ { color: '#93aabd', padding: '0.5em', fontSize: 20, fontWeight: 300, } }>Week</th>
+              <th style={ { color: '#93aabd', padding: '0.7em', fontSize: 20, fontWeight: 300 } }>Percent</th>
+              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 30 } }>Min</th>
+              <th style={ { color: '#93aabd', padding: '1.3em', fontSize: 20, fontWeight: 300 } }>Max</th>
+              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300 } }>Sets</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch', paddingTop: '1em' } }>
             <tr>
-              <td style={ { color: '#fff', fontSize: 18 } }> One </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '50px' } }
-                  name="percentageOne"
-                  value={ percentageOne }
-                  onChange={ (e) => onChange(e) }
-                  placeholder="%"
-                  required />
-              </td>
-              <td>
+              <td style={ { color: '#fff', fontSize: 16, paddingRight: '3.7em' } }> One </td>
+              <td style={ { paddingRight: '3em' } }>
                 <input
                   type="text"
                   className="form-input"
@@ -204,85 +199,66 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
-              <td>
+              <td style={ { paddingRight: '2.8em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="reps_maxOne"
                   value={ reps_maxOne }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
-              <td>
+              <td style={ { paddingRight: '2.5em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="reps_minOne"
                   value={ reps_minOne }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
-              <td>
+              <td >
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="setsOne"
                   value={ setsOne }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
-              <td style={ { color: '#fff', fontSize: 18 } }> Two </td>
-              <td>
+            </tr>
+            <tr>
+              <td style={ { color: '#fff', fontSize: 18, paddingRight: '3.05em' } }> Two </td>
+              <td style={ { paddingRight: '3em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="percentageTwo"
                   value={ percentageTwo }
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
-              <td>
+              <td style={ { paddingRight: '2.8em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="reps_minTwo"
                   value={ reps_minTwo }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
-              <td>
+              <td style={ { paddingRight: '2.5em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px', } }
+                  style={ { width: '50px', } }
                   name="reps_maxTwo"
                   value={ reps_maxTwo }
-                  onChange={ (e) => onChange(e) }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '30px' } }
-                  name="setsTwo"
-                  value={ setsTwo }
-                  onChange={ (e) => onChange(e) }
-                />
-              </td>
-              <td style={ { color: '#fff', fontSize: 18 } }> Three </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '30px' } }
-                  name="percentageThree"
-                  value={ percentageThree }
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
@@ -290,77 +266,101 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
+                  name="setsTwo"
+                  value={ setsTwo }
+                  onChange={ (e) => onChange(e) }
+                  required />
+              </td>
+            </tr>
+            <tr>
+              <td style={ { color: '#fff', fontSize: 18, paddingRight: '2.1em' } }> Three </td>
+              <td style={ { paddingRight: '3em' } }>
+                <input
+                  type="text"
+                  className="form-input"
+                  style={ { width: '50px' } }
+                  name="percentageThree"
+                  value={ percentageThree }
+                  onChange={ (e) => onChange(e) }
+                  required />
+              </td>
+              <td style={ { paddingRight: '2.8em' } }>
+                <input
+                  type="text"
+                  className="form-input"
+                  style={ { width: '50px' } }
                   name="reps_minThree"
                   value={ reps_minThree }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
-              <td>
-
+              <td style={ { paddingRight: '2.5em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="reps_maxThree"
                   value={ reps_maxThree }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
               <td>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="setsThree"
                   value={ setsThree }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
 
               </td>
-              <td style={ { color: '#fff', fontSize: 18 } }> Four </td>
-              <td>
+            </tr>
+            <tr style={ { paddingBottom: '3em' } }>
+              <td style={ { color: '#fff', fontSize: 18, paddingRight: '2.7em' } }> Four </td>
+              <td style={ { paddingRight: '3em' } }>
 
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="percentageFour"
                   value={ percentageFour }
                   onChange={ (e) => onChange(e) }
                   required />
 
               </td>
-              <td>
+              <td style={ { paddingRight: '2.8em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="reps_minFour"
                   value={ reps_minFour }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
 
               </td>
-              <td>
+              <td style={ { paddingRight: '2.5em' } }>
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px' } }
+                  style={ { width: '50px' } }
                   name="reps_maxFour"
                   value={ reps_maxFour }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
-              <td>
+              <td >
                 <input
                   type="text"
                   className="form-input"
-                  style={ { width: '30px', marginRight: '2em' } }
+                  style={ { width: '50px' } }
                   name="setsFour"
                   value={ setsFour }
                   onChange={ (e) => onChange(e) }
-                />
+                  required />
               </td>
             </tr>
           </tbody>
@@ -383,11 +383,12 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
             onChange={ (e) => handleChangeTwo(e) }
           /> */}
         <input
+          style={ { marginLeft: 'auto', marginRight: 'auto', width: 100 } }
           type="submit"
           className="input-add"
           value="Next" />
       </form>
-    </section>
+    </>
   );
 };
 

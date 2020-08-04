@@ -52,13 +52,13 @@ router.post('/add/:program_id', auth, async (req, res) => {
 // Insert
 router.put('/insert', auth, async (req, res) => {
 
-  const { client_id, month, year, percentageOne, percentageTwo, percentageThree, percentageFour, reps_minOne, reps_minTwo, reps_minThree, reps_minFour, reps_maxOne, reps_maxTwo, reps_maxThree, reps_maxFour, setsOne, setsTwo, setsThree, setsFour, exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
+  const { client, month, year, percentageOne, percentageTwo, percentageThree, percentageFour, reps_minOne, reps_minTwo, reps_minThree, reps_minFour, reps_maxOne, reps_maxTwo, reps_maxThree, reps_maxFour, setsOne, setsTwo, setsThree, setsFour, exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
 
   try {
     let program = await Programs.findOne({
       $and: [{ month: month },
       { year: year },
-      { client: client_id }]
+      { client: client }]
     });
 
     if (program) return res.status(409).json({ errors: [{ msg: 'Program for that client already exists' }] });
@@ -94,7 +94,7 @@ router.put('/insert', auth, async (req, res) => {
 
     program = await Programs.create({
       user: req.user.id,
-      client: client_id,
+      client: client,
       month,
       year,
       weekOne: weekOne,

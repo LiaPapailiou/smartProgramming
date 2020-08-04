@@ -755,24 +755,32 @@ a:hover {
   padding:4px 4px;
 }
 /*Program*/
+
 .program-form {
   display: flex;
-  position: absolute;
-  margin-left: 800px;
-  flex-direction: row;
-  flex-wrap: wrap;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   align-content: space-around;
   margin-top: 300px;
+  width: 26vw;
+  min-width: 26vw;
   padding: 1em;
-  height: 36vh;
+  height: 40vh;
+  min-height: 40vh;
   border: solid #535252 1px;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
+}
+
+.program-form tbody tr {
+  padding-bottom: 0.75em;
 }
 
 /* Client */

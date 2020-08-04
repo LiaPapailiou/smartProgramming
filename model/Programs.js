@@ -5,7 +5,9 @@ const programSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  client: mongoose.Schema.Types.ObjectId,
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
   month: String,
   year: String,
   createdAt: {

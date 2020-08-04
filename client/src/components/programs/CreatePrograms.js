@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getAllProfiles, } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
 import { insertProgram } from '../../actions/programs';
-import { useHistory } from 'react-router-dom';
 import CustomeAlert from '../layout/CustomAlert';
 
 // import Select from 'react-select';
@@ -24,7 +23,6 @@ for (let i = 0;i < 5;i += 1) {
 }
 
 const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: { clientProfiles } }) => {
-  const history = useHistory();
   const [formData, setFormData] = useState({
     client: '',
     month: '',
@@ -99,6 +97,11 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
     getExercises();
   }, [getAllProfiles, getExercises]);
 
+  // const programIds = [];
+  // programs.map((program) => {
+  //   programIds.unshift(program._id);
+  // });
+
   const onSubmit = (e) => {
     e.preventDefault();
     insertProgram(formData);
@@ -127,9 +130,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
       setsFour: '',
       exerciseListFour: [],
     });
-    // history.push(`/dashboard/select/:${match.params.id}`);
+    // history.push(`/dashboard/select/:${programIds[0]}`);
   };
-  console.log(formData);
+
   // const optionsOne = exercises.map((exercise) => ({
   //   name: "exerciseListOne",
   //   label: exercise.exercise,
@@ -147,7 +150,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
       </div>
 
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
-        <label>
+        <label style={ { paddingLeft: '100px' } }>
           <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } }>
             <option value="">Client</option>
             {
@@ -174,21 +177,21 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
           </select>
         </label>
         <table style={ {
-          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-evenly', alignContent: 'stretch', alignItems: 'center',
+          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch',
 
         } }>
           <thead>
             <tr>
-              <th style={ { color: '#93aabd', padding: '0.5em', fontSize: 20, fontWeight: 300, } }>Week</th>
-              <th style={ { color: '#93aabd', padding: '0.7em', fontSize: 20, fontWeight: 300 } }>Percent</th>
-              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 30 } }>Min</th>
-              <th style={ { color: '#93aabd', padding: '1.3em', fontSize: 20, fontWeight: 300 } }>Max</th>
-              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300 } }>Sets</th>
+              <th style={ { color: '#93aabd', padding: '0.2em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Week</th>
+              <th style={ { color: '#93aabd', padding: '0.7em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Percent</th>
+              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Min</th>
+              <th style={ { color: '#93aabd', padding: '1.3em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Max</th>
+              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Sets</th>
             </tr>
           </thead>
-          <tbody style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch', paddingTop: '1em' } }>
+          <tbody style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch' } }>
             <tr>
-              <td style={ { color: '#fff', fontSize: 16, paddingRight: '3.7em' } }> One </td>
+              <td style={ { color: '#b4b1b1', fontSize: 16, paddingRight: '3.7em' } }> One </td>
               <td style={ { paddingRight: '3em' } }>
                 <input
                   type="text"
@@ -231,7 +234,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
               </td>
             </tr>
             <tr>
-              <td style={ { color: '#fff', fontSize: 18, paddingRight: '3.05em' } }> Two </td>
+              <td style={ { color: '#b4b1b1', fontSize: 18, paddingRight: '3.05em' } }> Two </td>
               <td style={ { paddingRight: '3em' } }>
                 <input
                   type="text"
@@ -274,7 +277,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
               </td>
             </tr>
             <tr>
-              <td style={ { color: '#fff', fontSize: 18, paddingRight: '2.1em' } }> Three </td>
+              <td style={ { color: '#b4b1b1', fontSize: 18, paddingRight: '2.1em' } }> Three </td>
               <td style={ { paddingRight: '3em' } }>
                 <input
                   type="text"
@@ -318,7 +321,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
               </td>
             </tr>
             <tr style={ { paddingBottom: '3em' } }>
-              <td style={ { color: '#fff', fontSize: 18, paddingRight: '2.7em' } }> Four </td>
+              <td style={ { color: '#b4b1b1', fontSize: 18, paddingRight: '2.7em' } }> Four </td>
               <td style={ { paddingRight: '3em' } }>
 
                 <input
@@ -382,11 +385,11 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
             classNamePrefix="select"
             onChange={ (e) => handleChangeTwo(e) }
           /> */}
-        <input
-          style={ { marginLeft: 'auto', marginRight: 'auto', width: 100 } }
+        <button
+          style={ { marginLeft: 440, marginTop: -225, width: 20, backgroundColor: 'transparent', border: 0 } }
           type="submit"
-          className="input-add"
-          value="Next" />
+          className="button-add"
+          value="Next"><i class="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
     </>
   );
@@ -397,13 +400,9 @@ CreatePrograms.propTypes = {
   getAllProfiles: PropTypes.func.isRequired,
   insertProgram: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  // exercises: PropTypes.object.isRequired,
-  // programs: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
-  // exercises: state.exercises
-  // programs: state.programs
 });
 export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram })(CreatePrograms);

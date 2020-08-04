@@ -744,6 +744,9 @@ font-size: 25px;
 a:hover {
   color: #4696db;
 }
+.button-add i:hover {
+  color: #ec8918;
+}
 /* Pagination */
 .pagination  ul  {
   list-style:none;
@@ -759,29 +762,21 @@ a:hover {
 .program-form {
   display: flex;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
   flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: nowrap;
   align-items: stretch;
-  align-content: space-around;
-  margin-top: 300px;
+  align-content: stretch;
+  margin-left: 200px;
   width: 26vw;
   min-width: 26vw;
   padding: 1em;
   height: 40vh;
   min-height: 40vh;
-  border: solid #535252 1px;
-  background-color: #00000080;
-  border-bottom-left-radius: 0.3em;
-  border-top-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-  border-top-right-radius: 0.3em;
 }
 
-.program-form tbody tr {
+/* .program-form tbody tr {
   padding-bottom: 0.75em;
-}
+} */
 
 /* Client */
 

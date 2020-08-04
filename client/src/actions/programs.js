@@ -15,7 +15,7 @@ export const getPrograms = () => async (dispatch) => {
     const res = await axios.get('/programs');
     dispatch({
       type: GET_PROGRAMS,
-      payloadd: res.data,
+      payload: res.data,
     });
 
   } catch (err) {

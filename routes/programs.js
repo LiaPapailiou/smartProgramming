@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
 // Get by ID
 router.get('/search/:program_id', auth, async (req, res) => {
   try {
-    const program = await Programs.findById(req.params.program_id);
+    const program = await Programs.find({ short_id: req.params.program_id });
     if (!program) return res.status(404).json({ msg: 'Program not found in the database' });
 
     res.json(program);
@@ -33,7 +33,7 @@ router.post('/add/:program_id', auth, async (req, res) => {
   const { exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
 
   try {
-    let program = await Programs.findById(req.params.program_id);
+    let program = await Programs.find({ short_id: req.params.program_id });
     if (!program) return res.status(404).json({ msg: 'Program not found in the database' });
     // Add day
     program.weekOne[0].exercisesOne[0].exerciseListOne.push(exerciseListOne);
@@ -52,7 +52,7 @@ router.post('/add/:program_id', auth, async (req, res) => {
 // Insert
 router.put('/insert', auth, async (req, res) => {
 
-  const { client, month, year, percentageOne, percentageTwo, percentageThree, percentageFour, reps_minOne, reps_minTwo, reps_minThree, reps_minFour, reps_maxOne, reps_maxTwo, reps_maxThree, reps_maxFour, setsOne, setsTwo, setsThree, setsFour, exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
+  const { short_id, client, month, year, percentageOne, percentageTwo, percentageThree, percentageFour, reps_minOne, reps_minTwo, reps_minThree, reps_minFour, reps_maxOne, reps_maxTwo, reps_maxThree, reps_maxFour, setsOne, setsTwo, setsThree, setsFour, exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
 
   try {
     let program = await Programs.findOne({
@@ -95,6 +95,7 @@ router.put('/insert', auth, async (req, res) => {
     program = await Programs.create({
       user: req.user.id,
       client: client,
+      short_id: short_id,
       month,
       year,
       weekOne: weekOne,

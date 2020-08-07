@@ -10,6 +10,7 @@ const programSchema = new mongoose.Schema({
   },
   month: String,
   year: String,
+  short_id: String,
   createdAt: {
     type: Date,
     default: Date.now

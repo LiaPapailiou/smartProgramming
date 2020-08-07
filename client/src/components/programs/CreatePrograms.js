@@ -3,27 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllProfiles, } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
-import { insertProgram } from '../../actions/programs';
+import { insertProgram, getPrograms } from '../../actions/programs';
 import CustomeAlert from '../layout/CustomAlert';
-
-// import Select from 'react-select';
-// import AsyncSelect from 'react-select/async';
-// import makeAnimated from 'react-select/animated';
-// import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-// import BootstrapTable from 'react-bootstrap-table-next';
+import shortid from "shortid";
+import SelectExercises from '../programs/SelectExercises';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 const years = [];
 for (let i = 2020;i < 2051;i += 1) {
   years.push(i);
 }
-const list = [];
-for (let i = 0;i < 5;i += 1) {
-  list.push(i);
-}
 
-const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: { clientProfiles } }) => {
+const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, profile: { clientProfiles } }) => {
+  const id = shortid.generate();
   const [formData, setFormData] = useState({
+    short_id: id,
     client: '',
     month: '',
     year: '',
@@ -48,7 +43,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
     setsFour: '',
     exerciseListFour: [],
   });
-
+  console.log(formData.short_id);
   const {
     client,
     month,
@@ -57,45 +52,29 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
     reps_minOne,
     reps_maxOne,
     setsOne,
-    exerciseListOne,
     percentageTwo,
     reps_minTwo,
     reps_maxTwo,
     setsTwo,
-    exerciseListTwo,
     percentageThree,
     reps_minThree,
     reps_maxThree,
     setsThree,
-    exerciseListThree,
     percentageFour,
     reps_minFour,
     reps_maxFour,
-    setsFour,
-    exerciseListFour,
+    setsFour
   } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(e.target.name);
   };
-
-
-  // const handleChangeOne = (e) => {
-  //   e.map((item) => {
-  //     setFormData({ ...formData, [`${item.name}`]: formData.exerciseListOne.concat(item.value) });
-  //   });
-  // };
-  // const handleChangeTwo = (e) => {
-  //   e.map((item) => {
-  //     setFormData({ ...formData, [`${item.name}`]: formData.exerciseListOne.concat(item.value) });
-  //   });
-  // };
 
   useEffect(() => {
     getAllProfiles();
     getExercises();
-  }, [getAllProfiles, getExercises]);
+    getPrograms();
+  }, [getAllProfiles, getExercises, getPrograms]);
 
   // const programIds = [];
   // programs.map((program) => {
@@ -130,19 +109,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
       setsFour: '',
       exerciseListFour: [],
     });
-    // history.push(`/dashboard/select/:${programIds[0]}`);
   };
 
-  // const optionsOne = exercises.map((exercise) => ({
-  //   name: "exerciseListOne",
-  //   label: exercise.exercise,
-  //   value: exercise._id,
-  // }));
-  // const optionsTwo = exercises.map((exercise) => ({
-  //   name: "exerciseListTwo",
-  //   label: exercise.exercise,
-  //   value: exercise._id,
-  // }));
+
   return (
     <>
       <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
@@ -151,27 +120,27 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
 
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
         <label style={ { paddingLeft: '100px' } }>
-          <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } }>
+          <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
             <option value="">Client</option>
             {
               clientProfiles.map((profile) =>
-                <option value={ `${profile._id}` }>{ profile.clientFirstName } { profile.clientLastName }</option>
+                <option value={ `${profile._id}` } key={ shortid.generate() }>{ profile.clientFirstName } { profile.clientLastName }</option>
               )
             }
           </select>
-          <select name="month" onChange={ (e) => onChange(e) } value={ month } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } }>
+          <select name="month" onChange={ (e) => onChange(e) } value={ month } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
             <option value="">Month</option>
             {
               months.map((month) =>
-                <option option value={ `${month}` } > { month }</option>
+                <option option value={ `${month}` } key={ shortid.generate() }> { month }</option>
               )
             }
           </select>
-          <select name="year" onChange={ (e) => onChange(e) } value={ year } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } }>
+          <select name="year" onChange={ (e) => onChange(e) } value={ year } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
             <option value="">Year</option>
             {
               years.map((year) =>
-                <option option value={ `${year}` } > { year }</option>
+                <option option value={ `${year}` } key={ shortid.generate() }> { year }</option>
               )
             }
           </select>
@@ -368,29 +337,14 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, profile: 
             </tr>
           </tbody>
         </table>
-        {/* <Select
-            isClearable={ false }
-            isMulti
-            options={ optionsOne }
-            className="basic-multi-select"
-            classNamePrefix="select"
-            onChange={ (e) => handleChangeOne(e) }
-          /> */}
-
-        {/* <Select
-            isClearable
-            isMulti
-            options={ optionsTwo }
-            className="basic-multi-select"
-            classNamePrefix="select"
-            onChange={ (e) => handleChangeTwo(e) }
-          /> */}
         <button
           style={ { marginLeft: 440, marginTop: -225, width: 20, backgroundColor: 'transparent', border: 0 } }
           type="submit"
           className="button-add"
-          value="Next"><i class="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
+          value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
+
+      <SelectExercises short_id={ formData.short_id } />
     </>
   );
 };
@@ -399,10 +353,13 @@ CreatePrograms.propTypes = {
   getExercises: PropTypes.func.isRequired,
   getAllProfiles: PropTypes.func.isRequired,
   insertProgram: PropTypes.func.isRequired,
+  getPrograms: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
+  programs: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
+  programs: state.programs,
 });
-export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram })(CreatePrograms);
+export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram, getPrograms })(CreatePrograms);

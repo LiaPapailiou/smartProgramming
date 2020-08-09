@@ -16,54 +16,26 @@ for (let i = 2020;i < 2051;i += 1) {
 }
 
 const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, profile: { clientProfiles } }) => {
-  const id = shortid.generate();
   const [formData, setFormData] = useState({
-    short_id: id,
     client: '',
     month: '',
     year: '',
-    percentageOne: '',
-    reps_minOne: '',
-    reps_maxOne: '',
-    setsOne: '',
-    exerciseListOne: [],
-    percentageTwo: '',
-    reps_minTwo: '',
-    reps_maxTwo: '',
-    setsTwo: '',
-    exerciseListTwo: [],
-    percentageThree: '',
-    reps_minThree: '',
-    reps_maxThree: '',
-    setsThree: '',
-    exerciseListThree: [],
-    percentageFour: '',
-    reps_minFour: '',
-    reps_maxFour: '',
-    setsFour: '',
-    exerciseListFour: [],
+    percentages: [],
+    repsMin: [],
+    repsMax: [],
+    sets: [],
+    exercises: []
   });
-  console.log(formData.short_id);
+
   const {
     client,
     month,
     year,
-    percentageOne,
-    reps_minOne,
-    reps_maxOne,
-    setsOne,
-    percentageTwo,
-    reps_minTwo,
-    reps_maxTwo,
-    setsTwo,
-    percentageThree,
-    reps_minThree,
-    reps_maxThree,
-    setsThree,
-    percentageFour,
-    reps_minFour,
-    reps_maxFour,
-    setsFour
+    percentages,
+    repsMin,
+    repsMax,
+    sets,
+    exercises
   } = formData;
 
   const onChange = (e) => {
@@ -76,11 +48,6 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     getPrograms();
   }, [getAllProfiles, getExercises, getPrograms]);
 
-  // const programIds = [];
-  // programs.map((program) => {
-  //   programIds.unshift(program._id);
-  // });
-
   const onSubmit = (e) => {
     e.preventDefault();
     insertProgram(formData);
@@ -88,26 +55,10 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       client: '',
       month: '',
       year: '',
-      percentageOne: '',
-      reps_minOne: '',
-      reps_maxOne: '',
-      setsOne: '',
-      exerciseListOne: [],
-      percentageTwo: '',
-      reps_minTwo: '',
-      reps_maxTwo: '',
-      setsTwo: '',
-      exerciseListTwo: [],
-      percentageThree: '',
-      reps_minThree: '',
-      reps_maxThree: '',
-      setsThree: '',
-      exerciseListThree: [],
-      percentageFour: '',
-      reps_minFour: '',
-      reps_maxFour: '',
-      setsFour: '',
-      exerciseListFour: [],
+      percentages: [],
+      repsMin: [],
+      repsMax: [],
+      sets: [],
     });
   };
 
@@ -166,8 +117,8 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                   type="text"
                   className="form-input"
                   style={ { width: '50px' } }
-                  name="percentageOne"
-                  value={ percentageOne }
+                  name="percentages"
+                  value={ percentages }
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
@@ -176,8 +127,8 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                   type="text"
                   className="form-input"
                   style={ { width: '50px' } }
-                  name="reps_maxOne"
-                  value={ reps_maxOne }
+                  name="repsMax"
+                  value={ repsMax }
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
@@ -186,8 +137,8 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                   type="text"
                   className="form-input"
                   style={ { width: '50px' } }
-                  name="reps_minOne"
-                  value={ reps_minOne }
+                  name="repsMin"
+                  value={ repsMin }
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
@@ -196,13 +147,13 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                   type="text"
                   className="form-input"
                   style={ { width: '50px' } }
-                  name="setsOne"
-                  value={ setsOne }
+                  name="sets"
+                  value={ sets }
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td style={ { color: '#b4b1b1', fontSize: 18, paddingRight: '3.05em' } }> Two </td>
               <td style={ { paddingRight: '3em' } }>
                 <input
@@ -334,7 +285,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                   onChange={ (e) => onChange(e) }
                   required />
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
         <button

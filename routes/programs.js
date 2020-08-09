@@ -33,13 +33,15 @@ router.post('/add/:program_id', auth, async (req, res) => {
   const { exerciseListOne, exerciseListTwo, exerciseListThree, exerciseListFour } = req.body;
 
   try {
-    let program = await Programs.find({ short_id: req.params.program_id });
+    let program = await Programs.findOne({ short_id: req.params.program_id });
+    // let program = await Programs.findById(req.params.program_id);
     if (!program) return res.status(404).json({ msg: 'Program not found in the database' });
-    // Add day
-    program.weekOne[0].exercisesOne[0].exerciseListOne.push(exerciseListOne);
-    program.weekTwo[0].exercisesTwo[0].exerciseListTwo.push(exerciseListTwo);
-    program.weekThree[0].exercisesThree[0].exerciseListThree.push(exerciseListThree);
-    program.weekFour[0].exercisesFour[0].exerciseListFour.push(exerciseListFour);
+
+    console.log(program.weekOne);
+    program.weekOne[0].exercisesOne[0].exerciseListOne[0].push(exerciseListOne);
+    program.weekTwo[0].exercisesTwo[0].exerciseListTwo[0].push(exerciseListTwo);
+    program.weekThree[0].exercisesThree[0].exerciseListThree[0].push(exerciseListThree);
+    program.weekFour[0].exercisesFour[0].exerciseListFour[0].push(exerciseListFour);
 
     await program.save();
     res.json(program);
@@ -99,13 +101,17 @@ router.put('/insert', auth, async (req, res) => {
       month,
       year,
       weekOne: weekOne,
-      'weekOne.0.exercisesOne.0.exerciseListOne': exerciseListOne,
+      'weekOne.0.exercisesOne.0': [],
+      'weekOne.0.exercisesOne.0.exerciseListOne.0': exerciseListOne,
       weekTwo: weekTwo,
-      'weekTwo.0.exercisesTwo.0.exerciseListTwo': exerciseListTwo,
+      'weekOne.0.exercisesTwo.0': [],
+      'weekTwo.0.exercisesTwo.0.exerciseListTwo.0': exerciseListTwo,
       weekThree: weekThree,
-      'weekThree.0.exercisesThree.0.exerciseListThree': exerciseListThree,
+      'weekOne.0.exercisesThree.0': [],
+      'weekThree.0.exercisesThree.0.exerciseListThree.0': exerciseListThree,
       weekFour: weekFour,
-      'weekFour.0.exercisesFour.0.exerciseListFour': exerciseListFour,
+      'weekOne.0.exercisesFour.0': [],
+      'weekFour.0.exercisesFour.0.exerciseListFour.0': exerciseListFour,
     });
 
     res.json(program);

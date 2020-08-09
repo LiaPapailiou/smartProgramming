@@ -35,6 +35,7 @@ const SelectExercises = ({ short_id, getProgram }) => {
   const [id, setId] = useState({ id: short_id });
 
 
+
   useEffect(() => {
     getProgram(id.id);
   }, [getProgram, id.id]);
@@ -52,7 +53,7 @@ const SelectExercises = ({ short_id, getProgram }) => {
   const onChange = (index, event) => {
     const values = [...formData];
     values[index][event.target.name] = event.target.value.split(',');
-    console.log(formData);
+    // console.log(formData);
     setFormData(values);
   };
 

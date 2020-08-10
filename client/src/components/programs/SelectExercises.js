@@ -36,9 +36,9 @@ const SelectExercises = ({ short_id, getProgram }) => {
 
 
 
-  useEffect(() => {
-    getProgram(id.id);
-  }, [getProgram, id.id]);
+  // useEffect(() => {
+  //   getProgram(id.id);
+  // }, [getProgram, id.id]);
 
   const onSubmit = (e) => {
     e.preventDefault();

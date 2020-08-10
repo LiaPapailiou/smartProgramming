@@ -6,7 +6,7 @@ import { getExercises, } from '../../actions/exercise';
 import { insertProgram, getPrograms } from '../../actions/programs';
 import CustomeAlert from '../layout/CustomAlert';
 import shortid from "shortid";
-import SelectExercises from '../programs/SelectExercises';
+// import SelectExercises from '../programs/SelectExercises';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -20,27 +20,66 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     client: '',
     month: '',
     year: '',
-    percentages: [],
-    repsMin: [],
-    repsMax: [],
-    sets: [],
-    exercises: []
   });
+
+  const [programs, setPrograms] = useState([
+    {
+      percentages: [],
+      repsMin: [],
+      repsMax: [],
+      sets: [],
+      exercises: [],
+    },
+    {
+      percentages: [],
+      repsMin: [],
+      repsMax: [],
+      sets: [],
+      exercises: [],
+    },
+    {
+      percentages: [],
+      repsMin: [],
+      repsMax: [],
+      sets: [],
+      exercises: [],
+    },
+    {
+      percentages: [],
+      repsMin: [],
+      repsMax: [],
+      sets: [],
+      exercises: [],
+    },
+  ],
+  );
 
   const {
     client,
     month,
     year,
+  } = formData;
+  const {
     percentages,
     repsMin,
     repsMax,
     sets,
     exercises
-  } = formData;
+  } = programs;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const onChangeRest = (idx, e) => {
+    const values = [...programs];
+    values[idx][e.target.name] = e.target.value;
+    setPrograms(values);
+
+    setFormData({ ...formData, programs });
+    console.log(formData);
+  };
+  // console.log('FORM', formData);
+  // console.log('REST', restData);
 
   useEffect(() => {
     getAllProfiles();
@@ -55,10 +94,13 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       client: '',
       month: '',
       year: '',
+    });
+    setPrograms({
       percentages: [],
       repsMin: [],
       repsMax: [],
       sets: [],
+      exercises: [],
     });
   };
 
@@ -110,49 +152,55 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
             </tr>
           </thead>
           <tbody style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch' } }>
+
             <tr>
               <td style={ { color: '#b4b1b1', fontSize: 16, paddingRight: '3.7em' } }> One </td>
-              <td style={ { paddingRight: '3em' } }>
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '50px' } }
-                  name="percentages"
-                  value={ percentages }
-                  onChange={ (e) => onChange(e) }
-                  required />
-              </td>
-              <td style={ { paddingRight: '2.8em' } }>
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '50px' } }
-                  name="repsMax"
-                  value={ repsMax }
-                  onChange={ (e) => onChange(e) }
-                  required />
-              </td>
-              <td style={ { paddingRight: '2.5em' } }>
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '50px' } }
-                  name="repsMin"
-                  value={ repsMin }
-                  onChange={ (e) => onChange(e) }
-                  required />
-              </td>
-              <td >
-                <input
-                  type="text"
-                  className="form-input"
-                  style={ { width: '50px' } }
-                  name="sets"
-                  value={ sets }
-                  onChange={ (e) => onChange(e) }
-                  required />
-              </td>
             </tr>
+            { programs && programs.map((data, idx) => (
+              <tr key={ idx }>
+                <td style={ { paddingRight: '3em' } }>
+                  <input
+                    type="text"
+                    className="form-input"
+                    style={ { width: '50px' } }
+                    name="percentages"
+                    value={ data.percentages }
+                    onChange={ (e) => onChangeRest(idx, e) }
+                    required />
+                </td>
+                <td style={ { paddingRight: '2.8em' } }>
+                  <input
+                    type="text"
+                    className="form-input"
+                    style={ { width: '50px' } }
+                    name="repsMax"
+                    value={ data.repsMax }
+                    onChange={ (e) => onChangeRest(idx, e) }
+                    required />
+                </td>
+                <td style={ { paddingRight: '2.5em' } }>
+                  <input
+                    type="text"
+                    className="form-input"
+                    style={ { width: '50px' } }
+                    name="repsMin"
+                    value={ data.repsMin }
+                    onChange={ (e) => onChangeRest(idx, e) }
+                    required />
+                </td>
+                <td >
+                  <input
+                    type="text"
+                    className="form-input"
+                    style={ { width: '50px' } }
+                    name="sets"
+                    value={ data.sets }
+                    onChange={ (e) => onChangeRest(idx, e) }
+                    required />
+                </td>
+              </tr>
+            )) }
+
             {/* <tr>
               <td style={ { color: '#b4b1b1', fontSize: 18, paddingRight: '3.05em' } }> Two </td>
               <td style={ { paddingRight: '3em' } }>
@@ -295,7 +343,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
 
-      <SelectExercises short_id={ formData.short_id } />
+      {/* <SelectExercises short_id={ formData.short_id } /> */ }
     </>
   );
 };

@@ -37,6 +37,7 @@ router.put('/insert', auth, async (req, res) => {
     });
     if (program) return res.status(409).json({ errors: [{ msg: 'Program for that client already exists' }] });
 
+
     program = await ProgramsNew.create({
       user: req.user.id,
       client: client,

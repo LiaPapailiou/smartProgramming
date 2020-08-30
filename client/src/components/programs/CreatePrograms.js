@@ -5,70 +5,50 @@ import { getAllProfiles, } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
 import { insertProgram, getPrograms } from '../../actions/programs';
 import CustomeAlert from '../layout/CustomAlert';
+import ProgramsTable from './ProgramsTable';
 import shortid from "shortid";
-import TextField from '@material-ui/core/TextField';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveIcon from '@material-ui/icons/Remove';
-import AddIcon from '@material-ui/icons/Add';
-import { makeStyles } from '@material-ui/core/styles';
 
+
+const days = [1, 2, 3, 4, 5, 6, 7];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 const years = [];
 for (let i = 2020;i < 2051;i += 1) {
   years.push(i);
 }
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      backgroundColor: 'white',
-      color: (props) => props.color,
-      minWidth: 400,
-    },
-  },
-  button: {
-    margin: theme.spacing(1),
-  }
-}));
-const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, profile: { clientProfiles } }) => {
-  const classes = useStyles();
+
+const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, profile: { clientProfiles }, exercises: { exercises } }) => {
+  const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({
     client: '',
     month: '',
     year: '',
+    daysPerWeek: 0,
   });
-
   const [programs, setPrograms] = useState([
     {
       percentages: [],
       repsMin: [],
       repsMax: [],
       sets: [],
-      exercises: [],
     },
     {
       percentages: [],
       repsMin: [],
       repsMax: [],
       sets: [],
-      exercises: [],
+
     },
     {
       percentages: [],
       repsMin: [],
       repsMax: [],
       sets: [],
-      exercises: [],
     },
     {
       percentages: [],
       repsMin: [],
       repsMax: [],
       sets: [],
-      exercises: [],
     },
   ],
   );
@@ -78,14 +58,8 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     client,
     month,
     year,
+    daysPerWeek,
   } = formData;
-  const {
-    percentages,
-    repsMin,
-    repsMax,
-    sets,
-    exercises
-  } = programs;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -94,28 +68,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     const values = [...programs];
     values[idx][e.target.name] = e.target.value;
     setPrograms(values);
-
     setFormData({ ...formData, programs });
-    console.log(formData);
-  };
-
-  const onChangeExercise = (idx, e) => {
-    const values = [...programs];
-    values[idx][e.target.name] = e.target.value.split(',');
-    setPrograms(values);
-    console.log(values);
-    setFormData({ ...formData, programs });
-    console.log(formData);
-  };
-  const handleAddFields = () => {
-    setPrograms([...programs, { exercises: '' }]);
-  };
-  const handleRemoveFields = (idx) => {
-    const values = [...programs];
-    if (idx > 0) {
-      values.splice(idx, 1);
-    }
-    setPrograms(values);
   };
 
   useEffect(() => {
@@ -131,18 +84,17 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       client: '',
       month: '',
       year: '',
+      daysPerWeek: '',
     });
   };
-
 
   return (
     <>
       <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
         <CustomeAlert />
       </div>
-
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
-        <label style={ { paddingLeft: '40px' } }>
+        <label style={ { paddingLeft: '20px' } }>
           <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
             <option value="">Client</option>
             {
@@ -155,7 +107,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
             <option value="">Month</option>
             {
               months.map((month) =>
-                <option option value={ `${month}` } key={ shortid.generate() }> { month }</option>
+                <option value={ `${month}` } key={ shortid.generate() }> { month }</option>
               )
             }
           </select>
@@ -163,7 +115,18 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
             <option value="">Year</option>
             {
               years.map((year) =>
-                <option option value={ `${year}` } key={ shortid.generate() }> { year }</option>
+                <option value={ `${year}` } key={ shortid.generate() }> { year }</option>
+              )
+            }
+          </select>
+          <select name="daysPerWeek" onChange={ (e) => {
+            setFormData({ ...formData, [e.target.name]: e.target.value });
+            setVisible(!visible);
+          } } value={ daysPerWeek } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
+            <option value="">Days</option>
+            {
+              days.map((day) =>
+                <option value={ `${day}` } key={ shortid.generate() }> { day }</option>
               )
             }
           </select>
@@ -181,8 +144,8 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
             </tr>
           </thead>
           { programs && programs.map((data, idx) => (
-            <tbody style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch' } }>
-              <tr key={ idx }>
+            <tbody key={ idx } style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch' } }>
+              <tr>
                 <td style={ { paddingRight: '2.6em', paddingLeft: '2em' } }>
                   <input
                     type="text"
@@ -193,16 +156,6 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                     onChange={ (e) => onChangePrograms(idx, e) }
                     required />
                 </td>
-                <td style={ { paddingRight: '2.8em' } }>
-                  <input
-                    type="text"
-                    className="form-input"
-                    style={ { width: '50px' } }
-                    name="repsMax"
-                    value={ data.repsMax }
-                    onChange={ (e) => onChangePrograms(idx, e) }
-                    required />
-                </td>
                 <td style={ { paddingRight: '2.5em' } }>
                   <input
                     type="text"
@@ -210,6 +163,16 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
                     style={ { width: '50px' } }
                     name="repsMin"
                     value={ data.repsMin }
+                    onChange={ (e) => onChangePrograms(idx, e) }
+                    required />
+                </td>
+                <td style={ { paddingRight: '2.8em' } }>
+                  <input
+                    type="text"
+                    className="form-input"
+                    style={ { width: '50px' } }
+                    name="repsMax"
+                    value={ data.repsMax }
                     onChange={ (e) => onChangePrograms(idx, e) }
                     required />
                 </td>
@@ -233,39 +196,11 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
-      <Container>
-        <form className={ classes.root }>
-          <div style={ { display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' } }>
-            {
-              programs.map((data, idx) => (
-                <div key={ idx }>
-                  <TextField
-                    // select
-                    name="exercises"
-                    label={ `Week ${idx + 1}` }
-                    variant="filled"
-                    value={ data.exercises }
-                    onChange={ (e) => onChangeExercise(idx, e) }
-                  />
-                  < IconButton
-                    color="primary"
-                    onClick={ () => handleRemoveFields(idx) }
-                  >
-                    <RemoveIcon />
-                  </ IconButton>
-                  <IconButton
-                    color="primary"
-                    onClick={ () => handleAddFields(idx) }
-                  >
-                    <AddIcon />
-                  </IconButton>
-                </div>))
-            }
-          </div>
-        </form>
-      </Container>
+      { visible &&
+        <ProgramsTable days={ formData.daysPerWeek } exercises={ exercises } />
+      }
 
-      {/* <SelectExercises short_id={ formData.short_id } /> */ }
+      <pre style={ { color: '#fff', marginLeft: 1300 } }>{ JSON.stringify(formData, null, 2) }</pre>
     </>
   );
 };
@@ -277,10 +212,14 @@ CreatePrograms.propTypes = {
   getPrograms: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   programs: PropTypes.object.isRequired,
+  exercises: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
   programs: state.programs,
+  exercises: state.exercises,
 });
+
 export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram, getPrograms })(CreatePrograms);
+

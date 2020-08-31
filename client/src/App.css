@@ -143,12 +143,12 @@ img {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 50vw;
+  max-width: 100vw;
   max-height: 50vh;
-  /* justify-content: space-around; */
-  /* align-content: center;
-  align-items: center; */
-  margin-left: 15px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  /* margin-left: 200px; */
 }
 /* Overlay */
 .dark-overlay {

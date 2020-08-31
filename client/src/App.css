@@ -121,8 +121,35 @@ img {
   opacity: 0.8;
 }
 
+/* select */
+.exercises-slct {
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 0.15em;
+  border-radius: 0.3em;
+  margin-right: 20px;
+  border: none;
+  outline: 0;
+  width: 200px;
+  appearance: none;
+  -webkit-appearance: none;
+-moz-appearance: none;
+}
 
-
+/* option:checked {
+  background: #3d90df linear-gradient(0deg, #3d90df 0%, #3d90df 100%);
+} */
+.inner-table {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 50vw;
+  max-height: 50vh;
+  /* justify-content: space-around; */
+  /* align-content: center;
+  align-items: center; */
+  margin-left: 15px;
+}
 /* Overlay */
 .dark-overlay {
   background-color: #00000098;

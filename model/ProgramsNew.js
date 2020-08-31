@@ -10,16 +10,17 @@ const programsNewSchema = new mongoose.Schema({
   },
   month: String,
   year: String,
+  daysPerWeek: Number,
   createdAt: {
     type: Date,
     default: Date.now
   },
   programs: [{
-    percentages: Array,
-    repsMin: Array,
-    repsMax: Array,
-    sets: Array,
-    exercises: Array,
+    percentages: Number,
+    repsMin: Number,
+    repsMax: Number,
+    sets: Number,
+    exerciseList: Array,
   }]
 });
 

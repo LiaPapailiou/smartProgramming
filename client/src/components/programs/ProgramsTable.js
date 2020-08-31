@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import shortid from 'shortid';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {
+  // MenuItem,
+  // Checkbox,
+  // ListItemText,
+  // Select,
+  // InputLabel,
+  // Input,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@material-ui/core';
 
 
 const useStyles = makeStyles({
   table: {
-    width: 800,
+    width: 500,
   },
 
 });
@@ -22,17 +30,13 @@ function createData(item) {
 }
 
 const ProgramsTable = (props) => {
-  const [exerciseList, setExerciseList] = useState([{
-    0: [],
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-    6: [],
-  }]);
   const classes = useStyles();
-  const { days, exercises } = props;
+  const {
+    days,
+    exercises,
+    programs,
+    setPrograms,
+  } = props;
 
   const rows = [];
   for (let i = 0;i < parseInt(days);i += 1) {
@@ -41,22 +45,23 @@ const ProgramsTable = (props) => {
   const handleChangeMultiple = (event, idx) => {
     const { options } = event.target;
     const value = [];
-    const temp = [...exerciseList];
+    const tempPrograms = [...programs];
     for (let i = 0, l = options.length;i < l;i += 1) {
       if (options[i].selected) {
         value.push(options[i].value);
       }
     }
-    temp[0][idx.toString()] = value;
-    setExerciseList(temp);
+    tempPrograms[props.index].exerciseList[0][idx.toString()] = value;
+    setPrograms(tempPrograms);
   };
-  // console.log(props);
+
   return (
     <>
-      <TableContainer component={ Paper } style={ { width: 800, marginLeft: 240 } }>
+      <TableContainer component={ Paper } style={ { width: 500, marginLeft: 50, marginBottom: 30 } }>
         <Table className={ classes.table } size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
+              <TableCell align="left">Week</TableCell>
               <TableCell align="left">Days</TableCell>
               <TableCell align="left">Exercises</TableCell>
             </TableRow>
@@ -64,11 +69,16 @@ const ProgramsTable = (props) => {
           <TableBody>
             { rows.map((row, idx) => (
               <TableRow key={ shortid.generate() }>
+                { (idx < 1) ?
+                  <TableCell>{ `${props.index + 1}` }</TableCell>
+                  :
+                  <TableCell>{ ' ' }</TableCell>
+                }
                 <TableCell component="th" scope="row">
                   { row.item }
                 </TableCell>
                 <TableCell>
-                  <select name="exercises" style={ { fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20, border: 0, outline: 0, width: 250, appearance: 'menulist' } } multiple onChange={ (e) => handleChangeMultiple(e, idx) } value={ exerciseList[0][idx.toString()] }>
+                  <select name="exercises" className="exercises-slct" multiple onChange={ (e) => handleChangeMultiple(e, idx) } value={ programs[props.index].exerciseList[0][idx.toString()] }>
                     {
                       exercises.map((ex) =>
                         <option value={ `${ex.exercise}` } key={ `${ex._id}` }>{ ex.exercise }</option>
@@ -76,13 +86,37 @@ const ProgramsTable = (props) => {
                     }
                   </select>
 
+                  {/* <InputLabel id="multiple-checkbox-label">exercises</InputLabel>
+                  <Select
+                    labelId="multiple-checkbox-label"
+                    id="multiple-checkbox"
+                    multiple={ true }
+                    name="exercises"
+                    value={ exerciseList[0][idx.toString()] }
+                    input={ <Input id="multiple-checkbox-label" /> }
+                    onChange={ (e) => {
+                      console.log(e.target);
+                      handleChangeMultiple(e, idx);
+                    } }
+                    renderValue={ (selected) => selected.join(', ') }
+                    style={ { width: 250 } }
+                  >
+                    {
+                      exercises.map((ex) =>
+                        <MenuItem value={ `${ex.exercise}` } key={ `${ex._id}` } >
+                          <Checkbox checked={ (exerciseList[0][idx.toString()]).indexOf(`${ex.exercise}`) > -1 } />
+                          <ListItemText primary={ `${ex.exercise}` } />
+                        </MenuItem>
+                      )
+                    }
+                  </Select> */}
                 </TableCell>
               </TableRow>
             )) }
           </TableBody>
         </Table>
       </TableContainer>
-      <pre style={ { color: '#fff', marginLeft: 1000 } }>{ JSON.stringify(exerciseList, null, 2) }</pre>
+      {/* <pre style={ { color: '#fff', marginLeft: 1400, marginTop: -200 } }>{ JSON.stringify(exerciseList, null, 2) }</pre> */ }
     </>
   );
 };

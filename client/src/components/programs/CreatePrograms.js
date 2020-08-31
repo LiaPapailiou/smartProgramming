@@ -26,29 +26,70 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
   });
   const [programs, setPrograms] = useState([
     {
-      percentages: [],
-      repsMin: [],
-      repsMax: [],
-      sets: [],
+      percentages: '',
+      repsMin: '',
+      repsMax: '',
+      sets: '',
+      exerciseList: [{
+        0: [],
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+      }],
     },
     {
-      percentages: [],
-      repsMin: [],
-      repsMax: [],
-      sets: [],
-
+      percentages: '',
+      repsMin: '',
+      repsMax: '',
+      sets: '',
+      exerciseList: [
+        {
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        },
+      ],
     },
     {
-      percentages: [],
-      repsMin: [],
-      repsMax: [],
-      sets: [],
+      percentages: '',
+      repsMin: '',
+      repsMax: '',
+      sets: '',
+      exerciseList: [
+        {
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        },
+      ],
     },
     {
-      percentages: [],
-      repsMin: [],
-      repsMax: [],
-      sets: [],
+      percentages: '',
+      repsMin: '',
+      repsMax: '',
+      sets: '',
+      exerciseList: [
+        {
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        },
+      ],
     },
   ],
   );
@@ -86,6 +127,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       year: '',
       daysPerWeek: '',
     });
+    setVisible(!visible);
   };
 
   return (
@@ -196,11 +238,13 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
-      { visible &&
-        <ProgramsTable days={ formData.daysPerWeek } exercises={ exercises } />
-      }
-
-      <pre style={ { color: '#fff', marginLeft: 1300 } }>{ JSON.stringify(formData, null, 2) }</pre>
+      <div className="inner-table">
+        { visible && programs && programs.map((data, index) => (
+          <ProgramsTable key={ shortid.generate() } days={ formData.daysPerWeek } exercises={ exercises } index={ index } programs={ programs } setPrograms={ setPrograms } />
+        ))
+        }
+      </div>
+      {/* <pre style={ { color: '#fff', marginLeft: 1300, marginTop: -300, position: 'absolute' } }>{ JSON.stringify(programs, null, 2) }</pre> */ }
     </>
   );
 };

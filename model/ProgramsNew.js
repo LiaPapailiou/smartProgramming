@@ -6,7 +6,7 @@ const programsNewSchema = new mongoose.Schema({
     ref: 'User'
   },
   client: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Types.ObjectId,
   },
   month: String,
   year: String,

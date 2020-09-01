@@ -4,8 +4,8 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 const Clients = require('../model/Clients');
 const Exercises = require('../model/Exercises');
-const Programs = require('../model/Programs');
-
+const Programs = require('../model/ProgramsNew');
+const ObjectId = require('mongodb').ObjectID;
 
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
@@ -35,6 +35,12 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
   try {
     let program = await Programs.find({ client: req.params.client_id });
     if (!program) return res.status(404).json({ msg: 'Program not found' });
+    const programArray = await Programs.aggregate([
+      { $match: { client: ObjectId(req.params.client_id) } },
+      { $unwind: "$programs" },
+    ]);
+
+    console.log(programArray);
     res.json(program);
   } catch (err) {
     console.log(err.message);
@@ -339,4 +345,4 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
   }
 
 });
-module.exports = router;
+module.exports = router;;

@@ -3,21 +3,16 @@ import shortid from 'shortid';
 import { makeStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
-  // MenuItem,
-  // Checkbox,
-  // ListItemText,
-  // Select,
-  // InputLabel,
-  // Chip,
-  TextField,
   Table,
   TableBody,
   TableCell,
+  TextField,
   TableContainer,
   TableHead,
   TableRow,
   Paper,
 } from '@material-ui/core';
+
 
 
 const useStyles = makeStyles({
@@ -68,10 +63,8 @@ const ProgramsTable = (props) => {
     value.map((v) => values.push(v.exercise));
     const tempPrograms = [...programs];
     tempPrograms[props.index].exerciseList[0][idx.toString()] = values;
-
-    console.log(tempPrograms);
+    // setPrograms(tempPrograms);
   };
-
   return (
     <>
       <TableContainer component={ Paper } style={ { width: 500, marginLeft: 50, marginBottom: 30 } }>
@@ -87,7 +80,7 @@ const ProgramsTable = (props) => {
             { rows.map((row, idx) => (
               <TableRow key={ shortid.generate() }>
                 { (idx < 1) ?
-                  <TableCell>{ `${props.index + 1}` }</TableCell>
+                  <TableCell>Week { `${props.index + 1}` }</TableCell>
                   :
                   <TableCell>{ ' ' }</TableCell>
                 }
@@ -95,49 +88,24 @@ const ProgramsTable = (props) => {
                   { row.item }
                 </TableCell>
                 <TableCell>
-                  {/* <select name="exercises" className="exercises-slct" multiple onChange={ (e) => handleChangeMultiple(e, idx) } value={ programs[props.index].exerciseList[0][idx.toString()] }>
+                  {/* <select
+                    name="exercises"
+                    className="exercises-slct"
+                    multiple
+                    onChange={ (e) => handleChangeMultiple(e, idx) } value={ programs[props.index].exerciseList[0][idx.toString()] }
+                    size={ 7 }
+                  >
                     {
                       exercises.map((ex) =>
                         <option value={ `${ex.exercise}` } key={ `${ex._id}` }>{ ex.exercise }</option>
                       )
                     }
                   </select> */}
-                  {/* 
-                  <InputLabel id="multiple-checkbox-label">exercises</InputLabel>
-                  <Select
-                    labelId="multiple-checkbox-label"
-                    id="multiple-checkbox"
-                    multiple={ true }
-                    value={ programs[props.index].exerciseList[0][idx.toString()] }
-                    onChange={ (e) => {
-                      console.log(e.target);
-                      handleChangeMultiple(e, idx);
-                    } }
-                    // renderValue={ (selected) => selected.join(', ') }
-                    renderValue={ (selected) => (
-                      <div className={ classes.chips }>
-                        { selected.map((value) => (
-                          <Chip key={ value } label={ value } className={ classes.chip } />
-                        )) }
-                      </div>
-                    ) }
-                    style={ { width: 250 } }
-                  >
-                    {
-                      exercises.map((ex) =>
-                        <MenuItem value={ ex.exercise } key={ `${ex._id}` } >
-                          <Checkbox checked={ programs[props.index].exerciseList[0][idx.toString()].indexOf(`${ex.exercise}`) > -1 } />
-                          <ListItemText primary={ `${ex.exercise}` } />
-                        </MenuItem>
-                      )
-                    }
-                  </Select> */}
                   <Autocomplete
                     multiple
                     id="tags-outlined"
                     options={ exercises }
                     getOptionLabel={ (option) => option.exercise }
-                    // defaultValue={ [exercises[0]] }
                     filterSelectedOptions
                     onChange={ (e, value) => {
                       handleChangeMultipleAuto(e, value, idx);
@@ -147,7 +115,6 @@ const ProgramsTable = (props) => {
                         { ...params }
                         variant="outlined"
                         label="exercises"
-                        placeholder="exercises"
                       />
                     ) }
                   />
@@ -157,7 +124,6 @@ const ProgramsTable = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <pre style={ { color: '#fff', marginLeft: 1400, marginTop: -200 } }>{ JSON.stringify(exerciseList, null, 2) }</pre> */ }
     </>
   );
 };

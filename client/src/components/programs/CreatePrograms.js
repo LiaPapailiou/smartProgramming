@@ -125,8 +125,76 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       client: '',
       month: '',
       year: '',
-      daysPerWeek: '',
+      daysPerWeek: 0,
     });
+    setPrograms([
+      {
+        percentages: '',
+        repsMin: '',
+        repsMax: '',
+        sets: '',
+        exerciseList: [{
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        }],
+      },
+      {
+        percentages: '',
+        repsMin: '',
+        repsMax: '',
+        sets: '',
+        exerciseList: [
+          {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: [],
+            6: [],
+          },
+        ],
+      },
+      {
+        percentages: '',
+        repsMin: '',
+        repsMax: '',
+        sets: '',
+        exerciseList: [
+          {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: [],
+            6: [],
+          },
+        ],
+      },
+      {
+        percentages: '',
+        repsMin: '',
+        repsMax: '',
+        sets: '',
+        exerciseList: [
+          {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: [],
+            6: [],
+          },
+        ],
+      },
+    ]);
     setVisible(!visible);
   };
 
@@ -163,7 +231,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
           </select>
           <select name="daysPerWeek" onChange={ (e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
-            setVisible(!visible);
+            setVisible(true);
           } } value={ daysPerWeek } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
             <option value="">Days</option>
             {
@@ -244,7 +312,6 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
         ))
         }
       </div>
-      {/* <pre style={ { color: '#fff', marginLeft: 1300, marginTop: -300, position: 'absolute' } }>{ JSON.stringify(programs, null, 2) }</pre> */ }
     </>
   );
 };

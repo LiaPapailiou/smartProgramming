@@ -39,8 +39,21 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
       { $match: { client: ObjectId(req.params.client_id) } },
       { $unwind: "$programs" },
     ]);
+    const percentages = [];
+    const repsMin = [];
+    const repsMax = [];
+    const sets = [];
+    // const exerciseList = [];
 
-    console.log(programArray);
+    programArray.map((item) => {
+      // item.programs.exerciseList.map((ex, idx) => exerciseList.push({ [`${index}`]: ex[idx] }));
+      percentages.push(item.programs.percentages);
+      repsMin.push(item.programs.repsMin);
+      repsMax.push(item.programs.repsMax);
+      sets.push(item.programs.sets);
+    });
+    console.log(percentages, repsMin, repsMax, sets);
+    // console.log(exerciseList.map((item) => (Object.values(item)).filter((ex, idx) => ex[idx] == 'Bent Over Row')));
     res.json(program);
   } catch (err) {
     console.log(err.message);
@@ -275,6 +288,22 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });
 
+    const programArray = await Programs.aggregate([
+      { $match: { client: ObjectId(req.params.client_id) } },
+      { $unwind: "$programs" },
+    ]);
+
+    // const percentages = [];
+    // const repsMin = [];
+    // const repsMax = [];
+    // const sets = [];
+
+    // programArray.map((item) => {
+    //   percentages.push(item.programs.percentages);
+    //   repsMin.push(item.programs.repsMin);
+    //   repsMax.push(item.programs.repsMax);
+    //   sets.push(item.programs.sets);
+    // });
 
     const benchRM = client.clientOneRM[0].benchPress;
     const squatRM = client.clientOneRM[0].squat;
@@ -338,7 +367,18 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
         }
       });
     }
-
+    // const percentagesWeekOne = [];
+    // const percentagesWeekTwo = [];
+    // const percentagesWeekThree = [];
+    // const percentagesWeekFour = [];
+    // estimates.map((item) => {
+    //   percentagesWeekOne.push(item.min * percentages[0]);
+    //   percentagesWeekTwo.push(item.min * percentages[1]);
+    //   percentagesWeekThree.push(item.min * percentages[2]);
+    //   percentagesWeekFour.push(item.min * percentages[3]);
+    // });
+    // console.log('1', percentagesWeekOne, '2', percentagesWeekTwo, '3', percentagesWeekThree, '4', percentagesWeekFour);
+    //res.json({ test: estimates });
     res.json(estimates);
   } catch (err) {
     res.status(500).send('Internal Server Error');

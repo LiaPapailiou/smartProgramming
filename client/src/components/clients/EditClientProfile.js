@@ -75,8 +75,8 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
   const onClick = () => {
     window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
-  useEffect(() => {
 
+  useEffect(() => {
     getClientProfile(match.params.id);
     setFormData({
       clientFirstName: loading || !clientProfile.clientFirstName ? '' : clientProfile.clientFirstName,

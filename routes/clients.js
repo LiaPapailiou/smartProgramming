@@ -35,25 +35,25 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
   try {
     let program = await Programs.find({ client: req.params.client_id });
     if (!program) return res.status(404).json({ msg: 'Program not found' });
-    const programArray = await Programs.aggregate([
-      { $match: { client: ObjectId(req.params.client_id) } },
-      { $unwind: "$programs" },
-    ]);
-    const percentages = [];
-    const repsMin = [];
-    const repsMax = [];
-    const sets = [];
-    // const exerciseList = [];
+    // const programArray = await Programs.aggregate([
+    //   { $match: { client: ObjectId(req.params.client_id) } },
+    //   { $unwind: "$programs" },
+    // ]);
+    // const percentages = [];
+    // const repsMin = [];
+    // const repsMax = [];
+    // const sets = [];
+    // // const exerciseList = [];
 
-    programArray.map((item) => {
-      // item.programs.exerciseList.map((ex, idx) => exerciseList.push({ [`${index}`]: ex[idx] }));
-      percentages.push(item.programs.percentages);
-      repsMin.push(item.programs.repsMin);
-      repsMax.push(item.programs.repsMax);
-      sets.push(item.programs.sets);
-    });
-    console.log(percentages, repsMin, repsMax, sets);
-    // console.log(exerciseList.map((item) => (Object.values(item)).filter((ex, idx) => ex[idx] == 'Bent Over Row')));
+    // programArray.map((item) => {
+    //   // item.programs.exerciseList.map((ex, idx) => exerciseList.push({ [`${index}`]: ex[idx] }));
+    //   percentages.push(item.programs.percentages);
+    //   repsMin.push(item.programs.repsMin);
+    //   repsMax.push(item.programs.repsMax);
+    //   sets.push(item.programs.sets);
+    // });
+    // console.log(percentages, repsMin, repsMax, sets);
+    // // console.log(exerciseList.map((item) => (Object.values(item)).filter((ex, idx) => ex[idx] == 'Bent Over Row')));
     res.json(program);
   } catch (err) {
     console.log(err.message);
@@ -167,7 +167,7 @@ router.post('/add-weight/:client_id', [auth,
   const newWeight = { weight };
   try {
     const client = await Clients.findById(req.params.client_id);
-    client.clientWeight.push(newWeight);
+    client.clientWeight.unshift(newWeight);
     await client.save();
     res.json(client);
   } catch (err) {
@@ -288,10 +288,10 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });
 
-    const programArray = await Programs.aggregate([
-      { $match: { client: ObjectId(req.params.client_id) } },
-      { $unwind: "$programs" },
-    ]);
+    // const programArray = await Programs.aggregate([
+    //   { $match: { client: ObjectId(req.params.client_id) } },
+    //   { $unwind: "$programs" },
+    // ]);
 
     // const percentages = [];
     // const repsMin = [];

@@ -21,7 +21,11 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
   for (let i = clientProfile.clientOneRM.length - 1;i >= 0;i -= 1) {
     invertedData.push(clientProfile.clientOneRM[i]);
   }
-  const data = clientProfile.clientWeight;
+  const invertedWeightData = [];
+  for (let i = clientProfile.clientWeight.length - 1;i >= 0;i -= 1) {
+    invertedWeightData.push(clientProfile.clientWeight[i]);
+  }
+
   const onChange = (e) => {
     const value = e.target.value;
     if (value === "true" || value === "false")
@@ -61,7 +65,7 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
         (<LineChart
           width={ 450 }
           height={ 300 }
-          data={ data }
+          data={ invertedWeightData }
           margin={ {
             top: 5, right: 15, left: 5, bottom: 5,
           } }

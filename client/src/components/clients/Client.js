@@ -38,15 +38,6 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
     window.location.replace('/dashboard/clients');
   };
 
-  // programs.map((item) => {
-  //   item.weekOne.map((ex) => ex.exercisesOne.map((inner) => inner.exerciseListOne.map((list, day) => {
-  //     console.log(`exercises: ${list}, day of the week: ${day}`);
-  //   })));
-  // });
-  // programs.map((item) => {
-  //   item.weekOne.map((ex) => console.log(ex.percentageOne));
-  // });
-
   return (
     <section className="client">
       <Fragment>
@@ -69,7 +60,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                     <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add Weight
             </Link>
-                  <Link onClick={ handleClickOpen } style={ { color: '#61c9a8' } }>
+                  <Link onClick={ handleClickOpen } style={ { color: '#61c9a8', fontSize: 14, fontWeight: 500 } }>
                     <i className="fas fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
                     Delete</Link>
                   <Dialog

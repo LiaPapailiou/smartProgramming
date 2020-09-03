@@ -282,29 +282,55 @@ router.delete('/delete/:client_id', auth, async (req, res) => {
 });
 
 // Get min - max estimates
-router.post('/calculate/:client_id', auth, async (req, res) => {
+router.post('/calculate/:client_id/:program_id', auth, async (req, res) => {
   const { level } = req.body;
   try {
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });
 
-    // const programArray = await Programs.aggregate([
-    //   { $match: { client: ObjectId(req.params.client_id) } },
-    //   { $unwind: "$programs" },
-    // ]);
+    const programArray = await Programs.aggregate([
+      { $match: { client: ObjectId(req.params.client_id), _id: ObjectId(req.params.program_id) } },
+      { $unwind: "$programs" },
+      { $unwind: "$programs.exerciseList" },
+    ]);
 
-    // const percentages = [];
-    // const repsMin = [];
-    // const repsMax = [];
-    // const sets = [];
+    const percentages = [];
+    const repsMin = [];
+    const repsMax = [];
+    const sets = [];
 
-    // programArray.map((item) => {
-    //   percentages.push(item.programs.percentages);
-    //   repsMin.push(item.programs.repsMin);
-    //   repsMax.push(item.programs.repsMax);
-    //   sets.push(item.programs.sets);
-    // });
+    // Get data
+    programArray.map((item) => {
+      percentages.push(item.programs.percentages);
+      repsMin.push(item.programs.repsMin);
+      repsMax.push(item.programs.repsMax);
+      sets.push(item.programs.sets);
+    });
 
+
+    // Get the client details
+    const clientDetails = {
+      month: programArray[0].month,
+      year: programArray[0].year,
+      daysPerWeek: programArray[0].daysPerWeek,
+    };
+
+
+    // Split programs in weeks
+    let weekOne = programArray.slice(0, 1)[0].programs;
+    let weekTwo = programArray.slice(2, 3)[0].programs;
+    let weekThree = programArray.slice(2, 3)[0].programs;
+    let weekFour = programArray.slice(3)[0].programs;
+
+    // Use these arrays to create the table in the front end
+    weekOne = Object.values(weekOne.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+    weekTwo = Object.values(weekTwo.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+    weekThree = Object.values(weekThree.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+    weekFour = Object.values(weekFour.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+
+    let list = weekOne.toString().split(',').concat(weekTwo.toString().split(',')).concat(weekThree.toString().split(',')).concat(weekFour.toString().split(','));
+
+    // Get one RM for current client
     const benchRM = client.clientOneRM[0].benchPress;
     const squatRM = client.clientOneRM[0].squat;
 
@@ -367,18 +393,18 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
         }
       });
     }
-    // const percentagesWeekOne = [];
-    // const percentagesWeekTwo = [];
-    // const percentagesWeekThree = [];
-    // const percentagesWeekFour = [];
-    // estimates.map((item) => {
-    //   percentagesWeekOne.push(item.min * percentages[0]);
-    //   percentagesWeekTwo.push(item.min * percentages[1]);
-    //   percentagesWeekThree.push(item.min * percentages[2]);
-    //   percentagesWeekFour.push(item.min * percentages[3]);
-    // });
-    // console.log('1', percentagesWeekOne, '2', percentagesWeekTwo, '3', percentagesWeekThree, '4', percentagesWeekFour);
-    //res.json({ test: estimates });
+
+    const percentWeekOne = [];
+    estimates.map((item) => {
+      list.find((li) => li === item.exercises);
+
+      percentWeekOne.push(item.exercise);
+      // Math.round(item.min * percentages[0] * 100) / 100
+      // max: Math.round(item.max * percent * 100) / 100 }
+
+    });
+    console.log(percentWeekOne);
+    console.log(list);
     res.json(estimates);
   } catch (err) {
     res.status(500).send('Internal Server Error');

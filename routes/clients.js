@@ -42,16 +42,10 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
     if (!programArray) return res.status(404).json({ msg: 'Program not found' });
 
     const percentages = [];
-    const repsMin = [];
-    const repsMax = [];
-    const sets = [];
 
     // Get data
     programArray.map((item) => {
       percentages.push(item.programs.percentages);
-      repsMin.push(item.programs.repsMin);
-      repsMax.push(item.programs.repsMax);
-      sets.push(item.programs.sets);
     });
 
 
@@ -69,7 +63,7 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
     let weekThree = programArray.slice(2, 3)[0].programs;
     let weekFour = programArray.slice(3)[0].programs;
 
-    // // Use these arrays to create the table in the front end
+    // Use these arrays to create the table in the front end
     weekOne = Object.values(weekOne.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
     weekTwo = Object.values(weekTwo.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
     weekThree = Object.values(weekThree.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
@@ -97,6 +91,7 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
       return item;
     }));
 
+    // Return the modified program
     res.json(programArray);
   } catch (err) {
     console.log(err.message);

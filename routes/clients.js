@@ -33,28 +33,71 @@ router.get('/search/:client_id', auth, async (req, res) => {
 // Get programs for client 
 router.get(('/get-programs/:client_id'), auth, async (req, res) => {
   try {
-    let program = await Programs.find({ client: req.params.client_id });
-    if (!program) return res.status(404).json({ msg: 'Program not found' });
-    // const programArray = await Programs.aggregate([
-    //   { $match: { client: ObjectId(req.params.client_id) } },
-    //   { $unwind: "$programs" },
-    // ]);
-    // const percentages = [];
-    // const repsMin = [];
-    // const repsMax = [];
-    // const sets = [];
-    // // const exerciseList = [];
 
-    // programArray.map((item) => {
-    //   // item.programs.exerciseList.map((ex, idx) => exerciseList.push({ [`${index}`]: ex[idx] }));
-    //   percentages.push(item.programs.percentages);
-    //   repsMin.push(item.programs.repsMin);
-    //   repsMax.push(item.programs.repsMax);
-    //   sets.push(item.programs.sets);
-    // });
-    // console.log(percentages, repsMin, repsMax, sets);
-    // // console.log(exerciseList.map((item) => (Object.values(item)).filter((ex, idx) => ex[idx] == 'Bent Over Row')));
-    res.json(program);
+    const programArray = await Programs.aggregate([
+      { $match: { client: ObjectId(req.params.client_id) } },
+      { $unwind: "$programs" },
+      { $unwind: "$programs.exerciseList" },
+    ]);
+    if (!programArray) return res.status(404).json({ msg: 'Program not found' });
+
+    const percentages = [];
+    const repsMin = [];
+    const repsMax = [];
+    const sets = [];
+
+    // Get data
+    programArray.map((item) => {
+      percentages.push(item.programs.percentages);
+      repsMin.push(item.programs.repsMin);
+      repsMax.push(item.programs.repsMax);
+      sets.push(item.programs.sets);
+    });
+
+
+    // Get the client details
+    const clientDetails = {
+      month: programArray[0].month,
+      year: programArray[0].year,
+      daysPerWeek: programArray[0].daysPerWeek,
+    };
+
+
+    // Split programs in weeks
+    let weekOne = programArray.slice(0, 1)[0].programs;
+    let weekTwo = programArray.slice(2, 3)[0].programs;
+    let weekThree = programArray.slice(2, 3)[0].programs;
+    let weekFour = programArray.slice(3)[0].programs;
+
+    // // Use these arrays to create the table in the front end
+    weekOne = Object.values(weekOne.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+    weekTwo = Object.values(weekTwo.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+    weekThree = Object.values(weekThree.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+    weekFour = Object.values(weekFour.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
+
+    // Multiply each week's exercises by the given %
+    weekOne.map((one) => one.map((item) => {
+      item.min = Math.round(item.min * percentages[0] * 100) / 100;
+      item.max = Math.round(item.max * percentages[0] * 100) / 100;
+      return item;
+    }));
+    weekTwo.map((one) => one.map((item) => {
+      item.min = Math.round(item.min * percentages[1] * 100) / 100;
+      item.max = Math.round(item.max * percentages[1] * 100) / 100;
+      return item;
+    }));
+    weekThree.map((one) => one.map((item) => {
+      item.min = Math.round(item.min * percentages[2] * 100) / 100;
+      item.max = Math.round(item.max * percentages[2] * 100) / 100;
+      return item;
+    }));
+    weekFour.map((one) => one.map((item) => {
+      item.min = Math.round(item.min * percentages[3] * 100) / 100;
+      item.max = Math.round(item.max * percentages[3] * 100) / 100;
+      return item;
+    }));
+
+    res.json(programArray);
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Internal Server Error');

@@ -284,6 +284,7 @@ router.delete('/delete/:client_id', auth, async (req, res) => {
 // Get min - max estimates
 router.post('/calculate/:client_id', auth, async (req, res) => {
   const { level } = req.body;
+  console.log(level);
   try {
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });
@@ -344,6 +345,7 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
 
     const exercisesLower = await Exercises.find({ user: req.user.id, body: "Squat" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
     const exercisesUpper = await Exercises.find({ user: req.user.id, body: "Bench" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
+    const exercisesNone = await Exercises.find({ user: req.user.id, body: "None" }).select({ exercise: 1, min: 1, max: 1, factor: 1 }).sort();
 
     const estimates = [];
 
@@ -360,6 +362,12 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
       let max = Math.round(ex.max * benchRM * 10) / 10;
       let { exercise } = ex;
       let { factor } = ex;
+      let id = ex._id;
+      estimates.push({ id, exercise, min, max, factor });
+    });
+
+    exercisesNone.map((ex) => {
+      let { exercise, factor, min, max } = ex;
       let id = ex._id;
       estimates.push({ id, exercise, min, max, factor });
     });
@@ -410,9 +418,9 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
 
     // });
 
-
     res.json(estimates);
   } catch (err) {
+    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 

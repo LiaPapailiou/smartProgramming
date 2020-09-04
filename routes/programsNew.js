@@ -27,7 +27,7 @@ router.get('/search/:program_id', auth, async (req, res) => {
 });
 // Insert
 router.put('/insert', auth, async (req, res) => {
-  const { programs, client, month, year, daysPerWeek } = req.body;
+  const { programs, client, month, year, daysPerWeek, level } = req.body;
 
   try {
     let program = await ProgramsNew.findOne({
@@ -44,6 +44,7 @@ router.put('/insert', auth, async (req, res) => {
       month,
       year,
       daysPerWeek,
+      level,
       'programs': programs,
     });
 

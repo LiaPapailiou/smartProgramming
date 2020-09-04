@@ -36,7 +36,7 @@ const ProgramsTable = (props) => {
   const classes = useStyles();
   const {
     days,
-    exercises,
+    exerciseList,
     programs,
     setPrograms,
   } = props;
@@ -60,11 +60,12 @@ const ProgramsTable = (props) => {
 
   const handleChangeMultipleAuto = (event, value, idx) => {
     const values = [];
-    value.map((v) => values.push(v.exercise));
+    value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
     const tempPrograms = [...programs];
     tempPrograms[props.index].exerciseList[0][idx.toString()] = values;
     // setPrograms(tempPrograms);
   };
+
   return (
     <>
       <TableContainer component={ Paper } style={ { width: 500, marginLeft: 50, marginBottom: 30 } }>
@@ -104,7 +105,7 @@ const ProgramsTable = (props) => {
                   <Autocomplete
                     multiple
                     id="tags-outlined"
-                    options={ exercises }
+                    options={ exerciseList }
                     getOptionLabel={ (option) => option.exercise }
                     filterSelectedOptions
                     onChange={ (e, value) => {

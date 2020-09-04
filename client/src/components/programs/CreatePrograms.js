@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllProfiles, getEstimates } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
-import { insertProgram, getPrograms } from '../../actions/programs';
+import { insertProgram } from '../../actions/programs';
 import CustomeAlert from '../layout/CustomAlert';
 import ProgramsTable from './ProgramsTable';
 import shortid from "shortid";
@@ -16,7 +16,7 @@ for (let i = 2020;i < 2051;i += 1) {
   years.push(i);
 }
 
-const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, getEstimates, profile: { clientProfiles, exerciseList }, exercises: { exercises } }) => {
+const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstimates, profile: { clientProfiles, exerciseList }, exercises: { exercises } }) => {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({
     client: '',
@@ -101,12 +101,13 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     month,
     year,
     daysPerWeek,
-    level,
+    level
   } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const onChangePrograms = (idx, e) => {
     const values = [...programs];
     values[idx][e.target.name] = e.target.value;
@@ -117,13 +118,11 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
   useEffect(() => {
     getAllProfiles();
     getExercises();
-    getPrograms();
-    getEstimates(level, client);
-  }, [getAllProfiles, getExercises, getPrograms]);
+  }, [getAllProfiles, getExercises]);
 
   useEffect(() => {
-    getEstimates(level, client);
-  }, [client, level]);
+    getEstimates(formData, client);
+  }, [level, client,]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -133,6 +132,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       month: '',
       year: '',
       daysPerWeek: 0,
+      level: '',
     });
     setPrograms([
       {
@@ -205,7 +205,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     setVisible(!visible);
   };
 
-  console.log(client, level);
+  console.log(typeof level);
   return (
     <>
       <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
@@ -323,10 +323,12 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       </form>
       <div className="inner-table">
         { visible && programs && programs.map((data, index) => (
-          <ProgramsTable key={ shortid.generate() } days={ formData.daysPerWeek } exercises={ exercises } index={ index } programs={ programs } setPrograms={ setPrograms } />
+          <ProgramsTable key={ shortid.generate() } days={ formData.daysPerWeek } exercises={ exercises } exerciseList={ exerciseList } index={ index } programs={ programs } setPrograms={ setPrograms } />
         ))
         }
       </div>
+      {/* <pre style={ { color: '#fff' } }>{ JSON.stringify(formData, null, 2) }</pre>
+      <pre style={ { color: '#fff' } }>{ JSON.stringify(programLevel, null, 2) }</pre> */}
     </>
   );
 };
@@ -336,7 +338,6 @@ CreatePrograms.propTypes = {
   getAllProfiles: PropTypes.func.isRequired,
   getEstimates: PropTypes.func.isRequired,
   insertProgram: PropTypes.func.isRequired,
-  getPrograms: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   programs: PropTypes.object.isRequired,
   exercises: PropTypes.object.isRequired,
@@ -348,5 +349,5 @@ const mapStateToProps = (state) => ({
   exercises: state.exercises,
 });
 
-export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram, getPrograms, getEstimates })(CreatePrograms);
+export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram, getEstimates })(CreatePrograms);
 

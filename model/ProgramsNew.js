@@ -11,6 +11,7 @@ const programsNewSchema = new mongoose.Schema({
   month: String,
   year: String,
   daysPerWeek: Number,
+  level: Number,
   createdAt: {
     type: Date,
     default: Date.now

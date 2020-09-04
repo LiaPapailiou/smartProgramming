@@ -327,56 +327,6 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });
 
-    // const programArray = await Programs.aggregate([
-    //   { $match: { client: ObjectId(req.params.client_id), _id: ObjectId(req.params.program_id) } },
-    //   { $unwind: "$programs" },
-    //   { $unwind: "$programs.exerciseList" },
-    // ]);
-
-    // const percentages = [];
-    // const repsMin = [];
-    // const repsMax = [];
-    // const sets = [];
-
-    // // Get data
-    // programArray.map((item) => {
-    //   percentages.push(item.programs.percentages);
-    //   repsMin.push(item.programs.repsMin);
-    //   repsMax.push(item.programs.repsMax);
-    //   sets.push(item.programs.sets);
-    // });
-
-
-    // Get the client details
-    // const clientDetails = {
-    //   month: programArray[0].month,
-    //   year: programArray[0].year,
-    //   daysPerWeek: programArray[0].daysPerWeek,
-    // };
-
-
-    // Split programs in weeks
-    // let weekOne = programArray.slice(0, 1)[0].programs;
-    // let weekTwo = programArray.slice(2, 3)[0].programs;
-    // let weekThree = programArray.slice(2, 3)[0].programs;
-    // let weekFour = programArray.slice(3)[0].programs;
-
-    // // Use these arrays to create the table in the front end
-    // weekOne = Object.values(weekOne.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
-    // weekTwo = Object.values(weekTwo.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
-    // weekThree = Object.values(weekThree.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
-    // weekFour = Object.values(weekFour.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
-
-    // let list = weekOne.toString().split(',').concat(weekTwo.toString().split(',')).concat(weekThree.toString().split(',')).concat(weekFour.toString().split(','));
-    // let min = 1;
-    // let max = 1;
-    // let temp = [];
-    // weekOne.map((item) => {
-    //   item.map((exercise) => temp.push({ exercise, min, max }));
-    // });
-
-    // temp.map((inner) => console.log(Object.values(inner)));
-    // console.log(weekOne);
     // Get one RM for current client
     const benchRM = client.clientOneRM[0].benchPress;
     const squatRM = client.clientOneRM[0].squat;
@@ -447,14 +397,6 @@ router.post('/calculate/:client_id', auth, async (req, res) => {
         }
       });
     }
-    // estimates.map((item) => {
-    //   list.find((li) => li === item.exercises);
-
-
-    //   // Math.round(item.min * percentages[0] * 100) / 100
-    //   // max: Math.round(item.max * percent * 100) / 100 }
-
-    // });
 
     res.json(estimates);
   } catch (err) {

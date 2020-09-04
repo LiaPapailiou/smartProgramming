@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAllProfiles, } from '../../actions/profile';
+import { getAllProfiles, getEstimates } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
 import { insertProgram, getPrograms } from '../../actions/programs';
 import CustomeAlert from '../layout/CustomAlert';
@@ -16,13 +16,14 @@ for (let i = 2020;i < 2051;i += 1) {
   years.push(i);
 }
 
-const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, profile: { clientProfiles }, exercises: { exercises } }) => {
+const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getPrograms, getEstimates, profile: { clientProfiles, exerciseList }, exercises: { exercises } }) => {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({
     client: '',
     month: '',
     year: '',
     daysPerWeek: 0,
+    level: '',
   });
   const [programs, setPrograms] = useState([
     {
@@ -100,6 +101,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     month,
     year,
     daysPerWeek,
+    level,
   } = formData;
 
   const onChange = (e) => {
@@ -116,7 +118,12 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     getAllProfiles();
     getExercises();
     getPrograms();
+    getEstimates(level, client);
   }, [getAllProfiles, getExercises, getPrograms]);
+
+  useEffect(() => {
+    getEstimates(level, client);
+  }, [client, level]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -198,6 +205,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
     setVisible(!visible);
   };
 
+  console.log(client, level);
   return (
     <>
       <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
@@ -205,7 +213,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
       </div>
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
         <label style={ { paddingLeft: '20px' } }>
-          <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
+          <select name="client" onChange={ (e) => onChange(e) } value={ client } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
             <option value="">Client</option>
             {
               clientProfiles.map((profile) =>
@@ -213,7 +221,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
               )
             }
           </select>
-          <select name="month" onChange={ (e) => onChange(e) } value={ month } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
+          <select name="month" onChange={ (e) => onChange(e) } value={ month } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
             <option value="">Month</option>
             {
               months.map((month) =>
@@ -221,7 +229,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
               )
             }
           </select>
-          <select name="year" onChange={ (e) => onChange(e) } value={ year } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
+          <select name="year" onChange={ (e) => onChange(e) } value={ year } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
             <option value="">Year</option>
             {
               years.map((year) =>
@@ -232,7 +240,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
           <select name="daysPerWeek" onChange={ (e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
             setVisible(true);
-          } } value={ daysPerWeek } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 20 } } required>
+          } } value={ daysPerWeek } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
             <option value="">Days</option>
             {
               days.map((day) =>
@@ -240,10 +248,17 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
               )
             }
           </select>
+          <select name="level" onChange={ (e) => onChange(e) } value={ level } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em' } }>
+            <option value="0">Level 0</option>
+            <option value="0.6">Level 1</option>
+            <option value="0.75">Level 2</option>
+            <option value="0.9">Level 3</option>
+            <option value="1">Level 4</option>
+            <option value="1.1">Level 5</option>
+          </select>
         </label>
         <table style={ {
           display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch',
-
         } }>
           <thead>
             <tr>
@@ -319,6 +334,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getProgra
 CreatePrograms.propTypes = {
   getExercises: PropTypes.func.isRequired,
   getAllProfiles: PropTypes.func.isRequired,
+  getEstimates: PropTypes.func.isRequired,
   insertProgram: PropTypes.func.isRequired,
   getPrograms: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
@@ -332,5 +348,5 @@ const mapStateToProps = (state) => ({
   exercises: state.exercises,
 });
 
-export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram, getPrograms })(CreatePrograms);
+export default connect(mapStateToProps, { getAllProfiles, getExercises, insertProgram, getPrograms, getEstimates })(CreatePrograms);
 

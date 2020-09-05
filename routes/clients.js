@@ -59,7 +59,7 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
 
     // Split programs in weeks
     let weekOne = programArray.slice(0, 1)[0].programs;
-    let weekTwo = programArray.slice(2, 3)[0].programs;
+    let weekTwo = programArray.slice(1, 2)[0].programs;
     let weekThree = programArray.slice(2, 3)[0].programs;
     let weekFour = programArray.slice(3)[0].programs;
 
@@ -71,23 +71,23 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
 
     // Multiply each week's exercises by the given %
     weekOne.map((one) => one.map((item) => {
-      item.min = Math.round(item.min * percentages[0] * 100) / 100;
-      item.max = Math.round(item.max * percentages[0] * 100) / 100;
+      item.min = Math.round(item.min * percentages[0]);
+      item.max = Math.round(item.max * percentages[0]);
       return item;
     }));
     weekTwo.map((one) => one.map((item) => {
-      item.min = Math.round(item.min * percentages[1] * 100) / 100;
-      item.max = Math.round(item.max * percentages[1] * 100) / 100;
+      item.min = Math.round(item.min * percentages[1]);
+      item.max = Math.round(item.max * percentages[1]);
       return item;
     }));
     weekThree.map((one) => one.map((item) => {
-      item.min = Math.round(item.min * percentages[2] * 100) / 100;
-      item.max = Math.round(item.max * percentages[2] * 100) / 100;
+      item.min = Math.round(item.min * percentages[2]);
+      item.max = Math.round(item.max * percentages[2]);
       return item;
     }));
     weekFour.map((one) => one.map((item) => {
-      item.min = Math.round(item.min * percentages[3] * 100) / 100;
-      item.max = Math.round(item.max * percentages[3] * 100) / 100;
+      item.min = Math.round(item.min * percentages[3]);
+      item.max = Math.round(item.max * percentages[3]);
       return item;
     }));
 

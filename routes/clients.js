@@ -30,12 +30,23 @@ router.get('/search/:client_id', auth, async (req, res) => {
   }
 });
 
-// Get programs for client 
+// Get all programs by client_id
 router.get(('/get-programs/:client_id'), auth, async (req, res) => {
   try {
+    const programs = await Programs.find({ client: req.params.client_id }).sort({ year: 1, month: -1 });
+    if (!programs) return res.status(404).json({ msg: 'No programs found for this client' });
 
+    res.json(programs);
+  }
+  catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+// Get program for client by program_id
+router.get(('/get-program/:program_id'), auth, async (req, res) => {
+  try {
     const programArray = await Programs.aggregate([
-      { $match: { client: ObjectId(req.params.client_id) } },
+      { $match: { _id: ObjectId(req.params.program_id) } },
       { $unwind: "$programs" },
       { $unwind: "$programs.exerciseList" },
     ]);
@@ -48,14 +59,12 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
       percentages.push(item.programs.percentages);
     });
 
-
     // Get the client details
     const clientDetails = {
       month: programArray[0].month,
       year: programArray[0].year,
       daysPerWeek: programArray[0].daysPerWeek,
     };
-
 
     // Split programs in weeks
     let weekOne = programArray.slice(0, 1)[0].programs;
@@ -93,6 +102,7 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
 
     // Return the modified program
     res.json(programArray);
+
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Internal Server Error');
@@ -322,7 +332,7 @@ router.delete('/delete/:client_id', auth, async (req, res) => {
 // Get min - max estimates
 router.post('/calculate/:client_id', auth, async (req, res) => {
   const { level } = req.body;
-  console.log(level);
+
   try {
     const client = await Clients.findById(req.params.client_id);
     if (!client) return res.status(404).json({ errors: [{ msg: 'Client not found in the database' }] });

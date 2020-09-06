@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles } from '../../actions/profile';
 import CustomAlert from '../layout/CustomAlert';
-import shortid from "shortid";
+import shortid from 'shortid';
+import ShowClientPrograms from './ShowClientPrograms';
 
-const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs } }) => {
+const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs, program } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
   const [visible, setVisible] = useState(false);
   const { clientId, programId } = client;
@@ -27,7 +28,9 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
       clientId: '',
       programId: '',
     });
+    setVisible(true);
   };
+
   return (
     <Fragment>
       <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
@@ -42,7 +45,7 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
             )
           }
         </select>
-        <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } program>
+        <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
           <option value="">Programs</option>
           {
             programs.map((program) =>
@@ -56,6 +59,9 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
+      { visible &&
+        <ShowClientPrograms program={ program } />
+      }
     </Fragment>
   );
 };

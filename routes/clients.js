@@ -53,10 +53,16 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     if (!programArray) return res.status(404).json({ msg: 'Program not found' });
 
     const percentages = [];
+    const repsMin = [];
+    const repsMax = [];
+    const sets = [];
 
     // Get data
     programArray.map((item) => {
       percentages.push(item.programs.percentages);
+      repsMin.push(item.programs.repsMin);
+      repsMax.push(item.programs.repsMax);
+      sets.push(item.programs.sets);
     });
 
     // Get the client details
@@ -100,8 +106,44 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
       return item;
     }));
 
+    // Add extra object properties inside each item
+    weekOne.map((item) => {
+      item.map((i, idx) => {
+        item[idx].repsMin = repsMin[0];
+        item[idx].repsMax = repsMax[0];
+        item[idx].sets = sets[0];
+      });
+    });
+    weekTwo.map((item) => {
+      item.map((i, idx) => {
+        item[idx].repsMin = repsMin[1];
+        item[idx].repsMax = repsMax[1];
+        item[idx].sets = sets[1];
+      });
+    });
+    weekThree.map((item) => {
+      item.map((i, idx) => {
+        item[idx].repsMin = repsMin[2];
+        item[idx].repsMax = repsMax[2];
+        item[idx].sets = sets[2];
+      });
+    });
+    weekFour.map((item) => {
+      item.map((i, idx) => {
+        item[idx].repsMin = repsMin[3];
+        item[idx].repsMax = repsMax[3];
+        item[idx].sets = sets[3];
+      });
+    });
+
     // Return the modified program
-    res.json(programArray);
+    res.json({
+      clientDetails: clientDetails,
+      weekOne: weekOne,
+      weekTwo: weekTwo,
+      weekThree: weekThree,
+      weekFour: weekFour
+    });
 
   } catch (err) {
     console.log(err.message);

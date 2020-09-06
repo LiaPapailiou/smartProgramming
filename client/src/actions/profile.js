@@ -11,6 +11,7 @@ import {
   DELETE_CLIENT,
   GET_CLIENT_ESTIMATES,
   GET_CLIENT_PROGRAMS,
+  GET_CLIENT_PROGRAM,
   GET_CLIENT_NOTES,
   UPDATE_WEIGHT,
 } from './types';
@@ -217,6 +218,25 @@ export const getClientPrograms = (client_id) => async (dispatch) => {
   }
 };
 
+// Get specific program by program ID
+export const getClientProgramById = (program_id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/clients/get-program/${program_id}`);
+    dispatch({
+      type: GET_CLIENT_PROGRAM,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
+    }
+    dispatch({
+      type: CLIENT_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 // Edit/Insert client notes
 export const addNotes = (formData, client_id) => async (dispatch) => {
   try {

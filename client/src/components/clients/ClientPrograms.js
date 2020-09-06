@@ -1,31 +1,73 @@
 import React, { useEffect, Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getClientPrograms } from '../../actions/profile';
+import { getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles } from '../../actions/profile';
+import CustomAlert from '../layout/CustomAlert';
+import shortid from "shortid";
 
-const ClientPrograms = ({ clientId, profile: { programs } }) => {
+const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs } }) => {
+  const [client, setClient] = useState({ clientId: '', programId: '' });
+  const [visible, setVisible] = useState(false);
+  const { clientId, programId } = client;
+
   useEffect(() => {
-    getClientPrograms(clientId);
-  }, [getClientPrograms]);
-  return (
-    <div>
-      <p>
-        { programs.map((prgrm) =>
-          console.log(prgrm)
-        ) }
+    getAllProfiles();
+    getClientProfile(client.clientId);
+    getClientPrograms(client.clientId);
+  }, [getAllProfiles, getClientProfile, client.clientId]);
 
-      </p>
-    </div>
+  const onChange = (e) => {
+    setClient({ ...client, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getClientProgramById(client.programId);
+    setClient({
+      clientId: '',
+      programId: '',
+    });
+  };
+  return (
+    <Fragment>
+      <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
+        <CustomAlert />
+      </div>
+      <form onSubmit={ (e) => onSubmit(e) } style={ { marginLeft: 50, marginTop: 20 } }>
+        <select name="clientId" onChange={ (e) => onChange(e) } value={ clientId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
+          <option value="">Client</option>
+          {
+            clientProfiles.map((profile) =>
+              <option value={ `${profile._id}` } key={ shortid.generate() }>{ profile.clientFirstName } { profile.clientLastName }</option>
+            )
+          }
+        </select>
+        <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } program>
+          <option value="">Programs</option>
+          {
+            programs.map((program) =>
+              <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>
+            )
+          }
+        </select>
+        <button
+          style={ { marginTop: -140, width: 20, marginLeft: 20, backgroundColor: 'transparent', border: 0 } }
+          type="submit"
+          className="button-add"
+          value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
+      </form>
+    </Fragment>
   );
 };
 
 ClientPrograms.propTypes = {
+  getClientProgramById: PropTypes.func.isRequired,
   getClientPrograms: PropTypes.func.isRequired,
+  getClientProfile: PropTypes.func.isRequired,
+  getAllProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
-
 const mapStateToProps = (state) => ({
-  profile: state.profile
+  profile: state.profile,
 });
-
-export default connect(mapStateToProps, { getClientPrograms })(ClientPrograms);
+export default connect(mapStateToProps, { getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles })(ClientPrograms);

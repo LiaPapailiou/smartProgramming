@@ -3,8 +3,7 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient, getClientPrograms } from '../../actions/profile';
-// import ClientEstimates from './ClientEstimates';
-// import ClientPrograms from './ClientPrograms';
+import ClientPrograms from './ClientPrograms';
 import OneRMChart from './OneRMChart';
 import ClientNotes from './ClientNotes';
 import Link from '@material-ui/core/Link';
@@ -106,11 +105,10 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
             </div>
 
             <ClientNotes />
-            {/* <ClientPrograms clientId={ match.params.id } /> */ }
           </div>)
         }
       </Fragment>
-    </section>
+    </section >
   );
 };
 

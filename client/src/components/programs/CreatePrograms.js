@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getAllProfiles, getEstimates } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
 import { insertProgram } from '../../actions/programs';
-import CustomeAlert from '../layout/CustomAlert';
+import CustomAlert from '../layout/CustomAlert';
 import ProgramsTable from './ProgramsTable';
 import shortid from "shortid";
 
@@ -209,7 +209,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
   return (
     <>
       <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
-        <CustomeAlert />
+        <CustomAlert />
       </div>
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
         <label style={ { paddingLeft: '20px' } }>

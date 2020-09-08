@@ -56,8 +56,8 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
       <CustomAlert />
       { exerciseName === null || loading ? <Spinner /> : (
 
-        <div className="add-card" style={ { height: 500 } }>
-          <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh' } }>Edit Exercise</h3>
+        <div className="add-card" style={ { height: '60vh', width: '38vw' } }>
+          <h3 style={ { fontSize: 22, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh' } }>Edit Exercise</h3>
           <div className="add-card-body">
             <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
               <div className="add-input-group">
@@ -116,7 +116,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                   </label>
                 </div>
               </div>
-              <div className="lib-buttons">
+              <div className="lib-buttons" style={ { marginLeft: 140 } }>
                 <input
                   type="button"
                   className="input-add"

@@ -44,9 +44,9 @@ const AddExercise = ({ insertExercise }) => {
       <CustomAlert />
       {/* <button className="input-add" onClick={ () => setModalIsOpen(!modalIsOpen) } style={ { marginTop: '100px' } }>Add</button>
         <Modal isOpen={ modalIsOpen } className="add-modal"> */}
-      <div className="add-card" style={ { height: '45vh' } }>
+      <div className="add-card" style={ { height: '60vh', width: '38vw' } }>
         <h3 style={ {
-          fontSize: 33, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.35em', paddingLeft: '0.7em', height: '6vh',
+          fontSize: 22, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.35em', paddingLeft: '0.7em', height: '6vh',
           marginBottom: '20px'
         } }>Add an exercise</h3>
         <div className="add-card-body">
@@ -107,7 +107,7 @@ const AddExercise = ({ insertExercise }) => {
                 </label>
               </div>
             </div>
-            <div className="lib-buttons">
+            <div className="lib-buttons" style={ { marginLeft: 130 } }>
               <input
                 type="button"
                 className="input-add"

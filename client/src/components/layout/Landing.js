@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import CustomAlert from '../layout/CustomAlert';
 
 const Landing = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -25,29 +26,27 @@ const Landing = ({ login, isAuthenticated }) => {
   return (
     <section className="landing">
       <div className="dark-overlay">
+        <CustomAlert />
         <div className="card">
           <h3>Sign In</h3>
-          <div className="card-body">
-            <form onSubmit={ (e) => onSubmit(e) }>
-              <div className="input-group form-group">
-                <span className="input-group-text"><i className="fas fa-user"></i>
-                  <input type="text" required className="form-control-extra" name="email" value={ email } onChange={ (e) => onChange(e) } placeholder=" Email" />
-                </span>
-                <br />
-                <span className="input-group-text"><i className="fas fa-key"></i>
-                  <input type="password" className="form-control-extra" required name="password" value={ password } minLength="6" maxLength="12" onChange={ (e) => onChange(e) } placeholder=" Password" />
-                </span>
+          <form onSubmit={ (e) => onSubmit(e) }>
+            <div className="input-group form-group">
+              <span className="input-group-text"><i className="fas fa-user"></i>
+                <input type="text" required className="form-control-extra" name="email" value={ email } onChange={ (e) => onChange(e) } placeholder=" Email" />
+              </span>
+              <br />
+              <span className="input-group-text"><i className="fas fa-key"></i>
+                <input type="password" className="form-control-extra" required name="password" value={ password } minLength="6" maxLength="12" onChange={ (e) => onChange(e) } placeholder=" Password" />
+              </span>
 
-              </div>
-              <input type="submit" className="input-login" value="Login" />
-            </form>
-          </div>
-          <div className="login-card-footer">
-            <div className="d-flex justify-content-center links">
-              Don't have an account?<Link to="/register">Sign Up</Link>
             </div>
+            <input type="submit" className="input-login" value="Login" />
+          </form>
+          <div className="d-flex justify-content-center links" style={ { paddingTop: '2em' } }>
+            Don't have an account?<Link to="/register">Sign Up</Link>
           </div>
         </div>
+
       </div>
     </section>
   );

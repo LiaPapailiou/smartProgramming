@@ -52,15 +52,17 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
         >
           {
             (props) => (
-              <div style={ { backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', overflow: 'auto', maxWidth: '50vw', maxHeight: '80vh', justifyContent: 'center', alignItems: 'center', marginLeft: 500, marginTop: 80 } }>
+              <div className="bootstrap-table-wrapper" style={ { backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', overflow: 'auto', maxWidth: '50vw', maxHeight: '80vh', justifyContent: 'center', alignItems: 'center', marginLeft: 400, fontSize: 14, color: '#000' } }>
+                <MyExportCSV  { ...props.csvProps }>Export CSV</MyExportCSV>
+                <br />
                 <BootstrapTable
                   bootstrap4
                   striped
                   rowStyle={ rowStyle }
                   { ...props.baseProps }
                 />
-                <br />
-                <MyExportCSV  { ...props.csvProps }>Export CSV</MyExportCSV>
+
+
               </div>
             )
           }

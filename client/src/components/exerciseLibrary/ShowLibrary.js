@@ -15,7 +15,7 @@ const ShowLibrary = ({ getExerciseLibrary, exerciseLibrary: { exerciseLibraryLis
       ) : (
           isAuthenticated &&
 
-          <div className="exercises-container">
+          <div className="exercises-container" style={ { width: '43vw' } }>
             { exerciseLibraryList.length > 0 && (
               <div className="exercise-headers">
                 <table>

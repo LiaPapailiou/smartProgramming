@@ -78,7 +78,7 @@ const AddClient = ({ insertClient, history }) => {
         <CustomAlert />
         <div className="dark-overlay">
           <div className="add-card">
-            <h3>Client Information</h3>
+            <h3 style={ { fontSize: 24, height: '6vh' } }>Client Information</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
                 <div className="add-input-group">
@@ -191,7 +191,7 @@ const AddClient = ({ insertClient, history }) => {
                   <textarea cols="65" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
                 </div>
-                <div className="lib-buttons">
+                <div className="lib-buttons" style={ { marginLeft: 280 } }>
                   <input
                     type="button"
                     className="input-add"

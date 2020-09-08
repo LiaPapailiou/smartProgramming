@@ -30,7 +30,7 @@ const AddWeight = ({ match, addWeight, getClientProfile, profile: { clientProfil
       <div className="add-rm">
         <div className="dark-overlay">
           <div className="add-rm-container">
-            <div className="add-rm-card" style={ { height: '23vh' } }>
+            <div className="add-rm-card" style={ { height: '27vh' } }>
               <h3>Add Weight</h3>
               <div className="add-card-body">
                 <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>

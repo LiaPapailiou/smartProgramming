@@ -35,7 +35,7 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
   return (
     <>
       <label>
-        <select type="text" name="type" onChange={ (e) => onChange(e) } style={ { color: '#000', fontSize: 14, padding: '0.15em', borderRadius: '0.3em', position: 'absolute', marginTop: 20, marginLeft: 100, zIndex: 1 } }>
+        <select type="text" name="type" onChange={ (e) => onChange(e) } style={ { color: '#000', fontSize: 14, padding: '0.15em', borderRadius: '0.3em', position: 'absolute', marginTop: 70, marginLeft: 100, zIndex: 1 } }>
           <option value="true">One RM</option>
           <option value="false">Weight</option>
         </select>

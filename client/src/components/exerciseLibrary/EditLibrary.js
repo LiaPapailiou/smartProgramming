@@ -46,8 +46,8 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
       { singleExercise === null || loading ?
         <Spinner /> :
         (
-          <div className="add-card" style={ { height: '33vh' } }>
-            <h3 style={ { fontSize: 33, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh', marginBottom: '20px' } }>Edit Library</h3>
+          <div className="add-card" style={ { height: '45vh', width: '38vw' } }>
+            <h3 style={ { fontSize: 22, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh', marginBottom: '20px' } }>Edit Library</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
                 <div className="add-input-group">
@@ -77,7 +77,7 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
                     placeholder=" Video Link"
                     required />
                 </div>
-                <div className="lib-buttons">
+                <div className="lib-buttons" style={ { marginLeft: 130 } }>
                   <input
                     type="button"
                     className="input-add"

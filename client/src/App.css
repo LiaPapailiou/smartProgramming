@@ -259,7 +259,7 @@ button {
   background: url('./images/gloves.jpg') no-repeat center center/cover; 
   height: 100vh;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: baseline;
   justify-content: center;
@@ -268,12 +268,12 @@ button {
 }
   
 .card {
-  margin-top: 320px;
+  margin-top: 260px;
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 18vw;
-  height: 32vh;
+  width: 28vw;
+  height: 45vh;
   border: 1px solid #6d6d6d;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
@@ -355,9 +355,6 @@ i {
   box-shadow: 0 0 40px 40px #93aabd inset;
 }
 
-.login-card-footer {
-  margin-top: 25px;
-}
 a:hover {
   color: #4696db;
 }
@@ -379,12 +376,12 @@ a:hover {
 .register-card {
   padding-top: 20px;
   border: solid #6d6d6d 1px;
-  height: 45vh;
-  margin-top: 320px;
+  height: 60vh;
+  margin-top: 200px;
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 18vw;
+  width: 28vw;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -532,23 +529,22 @@ register-input-group-text i {
 
 } */
 .add-card {
-  margin-top: 200px;
+  margin-top: 40px;
   margin-bottom: auto;
   overflow: auto;
   padding-top: 10px;
   border:1px solid #6d6d6d;
-  height: 58vh;
-  width: 30vw;
-  max-width: 30vw;
+  height: 80vh;
+  width: 58vw;
   margin-left: auto;
   margin-right: auto;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
-  border-top-right-radius: 0.3em;
- 
+  border-top-right-radius: 0.3em; 
 }
+
 .add-card-body {
   text-align: left;
 }
@@ -636,14 +632,14 @@ a:hover {
 }
 
 .add-select {
-  margin-left: 82px; 
+  margin-left: 118px; 
 }
 .lib-buttons {
  margin-left: 190px;
  margin-bottom: 15px;
 }
 .lib-buttons-extra {
- margin-left: 75px;
+ margin-left: 45px;
  margin-bottom: 15px;
 }
 /* Client list */
@@ -738,7 +734,6 @@ font-size: 25px;
   margin-top: 270px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
@@ -746,8 +741,8 @@ font-size: 25px;
 .add-rm-card {
   padding-top: 10px;
   border: solid #fff 1px;
-  max-height: 25vh;
-  width: 18vw;
+  height: 38vh;
+  width: 25vw;
   background-color: #00000080;
   border: 1px solid #6d6d6d;
   border-bottom-left-radius: 0.3em;
@@ -762,14 +757,17 @@ font-size: 25px;
   font-family: 'Numans', sans-serif;
   background-color: #00000080;
   border-bottom: 1px solid #6d6d6d;
-  height: 5vh;
-  padding-left: -60px;
+  height: 6vh;
+  /* padding-left: -60px; */
   color: #93aabd;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 300;
   margin-bottom: 20px;
 }
 
+.add-form {
+  margin-top: 40px;
+}
 
 .input-add-rm {
   margin-top: 5px;
@@ -885,7 +883,7 @@ a:hover {
   padding: .5em;
   background-color: #00000080;
   height: 90vh;
-  width: 40vw;
+  max-width: 40vw;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -896,8 +894,8 @@ a:hover {
   border-top-right-radius: 0.3em;
 }
 .rm-chart {
-  margin-top: 60px;
-  max-width: 30vw;
+  margin-top: 100px;
+  max-width: 40vw;
   min-width: 25vw;
   max-height: 40vh;
   margin-left: -70px;
@@ -936,15 +934,15 @@ a:hover {
   color: '#fff';
   padding-right: 8px;
   text-align: left;
-  margin-top: -36px;
+  margin-top: -690px;
   max-width: 38vw;
   margin-bottom: 60px;
 }
 
 .icon-static {
-  position: relative;
-  margin-top: -680px;
-  margin-left: 500px
+  position: absolute;
+  margin-top: -690px;
+  margin-left: 920px
  
 }
 .add-notes {
@@ -995,7 +993,7 @@ a:hover {
   align-self: center;
   width: 33vw;
   height: 15vh;
-  font-size:  14px;
+  font-size:  12px;
   text-align: justify;
   padding: 1em;
 }
@@ -1150,6 +1148,7 @@ a:hover {
   align-content: center;
   text-align: center;
 }
+
 .exercise-headers th {
   padding-right: 1em;
   font-size: 20px;
@@ -1158,7 +1157,7 @@ a:hover {
 }
 
 .exercises-container table {
-  max-width: 800px;
+  max-width: 60vw;
   border-collapse: collapse;
 }
 
@@ -1201,15 +1200,14 @@ a:hover {
 .exercises-container {
   position: relative;
   background-color:#00000080;
-  margin-top: 250px;
+  margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
   overflow: auto;
   color: #fff;
-  max-width: 25vw;
   font-size: 13px;
-  max-height: 55vh;
+  max-height: 80vh;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;

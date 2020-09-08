@@ -6,6 +6,7 @@ import CustomAlert from '../layout/CustomAlert';
 import shortid from 'shortid';
 import ShowClientPrograms from './ShowClientPrograms';
 
+
 const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
   const [visible, setVisible] = useState(false);

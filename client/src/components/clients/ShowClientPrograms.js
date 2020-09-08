@@ -26,7 +26,7 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
   const columns = [
     { dataField: 'week', text: 'Week' },
     { dataField: 'day', text: 'Day', csvType: Number },
-    { dataField: 'exercise', text: 'Exercises' },
+    { dataField: 'exercise', text: 'Exercises', csvType: String },
     { dataField: 'min', text: 'Load min(kg)', csvType: Number },
     { dataField: 'max', text: 'Load max(kg)', csvType: Number },
     { dataField: 'repsMin', text: 'Reps min', csvType: Number },
@@ -34,7 +34,7 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
     { dataField: 'sets', text: 'Sets', csvType: Number },
   ];
   console.log(program.month);
-
+  const rowStyle = { backgroundColor: '#transparent', padding: '0', borderCollapse: 'collapse' };
   return (
     <>
       {
@@ -43,6 +43,7 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
           keyField="id"
           columns={ columns }
           data={ program.month }
+          bordered={ false }
           exportCSV={ {
             fileName: `${clientProfile.clientFirstName}_${program.clientDetails.month}_${program.clientDetails.year}.csv`,
             separator: '|',
@@ -51,14 +52,16 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
         >
           {
             (props) => (
-              <>
-                <MyExportCSV  { ...props.csvProps }>Export CSV</MyExportCSV>
-                <br />
+              <div style={ { backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', overflow: 'auto', maxWidth: '50vw', maxHeight: '80vh', justifyContent: 'center', alignItems: 'center', marginLeft: 500, marginTop: 80 } }>
                 <BootstrapTable
+                  bootstrap4
+                  striped
+                  rowStyle={ rowStyle }
                   { ...props.baseProps }
-                  bordered={ false }
                 />
-              </>
+                <br />
+                <MyExportCSV  { ...props.csvProps }>Export CSV</MyExportCSV>
+              </div>
             )
           }
         </ToolkitProvider>

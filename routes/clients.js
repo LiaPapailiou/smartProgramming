@@ -6,6 +6,7 @@ const Clients = require('../model/Clients');
 const Exercises = require('../model/Exercises');
 const Programs = require('../model/ProgramsNew');
 const ObjectId = require('mongodb').ObjectID;
+const shortid = require('shortid');
 
 // Get the list of all clients in the DB
 router.get('/', auth, async (req, res) => {
@@ -106,43 +107,60 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
       return item;
     }));
 
-    // Add extra object properties inside each item
-    weekOne.map((item) => {
+    // Add extra object properties inside each item and exctract nested arrays
+    const newWeekOne = [];
+    const newWeekTwo = [];
+    const newWeekThree = [];
+    const newWeekFour = [];
+
+    weekOne.map((item, index) => {
       item.map((i, idx) => {
         item[idx].repsMin = repsMin[0];
         item[idx].repsMax = repsMax[0];
         item[idx].sets = sets[0];
+        item[idx].day = index + 1;
+        item[idx].id = shortid.generate();
+        newWeekOne.push(i);
       });
     });
-    weekTwo.map((item) => {
+    weekTwo.map((item, index) => {
       item.map((i, idx) => {
         item[idx].repsMin = repsMin[1];
         item[idx].repsMax = repsMax[1];
         item[idx].sets = sets[1];
+        item[idx].day = index + 1;
+        item[idx].id = shortid.generate();
+        newWeekTwo.push(i);
       });
     });
-    weekThree.map((item) => {
+    weekThree.map((item, index) => {
       item.map((i, idx) => {
         item[idx].repsMin = repsMin[2];
         item[idx].repsMax = repsMax[2];
         item[idx].sets = sets[2];
+        item[idx].day = index + 1;
+        item[idx].id = shortid.generate();
+        newWeekThree.push(i);
       });
     });
-    weekFour.map((item) => {
+    weekFour.map((item, index) => {
       item.map((i, idx) => {
         item[idx].repsMin = repsMin[3];
         item[idx].repsMax = repsMax[3];
         item[idx].sets = sets[3];
+        item[idx].day = index + 1;
+        item[idx].id = shortid.generate();
+        newWeekFour.push(i);
       });
     });
 
     // Return the modified program
     res.json({
       clientDetails: clientDetails,
-      weekOne: weekOne,
-      weekTwo: weekTwo,
-      weekThree: weekThree,
-      weekFour: weekFour
+      weekOne: newWeekOne,
+      weekTwo: newWeekTwo,
+      weekThree: newWeekThree,
+      weekFour: newWeekFour,
     });
 
   } catch (err) {

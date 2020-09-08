@@ -15,7 +15,7 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
     getAllProfiles();
     getClientProfile(client.clientId);
     getClientPrograms(client.clientId);
-  }, [getAllProfiles, getClientProfile, client.clientId]);
+  }, [client.clientId]);
 
   const onChange = (e) => {
     setClient({ ...client, [e.target.name]: e.target.value });
@@ -60,7 +60,7 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
       { visible &&
-        <ShowClientPrograms program={ program } />
+        <ShowClientPrograms />
       }
     </Fragment>
   );

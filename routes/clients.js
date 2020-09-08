@@ -112,6 +112,7 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     const newWeekTwo = [];
     const newWeekThree = [];
     const newWeekFour = [];
+    const month = [];
 
     weekOne.map((item, index) => {
       item.map((i, idx) => {
@@ -119,8 +120,10 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].repsMax = repsMax[0];
         item[idx].sets = sets[0];
         item[idx].day = index + 1;
+        item[idx].week = 1;
         item[idx].id = shortid.generate();
         newWeekOne.push(i);
+        month.push(i);
       });
     });
     weekTwo.map((item, index) => {
@@ -129,8 +132,10 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].repsMax = repsMax[1];
         item[idx].sets = sets[1];
         item[idx].day = index + 1;
+        item[idx].week = 2;
         item[idx].id = shortid.generate();
         newWeekTwo.push(i);
+        month.push(i);
       });
     });
     weekThree.map((item, index) => {
@@ -139,8 +144,10 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].repsMax = repsMax[2];
         item[idx].sets = sets[2];
         item[idx].day = index + 1;
+        item[idx].week = 3;
         item[idx].id = shortid.generate();
         newWeekThree.push(i);
+        month.push(i);
       });
     });
     weekFour.map((item, index) => {
@@ -149,18 +156,17 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].repsMax = repsMax[3];
         item[idx].sets = sets[3];
         item[idx].day = index + 1;
+        item[idx].week = 4;
         item[idx].id = shortid.generate();
         newWeekFour.push(i);
+        month.push(i);
       });
     });
 
     // Return the modified program
     res.json({
       clientDetails: clientDetails,
-      weekOne: newWeekOne,
-      weekTwo: newWeekTwo,
-      weekThree: newWeekThree,
-      weekFour: newWeekFour,
+      month: month,
     });
 
   } catch (err) {

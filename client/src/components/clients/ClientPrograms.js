@@ -24,10 +24,10 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
   const onSubmit = (e) => {
     e.preventDefault();
     getClientProgramById(client.programId);
-    setClient({
-      clientId: '',
-      programId: '',
-    });
+    // setClient({
+    //   clientId: '',
+    //   programId: '',
+    // });
     setVisible(true);
   };
 
@@ -60,7 +60,7 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
       { visible &&
-        <ShowClientPrograms />
+        <ShowClientPrograms programId={ client.programId } />
       }
     </Fragment>
   );

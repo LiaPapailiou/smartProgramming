@@ -1,12 +1,12 @@
 import React, { useEffect, Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles } from '../../actions/profile';
+import { getClientProfile, getClientPrograms, getAllProfiles } from '../../actions/profile';
 import CustomAlert from '../layout/CustomAlert';
 import shortid from 'shortid';
 import ShowClientPrograms from './ShowClientPrograms';
 
-const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs, program } }) => {
+const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
   const [visible, setVisible] = useState(false);
   const { clientId, programId } = client;
@@ -23,11 +23,6 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
 
   const onSubmit = (e) => {
     e.preventDefault();
-    getClientProgramById(client.programId);
-    // setClient({
-    //   clientId: '',
-    //   programId: '',
-    // });
     setVisible(true);
   };
 
@@ -67,7 +62,6 @@ const ClientPrograms = ({ getClientProgramById, getClientProfile, getClientProgr
 };
 
 ClientPrograms.propTypes = {
-  getClientProgramById: PropTypes.func.isRequired,
   getClientPrograms: PropTypes.func.isRequired,
   getClientProfile: PropTypes.func.isRequired,
   getAllProfiles: PropTypes.func.isRequired,
@@ -76,4 +70,4 @@ ClientPrograms.propTypes = {
 const mapStateToProps = (state) => ({
   profile: state.profile,
 });
-export default connect(mapStateToProps, { getClientProgramById, getClientProfile, getClientPrograms, getAllProfiles })(ClientPrograms);
+export default connect(mapStateToProps, { getClientProfile, getClientPrograms, getAllProfiles })(ClientPrograms);

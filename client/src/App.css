@@ -461,7 +461,7 @@ register-input-group-text i {
 }
 
 .client-table {
-  width: 33vw;
+  width: 43vw;
   background-color: #00000080;
   border-collapse: collapse;
 }
@@ -669,8 +669,8 @@ a:hover {
   align-content: center;
   align-items: center;
   border: solid #fff 2px;
-  height: 150px;
-  width: 320px;
+  height: 60vh;
+  width: 40vw;
   margin: 1em;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
@@ -876,20 +876,19 @@ a:hover {
 }
 
 .client-card {  
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
+  align-items: center;
+  /* align-content: center; */
+  justify-content: center;
   padding: .5em;
   background-color: #00000080;
-  height: 70vh;
-  max-height: 70vh;
-  width:28vw;
-  margin-top: 130px;
-  margin-left: 700px;
-  max-width: 28vw;
-  min-width: 28vw;
+  height: 90vh;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -897,13 +896,11 @@ a:hover {
   border-top-right-radius: 0.3em;
 }
 .rm-chart {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 130px;
+  margin-top: 60px;
   max-width: 30vw;
   min-width: 25vw;
-  /* border: solid #535252 1px; */
+  max-height: 40vh;
+  margin-left: -70px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
@@ -933,21 +930,22 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  margin-left: 1300px;
+  margin-left: 960px;
   max-height: 20vh;
   font-size: 14px;
   color: '#fff';
   padding-right: 8px;
   text-align: left;
-  margin-top: 130px;
+  margin-top: -36px;
   max-width: 38vw;
   margin-bottom: 60px;
 }
 
 .icon-static {
-  position: absolute;
-  margin-left:1260px ;
-  margin-top: 140px;
+  position: relative;
+  margin-top: -680px;
+  margin-left: 500px
+ 
 }
 .add-notes {
   overflow: auto;
@@ -995,10 +993,9 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
   align-self: center;
-  max-height: 100px;
-  width: 23vw;
-  max-width: 23vw;
-  font-size:  11px;
+  width: 33vw;
+  height: 15vh;
+  font-size:  14px;
   text-align: justify;
   padding: 1em;
 }
@@ -1025,13 +1022,12 @@ a:hover {
   padding: 1em;
 }
 .client-header {
-  align-items: flex-start;
   padding-bottom: 20px;
 }
 
 .client-header h3 {
   color: #f4f4f4;
-  text-align: justify;
+  text-align: center;
   padding-left: 1.2em;
   font-family: 'Numans', sans-serif;
   font-size: 30px;

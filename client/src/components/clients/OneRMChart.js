@@ -33,9 +33,9 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
     setSelected({ ...selected, [e.target.name]: value });
   };
   return (
-    <div className="charts">
+    <>
       <label>
-        <select type="text" name="type" onChange={ (e) => onChange(e) } style={ { color: '#000', fontSize: 14, padding: '0.15em', borderRadius: '0.3em', position: 'absolute', marginTop: 185, marginLeft: 460, zIndex: 1 } }>
+        <select type="text" name="type" onChange={ (e) => onChange(e) } style={ { color: '#000', fontSize: 14, padding: '0.15em', borderRadius: '0.3em', position: 'absolute', marginTop: 20, marginLeft: 100, zIndex: 1 } }>
           <option value="true">One RM</option>
           <option value="false">Weight</option>
         </select>
@@ -80,7 +80,7 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
         </LineChart>)
       }
 
-    </div>
+    </>
   );
 };
 OneRMChart.propTypes = {

@@ -44,7 +44,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
           (<div className="dark-overlay">
             <div className="client-card">
               <div className="client-header">
-                <h3>
+                <h3 style={ { alignSelf: 'center' } }>
                   { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
                 </h3>
                 <span className="client-header-links">
@@ -100,7 +100,6 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                 <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
                 { clientProfile.notes }
               </div>
-              {/* <ClientEstimates clientId={ match.params.id } /> */ }
               <OneRMChart clientId={ clientProfile._id } />
             </div>
 

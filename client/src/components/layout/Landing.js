@@ -26,7 +26,9 @@ const Landing = ({ login, isAuthenticated }) => {
   return (
     <section className="landing">
       <div className="dark-overlay">
-        <CustomAlert />
+        <div style={ { marginLeft: 500 } }>
+          <CustomAlert />
+        </div>
         <div className="card">
           <h3>Sign In</h3>
           <form onSubmit={ (e) => onSubmit(e) }>

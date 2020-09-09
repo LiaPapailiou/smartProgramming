@@ -17,7 +17,8 @@ import {
 
 const useStyles = makeStyles({
   table: {
-    width: 500,
+    width: '45vw',
+    marginBottom: 5
   },
   chips: {
     display: 'flex',
@@ -68,7 +69,7 @@ const ProgramsTable = (props) => {
 
   return (
     <>
-      <TableContainer component={ Paper } style={ { width: 500, marginLeft: 50, marginBottom: 30 } }>
+      <TableContainer component={ Paper } style={ { width: '45vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
         <Table className={ classes.table } size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
@@ -80,11 +81,11 @@ const ProgramsTable = (props) => {
           <TableBody>
             { rows.map((row, idx) => (
               <TableRow key={ shortid.generate() }>
-                { (idx < 1) ?
-                  <TableCell>Week { `${props.index + 1}` }</TableCell>
-                  :
-                  <TableCell>{ ' ' }</TableCell>
-                }
+                {/* { (idx < 1) ? */ }
+                <TableCell>Week { `${props.index + 1}` }</TableCell>
+                {/* :
+                 <TableCell>{ ' ' }</TableCell>
+                  } */}
                 <TableCell component="th" scope="row">
                   { row.item }
                 </TableCell>

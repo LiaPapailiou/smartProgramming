@@ -34,7 +34,7 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
     { dataField: 'sets', text: 'Sets', csvType: Number },
   ];
   console.log(program.month);
-  const rowStyle = { backgroundColor: '#transparent', padding: '0', borderCollapse: 'collapse' };
+  const rowStyle = { backgroundColor: '#E1F5E3', padding: '0', borderCollapse: 'collapse' };
   return (
     <>
       {

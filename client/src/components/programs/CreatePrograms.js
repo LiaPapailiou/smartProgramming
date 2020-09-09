@@ -208,7 +208,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
   console.log(typeof level);
   return (
     <>
-      <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
+      <div className="alerts" style={ { position: 'absolute', marginLeft: 500 } }>
         <CustomAlert />
       </div>
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>

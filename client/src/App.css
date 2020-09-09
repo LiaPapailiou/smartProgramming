@@ -33,7 +33,7 @@ ul {
 }
 
 img {
-  width: 100%;
+  width: 100vw;
 }
 
 .react-bootstrap-table{
@@ -105,7 +105,6 @@ img {
 }
 
 .btn-primary,
-
 .alert-primary {
   background: var(--primary-color);
   color: #fff;
@@ -165,23 +164,25 @@ img {
   background: #3d90df linear-gradient(0deg, #3d90df 0%, #3d90df 100%);
 } */
 .inner-table {
+  position: absolute;
   display: flex;
-  flex-direction: row;
-  margin-top: -200px;
-  max-width: 100vw;
-  max-height: 70vh;
-  /* justify-content: center;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  max-width: 60vw;
+  max-height: 80vh;
+  justify-content: center;
   align-content: center;
-  align-items: center; */
-  /* margin-left: 200px; */
+  align-items: center;
+  margin-top: -300px;
+  margin-left: 600px;
 }
 /* Overlay */
 .dark-overlay {
   background-color: #00000098;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Forms */
@@ -202,7 +203,7 @@ img {
 .form select,
 .form textarea {
   display: block;
-  width: 100%;
+  width: 100vw;
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
@@ -233,30 +234,11 @@ button {
   background: var(--light-color);
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  padding: 0.7rem 2rem;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  top: 0;
-  font-family: 'Numans', sans-serif;
-  font-size: 20px;
-  background-color: transparent;
-  height: 60px;
-}
-.MuiToolbar-root {
-  background-color:#050404c5;
-}
-
-/* Alert */
-
 
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./images/gloves.jpg') no-repeat center center/cover; 
+  background: url('./images/gloves.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   /* flex-wrap: wrap; */
@@ -361,14 +343,9 @@ a:hover {
 /* Register Page */
 .register {
     position: relative;
-    background: url('./images/gloves.jpg') no-repeat center center/cover; 
+    background: url('./images/gloves.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
     text-align: center;
 }
 
@@ -376,8 +353,8 @@ a:hover {
 .register-card {
   padding-top: 20px;
   border: solid #6d6d6d 1px;
-  height: 60vh;
-  margin-top: 200px;
+  height: 63vh;
+  margin-top: 150px;
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
@@ -440,11 +417,12 @@ register-input-group-text i {
 
 /* Dashboard */
 .dashboard {
-  position: relative;
+  position: absolute;
    background: url('./images/gloves.jpg') no-repeat center center/cover;
    height: 100vh; 
   display: flex;
 }
+
 .clients{
   height: 80vh; 
   display: flex;
@@ -715,10 +693,8 @@ font-size: 25px;
   font-size: 14px;
 }
 
-/* Add Exercise */
-
 /* Add RM */
-.add-rm{
+.add-rm {
   position: relative;
   background: url('./images/gloves.jpg') no-repeat center center/cover; 
   height: 100vh;
@@ -758,7 +734,6 @@ font-size: 25px;
   background-color: #00000080;
   border-bottom: 1px solid #6d6d6d;
   height: 6vh;
-  /* padding-left: -60px; */
   color: #93aabd;
   font-size: 20px;
   font-weight: 300;
@@ -816,17 +791,12 @@ a:hover {
   flex-wrap: nowrap;
   align-items: stretch;
   align-content: stretch;
-  margin-left: 200px;
   width: 26vw;
   min-width: 26vw;
   padding: 1em;
   height: 40vh;
   min-height: 40vh;
 }
-
-/* .program-form tbody tr {
-  padding-bottom: 0.75em;
-} */
 
 /* Client */
 

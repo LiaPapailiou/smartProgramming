@@ -41,7 +41,6 @@ const Dashboard = () => {
           <PrivateRoute exact path='/dashboard/add-exercise' component={ AddExercise } />
           <PrivateRoute exact path='/dashboard/edit-exercise/:id' component={ EditExercise } />
           <PrivateRoute exact path='/dashboard/create' component={ CreatePrograms } />
-          {/* <PrivateRoute exact path='/dashboard/select/:program_short_id' component={ SelectExercises } /> */ }
         </Switch>
       </div>
     </section>

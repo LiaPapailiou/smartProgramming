@@ -17,7 +17,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading }, auth
         <Spinner />
       ) : (isAuthenticated &&
 
-        <div className="exercises-container" style={ { width: '43vw' } }>
+        <div className="exercises-container">
           { exercises.length > 0 && (
             <div className="exercise-headers" >
               <table>

@@ -1127,7 +1127,7 @@ a:hover {
 }
 
 .exercises-container table {
-  max-width: 60vw;
+  width: 40vw;
   border-collapse: collapse;
 }
 
@@ -1178,6 +1178,7 @@ a:hover {
   color: #fff;
   font-size: 13px;
   max-height: 80vh;
+  width: 41vw;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;

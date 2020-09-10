@@ -3,7 +3,6 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProfile, deleteClient, getClientPrograms } from '../../actions/profile';
-import ClientPrograms from './ClientPrograms';
 import OneRMChart from './OneRMChart';
 import ClientNotes from './ClientNotes';
 import Link from '@material-ui/core/Link';
@@ -15,7 +14,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, profile: { clientProfile, programs, loading } }) => {
+const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, profile: { clientProfile, loading } }) => {
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -43,6 +42,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
         { clientProfile === null || loading ? <Spinner /> :
           (<div className="dark-overlay">
             <div className="client-card">
+              <ClientNotes />
               <div className="client-header">
                 <h3 style={ { alignSelf: 'center' } }>
                   { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
@@ -101,9 +101,9 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                 { clientProfile.notes }
               </div>
               <OneRMChart clientId={ clientProfile._id } />
+
             </div>
 
-            <ClientNotes />
           </div>)
         }
       </Fragment>

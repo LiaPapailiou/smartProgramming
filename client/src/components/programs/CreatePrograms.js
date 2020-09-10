@@ -122,7 +122,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
 
   useEffect(() => {
     getEstimates(formData, client);
-  }, [level, client,]);
+  }, [getEstimates, level, client,]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -208,7 +208,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
   console.log(typeof level);
   return (
     <>
-      <div className="alerts" style={ { position: 'absolute', marginLeft: 500 } }>
+      <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
         <CustomAlert />
       </div>
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>

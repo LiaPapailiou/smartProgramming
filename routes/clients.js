@@ -167,6 +167,10 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     res.json({
       clientDetails: clientDetails,
       month: month,
+      weekOne,
+      weekTwo,
+      weekThree,
+      weekFour,
     });
 
   } catch (err) {

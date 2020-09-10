@@ -462,6 +462,14 @@ register-input-group-text i {
   border-bottom-right-radius: 0.3em;
   border-top-right-radius: 0.3em;
 }
+
+
+.program-container thead {
+  font-size: 18px;
+  color: #93aabd;
+  font-weight: 200;
+}
+
 /* Scrollbar */
 .table-wrapper::-webkit-scrollbar {
   width: 10px;
@@ -898,22 +906,20 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  margin-left: 960px;
+  margin-left: 1080px;
   max-height: 20vh;
   font-size: 14px;
   color: '#fff';
   padding-right: 8px;
   text-align: left;
-  margin-top: -690px;
   max-width: 38vw;
-  margin-bottom: 60px;
+  margin-top: -535px;
 }
 
 .icon-static {
   position: absolute;
-  margin-top: -690px;
-  margin-left: 920px
- 
+  margin-left: 500px;
+  margin-top: -640px;
 }
 .add-notes {
   overflow: auto;

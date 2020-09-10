@@ -39,7 +39,6 @@ const ProgramsTable = (props) => {
     days,
     exerciseList,
     programs,
-    setPrograms,
   } = props;
 
   const rows = [];
@@ -64,7 +63,6 @@ const ProgramsTable = (props) => {
     value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
     const tempPrograms = [...programs];
     tempPrograms[props.index].exerciseList[0][idx.toString()] = values;
-    // setPrograms(tempPrograms);
   };
 
   return (

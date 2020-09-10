@@ -16,7 +16,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
     getAllProfiles();
     getClientProfile(client.clientId);
     getClientPrograms(client.clientId);
-  }, [client.clientId]);
+  }, [getClientProfile, getClientPrograms, getAllProfiles, client.clientId]);
 
   const onChange = (e) => {
     setClient({ ...client, [e.target.name]: e.target.value });

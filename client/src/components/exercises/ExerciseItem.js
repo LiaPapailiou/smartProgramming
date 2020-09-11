@@ -54,7 +54,7 @@ const ExerciseItem = ({
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title"
-              style={ { fontSize: 14 } }>{ "Remove exercise." }</DialogTitle>
+              style={ { fontSize: 16 } }>{ "Remove exercise." }</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 This is permanent, do you wish to continue?

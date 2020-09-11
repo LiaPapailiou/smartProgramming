@@ -7,8 +7,8 @@ import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.c
 // import ToolkitProvider from 'react-bootstrap-table2-toolkit';
 // import BootstrapTable from 'react-bootstrap-table-next';
 import shortid from 'shortid';
-
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 // const MyExportCSV = (props) => {
 //   const handleClick = () => {
 //     props.onExport();
@@ -48,145 +48,156 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
     days.push(i);
   }
 
+
+  const printDocument = () => {
+
+    html2canvas(document.querySelector("#program")).then(canvas => {
+      document.body.appendChild(canvas);
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'PNG', 0, 0);
+      pdf.save(`${clientProfile.clientFirstName}_${program.clientDetails.month}_${program.clientDetails.year}.pdf`);
+    });
+
+  };
+
   return (
-    <div className="table-wrapper" style={ { width: '46vw', maxHeight: '70vh', backgroundColor: '#00000080', borderCollapse: 'collapse', marginLeft: 500, } }>
-      { program && program.weekOne && clientProfile && program.weekTwo && program.weekThree && program.weekFour &&
-        <table className="program-container" style={ { color: '#fff', width: '45vw' } }>
-          { days.map((day) => (
-            <Fragment key={ shortid.generate() }>
-              <thead>
-                <tr>
-                  <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 1 - Day { `${day}` }</th>
-                </tr>
-                <tr style={ { textAlign: 'center' } }>
-                  <th>Exercises</th>
-                  <th colSpan="2">Load kg (min-max)</th>
-                  <th colSpan="2">Reps (min-max)</th>
-                  <th>Sets</th>
-                </tr>
-              </thead>
-              <tbody>
-                { program.weekOne.map((item) =>
-                  item.filter((inner) => inner.day === day).map((inner) => (
-                    <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em' } }>
+    <>
+      <button onClick={ printDocument }>Print</button>
+      <div id="#program" className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 450, } }>
+        { program && program.weekOne && clientProfile && program.weekTwo && program.weekThree && program.weekFour &&
+          <table className="program-container" style={ { color: '#fff', width: '45vw', borderCollapse: 'collapse', } }>
+            { days.map((day) => (
+              <Fragment key={ shortid.generate() }>
+                <thead>
+                  <tr>
+                    <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 1 - Day { `${day}` }</th>
+                  </tr>
+                  <tr style={ { textAlign: 'center' } }>
+                    <th>Exercises</th>
+                    <th colSpan="2">Load kg (min-max)</th>
+                    <th colSpan="2">Reps (min-max)</th>
+                    <th>Sets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { program.weekOne.map((item) =>
+                    item.filter((inner) => inner.day === day).map((inner) => (
+                      <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em', fontSize: 14 } }>
+                        <td>{ inner.exercise }</td>
+                        <td>{ inner.min }</td>
+                        <td>{ inner.max }</td>
+                        <td>{ inner.repsMin }</td>
+                        <td>{ inner.repsMax }</td>
+                        <td>{ inner.sets }</td>
+                      </tr>
+                    ))
+                  )
+                  }
 
-                      <td>{ inner.exercise }</td>
-                      <td>{ inner.min }</td>
-                      <td>{ inner.max }</td>
-                      <td>{ inner.repsMin }</td>
-                      <td>{ inner.repsMax }</td>
-                      <td>{ inner.sets }</td>
-                      <td><br /></td>
-                    </tr>
-                  ))
-                )
-                }
+                </tbody>
+              </Fragment>
+            ))
+            }
+            { days.map((day) => (
+              <Fragment key={ shortid.generate() }>
+                <thead>
+                  <tr>
+                    <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 2 - Day { `${day}` }</th>
+                  </tr>
+                  <tr style={ { textAlign: 'center' } }>
+                    <th>Exercises</th>
+                    <th colSpan="2">Load kg (min-max)</th>
+                    <th colSpan="2">Reps (min-max)</th>
+                    <th>Sets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { program.weekTwo.map((item) =>
+                    item.filter((inner) => inner.day === day).map((inner, idx) => (
+                      <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em', fontSize: 14 } }>
+                        <td>{ inner.exercise }</td>
+                        <td>{ inner.min }</td>
+                        <td>{ inner.max }</td>
+                        <td>{ inner.repsMin }</td>
+                        <td>{ inner.repsMax }</td>
+                        <td>{ inner.sets }</td>
+                      </tr>
+                    ))
+                  )
+                  }
 
-              </tbody>
-            </Fragment>
-          ))
-          }
-          { days.map((day) => (
-            <Fragment key={ shortid.generate() }>
-              <thead>
-                <tr>
-                  <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 2 - Day { `${day}` }</th>
-                </tr>
-                <tr style={ { textAlign: 'center' } }>
-                  <th>Exercises</th>
-                  <th colSpan="2">Load kg (min-max)</th>
-                  <th colSpan="2">Reps (min-max)</th>
-                  <th>Sets</th>
-                </tr>
-              </thead>
-              <tbody>
-                { program.weekTwo.map((item) =>
-                  item.filter((inner) => inner.day === day).map((inner) => (
-                    <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em' } }>
-                      <td>{ inner.exercise }</td>
-                      <td>{ inner.min }</td>
-                      <td>{ inner.max }</td>
-                      <td>{ inner.repsMin }</td>
-                      <td>{ inner.repsMax }</td>
-                      <td>{ inner.sets }</td>
-                    </tr>
-                  ))
-                )
-                }
+                </tbody>
+              </Fragment>
+            ))
+            }
+            { days.map((day) => (
+              <Fragment key={ shortid.generate() }>
+                <thead>
+                  <tr>
+                    <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 3 - Day { `${day}` }</th>
+                  </tr>
+                  <tr style={ { textAlign: 'center' } }>
+                    <th>Exercises</th>
+                    <th colSpan="2">Load kg (min-max)</th>
+                    <th colSpan="2">Reps (min-max)</th>
+                    <th>Sets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { program.weekThree.map((item) =>
+                    item.filter((inner) => inner.day === day).map((inner) => (
+                      <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em', fontSize: 14 } }>
 
-              </tbody>
-            </Fragment>
-          ))
-          }
-          { days.map((day) => (
-            <Fragment key={ shortid.generate() }>
-              <thead>
-                <tr>
-                  <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 3 - Day { `${day}` }</th>
-                </tr>
-                <tr style={ { textAlign: 'center' } }>
-                  <th>Exercises</th>
-                  <th colSpan="2">Load kg (min-max)</th>
-                  <th colSpan="2">Reps (min-max)</th>
-                  <th>Sets</th>
-                </tr>
-              </thead>
-              <tbody>
-                { program.weekThree.map((item) =>
-                  item.filter((inner) => inner.day === day).map((inner) => (
-                    <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em' } }>
+                        <td>{ inner.exercise }</td>
+                        <td>{ inner.min }</td>
+                        <td>{ inner.max }</td>
+                        <td>{ inner.repsMin }</td>
+                        <td>{ inner.repsMax }</td>
+                        <td>{ inner.sets }</td>
+                      </tr>
+                    ))
+                  )
+                  }
 
-                      <td>{ inner.exercise }</td>
-                      <td>{ inner.min }</td>
-                      <td>{ inner.max }</td>
-                      <td>{ inner.repsMin }</td>
-                      <td>{ inner.repsMax }</td>
-                      <td>{ inner.sets }</td>
-                      <td><br /></td>
-                    </tr>
-                  ))
-                )
-                }
+                </tbody>
+              </Fragment>
+            ))
+            }
+            { days.map((day) => (
+              <Fragment key={ shortid.generate() }>
+                <thead>
+                  <tr>
+                    <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 4 - Day { `${day}` }</th>
+                  </tr>
+                  <tr style={ { textAlign: 'center' } }>
+                    <th>Exercises</th>
+                    <th colSpan="2">Load kg (min-max)</th>
+                    <th colSpan="2">Reps (min-max)</th>
+                    <th>Sets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { program.weekFour.map((item) =>
+                    item.filter((inner) => inner.day === day).map((inner) => (
+                      <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em', fontSize: 14 } }>
 
-              </tbody>
-            </Fragment>
-          ))
-          }
-          { days.map((day) => (
-            <Fragment key={ shortid.generate() }>
-              <thead>
-                <tr>
-                  <th colSpan="6" style={ { paddingTop: '1.5em' } }>Week 4 - Day { `${day}` }</th>
-                </tr>
-                <tr style={ { textAlign: 'center' } }>
-                  <th>Exercises</th>
-                  <th colSpan="2">Load kg (min-max)</th>
-                  <th colSpan="2">Reps (min-max)</th>
-                  <th>Sets</th>
-                </tr>
-              </thead>
-              <tbody>
-                { program.weekFour.map((item) =>
-                  item.filter((inner) => inner.day === day).map((inner) => (
-                    <tr key={ inner.id } style={ { textAlign: 'center', marginBottom: '3em' } }>
+                        <td>{ inner.exercise }</td>
+                        <td>{ inner.min }</td>
+                        <td>{ inner.max }</td>
+                        <td>{ inner.repsMin }</td>
+                        <td>{ inner.repsMax }</td>
+                        <td>{ inner.sets }</td>
+                      </tr>
+                    ))
+                  )
+                  }
 
-                      <td>{ inner.exercise }</td>
-                      <td>{ inner.min }</td>
-                      <td>{ inner.max }</td>
-                      <td>{ inner.repsMin }</td>
-                      <td>{ inner.repsMax }</td>
-                      <td>{ inner.sets }</td>
-                      <td><br /></td>
-                    </tr>
-                  ))
-                )
-                }
-
-              </tbody>
-            </Fragment>
-          ))
-          }
-          {/* // { weeks.map((week, idx) => (
+                </tbody>
+              </Fragment>
+            ))
+            }
+            {/* // { weeks.map((week, idx) => (
           //   <Fragment key={ shortid.generate() }>
           //     <thead>
           //       <tr>
@@ -216,9 +227,9 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
           //     </tbody>
           //   </Fragment>
           // )) } */}
-        </table>
-      }
-      {/* {
+          </table>
+        }
+        {/* {
         program && program.month && clientProfile &&
         <ToolkitProvider
           keyField="id"
@@ -249,7 +260,8 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
           }
         </ToolkitProvider>
       } */}
-    </div>
+      </div>
+    </>
   );
 };
 ShowClientPrograms.propTypes = {

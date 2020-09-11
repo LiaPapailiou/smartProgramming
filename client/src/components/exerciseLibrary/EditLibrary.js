@@ -77,7 +77,7 @@ const EditLibrary = ({ match, getSingleExercise, editSingleExercise, exercise: {
                     placeholder=" Video Link"
                     required />
                 </div>
-                <div className="lib-buttons" style={ { marginLeft: 130 } }>
+                <div className="lib-buttons" style={ { marginLeft: 140 } }>
                   <input
                     type="button"
                     className="input-add"

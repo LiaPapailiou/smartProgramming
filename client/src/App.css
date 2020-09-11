@@ -224,26 +224,16 @@ button {
 }
 
 
-.table th,
-.table td {
-  padding: 1rem;
-  text-align: left;
-}
-
-.table th {
-  background: var(--light-color);
-}
-
 
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./images/gloves.jpg') no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
+   background: url('./images/gloves.jpg') no-repeat center center/cover;
+   height: 100vh; 
+   display: flex;
   /* flex-wrap: wrap; */
   flex-direction: column;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   align-content: center;
   text-align: center;
@@ -465,9 +455,27 @@ register-input-group-text i {
 
 
 .program-container thead {
+  border-bottom: 1px solid #6d6d6d;
+  font-family: 'Numans', sans-serif;
+  border-collapse: collapse;
+}
+
+
+.program-container th {
+  font-weight: 300;
   font-size: 18px;
   color: #93aabd;
-  font-weight: 200;
+  background-color: #00000080;
+  border-collapse: collapse;
+}
+
+.program-container td {
+  text-align: center;
+  font-size: 14px;
+  padding: 1em;
+  padding-left: 2em;
+  border-bottom: 1px solid #6d6d6d;
+  border-collapse: collapse;
 }
 
 /* Scrollbar */
@@ -852,11 +860,9 @@ a:hover {
 }
 
 .client-card {  
-  /* position: absolute; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* align-content: center; */
   justify-content: center;
   padding: .5em;
   background-color: #00000080;
@@ -864,7 +870,7 @@ a:hover {
   max-width: 40vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: 10px;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -906,7 +912,7 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  margin-left: 1080px;
+  margin-left: 1030px;
   max-height: 20vh;
   font-size: 14px;
   color: '#fff';
@@ -1197,121 +1203,4 @@ a:hover {
 }
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
-  /* .client {
-    position: relative;
-    background: url('./images/gloves.jpg') no-repeat center center/cover; 
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    align-content: flex-start;
-    text-align: center;
-  } */
-  
-  /* .exercise-container {
-    background-color:#00000080;
-    position: relative;
-    overflow: auto;
-    align-self: center;
-    align-content: center;
-    margin-top: 50px;
-    color: #fff;
-    padding: 0;
-    font-size: 11px;
-    height: 60vh;
-    max-height: 60vh;
-    max-width: 40vw;
-    border: solid #535252 1px;
-    border-bottom-left-radius: 0.3em;
-    border-top-left-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-    border-top-right-radius: 0.3em;
-  } */
-
-  /* .client-card {  
-    position: absolute;
-    display: flex;
-    align-self: flex-start;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-around;
-    padding: .5em;
-    background-color: #00000080;
-    height: 80vh;
-    max-height: 80vh;
-    width: 25vw;
-    max-width: 25vw;
-    margin-left: -700px; 
-    border: solid #535252 1px;
-    border-bottom-left-radius: 0.3em;
-    border-top-left-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-    border-top-right-radius: 0.3em;
-  }
-
-  .client-card h3 {
-    font-size: 20px;
-  }
-  .client-header {
-    padding-bottom: 0;
-  }
-
-  .elem {
-  font-size: 14px;
-}
-  .notes {
-    color: #b4b1b1;
-    font-weight: normal;
-    overflow:auto;
-    align-self: center;
-    max-width: 35vw;
-    font-size:  11px;
-    text-align: justify;
-    padding: 1em;
-  }
-
-  .notes h3 {
-    font-size: 13px;
-  }
-  .note-container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: -500px;
-    max-height: 40px;
-    font-size: 14px;
-    color: '#fff';
-    padding-right: 8px;
-    text-align: left;
-    width: 60vw;
-    max-width: 60vw;
-   margin-top: 400px;
-  }
-  
-  .rm-chart {
-    position: absolute;
-    align-self: flex-start;
-    margin-right: -500px;
-    background-color: #00000080;
-    border: solid #535252 1px;
-    border-bottom-left-radius: 0.3em;
-    border-top-left-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-    border-top-right-radius: 0.3em;
-  }
-  .calculate-form {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
-    padding: 1em;
-    margin-top: 60px;
-    align-self: center;
-    align-content: center;
-    max-width: 15vw;
-  }
-   */
 }

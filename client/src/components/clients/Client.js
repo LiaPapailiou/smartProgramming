@@ -37,77 +37,75 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
   };
 
   return (
-    <section className="client">
-      <Fragment>
-        { clientProfile === null || loading ? <Spinner /> :
-          (<div className="dark-overlay">
-            <div className="client-card">
-              <ClientNotes />
-              <div className="client-header">
-                <h3 style={ { alignSelf: 'center' } }>
-                  { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
-                </h3>
-                <span className="client-header-links">
-                  <Link href={ `/dashboard/edit/${match.params.id}` } style={ { color: '#61c9a8' } }>
-                    <i className="fas fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+    <Fragment>
+      { clientProfile === null || loading ? <Spinner /> :
+        (<>
+          <div className="client-card">
+            <ClientNotes />
+            <div className="client-header">
+              <h3 style={ { alignSelf: 'center' } }>
+                { clientProfile.clientFirstName } { !clientProfile.clientLastName ? '' : clientProfile.clientLastName }
+              </h3>
+              <span className="client-header-links">
+                <Link href={ `/dashboard/edit/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                  <i className="fas fa-edit" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
               Edit</Link>
-                  <Link href={ `/dashboard/add-rm/${match.params.id}` } style={ { color: '#61c9a8' } }>
-                    <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+                <Link href={ `/dashboard/add-rm/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                  <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add RM
             </Link>
-                  <Link href={ `/dashboard/add-weight/${match.params.id}` } style={ { color: '#61c9a8' } }>
-                    <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+                <Link href={ `/dashboard/add-weight/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                  <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add Weight
             </Link>
-                  <Link onClick={ handleClickOpen } style={ { color: '#61c9a8', fontSize: 14, fontWeight: 500 } }>
-                    <i className="fas fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
+                <Link onClick={ handleClickOpen } style={ { color: '#61c9a8', fontSize: 14, fontWeight: 500 } }>
+                  <i className="fas fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
                     Delete</Link>
-                  <Dialog
-                    open={ open }
-                    onClose={ handleClose }
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
-                    <DialogTitle id="alert-dialog-title"
-                      style={ { fontSize: 14 } }>{ "Delete client." }</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText id="alert-dialog-description">
-                        This is permanent, do you wish to continue?
+                <Dialog
+                  open={ open }
+                  onClose={ handleClose }
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title"
+                    style={ { fontSize: 14 } }>{ "Delete client." }</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      This is permanent, do you wish to continue?
           </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={ handleClose } color="secondary">
-                        No
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={ handleClose } color="secondary">
+                      No
           </Button>
-                      <Button onClick={ () => onClick() } color="primary" autoFocus>
-                        Yes
+                    <Button onClick={ () => onClick() } color="primary" autoFocus>
+                      Yes
           </Button>
-                    </DialogActions>
-                  </Dialog>
-                </span>
-              </div>
-              <p className="client-card-body">
-                { clientProfile.clientOneRM.map((rm, idx) =>
-                  idx === 0 &&
-                  (<span key={ idx } className="elem">
-                    Bench Press:  { rm.benchPress } kg
-                    <br />
-                    Squat:  { rm.squat } kg
-                  </span>)
-                ) }
-              </p>
-              <div className="notes">
-                <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
-                { clientProfile.notes }
-              </div>
-              <OneRMChart clientId={ clientProfile._id } />
-
+                  </DialogActions>
+                </Dialog>
+              </span>
             </div>
+            <p className="client-card-body">
+              { clientProfile.clientOneRM.map((rm, idx) =>
+                idx === 0 &&
+                (<span key={ idx } className="elem">
+                  Bench Press:  { rm.benchPress } kg
+                  <br />
+                    Squat:  { rm.squat } kg
+                </span>)
+              ) }
+            </p>
+            <div className="notes">
+              <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
+              { clientProfile.notes }
+            </div>
+            <OneRMChart clientId={ clientProfile._id } />
 
-          </div>)
-        }
-      </Fragment>
-    </section >
+          </div>
+
+        </>)
+      }
+    </Fragment>
   );
 };
 

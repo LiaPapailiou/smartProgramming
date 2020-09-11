@@ -2,41 +2,18 @@ import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProgramById } from '../../actions/profile';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
-// import ToolkitProvider from 'react-bootstrap-table2-toolkit';
-// import BootstrapTable from 'react-bootstrap-table-next';
 import shortid from 'shortid';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-// const MyExportCSV = (props) => {
-//   const handleClick = () => {
-//     props.onExport();
-//   };
-//   return (
-//     <div>
-//       <button className="input-add" onClick={ handleClick }>Export to CSV</button>
-//     </div>
-//   );
-// };
-const weeks = [1, 2, 3, 4];
+import ReactExport from "react-export-excel";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
+
 const ShowClientPrograms = ({ programId, getClientProgramById, profile: { program, clientProfile } }) => {
 
   useEffect(() => {
     getClientProgramById(programId);
   }, [programId]);
-
-  // const columns = [
-  //   { dataField: 'week', text: 'Week' },
-  //   { dataField: 'day', text: 'Day', csvType: Number },
-  //   { dataField: 'exercise', text: 'Exercises', csvType: String },
-  //   { dataField: 'min', text: 'Load min(kg)', csvType: Number },
-  //   { dataField: 'max', text: 'Load max(kg)', csvType: Number },
-  //   { dataField: 'repsMin', text: 'Reps min', csvType: Number },
-  //   { dataField: 'repsMax', text: 'Reps max', csvType: Number },
-  //   { dataField: 'sets', text: 'Sets', csvType: Number },
-  // ];
-  // const rowStyle = { backgroundColor: '#E1F5E3', padding: '0', borderCollapse: 'collapse' };
 
   let daysPerWeek;
   let days = [];
@@ -47,24 +24,24 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
   for (let i = 1;i < daysPerWeek + 1;i += 1) {
     days.push(i);
   }
-
-
-  const printDocument = () => {
-
-    html2canvas(document.querySelector("#program")).then(canvas => {
-      document.body.appendChild(canvas);
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'PNG', 0, 0);
-      pdf.save(`${clientProfile.clientFirstName}_${program.clientDetails.month}_${program.clientDetails.year}.pdf`);
-    });
-
-  };
-
   return (
     <>
-      <button onClick={ printDocument }>Print</button>
-      <div id="#program" className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 450, } }>
+      <div style={ { marginLeft: 650, marginTop: -40, marginBottom: 10 } }>
+        { program.month && program.clientDetails && clientProfile &&
+          <ExcelFile element={ <button className="input-add">Download xlsx</button> } filename={ `${clientProfile.clientFirstName}_${program.clientDetails.month}_${program.clientDetails.year}` }>
+            <ExcelSheet data={ program.month } name="Programs">
+              <ExcelColumn label="Week" value="week" />
+              <ExcelColumn label="Day" value="day" />
+              <ExcelColumn label="Exercise" value="exercise" />
+              <ExcelColumn label="load kg min" value="min" />
+              <ExcelColumn label="load kg max" value="max" />
+              <ExcelColumn label="Reps min" value="repsMin" />
+              <ExcelColumn label="Reps min" value="repsMax" />
+              <ExcelColumn label="Sets" value="sets" />
+            </ExcelSheet>
+          </ExcelFile> }
+      </div>
+      <div className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 450 } }>
         { program && program.weekOne && clientProfile && program.weekTwo && program.weekThree && program.weekFour &&
           <table className="program-container" style={ { color: '#fff', width: '45vw', borderCollapse: 'collapse', } }>
             { days.map((day) => (
@@ -197,69 +174,9 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
               </Fragment>
             ))
             }
-            {/* // { weeks.map((week, idx) => (
-          //   <Fragment key={ shortid.generate() }>
-          //     <thead>
-          //       <tr>
-          //         <th colSpan="7">Week { `${idx + 1}` }</th>
-          //       </tr>
-          //       <tr style={ { textAlign: 'center' } }>
-          //         <th>Day</th>
-          //         <th>Exercises</th>
-          //         <th colSpan="2">Load kg (min-max)</th>
-          //         <th colSpan="2">Reps (min-max)</th>
-          //         <th>Sets</th>
-          //       </tr>
-          //     </thead>
-          //     <tbody>
-          //       { program.month.filter((item) => item.week === idx + 1).map((item) => (
-          //         <tr key={ item.id } style={ { textAlign: 'center' } }>
-          //           <td>{ item.day }</td>
-          //           <td>{ item.exercise }</td>
-          //           <td>{ item.min }</td>
-          //           <td>{ item.max }</td>
-          //           <td>{ item.repsMin }</td>
-          //           <td>{ item.repsMax }</td>
-          //           <td>{ item.sets }</td>
-          //         </tr>
-          //       ))
-          //       }
-          //     </tbody>
-          //   </Fragment>
-          // )) } */}
+
           </table>
         }
-        {/* {
-        program && program.month && clientProfile &&
-        <ToolkitProvider
-          keyField="id"
-          columns={ columns }
-          data={ program.month }
-          bordered={ false }
-          exportCSV={ {
-            fileName: `${clientProfile.clientFirstName}_${program.clientDetails.month}_${program.clientDetails.year}.csv`,
-            separator: '|',
-            noAutoBOM: false
-          } }
-        >
-          {
-            (props) => (
-              <div className="bootstrap-table-wrapper" style={ { backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', overflow: 'auto', maxWidth: '50vw', maxHeight: '80vh', justifyContent: 'center', alignItems: 'center', marginLeft: 400, fontSize: 14, color: '#000' } }>
-                <MyExportCSV  { ...props.csvProps }>Export CSV</MyExportCSV>
-                <br />
-                <BootstrapTable
-                  bootstrap4
-                  striped
-                  rowStyle={ rowStyle }
-                  { ...props.baseProps }
-                />
-
-
-              </div>
-            )
-          }
-        </ToolkitProvider>
-      } */}
       </div>
     </>
   );

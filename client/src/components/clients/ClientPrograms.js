@@ -7,7 +7,7 @@ import shortid from 'shortid';
 import ShowClientPrograms from './ShowClientPrograms';
 
 
-const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs } }) => {
+const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfile, clientProfiles, programs } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
   const [visible, setVisible] = useState(false);
   const { clientId, programId } = client;
@@ -16,7 +16,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
     getAllProfiles();
     getClientProfile(client.clientId);
     getClientPrograms(client.clientId);
-  }, [getClientProfile, getClientPrograms, getAllProfiles, client.clientId]);
+  }, [client.clientId]);
 
   const onChange = (e) => {
     setClient({ ...client, [e.target.name]: e.target.value });

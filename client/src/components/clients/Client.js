@@ -38,7 +38,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
 
   return (
     <Fragment>
-      { clientProfile === null || loading ? <Spinner /> :
+      { !clientProfile || loading ? <Spinner /> :
         (<>
           <div className="client-card">
             <ClientNotes />

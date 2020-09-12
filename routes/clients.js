@@ -43,6 +43,7 @@ router.get(('/get-programs/:client_id'), auth, async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 // Get program for client by program_id
 router.get(('/get-program/:program_id'), auth, async (req, res) => {
   try {
@@ -108,11 +109,19 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     }));
 
     // Add extra object properties inside each item and exctract nested arrays
-    const newWeekOne = [];
-    const newWeekTwo = [];
-    const newWeekThree = [];
-    const newWeekFour = [];
+    // const newWeekOne = [];
+    // const newWeekTwo = [];
+    // const newWeekThree = [];
+    // const newWeekFour = [];
     const month = [];
+    let totalRepsMinWeekOne = 0;
+    let totalRepsMaxWeekOne = 0;
+    let totalRepsMinWeekTwo = 0;
+    let totalRepsMaxWeekTwo = 0;
+    let totalRepsMinWeekThree = 0;
+    let totalRepsMaxWeekThree = 0;
+    let totalRepsMinWeekFour = 0;
+    let totalRepsMaxWeekFour = 0;
 
     weekOne.map((item, index) => {
       item.map((i, idx) => {
@@ -122,7 +131,9 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 1;
         item[idx].id = shortid.generate();
-        newWeekOne.push(i);
+        // newWeekOne.push(i);
+        totalRepsMinWeekOne += i.repsMin;
+        totalRepsMaxWeekOne += i.repsMax;
         month.push(i);
       });
     });
@@ -134,7 +145,9 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 2;
         item[idx].id = shortid.generate();
-        newWeekTwo.push(i);
+        totalRepsMinWeekTwo += i.repsMin;
+        totalRepsMaxWeekTwo += i.repsMax;
+        // newWeekTwo.push(i);
         month.push(i);
       });
     });
@@ -146,7 +159,9 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 3;
         item[idx].id = shortid.generate();
-        newWeekThree.push(i);
+        totalRepsMinWeekThree += i.repsMin;
+        totalRepsMaxWeekThree += i.repsMax;
+        // newWeekThree.push(i);
         month.push(i);
       });
     });
@@ -158,10 +173,32 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 4;
         item[idx].id = shortid.generate();
-        newWeekFour.push(i);
+        totalRepsMinWeekFour += i.repsMin;
+        totalRepsMaxWeekFour += i.repsMax;
+        // newWeekFour.push(i);
         month.push(i);
       });
     });
+
+    // Calculations for the volume chart
+    const avgPercentage = percentages.reduce((acc, cur) => acc + cur, 0) / percentages.length;
+    const volumeMinRepsMonth = totalRepsMinWeekOne + totalRepsMinWeekTwo + totalRepsMinWeekThree + totalRepsMinWeekFour;
+    const volumeMaxRepsMonth = totalRepsMaxWeekOne + totalRepsMaxWeekTwo + totalRepsMaxWeekThree + totalRepsMaxWeekFour;
+    const intensityRelMinMonth = Math.floor(avgPercentage * volumeMinRepsMonth * 100) / 100;
+    const intensityRelMaxMonth = Math.floor(avgPercentage * volumeMaxRepsMonth * 100) / 100;
+    const volumeRepsWeekOne = (totalRepsMinWeekOne + totalRepsMaxWeekOne) / 2;
+    const volumeRepsWeekTwo = (totalRepsMinWeekTwo + totalRepsMaxWeekTwo) / 2;
+    const volumeRepsWeekThree = (totalRepsMinWeekThree + totalRepsMaxWeekThree) / 2;
+    const volumeRepsWeekFour = (totalRepsMinWeekFour + totalRepsMaxWeekFour) / 2;
+    const intensityRelWeekOne = volumeRepsWeekOne * percentages[0];
+    const intensityRelWeekTwo = volumeRepsWeekTwo * percentages[1];
+    const intensityRelWeekThree = volumeRepsWeekThree * percentages[2];
+    const intensityRelWeekFour = volumeRepsWeekFour * percentages[3];
+    // const intensityAbsMonth =0;
+    // const intensityAbsWeekOne =0;
+    // const intensityAbsWeekTwo =0;
+    // const intensityAbsWeekThree =0;
+    // const intensityAbsWeekFour =0;
 
     // Return the modified program
     res.json({

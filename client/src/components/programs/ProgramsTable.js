@@ -45,18 +45,7 @@ const ProgramsTable = (props) => {
   for (let i = 0;i < parseInt(days);i += 1) {
     rows.push(createData(`Day ${i + 1}`));
   }
-  // const handleChangeMultiple = (event, idx) => {
-  //   const { options } = event.target;
-  //   const value = [];
-  //   const tempPrograms = [...programs];
-  //   for (let i = 0, l = options.length;i < l;i += 1) {
-  //     if (options[i].selected) {
-  //       value.push(options[i].value);
-  //     }
-  //   }
-  //   tempPrograms[props.index].exerciseList[0][idx.toString()] = value;
-  //   setPrograms(tempPrograms);
-  // };
+
   const handleChangeMultipleAuto = (event, value, idx) => {
     const values = [];
     value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
@@ -83,19 +72,6 @@ const ProgramsTable = (props) => {
                   { row.item }
                 </TableCell>
                 <TableCell>
-                  {/* <select
-                    name="exercises"
-                    className="exercises-slct"
-                    multiple
-                    onChange={ (e) => handleChangeMultiple(e, idx) } value={ programs[props.index].exerciseList[0][idx.toString()] }
-                    size={ 7 }
-                  >
-                    {
-                      exercises.map((ex) =>
-                        <option value={ `${ex.exercise}` } key={ `${ex._id}` }>{ ex.exercise }</option>
-                      )
-                    }
-                  </select> */}
                   <Autocomplete
                     multiple
                     id="tags-outlined"

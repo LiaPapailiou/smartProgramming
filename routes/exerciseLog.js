@@ -9,8 +9,6 @@ const ExerciseLog = require('../model/ExerciseLog');
 router.get('/', auth, async (req, res) => {
   try {
     const exercises = await ExerciseLog.find({ user: req.user.id }).sort({ exerciseCategory: 1, exerciseName: 1 }).populate('ExerciseLog');
-    // const exercises = await ExerciseLog.find().sort({ exerciseCategory: 1, exerciseName: 1 });
-
     res.json(exercises);
   } catch (err) {
     console.log(err.message);

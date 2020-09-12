@@ -8,6 +8,7 @@ const programsNewSchema = new mongoose.Schema({
   client: {
     type: mongoose.Types.ObjectId,
   },
+  clientName: String,
   month: String,
   year: String,
   daysPerWeek: Number,

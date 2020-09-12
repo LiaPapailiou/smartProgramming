@@ -6,7 +6,7 @@ import { getExercises, } from '../../actions/exercise';
 import { insertProgram } from '../../actions/programs';
 import CustomAlert from '../layout/CustomAlert';
 import ProgramsTable from './ProgramsTable';
-import shortid from "shortid";
+import shortid from 'shortid';
 
 
 const days = [1, 2, 3, 4, 5, 6, 7];
@@ -122,7 +122,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
 
   useEffect(() => {
     getEstimates(formData, client);
-  }, [getEstimates, level, client,]);
+  }, [formData.level, client]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -205,10 +205,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     setVisible(!visible);
   };
 
-  console.log(typeof level);
   return (
     <>
-      <div className="alerts" style={ { position: 'absolute', marginLeft: 850 } }>
+      <div className="alerts" style={ { position: 'absolute', marginLeft: 500 } }>
         <CustomAlert />
       </div>
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>
@@ -327,8 +326,6 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
         ))
         }
       </div>
-      {/* <pre style={ { color: '#fff' } }>{ JSON.stringify(formData, null, 2) }</pre>
-      <pre style={ { color: '#fff' } }>{ JSON.stringify(programLevel, null, 2) }</pre> */}
     </>
   );
 };

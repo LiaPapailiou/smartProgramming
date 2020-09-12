@@ -1,8 +1,9 @@
 const express = require('express');
 const auth = require('../middleware/auth');
 const router = express.Router();
+const ObjectId = require('mongodb').ObjectID;
 const ProgramsNew = require('../model/ProgramsNew');
-
+const Clients = require('../model/Clients');
 
 // Get all
 router.get('/', auth, async (req, res) => {
@@ -37,10 +38,13 @@ router.put('/insert', auth, async (req, res) => {
     });
     if (program) return res.status(409).json({ errors: [{ msg: 'Program for that client already exists' }] });
 
+    const clientDetails = await Clients.find({ _id: ObjectId(client) });
+    const clientName = `${clientDetails[0].clientFirstName} ${clientDetails[0].clientLastName}`;
 
     program = await ProgramsNew.create({
       user: req.user.id,
       client: client,
+      clientName: clientName,
       month,
       year,
       daysPerWeek,

@@ -7,7 +7,7 @@ import shortid from 'shortid';
 import ShowClientPrograms from './ShowClientPrograms';
 
 
-const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfile, clientProfiles, programs } }) => {
+const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfiles, programs } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
   const [visible, setVisible] = useState(false);
   const { clientId, programId } = client;
@@ -55,7 +55,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
-      { visible &&
+      { visible && clientProfiles && programs &&
         <ShowClientPrograms programId={ client.programId } />
       }
     </Fragment>

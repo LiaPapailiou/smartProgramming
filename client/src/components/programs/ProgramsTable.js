@@ -17,7 +17,7 @@ import {
 
 const useStyles = makeStyles({
   table: {
-    width: '45vw',
+    width: '50vw',
     marginBottom: 5
   },
   chips: {
@@ -57,7 +57,6 @@ const ProgramsTable = (props) => {
   //   tempPrograms[props.index].exerciseList[0][idx.toString()] = value;
   //   setPrograms(tempPrograms);
   // };
-
   const handleChangeMultipleAuto = (event, value, idx) => {
     const values = [];
     value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
@@ -67,7 +66,7 @@ const ProgramsTable = (props) => {
 
   return (
     <>
-      <TableContainer component={ Paper } style={ { width: '45vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
+      <TableContainer component={ Paper } style={ { width: '50vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
         <Table className={ classes.table } size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
@@ -79,11 +78,7 @@ const ProgramsTable = (props) => {
           <TableBody>
             { rows.map((row, idx) => (
               <TableRow key={ shortid.generate() }>
-                {/* { (idx < 1) ? */ }
                 <TableCell>Week { `${props.index + 1}` }</TableCell>
-                {/* :
-                 <TableCell>{ ' ' }</TableCell>
-                  } */}
                 <TableCell component="th" scope="row">
                   { row.item }
                 </TableCell>

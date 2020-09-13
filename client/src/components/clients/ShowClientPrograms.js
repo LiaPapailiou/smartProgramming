@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getClientProgramById } from '../../actions/profile';
 import shortid from 'shortid';
-import ReactExport from "react-export-excel";
+import ReactExport from 'react-export-excel';
+import VolumeChart from './VolumeChart';
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -24,9 +25,10 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
   for (let i = 1;i < daysPerWeek + 1;i += 1) {
     days.push(i);
   }
+
   return (
     <>
-      <div style={ { marginLeft: 650, marginTop: -40, marginBottom: 10 } }>
+      <div style={ { marginLeft: 600, marginTop: -40, marginBottom: 10 } }>
         { program.month && program.clientDetails && clientProfile &&
           <ExcelFile element={ <button className="input-add">Download xlsx</button> } filename={ `${clientProfile.clientFirstName}_${program.clientDetails.month}_${program.clientDetails.year}` }>
             <ExcelSheet data={ program.month } name="Programs">
@@ -41,7 +43,7 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
             </ExcelSheet>
           </ExcelFile> }
       </div>
-      <div className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 450 } }>
+      <div className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 40 } }>
         { program && program.weekOne && clientProfile && program.weekTwo && program.weekThree && program.weekFour &&
           <table className="program-container" style={ { color: '#fff', width: '45vw', borderCollapse: 'collapse', } }>
             { days.map((day) => (
@@ -178,6 +180,10 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
           </table>
         }
       </div>
+      { program.volumeChart &&
+        <VolumeChart volumeChart={ program.volumeChart } />
+      }
+
     </>
   );
 };

@@ -50,7 +50,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
           }
         </select>
         <button
-          style={ { marginTop: -140, width: 20, marginLeft: 20, backgroundColor: 'transparent', border: 0 } }
+          style={ { marginTop: -140, width: 20, marginLeft: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
           type="submit"
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>

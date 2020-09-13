@@ -315,7 +315,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
           )) }
         </table>
         <button
-          style={ { marginLeft: 440, marginTop: -140, width: 20, backgroundColor: 'transparent', border: 0 } }
+          style={ { marginLeft: 440, marginTop: -140, width: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
           type="submit"
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>

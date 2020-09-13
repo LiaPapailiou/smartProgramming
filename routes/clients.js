@@ -122,6 +122,10 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     let totalRepsMaxWeekThree = 0;
     let totalRepsMinWeekFour = 0;
     let totalRepsMaxWeekFour = 0;
+    let avgLoadWeekOne = [];
+    let avgLoadWeekTwo = [];
+    let avgLoadWeekThree = [];
+    let avgLoadWeekFour = [];
 
     weekOne.map((item, index) => {
       item.map((i, idx) => {
@@ -132,11 +136,21 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].week = 1;
         item[idx].id = shortid.generate();
         // newWeekOne.push(i);
-        totalRepsMinWeekOne += i.repsMin;
-        totalRepsMaxWeekOne += i.repsMax;
+        if (i.min !== 0 && i.max !== 0) {
+          totalRepsMinWeekOne += (i.repsMin * i.sets);
+          totalRepsMaxWeekOne += (i.repsMax * i.sets);
+          avgLoadWeekOne.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
+        } else {
+          totalRepsMinWeekFour = 0;
+          totalRepsMaxWeekFour = 0;
+          avgLoadWeekOne.push(0);
+        }
+        // avgLoadWeekOne.push((i.min + i.max) / 2);
         month.push(i);
       });
     });
+
+
     weekTwo.map((item, index) => {
       item.map((i, idx) => {
         item[idx].repsMin = repsMin[1];
@@ -145,8 +159,16 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 2;
         item[idx].id = shortid.generate();
-        totalRepsMinWeekTwo += i.repsMin;
-        totalRepsMaxWeekTwo += i.repsMax;
+        if (i.min !== 0 && i.max !== 0) {
+          totalRepsMinWeekTwo += (i.repsMin * i.sets);
+          totalRepsMaxWeekTwo += (i.repsMax * i.sets);
+          avgLoadWeekTwo.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
+        } else {
+          totalRepsMinWeekFour = 0;
+          totalRepsMaxWeekFour = 0;
+          avgLoadWeekTwo.push(0);
+        }
+        avgLoadWeekTwo.push((i.min + i.max) / 2);
         // newWeekTwo.push(i);
         month.push(i);
       });
@@ -159,8 +181,16 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 3;
         item[idx].id = shortid.generate();
-        totalRepsMinWeekThree += i.repsMin;
-        totalRepsMaxWeekThree += i.repsMax;
+        if (i.min !== 0 && i.max !== 0) {
+          totalRepsMinWeekThree += (i.repsMin * i.sets);
+          totalRepsMaxWeekThree += (i.repsMax * i.sets);
+          avgLoadWeekThree.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
+        } else {
+          totalRepsMinWeekFour = 0;
+          totalRepsMaxWeekFour = 0;
+          avgLoadWeekThree.push(0);
+        }
+        avgLoadWeekThree.push((i.min + i.max) / 2);
         // newWeekThree.push(i);
         month.push(i);
       });
@@ -173,33 +203,62 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         item[idx].day = index + 1;
         item[idx].week = 4;
         item[idx].id = shortid.generate();
-        totalRepsMinWeekFour += i.repsMin;
-        totalRepsMaxWeekFour += i.repsMax;
+        if (i.min !== 0 && i.max !== 0) {
+          totalRepsMinWeekFour += (i.repsMin * i.sets);
+          totalRepsMaxWeekFour += (i.repsMax * i.sets);
+          avgLoadWeekFour.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
+        } else {
+          totalRepsMinWeekFour = 0;
+          totalRepsMaxWeekFour = 0;
+          avgLoadWeekFour.push(0);
+        }
+
+        avgLoadWeekFour.push(((i.min + i.max) / 2) / 2);
         // newWeekFour.push(i);
         month.push(i);
       });
     });
 
     // Calculations for the volume chart
-    const avgPercentage = percentages.reduce((acc, cur) => acc + cur, 0) / percentages.length;
-    const volumeMinRepsMonth = totalRepsMinWeekOne + totalRepsMinWeekTwo + totalRepsMinWeekThree + totalRepsMinWeekFour;
-    const volumeMaxRepsMonth = totalRepsMaxWeekOne + totalRepsMaxWeekTwo + totalRepsMaxWeekThree + totalRepsMaxWeekFour;
-    const intensityRelMinMonth = Math.floor(avgPercentage * volumeMinRepsMonth * 100) / 100;
-    const intensityRelMaxMonth = Math.floor(avgPercentage * volumeMaxRepsMonth * 100) / 100;
+    const avgPercentageTotal = percentages.reduce((acc, cur) => acc + cur, 0) / percentages.length;
+    const volumeMinRepsTotal = totalRepsMinWeekOne + totalRepsMinWeekTwo + totalRepsMinWeekThree + totalRepsMinWeekFour;
+    const volumeMaxRepsTotal = totalRepsMaxWeekOne + totalRepsMaxWeekTwo + totalRepsMaxWeekThree + totalRepsMaxWeekFour;
+    const intensityRelMinTotal = Math.floor(avgPercentageTotal * volumeMinRepsTotal * 100) / 100;
+    const intensityRelMaxTotal = Math.floor(avgPercentageTotal * volumeMaxRepsTotal * 100) / 100;
+
     const volumeRepsWeekOne = (totalRepsMinWeekOne + totalRepsMaxWeekOne) / 2;
     const volumeRepsWeekTwo = (totalRepsMinWeekTwo + totalRepsMaxWeekTwo) / 2;
     const volumeRepsWeekThree = (totalRepsMinWeekThree + totalRepsMaxWeekThree) / 2;
     const volumeRepsWeekFour = (totalRepsMinWeekFour + totalRepsMaxWeekFour) / 2;
+    console.log(volumeRepsWeekOne);
     const intensityRelWeekOne = volumeRepsWeekOne * percentages[0];
     const intensityRelWeekTwo = volumeRepsWeekTwo * percentages[1];
     const intensityRelWeekThree = volumeRepsWeekThree * percentages[2];
     const intensityRelWeekFour = volumeRepsWeekFour * percentages[3];
-    // const intensityAbsMonth =0;
-    // const intensityAbsWeekOne =0;
-    // const intensityAbsWeekTwo =0;
-    // const intensityAbsWeekThree =0;
-    // const intensityAbsWeekFour =0;
 
+    let workWeekOne = avgLoadWeekOne.map((i) => i * volumeRepsWeekOne);
+    let workWeekTwo = avgLoadWeekTwo.map((i) => i * volumeRepsWeekTwo);
+    let workWeekThree = avgLoadWeekThree.map((i) => i * volumeRepsWeekThree);
+    let workWeekFour = avgLoadWeekFour.map((i) => i * volumeRepsWeekFour);
+
+    workWeekOne = workWeekOne.reduce((acc, cur) => acc + cur, 0);
+    workWeekTwo = workWeekTwo.reduce((acc, cur) => acc + cur, 0);
+    workWeekThree = workWeekThree.reduce((acc, cur) => acc + cur, 0);
+    workWeekFour = workWeekFour.reduce((acc, cur) => acc + cur, 0);
+    const workTotal = workWeekOne + workWeekTwo + workWeekThree + workWeekFour;
+
+    const workWeekOnePercentage = avgLoadWeekOne.map((i) => Math.floor(((i * volumeRepsWeekOne) / workTotal) * 100) / 100);
+    const workWeekTwoPercentage = avgLoadWeekTwo.map((i) => Math.floor(((i * volumeRepsWeekTwo) / workTotal) * 100) / 100);
+    const workWeekThreePercentage = avgLoadWeekThree.map((i) => Math.floor(((i * volumeRepsWeekThree) / workTotal) * 100) / 100);
+    const workWeekFourPercentage = avgLoadWeekFour.map((i) => Math.floor(((i * volumeRepsWeekFour) / workTotal) * 100) / 100);
+
+    const volumeRepsWeekOnePercentage = Math.floor((volumeRepsWeekOne / workTotal) * 1000) / 1000;
+    const volumeRepsWeekTwoPercentage = Math.floor((volumeRepsWeekTwo / workTotal) * 1000) / 1000;
+    const volumeRepsWeekThreePercentage = Math.floor((volumeRepsWeekThree / workTotal) * 1000) / 1000;
+    const volumeRepsWeekFourPercentage = Math.floor((volumeRepsWeekFour / workTotal) * 1000) / 1000;
+
+
+    // console.log(workWeekOne);
     // Return the modified program
     res.json({
       clientDetails: clientDetails,

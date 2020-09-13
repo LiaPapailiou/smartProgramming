@@ -226,39 +226,90 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     const intensityRelMinTotal = Math.floor(avgPercentageTotal * volumeMinRepsTotal * 100) / 100;
     const intensityRelMaxTotal = Math.floor(avgPercentageTotal * volumeMaxRepsTotal * 100) / 100;
 
+    // need those to calculate the relative intensity per week
     const volumeRepsWeekOne = (totalRepsMinWeekOne + totalRepsMaxWeekOne) / 2;
     const volumeRepsWeekTwo = (totalRepsMinWeekTwo + totalRepsMaxWeekTwo) / 2;
     const volumeRepsWeekThree = (totalRepsMinWeekThree + totalRepsMaxWeekThree) / 2;
     const volumeRepsWeekFour = (totalRepsMinWeekFour + totalRepsMaxWeekFour) / 2;
-    console.log(volumeRepsWeekOne);
+    const volumeMax = [];
+    volumeMax.push(volumeRepsWeekOne, volumeRepsWeekTwo, volumeRepsWeekThree, volumeRepsWeekFour);
+    volumeMax.sort((a, b) => a > b ? -1 : 1);
+
+    // relative intensity per week
     const intensityRelWeekOne = volumeRepsWeekOne * percentages[0];
     const intensityRelWeekTwo = volumeRepsWeekTwo * percentages[1];
     const intensityRelWeekThree = volumeRepsWeekThree * percentages[2];
     const intensityRelWeekFour = volumeRepsWeekFour * percentages[3];
 
-    let workWeekOne = avgLoadWeekOne.map((i) => i * volumeRepsWeekOne);
-    let workWeekTwo = avgLoadWeekTwo.map((i) => i * volumeRepsWeekTwo);
-    let workWeekThree = avgLoadWeekThree.map((i) => i * volumeRepsWeekThree);
-    let workWeekFour = avgLoadWeekFour.map((i) => i * volumeRepsWeekFour);
+    // work per week and total work
+    let workWeekOne = avgLoadWeekOne.reduce((acc, cur) => acc + cur, 0);
+    let workWeekTwo = avgLoadWeekTwo.reduce((acc, cur) => acc + cur, 0);
+    let workWeekThree = avgLoadWeekThree.reduce((acc, cur) => acc + cur, 0);
+    let workWeekFour = avgLoadWeekFour.reduce((acc, cur) => acc + cur, 0);
+    const intensityAbsolute = workWeekOne + workWeekTwo + workWeekThree + workWeekFour;
 
-    workWeekOne = workWeekOne.reduce((acc, cur) => acc + cur, 0);
-    workWeekTwo = workWeekTwo.reduce((acc, cur) => acc + cur, 0);
-    workWeekThree = workWeekThree.reduce((acc, cur) => acc + cur, 0);
-    workWeekFour = workWeekFour.reduce((acc, cur) => acc + cur, 0);
-    const workTotal = workWeekOne + workWeekTwo + workWeekThree + workWeekFour;
+    const workWeekOnePercentage = Math.floor((workWeekOne / intensityAbsolute) * 100) / 100;
+    const workWeekTwoPercentage = Math.floor((workWeekTwo / intensityAbsolute) * 100) / 100;
+    const workWeekThreePercentage = Math.floor((workWeekThree / intensityAbsolute) * 100) / 100;
+    const workWeekFourPercentage = Math.floor((workWeekFour / intensityAbsolute) * 100) / 100;
 
-    const workWeekOnePercentage = avgLoadWeekOne.map((i) => Math.floor(((i * volumeRepsWeekOne) / workTotal) * 100) / 100);
-    const workWeekTwoPercentage = avgLoadWeekTwo.map((i) => Math.floor(((i * volumeRepsWeekTwo) / workTotal) * 100) / 100);
-    const workWeekThreePercentage = avgLoadWeekThree.map((i) => Math.floor(((i * volumeRepsWeekThree) / workTotal) * 100) / 100);
-    const workWeekFourPercentage = avgLoadWeekFour.map((i) => Math.floor(((i * volumeRepsWeekFour) / workTotal) * 100) / 100);
+    const volumeRepsWeekOnePercentage = Math.floor((volumeRepsWeekOne / volumeMax[0]) * 100) / 100;
+    const volumeRepsWeekTwoPercentage = Math.floor((volumeRepsWeekTwo / volumeMax[0]) * 100) / 100;
+    const volumeRepsWeekThreePercentage = Math.floor((volumeRepsWeekThree / volumeMax[0]) * 100) / 100;
+    const volumeRepsWeekFourPercentage = Math.floor((volumeRepsWeekFour / volumeMax[0]) * 100) / 100;
 
-    const volumeRepsWeekOnePercentage = Math.floor((volumeRepsWeekOne / workTotal) * 1000) / 1000;
-    const volumeRepsWeekTwoPercentage = Math.floor((volumeRepsWeekTwo / workTotal) * 1000) / 1000;
-    const volumeRepsWeekThreePercentage = Math.floor((volumeRepsWeekThree / workTotal) * 1000) / 1000;
-    const volumeRepsWeekFourPercentage = Math.floor((volumeRepsWeekFour / workTotal) * 1000) / 1000;
+    const loadWeekOne = Math.floor((workWeekOne / volumeRepsWeekOne) * 100) / 100;
+    const loadWeekTwo = Math.floor((workWeekTwo / volumeRepsWeekTwo) * 100) / 100;
+    const loadWeekThree = Math.floor((workWeekThree / volumeRepsWeekThree) * 100) / 100;
+    const loadWeekFour = Math.floor((workWeekFour / volumeRepsWeekFour) * 100) / 100;
+    const loadMax = [];
+    loadMax.push(loadWeekOne, loadWeekTwo, loadWeekThree, loadWeekFour);
+    loadMax.sort((a, b) => a > b ? -1 : 1);
 
+    const loadWeekOnePercentage = Math.floor((loadWeekOne / loadMax[0]) * 100) / 100;
+    const loadWeekTwoPercentage = Math.floor((loadWeekTwo / loadMax[0]) * 100) / 100;
+    const loadWeekThreePercentage = Math.floor((loadWeekThree / loadMax[0]) * 100) / 100;
+    const loadWeekFourPercentage = Math.floor((loadWeekFour / loadMax[0]) * 100) / 100;
 
-    // console.log(workWeekOne);
+    const volumeChart = [
+      {
+        week: 1,
+        work: workWeekOne,
+        workPercentage: workWeekOnePercentage,
+        volume: volumeRepsWeekOne,
+        volumePercentage: volumeRepsWeekOnePercentage,
+        load: loadWeekOne,
+        loadPercentage: loadWeekOnePercentage,
+      },
+      {
+        week: 2,
+        work: workWeekTwo,
+        workPercentage: workWeekTwoPercentage,
+        volume: volumeRepsWeekTwo,
+        volumePercentage: volumeRepsWeekTwoPercentage,
+        load: loadWeekTwo,
+        loadPercentage: loadWeekTwoPercentage,
+      },
+      {
+        week: 3,
+        work: workWeekThree,
+        workPercentage: workWeekThreePercentage,
+        volume: volumeRepsWeekThree,
+        volumePercentage: volumeRepsWeekThreePercentage,
+        load: loadWeekThree,
+        loadPercentage: loadWeekThreePercentage,
+      },
+      {
+        week: 4,
+        work: workWeekFour,
+        workPercentage: workWeekFourPercentage,
+        volume: volumeRepsWeekFour,
+        volumePercentage: volumeRepsWeekFourPercentage,
+        load: loadWeekFour,
+        loadPercentage: loadWeekFourPercentage,
+      },
+    ];
+
     // Return the modified program
     res.json({
       clientDetails: clientDetails,
@@ -267,6 +318,7 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
       weekTwo,
       weekThree,
       weekFour,
+      volumeChart,
     });
 
   } catch (err) {

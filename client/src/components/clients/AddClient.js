@@ -189,7 +189,7 @@ const AddClient = ({ insertClient, history }) => {
               <textarea cols="65" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
               <br />
             </div>
-            <div className="lib-buttons" style={ { marginLeft: 280 } }>
+            <div className="lib-buttons" style={ { marginLeft: 350 } }>
               <input
                 type="button"
                 className="input-add"

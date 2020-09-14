@@ -4,12 +4,9 @@ import { connect } from 'react-redux';
 import { insertExercise } from '../../actions/exercise';
 import CustomAlert from '../layout/CustomAlert';
 import { useHistory } from 'react-router-dom';
-// import Modal from 'react-modal';
-
 
 
 const AddExercise = ({ insertExercise }) => {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
   let history = useHistory();
   const [formData, setFormData] = useState({
     exercise: '',
@@ -36,14 +33,11 @@ const AddExercise = ({ insertExercise }) => {
       max: '',
       factor: '',
     });
-    // setModalIsOpen(!modalIsOpen);
   };
 
   return (
     <>
       <CustomAlert />
-      {/* <button className="input-add" onClick={ () => setModalIsOpen(!modalIsOpen) } style={ { marginTop: '100px' } }>Add</button>
-        <Modal isOpen={ modalIsOpen } className="add-modal"> */}
       <div className="add-card" style={ { height: '60vh', width: '38vw' } }>
         <h3 style={ {
           fontSize: 22, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.35em', paddingLeft: '0.7em', height: '6vh',
@@ -85,7 +79,7 @@ const AddExercise = ({ insertExercise }) => {
                     name="body"
                     value={ body }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
                     required>
                     <option value="">One RM</option>
                     <option value="Bench">Bench Press</option>
@@ -107,7 +101,7 @@ const AddExercise = ({ insertExercise }) => {
                 </label>
               </div>
             </div>
-            <div className="lib-buttons" style={ { marginLeft: 130 } }>
+            <div className="lib-buttons">
               <input
                 type="button"
                 className="input-add"

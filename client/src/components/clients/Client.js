@@ -95,8 +95,9 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                 </span>)
               ) }
             </p>
+            <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative', fontSize: 14, marginLeft: -420 } }>Notes for { clientProfile.clientFirstName }</h3>
             <div className="notes">
-              <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative' } }>Notes for { clientProfile.clientFirstName }</h3>
+
               { clientProfile.notes }
             </div>
             <OneRMChart clientId={ clientProfile._id } />

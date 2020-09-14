@@ -33,50 +33,46 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
   };
 
   return (
-    <section className="add-new-rm">
-      <div className="add-rm">
-        <div className="dark-overlay">
-          <div className="add-rm-container">
-            <div className="add-rm-card">
-              <h3>Add new RM</h3>
-              <div className="add-card-body">
-                <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
-                  <div className="add-input-group">
-                    <input
-                      type="text"
-                      className="form-control-extra"
-                      name="benchPress"
-                      value={ benchPress }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Bench Press"
-                      required />
-                    <input
-                      type="text"
-                      className="form-control-extra"
-                      name="squat"
-                      value={ squat }
-                      onChange={ (e) => onChange(e) }
-                      placeholder=" Squat"
-                      required />
-                  </div>
-                  <div className="lib-buttons-extra">
-                    <input
-                      type="button"
-                      className="input-add"
-                      onClick={ (e) => onClick(e) }
-                      value="Go Back" />
-                    <input
-                      type="submit"
-                      className="input-add-rm"
-                      value="Submit" />
-                  </div>
-                </form>
+    <section>
+      <div className="add-rm-container">
+        <div className="add-rm-card">
+          <h3 style={ { paddingLeft: '1em' } }>Add new RM</h3>
+          <div className="add-card-body">
+            <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
+              <div className="add-input-group">
+                <input
+                  type="text"
+                  className="form-control-extra"
+                  name="benchPress"
+                  value={ benchPress }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" Bench Press"
+                  required />
+                <input
+                  type="text"
+                  className="form-control-extra"
+                  name="squat"
+                  value={ squat }
+                  onChange={ (e) => onChange(e) }
+                  placeholder=" Squat"
+                  required />
               </div>
-            </div>
+              <div className="lib-buttons-extra">
+                <input
+                  type="button"
+                  className="input-add"
+                  onClick={ (e) => onClick(e) }
+                  value="Go Back" />
+                <input
+                  type="submit"
+                  className="input-add"
+                  value="Submit" />
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

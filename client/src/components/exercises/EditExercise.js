@@ -59,9 +59,10 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
         <div className="add-card" style={ { height: '60vh', width: '38vw' } }>
           <h3 style={ { fontSize: 22, paddingTop: '0.25em', paddingRight: '100px', paddingLeft: '0.7em', height: '6vh' } }>Edit Exercise</h3>
           <div className="add-card-body">
-            <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
+            <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em' } }>
               <div className="add-input-group">
                 <input
+                  style={ { fontSize: 14 } }
                   type="text"
                   className="form-control"
                   name="exercise"
@@ -70,6 +71,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                   placeholder=" Exercise Name"
                   required />
                 <input
+                  style={ { fontSize: 14 } }
                   type="text"
                   className="form-control"
                   name="min"
@@ -79,6 +81,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                   required
                 />
                 <input
+                  style={ { fontSize: 14 } }
                   type="text"
                   className="form-control"
                   name="max"
@@ -94,7 +97,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                       name="body"
                       value={ body }
                       onChange={ (e) => onChange(e) }
-                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
+                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
                       required>
                       <option value="">One RM</option>
                       <option value="Bench">Bench Press</option>
@@ -107,7 +110,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                       name="factor"
                       value={ factor }
                       onChange={ (e) => onChange(e) }
-                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
+                      style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
                       required>
                       <option value="">Level</option>
                       <option value="true">Applicable</option>
@@ -116,7 +119,7 @@ const EditExercise = ({ match, getExerciseById, editExercise, singleExercise: { 
                   </label>
                 </div>
               </div>
-              <div className="lib-buttons" style={ { marginLeft: 140 } }>
+              <div className="lib-buttons">
                 <input
                   type="button"
                   className="input-add"

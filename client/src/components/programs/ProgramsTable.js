@@ -17,7 +17,7 @@ import {
 
 const useStyles = makeStyles({
   table: {
-    width: '50vw',
+    width: '70vw',
     marginBottom: 5
   },
   chips: {
@@ -39,6 +39,10 @@ const ProgramsTable = (props) => {
     days,
     exerciseList,
     programs,
+    repsMin,
+    repsMax,
+    sets,
+    setPrograms,
   } = props;
 
   const rows = [];
@@ -53,15 +57,26 @@ const ProgramsTable = (props) => {
     tempPrograms[props.index].exerciseList[0][idx.toString()] = values;
   };
 
+  const onChange = (e, idx) => {
+    const values = [...programs];
+    console.log(e.target.value);
+    values[props.index][e.target.name][idx.toString()] = e.target.value;
+    setPrograms(values);
+  };
+
+  // console.log(valueRepsMin);
   return (
     <>
-      <TableContainer component={ Paper } style={ { width: '50vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
+      <TableContainer component={ Paper } style={ { width: '70vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
         <Table className={ classes.table } size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell align="left">Week</TableCell>
               <TableCell align="left">Days</TableCell>
               <TableCell align="left">Exercises</TableCell>
+              <TableCell align="center">Reps min</TableCell>
+              <TableCell align="center">Reps max</TableCell>
+              <TableCell align="center">Sets</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -90,11 +105,45 @@ const ProgramsTable = (props) => {
                     ) }
                   />
                 </TableCell>
+                <TableCell align="center">
+                  <TextField
+                    key={ shortid.generate() }
+                    id="outlined-basic"
+                    variant="outlined"
+                    name="repsMin"
+                    value={ repsMin }
+                    onChange={ (e) => onChange(e, idx) }
+                    style={ { width: 70 } }
+                  />
+                </TableCell>
+                <TableCell align="center">
+                  <TextField
+                    key={ shortid.generate() }
+                    id="outlined-basic"
+                    variant="outlined"
+                    name="repsMax"
+                    value={ repsMax }
+                    onChange={ (e) => onChange(e, idx, row) }
+                    style={ { width: 70 } }
+                  />
+                </TableCell>
+                <TableCell align="center">
+                  <TextField
+                    key={ shortid.generate() }
+                    id="outlined-basic"
+                    variant="outlined"
+                    name="sets"
+                    value={ sets }
+                    onChange={ (e) => onChange(e, idx) }
+                    style={ { width: 70 } }
+                  />
+                </TableCell>
               </TableRow>
             )) }
           </TableBody>
         </Table>
       </TableContainer>
+
     </>
   );
 };

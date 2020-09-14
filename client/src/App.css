@@ -159,22 +159,21 @@ img {
   -webkit-appearance: none;
 -moz-appearance: none;
 }
-
-/* option:checked {
-  background: #3d90df linear-gradient(0deg, #3d90df 0%, #3d90df 100%);
-} */
+.tbl td:nth-child(1) {
+  width: 10%
+}
 .inner-table {
   position: absolute;
   display: flex;
   flex-direction: column;
   /* flex-wrap: wrap; */
-  max-width: 60vw;
-  max-height: 80vh;
+  max-width:70vw;
+  max-height: 90vh;
   justify-content: center;
   align-content: center;
   align-items: center;
   margin-top: -300px;
-  margin-left: 600px;
+  margin-left: 400px;
 }
 /* Overlay */
 .dark-overlay {
@@ -626,14 +625,14 @@ a:hover {
 }
 
 .add-select {
-  margin-left: 118px; 
+  margin-left: 105px; 
 }
 .lib-buttons {
  margin-left: 190px;
  margin-bottom: 15px;
 }
 .lib-buttons-extra {
- margin-left: 45px;
+ margin-left: 80px;
  margin-bottom: 15px;
 }
 /* Client list */
@@ -768,7 +767,7 @@ font-size: 25px;
   border-radius: 0.6em;
   color: #f4f4f4;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 16px;
   font-weight: 400;
   line-height: normal;
   padding: 0.85em 2.8em;
@@ -911,15 +910,12 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  align-items: center;
-  margin-left: 1030px;
-  max-height: 20vh;
-  font-size: 14px;
+  margin-left: 1070px;
+  max-height: 28vh;
   color: '#fff';
   padding-right: 8px;
-  text-align: left;
-  max-width: 38vw;
-  margin-top: -535px;
+  max-width: 30vw;
+  margin-top: -490px;
 }
 
 .icon-static {
@@ -927,29 +923,26 @@ a:hover {
   margin-left: 500px;
   margin-top: -640px;
 }
-.add-notes {
-  overflow: auto;
-}
 
 .add-notes textarea {
-  overflow: hidden
+  overflow: auto
 }
-.add-notes::-webkit-scrollbar {
+.add-notes textarea::-webkit-scrollbar {
   width: 10px;
 }
 
-.add-notes::-webkit-scrollbar-track {
+.add-notes textarea::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px #103aad; 
   border-radius: 10px;
 }
  
-.add-notes::-webkit-scrollbar-thumb {
+.add-notes textarea::-webkit-scrollbar-thumb {
   background: #4aaaaa73; 
   border-radius: 10px;
   box-shadow: 0 0 1px #ffffff80;
 }
 
-.add-notes::-webkit-scrollbar-thumb:hover {
+.add-notes textarea::-webkit-scrollbar-thumb:hover {
   background: #3a74af; 
 }
 
@@ -975,8 +968,8 @@ a:hover {
   align-self: center;
   width: 33vw;
   height: 15vh;
-  font-size:  12px;
-  text-align: justify;
+  font-size:  14px;
+  text-align: left;
   padding: 1em;
 }
 .notes::-webkit-scrollbar {

@@ -61,7 +61,7 @@ const AddToLibrary = ({ insertSingleExercise }) => {
                 placeholder=" Video Link"
                 required />
             </div>
-            <div className="lib-buttons" style={ { marginLeft: 130 } }>
+            <div className="lib-buttons">
               <input
                 type="button"
                 className="input-add"

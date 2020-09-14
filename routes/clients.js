@@ -273,7 +273,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
 
     const volumeChart = [
       {
-        week: 1,
         work: workWeekOne,
         workPercentage: workWeekOnePercentage,
         volume: volumeRepsWeekOne,
@@ -282,7 +281,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         loadPercentage: loadWeekOnePercentage,
       },
       {
-        week: 2,
         work: workWeekTwo,
         workPercentage: workWeekTwoPercentage,
         volume: volumeRepsWeekTwo,
@@ -291,7 +289,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         loadPercentage: loadWeekTwoPercentage,
       },
       {
-        week: 3,
         work: workWeekThree,
         workPercentage: workWeekThreePercentage,
         volume: volumeRepsWeekThree,
@@ -300,7 +297,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
         loadPercentage: loadWeekThreePercentage,
       },
       {
-        week: 4,
         work: workWeekFour,
         workPercentage: workWeekFourPercentage,
         volume: volumeRepsWeekFour,

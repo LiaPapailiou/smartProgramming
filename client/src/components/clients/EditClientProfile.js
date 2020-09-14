@@ -100,10 +100,10 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
   }, [getClientProfile, match.params.id, loading,]);
 
   return (
-    <section className="add-client">
-      <div className="add">
+    <section>
+      <div>
         <CustomAlert />
-        <div className="dark-overlay">
+        <div>
           <div className="add-card">
             <h3 style={ { fontSize: 24, height: '6vh' } }>Client Information</h3>
             <div className="add-card-body">
@@ -218,7 +218,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
                   <textarea cols="65" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
                 </div>
-                <div className="lib-buttons" style={ { marginLeft: 280 } }>
+                <div className="lib-buttons" style={ { marginLeft: 360 } }>
                   <input
                     type="button"
                     className="input-add"

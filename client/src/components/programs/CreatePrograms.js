@@ -28,9 +28,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
   const [programs, setPrograms] = useState([
     {
       percentages: '',
-      repsMin: '',
-      repsMax: '',
-      sets: '',
+      repsMin: [],
+      repsMax: [],
+      sets: [],
       exerciseList: [{
         0: [],
         1: [],
@@ -43,9 +43,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     },
     {
       percentages: '',
-      repsMin: '',
-      repsMax: '',
-      sets: '',
+      repsMin: [],
+      repsMax: [],
+      sets: [],
       exerciseList: [
         {
           0: [],
@@ -60,9 +60,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     },
     {
       percentages: '',
-      repsMin: '',
-      repsMax: '',
-      sets: '',
+      repsMin: [],
+      repsMax: [],
+      sets: [],
       exerciseList: [
         {
           0: [],
@@ -77,9 +77,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     },
     {
       percentages: '',
-      repsMin: '',
-      repsMax: '',
-      sets: '',
+      repsMin: [],
+      repsMax: [],
+      sets: [],
       exerciseList: [
         {
           0: [],
@@ -137,9 +137,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     setPrograms([
       {
         percentages: '',
-        repsMin: '',
-        repsMax: '',
-        sets: '',
+        repsMin: [],
+        repsMax: [],
+        sets: [],
         exerciseList: [{
           0: [],
           1: [],
@@ -152,9 +152,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
       },
       {
         percentages: '',
-        repsMin: '',
-        repsMax: '',
-        sets: '',
+        repsMin: [],
+        repsMax: [],
+        sets: [],
         exerciseList: [
           {
             0: [],
@@ -169,9 +169,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
       },
       {
         percentages: '',
-        repsMin: '',
-        repsMax: '',
-        sets: '',
+        repsMin: [],
+        repsMax: [],
+        sets: [],
         exerciseList: [
           {
             0: [],
@@ -186,9 +186,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
       },
       {
         percentages: '',
-        repsMin: '',
-        repsMax: '',
-        sets: '',
+        repsMin: [],
+        repsMax: [],
+        sets: [],
         exerciseList: [
           {
             0: [],
@@ -256,20 +256,21 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
             <option value="1.1">Level 5</option>
           </select>
         </label>
-        <table style={ {
-          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch',
+        <table className="tbl" style={ {
+          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-between', alignContent: 'stretch', alignItems: 'stretch', marginLeft: 20, flexWrap: 'wrap',
         } }>
           <thead>
             <tr>
-              <th style={ { color: '#93aabd', padding: '0.7em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Percent</th>
-              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Min</th>
+              <th style={ { color: '#93aabd', fontSize: 20 } } colSpan="2">Percentages</th>
+              {/* <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Min</th>
               <th style={ { color: '#93aabd', padding: '1.3em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Max</th>
-              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Sets</th>
+              <th style={ { color: '#93aabd', padding: '1em', fontSize: 20, fontWeight: 300, paddingBottom: 0, paddingTop: 0 } }>Sets</th> */}
             </tr>
           </thead>
           { programs && programs.map((data, idx) => (
-            <tbody key={ idx } style={ { display: 'flex', flexDirection: 'column', maxWidth: '21.7vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch' } }>
+            <tbody key={ idx } style={ { display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-around', alignContent: 'stretch', alignItems: 'stretch' } }>
               <tr>
+                <td style={ { color: '#93aabd', fontSize: 15 } }> { `${idx + 1}` }</td>
                 <td style={ { paddingRight: '2.6em', paddingLeft: '2em' } }>
                   <input
                     type="text"
@@ -280,7 +281,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
                     onChange={ (e) => onChangePrograms(idx, e) }
                     required />
                 </td>
-                <td style={ { paddingRight: '2.5em' } }>
+                {/* <td style={ { paddingRight: '2.5em' } }>
                   <input
                     type="text"
                     className="form-input"
@@ -309,23 +310,24 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
                     value={ data.sets }
                     onChange={ (e) => onChangePrograms(idx, e) }
                     required />
-                </td>
+                </td> */}
               </tr>
             </tbody>
           )) }
         </table>
         <button
-          style={ { marginLeft: 440, marginTop: -140, width: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
+          style={ { marginLeft: 170, marginTop: -143, width: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
           type="submit"
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
       <div className="inner-table">
         { visible && programs && programs.map((data, index) => (
-          <ProgramsTable key={ shortid.generate() } days={ formData.daysPerWeek } exercises={ exercises } exerciseList={ exerciseList } index={ index } programs={ programs } setPrograms={ setPrograms } />
+          <ProgramsTable key={ shortid.generate() } days={ formData.daysPerWeek } exercises={ exercises } exerciseList={ exerciseList } index={ index } programs={ programs } setPrograms={ setPrograms } repsMin={ data.repsMin } repsMax={ data.repsMax } sets={ data.sets } />
         ))
         }
       </div>
+      {/* <pre style={ { color: 'red', marginLeft: 0 } }>{ JSON.stringify(programs, null, 2) }</pre> */ }
     </>
   );
 };

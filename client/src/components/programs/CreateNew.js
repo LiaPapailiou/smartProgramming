@@ -1,22 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllProfiles, getEstimates } from '../../actions/profile';
 import { getExercises, } from '../../actions/exercise';
 import { insertProgram } from '../../actions/programs';
 import CustomAlert from '../layout/CustomAlert';
-import ProgramsTable from './ProgramsTable';
 import shortid from 'shortid';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TextField,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@material-ui/core';
 
 
 const days = [1, 2, 3, 4, 5, 6, 7];
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 const years = [];
 for (let i = 2020;i < 2051;i += 1) {
   years.push(i);
 }
 
+const useStyles = makeStyles({
+  table: {
+    width: '70vw',
+    marginBottom: 5
+  },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  chip: {
+    margin: 2,
+  },
+});
+
+function createData(item) {
+  return { item };
+}
+
 const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstimates, profile: { clientProfiles, exerciseList }, exercises: { exercises } }) => {
+  const classes = useStyles();
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({
     client: '',
@@ -46,51 +78,45 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
       repsMin: [],
       repsMax: [],
       sets: [],
-      exerciseList: [
-        {
-          0: [],
-          1: [],
-          2: [],
-          3: [],
-          4: [],
-          5: [],
-          6: [],
-        },
-      ],
+      exerciseList: [{
+        0: [],
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+      }],
     },
     {
       percentages: '',
       repsMin: [],
       repsMax: [],
       sets: [],
-      exerciseList: [
-        {
-          0: [],
-          1: [],
-          2: [],
-          3: [],
-          4: [],
-          5: [],
-          6: [],
-        },
-      ],
+      exerciseList: [{
+        0: [],
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+      }],
     },
     {
       percentages: '',
       repsMin: [],
       repsMax: [],
       sets: [],
-      exerciseList: [
-        {
-          0: [],
-          1: [],
-          2: [],
-          3: [],
-          4: [],
-          5: [],
-          6: [],
-        },
-      ],
+      exerciseList: [{
+        0: [],
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+      }],
     },
   ],
   );
@@ -104,6 +130,12 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     level
   } = formData;
 
+  const {
+    repsMin,
+    repsMax,
+    sets,
+  } = programs;
+
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -113,6 +145,28 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     values[idx][e.target.name] = e.target.value;
     setPrograms(values);
     setFormData({ ...formData, programs });
+  };
+
+
+  const rows = [];
+  for (let i = 0;i < parseInt(daysPerWeek);i += 1) {
+    rows.push(createData(`Day ${i + 1}`));
+  }
+
+  const handleChangeMultipleAuto = (event, value, idx, index) => {
+    const values = [];
+    value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
+    const tempPrograms = [...programs];
+    tempPrograms[index].exerciseList[0][idx.toString()] = values;
+    // setPrograms(tempPrograms);
+  };
+
+  const onChangeExtra = (e, idx, index) => {
+    const values = [...programs];
+    console.log(e.target.value);
+    const newItem = e.target.value;
+    values[index][e.target.name][idx.toString()] = newItem;
+    setPrograms(values);
   };
 
   useEffect(() => {
@@ -155,51 +209,45 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
         repsMin: [],
         repsMax: [],
         sets: [],
-        exerciseList: [
-          {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-            5: [],
-            6: [],
-          },
-        ],
+        exerciseList: [{
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        }],
       },
       {
         percentages: '',
         repsMin: [],
         repsMax: [],
         sets: [],
-        exerciseList: [
-          {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-            5: [],
-            6: [],
-          },
-        ],
+        exerciseList: [{
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        }],
       },
       {
         percentages: '',
         repsMin: [],
         repsMax: [],
         sets: [],
-        exerciseList: [
-          {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-            5: [],
-            6: [],
-          },
-        ],
+        exerciseList: [{
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: [],
+        }],
       },
     ]);
     setVisible(!visible);
@@ -285,13 +333,91 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
         </table>
         <button
           style={ { marginLeft: 170, marginTop: -143, width: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
-          type="button"
+          type="submit"
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
       <div className="inner-table">
-        { visible && programs && programs.map((data, index) => (
-          <ProgramsTable key={ shortid.generate() } days={ formData.daysPerWeek } exercises={ exercises } exerciseList={ exerciseList } index={ index } programs={ programs } setPrograms={ setPrograms } />
+        { visible && exercises && programs && programs.map((data, index) => (
+          <TableContainer key={ shortid.generate() } component={ Paper } style={ { width: '70vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
+            <Table className={ classes.table } size="small" aria-label="a dense table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">Week</TableCell>
+                  <TableCell align="left">Days</TableCell>
+                  <TableCell align="left">Exercises</TableCell>
+                  <TableCell align="center">Reps min</TableCell>
+                  <TableCell align="center">Reps max</TableCell>
+                  <TableCell align="center">Sets</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                { rows.map((row, idx) => (
+                  <Fragment key={ shortid.generate() }>
+                    <TableRow >
+                      <TableCell>Week { `${index + 1}` }</TableCell>
+                      <TableCell component="th" scope="row">
+                        { row.item }
+                      </TableCell>
+                      <TableCell>
+                        <Autocomplete
+                          multiple
+                          id="tags-outlined"
+                          options={ exerciseList }
+                          getOptionLabel={ (option) => option.exercise }
+                          filterSelectedOptions
+                          onChange={ (e, value) => {
+                            handleChangeMultipleAuto(e, value, idx, index);
+                          } }
+                          renderInput={ (params) => (
+                            <TextField
+                              { ...params }
+                              variant="outlined"
+                              label="exercises"
+                            />
+                          ) }
+                        />
+                      </TableCell>
+                      <TableCell align="center">
+                        <TextField
+                          key={ `${exercises[2]._id}` }
+                          id="outlined-basic"
+                          variant="outlined"
+                          name="repsMin"
+                          defaultValue={ repsMin }
+                          onChange={ (e) => onChangeExtra(e, idx, index) }
+                          style={ { width: 70 } }
+                        />
+                      </TableCell>
+                      <TableCell align="center">
+                        <TextField
+                          key={ `${exercises[3]._id}` }
+                          id="outlined-basic"
+                          variant="outlined"
+                          name="repsMax"
+                          defaultValue={ repsMax }
+                          onChange={ (e) => onChangeExtra(e, idx, index) }
+                          style={ { width: 70 } }
+                        />
+                      </TableCell>
+                      <TableCell align="center">
+                        <TextField
+                          key={ `${exercises[4]._id}` }
+                          id="outlined-basic"
+                          variant="outlined"
+                          name="sets"
+                          defaultValue={ sets }
+                          onChange={ (e) => onChangeExtra(e, idx, index) }
+                          style={ { width: 70 } }
+                        />
+                      </TableCell>
+                    </TableRow>
+                  </Fragment>
+                )) }
+              </TableBody>
+            </Table>
+          </TableContainer>
+
         ))
         }
       </div>

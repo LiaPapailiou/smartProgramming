@@ -867,8 +867,7 @@ a:hover {
   background-color: #00000080;
   height: 90vh;
   max-width: 40vw;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 450px;
   margin-top: 10px;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
@@ -910,7 +909,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  margin-left: 1070px;
+  margin-left: 1150px;
   max-height: 28vh;
   color: '#fff';
   padding-right: 8px;

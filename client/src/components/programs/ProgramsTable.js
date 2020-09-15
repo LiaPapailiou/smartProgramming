@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import shortid from 'shortid';
 import { makeStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -12,6 +12,8 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core';
+
+
 
 
 
@@ -39,9 +41,6 @@ const ProgramsTable = (props) => {
     days,
     exerciseList,
     programs,
-    repsMin,
-    repsMax,
-    sets,
     setPrograms,
   } = props;
 
@@ -53,18 +52,25 @@ const ProgramsTable = (props) => {
   const handleChangeMultipleAuto = (event, value, idx) => {
     const values = [];
     value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
+    const temp = [...values];
     const tempPrograms = [...programs];
-    tempPrograms[props.index].exerciseList[0][idx.toString()] = values;
+    // tempPrograms[props.index].exerciseList[0][idx] = temp;
+    setPrograms({
+      [tempPrograms[props.index].exerciseList[0]]: {
+        ...exerciseList,
+        [idx]: [...tempPrograms[props.index].exerciseList[0][idx], temp]
+      }
+    });
+
   };
 
   const onChange = (e, idx) => {
     const values = [...programs];
-    console.log(e.target.value);
-    values[props.index][e.target.name][idx.toString()] = e.target.value;
+
+    values[props.index][e.target.name][`${idx.toString()}`] = e.target.value;
     setPrograms(values);
   };
-
-  // console.log(valueRepsMin);
+  // console.log(val);
   return (
     <>
       <TableContainer component={ Paper } style={ { width: '70vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
@@ -107,33 +113,33 @@ const ProgramsTable = (props) => {
                 </TableCell>
                 <TableCell align="center">
                   <TextField
-                    key={ shortid.generate() }
+                    key={ exerciseList[1].id }
                     id="outlined-basic"
                     variant="outlined"
                     name="repsMin"
-                    value={ repsMin }
+                    value={ programs[props.index].repsMin[idx] }
                     onChange={ (e) => onChange(e, idx) }
                     style={ { width: 70 } }
                   />
                 </TableCell>
                 <TableCell align="center">
                   <TextField
-                    key={ shortid.generate() }
+                    key={ exerciseList[2].id }
                     id="outlined-basic"
                     variant="outlined"
                     name="repsMax"
-                    value={ repsMax }
-                    onChange={ (e) => onChange(e, idx, row) }
+                    value={ programs[props.index].repsMax[idx] }
+                    onChange={ (e) => onChange(e, idx) }
                     style={ { width: 70 } }
                   />
                 </TableCell>
                 <TableCell align="center">
                   <TextField
-                    key={ shortid.generate() }
+                    key={ exerciseList[3].id }
                     id="outlined-basic"
                     variant="outlined"
                     name="sets"
-                    value={ sets }
+                    value={ programs[props.index].sets[idx] }
                     onChange={ (e) => onChange(e, idx) }
                     style={ { width: 70 } }
                   />

@@ -208,7 +208,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
 
   return (
     <>
-      <div className="alerts" style={ { position: 'absolute', marginLeft: 500 } }>
+      <div className="alerts" style={ { position: 'absolute', marginLeft: 600 } }>
         <CustomAlert />
       </div>
       <form className="program-form" onSubmit={ (e) => onSubmit(e) }>

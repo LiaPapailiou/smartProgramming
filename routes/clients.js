@@ -55,16 +55,26 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     if (!programArray) return res.status(404).json({ msg: 'Program not found' });
 
     const percentages = [];
+    const repsMinWeekOne = programArray[0].programs.repsMin;
+    const repsMinWeekTwo = programArray[1].programs.repsMin;
+    const repsMinWeekThree = programArray[2].programs.repsMin;
+    const repsMinWeekFour = programArray[3].programs.repsMin;
+    const repsMaxWeekOne = programArray[0].programs.repsMax;
+    const repsMaxWeekTwo = programArray[1].programs.repsMax;
+    const repsMaxWeekThree = programArray[2].programs.repsMax;
+    const repsMaxWeekFour = programArray[3].programs.repsMax;
+    const setsWeekOne = programArray[0].programs.sets;
+    const setsWeekTwo = programArray[1].programs.sets;
+    const setsWeekThree = programArray[2].programs.sets;
+    const setsWeekFour = programArray[3].programs.sets;
+
     const repsMin = [];
     const repsMax = [];
     const sets = [];
-
+    console.log(repsMinWeekOne);
     // Get data
     programArray.map((item) => {
       percentages.push(item.programs.percentages);
-      repsMin.push(item.programs.repsMin);
-      repsMax.push(item.programs.repsMax);
-      sets.push(item.programs.sets);
     });
 
     // Get the client details
@@ -87,24 +97,36 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
     weekFour = Object.values(weekFour.exerciseList).slice(0, `${clientDetails.daysPerWeek}`);
 
     // Multiply each week's exercises by the given %
-    weekOne.map((one) => one.map((item) => {
+    weekOne.map((one, idx) => one.map((item) => {
       item.min = Math.round(item.min * percentages[0]);
       item.max = Math.round(item.max * percentages[0]);
+      item.repsMin = repsMinWeekOne[idx];
+      item.repsMax = repsMaxWeekOne[idx];
+      item.sets = setsWeekOne[idx];
       return item;
     }));
-    weekTwo.map((one) => one.map((item) => {
+    weekTwo.map((two, idx) => two.map((item) => {
       item.min = Math.round(item.min * percentages[1]);
       item.max = Math.round(item.max * percentages[1]);
+      item.repsMin = repsMinWeekTwo[idx];
+      item.repsMax = repsMaxWeekTwo[idx];
+      item.sets = setsWeekTwo[idx];
       return item;
     }));
-    weekThree.map((one) => one.map((item) => {
+    weekThree.map((three, idx) => three.map((item) => {
       item.min = Math.round(item.min * percentages[2]);
       item.max = Math.round(item.max * percentages[2]);
+      item.repsMin = repsMinWeekThree[idx];
+      item.repsMax = repsMaxWeekThree[idx];
+      item.sets = setsWeekThree[idx];
       return item;
     }));
-    weekFour.map((one) => one.map((item) => {
+    weekFour.map((four, idx) => four.map((item) => {
       item.min = Math.round(item.min * percentages[3]);
       item.max = Math.round(item.max * percentages[3]);
+      item.repsMin = repsMinWeekFour[idx];
+      item.repsMax = repsMaxWeekFour[idx];
+      item.sets = setsWeekFour[idx];
       return item;
     }));
 
@@ -129,9 +151,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
 
     weekOne.map((item, index) => {
       item.map((i, idx) => {
-        item[idx].repsMin = repsMin[0];
-        item[idx].repsMax = repsMax[0];
-        item[idx].sets = sets[0];
         item[idx].day = index + 1;
         item[idx].week = 1;
         item[idx].id = shortid.generate();
@@ -141,8 +160,8 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
           totalRepsMaxWeekOne += (i.repsMax * i.sets);
           avgLoadWeekOne.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
         } else {
-          totalRepsMinWeekFour = 0;
-          totalRepsMaxWeekFour = 0;
+          totalRepsMinWeekOne = 0;
+          totalRepsMaxWeekOne = 0;
           avgLoadWeekOne.push(0);
         }
         // avgLoadWeekOne.push((i.min + i.max) / 2);
@@ -153,9 +172,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
 
     weekTwo.map((item, index) => {
       item.map((i, idx) => {
-        item[idx].repsMin = repsMin[1];
-        item[idx].repsMax = repsMax[1];
-        item[idx].sets = sets[1];
         item[idx].day = index + 1;
         item[idx].week = 2;
         item[idx].id = shortid.generate();
@@ -164,20 +180,16 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
           totalRepsMaxWeekTwo += (i.repsMax * i.sets);
           avgLoadWeekTwo.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
         } else {
-          totalRepsMinWeekFour = 0;
-          totalRepsMaxWeekFour = 0;
+          totalRepsMinWeekTwo = 0;
+          totalRepsMaxWeekTwo = 0;
           avgLoadWeekTwo.push(0);
         }
-        avgLoadWeekTwo.push((i.min + i.max) / 2);
         // newWeekTwo.push(i);
         month.push(i);
       });
     });
     weekThree.map((item, index) => {
       item.map((i, idx) => {
-        item[idx].repsMin = repsMin[2];
-        item[idx].repsMax = repsMax[2];
-        item[idx].sets = sets[2];
         item[idx].day = index + 1;
         item[idx].week = 3;
         item[idx].id = shortid.generate();
@@ -186,20 +198,16 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
           totalRepsMaxWeekThree += (i.repsMax * i.sets);
           avgLoadWeekThree.push(((i.min + i.max) / 2) * (((i.repsMin * i.sets) + (i.repsMax * i.sets)) / 2));
         } else {
-          totalRepsMinWeekFour = 0;
-          totalRepsMaxWeekFour = 0;
+          totalRepsMinWeekThree = 0;
+          totalRepsMaxWeekThree = 0;
           avgLoadWeekThree.push(0);
         }
-        avgLoadWeekThree.push((i.min + i.max) / 2);
         // newWeekThree.push(i);
         month.push(i);
       });
     });
     weekFour.map((item, index) => {
       item.map((i, idx) => {
-        item[idx].repsMin = repsMin[3];
-        item[idx].repsMax = repsMax[3];
-        item[idx].sets = sets[3];
         item[idx].day = index + 1;
         item[idx].week = 4;
         item[idx].id = shortid.generate();
@@ -212,8 +220,6 @@ router.get(('/get-program/:program_id'), auth, async (req, res) => {
           totalRepsMaxWeekFour = 0;
           avgLoadWeekFour.push(0);
         }
-
-        avgLoadWeekFour.push(((i.min + i.max) / 2) / 2);
         // newWeekFour.push(i);
         month.push(i);
       });

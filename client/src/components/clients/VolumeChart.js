@@ -12,7 +12,6 @@ import {
 
 const VolumeChart = (props) => {
   const { volumeChart } = props;
-  console.log(volumeChart);
   const formatColour = (value, entry) => {
     const { color } = entry;
     return <span style={ { color, fontSize: 14, paddingRight: '0.25em' } }>{ value }</span>;

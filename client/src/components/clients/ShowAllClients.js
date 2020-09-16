@@ -37,7 +37,7 @@ const ShowAllClients = ({ getAllProfiles, profile: { clientProfiles, loading } }
                 </tbody>
               </table>
             </div>) : (
-              <p style={ { color: '#fff', fontSize: 17 } }>There are currently no clients for this account. Click <Link to='/add'>here </Link> to add clients.</p>
+              <p style={ { color: '#fff', fontSize: 17 } }>There are currently no clients for this account. Click <Link to='/dashboard/add'>here </Link> to add clients.</p>
             ) }
         </div>
       }

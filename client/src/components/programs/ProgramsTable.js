@@ -112,7 +112,7 @@ const ProgramsTable = (props) => {
                 </TableCell>
                 <TableCell align="center">
                   <TextField
-                    key={ exerciseList[1].id }
+                    key={ shortid.generate() }
                     id="outlined-basic"
                     variant="outlined"
                     name="repsMin"
@@ -123,7 +123,7 @@ const ProgramsTable = (props) => {
                 </TableCell>
                 <TableCell align="center">
                   <TextField
-                    key={ exerciseList[2].id }
+                    key={ shortid.generate() }
                     id="outlined-basic"
                     variant="outlined"
                     name="repsMax"
@@ -134,7 +134,7 @@ const ProgramsTable = (props) => {
                 </TableCell>
                 <TableCell align="center">
                   <TextField
-                    key={ exerciseList[3].id }
+                    key={ shortid.generate() }
                     id="outlined-basic"
                     variant="outlined"
                     name="sets"

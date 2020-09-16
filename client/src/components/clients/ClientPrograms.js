@@ -43,7 +43,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
         </select>
         <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
           <option value="">Programs</option>
-          {
+          { programs &&
             programs.map((program) =>
               <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>
             )

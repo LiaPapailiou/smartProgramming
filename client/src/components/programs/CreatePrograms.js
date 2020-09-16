@@ -126,6 +126,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // setPrograms(programs);
     insertProgram(formData);
     setFormData({
       client: '',
@@ -257,7 +258,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
           </select>
         </label>
         <table className="tbl" style={ {
-          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-between', alignContent: 'stretch', alignItems: 'stretch', marginLeft: 20, flexWrap: 'wrap',
+          display: 'flex', flexDirection: 'column', maxWidth: '25vw', justifyContent: 'space-between', alignContent: 'stretch', alignItems: 'stretch', marginLeft: 20, flexWrap: 'wrap', marginTop: 40
         } }>
           <thead>
             <tr>
@@ -285,7 +286,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
         </table>
         <button
           style={ { marginLeft: 170, marginTop: -143, width: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
-          type="button"
+          type="submit"
           className="button-add"
           value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
       </form>
@@ -295,7 +296,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
         ))
         }
       </div>
-      <pre style={ { color: 'pink', marginLeft: 0 } }>{ JSON.stringify(programs, null, 2) }</pre>
+      {/* <pre style={ { color: 'pink', marginLeft: 0 } }>{ JSON.stringify(programs, null, 2) }</pre> */ }
     </>
   );
 };

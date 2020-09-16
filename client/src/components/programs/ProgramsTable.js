@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import shortid from 'shortid';
 import { makeStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -11,10 +11,8 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Chip,
 } from '@material-ui/core';
-
-
-
 
 
 const useStyles = makeStyles({
@@ -49,18 +47,13 @@ const ProgramsTable = (props) => {
     rows.push(createData(`Day ${i + 1}`));
   }
 
-  const handleChangeMultipleAuto = (event, value, idx) => {
+  const handleChangeMultipleAuto = (event, value, idx, id) => {
     const values = [];
     value.map((v) => values.push({ exercise: v.exercise, min: v.min, max: v.max, factor: v.factor }));
     const temp = [...values];
     const tempPrograms = [...programs];
-    // tempPrograms[props.index].exerciseList[0][idx] = temp;
-    setPrograms({
-      [tempPrograms[props.index].exerciseList[0]]: {
-        ...exerciseList,
-        [idx]: [...tempPrograms[props.index].exerciseList[0][idx], temp]
-      }
-    });
+    tempPrograms[props.index].exerciseList[0][idx] = temp;
+    setPrograms(programs);
 
   };
 
@@ -68,13 +61,14 @@ const ProgramsTable = (props) => {
     const values = [...programs];
 
     values[props.index][e.target.name][`${idx.toString()}`] = e.target.value;
-    setPrograms(values);
+    setPrograms(programs);
   };
-  // console.log(val);
+
   return (
     <>
       <TableContainer component={ Paper } style={ { width: '70vw', marginLeft: 20, marginBottom: 30, overflow: 'auto' } }>
         <Table className={ classes.table } size="small" aria-label="a dense table">
+          {/* <Table className={ classes.table } size="small" stickyHeader aria-label="sticky table"> */ }
           <TableHead>
             <TableRow>
               <TableCell align="left">Week</TableCell>
@@ -99,9 +93,14 @@ const ProgramsTable = (props) => {
                     options={ exerciseList }
                     getOptionLabel={ (option) => option.exercise }
                     filterSelectedOptions
-                    onChange={ (e, value) => {
-                      handleChangeMultipleAuto(e, value, idx);
+                    onChange={ (e, value, id) => {
+                      handleChangeMultipleAuto(e, value, idx, id);
                     } }
+                    renderTags={ (value, getTagProps) =>
+                      value.map((option, index) => (
+                        <Chip variant="outlined" label={ option.exercise } { ...getTagProps({ index }) } />
+                      ))
+                    }
                     renderInput={ (params) => (
                       <TextField
                         { ...params }
@@ -149,9 +148,8 @@ const ProgramsTable = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-
     </>
   );
 };
 
-export default ProgramsTable;
+export default ProgramsTable;;

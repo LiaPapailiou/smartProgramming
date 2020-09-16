@@ -19,9 +19,9 @@ const programsNewSchema = new mongoose.Schema({
   },
   programs: [{
     percentages: Number,
-    repsMin: Number,
-    repsMax: Number,
-    sets: Number,
+    repsMin: Array,
+    repsMax: Array,
+    sets: Array,
     exerciseList: Array,
   }]
 });

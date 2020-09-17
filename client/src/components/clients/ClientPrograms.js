@@ -43,7 +43,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
             )
           }
         </select>
-        {/* <>
+        <>
           {
             clientProfile && programs ?
               (
@@ -58,7 +58,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
                 </select>
               ) : null
           }
-        </> */}
+        </>
         <button
           style={ { marginTop: -140, width: 20, marginLeft: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
           type="submit"

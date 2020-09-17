@@ -6,7 +6,6 @@ import CustomAlert from '../layout/CustomAlert';
 import shortid from 'shortid';
 import ShowClientPrograms from './ShowClientPrograms';
 
-
 const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfile, clientProfiles, programs } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
   const [visible, setVisible] = useState(false);
@@ -46,7 +45,7 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
         <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
           <option value="">Programs</option>
           {
-            clientProfile &&
+            clientProfile && programs &&
             programs.map((program) => (
 
               <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>

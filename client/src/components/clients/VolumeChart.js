@@ -18,7 +18,7 @@ const VolumeChart = (props) => {
   };
   return (
     <>
-      <div style={ { position: 'relative', marginLeft: 800, marginTop: -600 } }>
+      <div style={ { position: 'relative', marginLeft: 800, marginTop: -550 } }>
         <BarChart width={ 750 } height={ 300 } data={ volumeChart }>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis unit=" Week" dataKey="week" tick={ { fontSize: 12, fill: '#fff' } } />

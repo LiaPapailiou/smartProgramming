@@ -200,7 +200,6 @@ export const getEstimates = (formData, client_id) => async (dispatch) => {
 // Get programs
 export const getClientPrograms = (client_id) => async (dispatch) => {
   try {
-
     const res = await axios.get(`/clients/get-programs/${client_id}`);
     dispatch({
       type: GET_CLIENT_PROGRAMS,
@@ -217,7 +216,6 @@ export const getClientPrograms = (client_id) => async (dispatch) => {
     });
   }
 };
-
 // Get specific program by program ID
 export const getClientProgramById = (program_id) => async (dispatch) => {
   try {

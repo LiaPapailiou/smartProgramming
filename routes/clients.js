@@ -34,7 +34,7 @@ router.get('/search/:client_id', auth, async (req, res) => {
 // Get all programs by client_id
 router.get('/get-programs/:client_id', auth, async (req, res) => {
   try {
-    const programs = await Programs.find({ client: req.params.client_id }).sort({ year: 1, month: -1 });
+    const programs = await Programs.find({ client: ObjectId(req.params.client_id) }).sort({ year: 1, month: -1 });
     if (!programs) return res.status(404).json({ msg: 'No programs found for this client' });
 
     res.json(programs);

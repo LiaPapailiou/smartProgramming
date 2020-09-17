@@ -39,7 +39,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
                   </tbody>
                 </table>
               </div>
-            </div>) : (<p style={ { color: '#fff', fontSize: 22, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-exercise">here</Link> to add one!</p>)
+            </div>) : (<p style={ { color: '#fff', fontSize: 20, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-exercise">here</Link> to add them.</p>)
 
         )
       }

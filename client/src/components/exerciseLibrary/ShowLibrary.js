@@ -38,7 +38,7 @@ const ShowLibrary = ({ getExerciseLibrary, exerciseLibrary: { exerciseLibraryLis
                   </table>
                 </div>
               </div>
-            ) : (<p style={ { color: '#fff', fontSize: 22, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-library">here</Link> to add one!</p>)
+            ) : (<p style={ { color: '#fff', fontSize: 20, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-library">here</Link> to add them.</p>)
         )
       }
     </Fragment >

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { getExercises } from '../../actions/exercise';
 import ExerciseItem from './ExerciseItem';
@@ -16,8 +17,8 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
       { loading ? (
         <Spinner />
       ) : (
-          <div className="exercises-container">
-            { exercises.length > 0 && (
+          exercises.length > 0 ?
+            (<div className="exercises-container">
               <div className="exercise-headers" >
                 <table>
                   <thead>
@@ -38,7 +39,7 @@ const ShowAllExercises = ({ getExercises, exercise: { exercises, loading } }) =>
                   </tbody>
                 </table>
               </div>
-            ) }</div>
+            </div>) : (<p style={ { color: '#fff', fontSize: 22, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-exercise">here</Link> to add one!</p>)
 
         )
       }

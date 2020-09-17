@@ -92,7 +92,7 @@ const AddExercise = ({ insertExercise }) => {
                     name="factor"
                     value={ factor }
                     onChange={ (e) => onChange(e) }
-                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em', marginLeft: -30 } }
+                    style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.10em', borderRadius: '0.3em' } }
                     required>
                     <option value="">Level</option>
                     <option value="true">Applicable</option>

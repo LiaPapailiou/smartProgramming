@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { getClientPrograms, getClientProfile } from '../../actions/profile';
 import ShowClientPrograms from './ShowClientPrograms';
 
-const ClientProgramItem = ({ match, getClientPrograms, getClientProfile, profile: { clientProfile, programs, loading } }) => {
+const ClientProgramItem = (props, { match, getClientPrograms, getClientProfile, profile: { clientProfile, programs, loading } }) => {
   const [program, setProgram] = useState({ programId: '' });
 
 
@@ -18,9 +18,10 @@ const ClientProgramItem = ({ match, getClientPrograms, getClientProfile, profile
     getClientProfile(match.params.id);
     getClientPrograms(match.params.id);
   }, [loading, getClientProfile, getClientPrograms, match.params.id]);
+
   return (
     <>
-      {
+      {/* {
         programs ?
           (
             <select name="programId" onChange={ (e) => onChange(e) } value={ program.programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
@@ -38,7 +39,7 @@ const ClientProgramItem = ({ match, getClientPrograms, getClientProfile, profile
       {
         clientProfile && programs &&
         <ShowClientPrograms programId={ program.programId } />
-      }
+      } */}
     </>
   );
 };

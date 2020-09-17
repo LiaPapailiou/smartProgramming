@@ -35,7 +35,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
     deleteClient(clientProfile._id);
     window.location.replace('/dashboard/clients');
   };
-
+  console.log(match.params.id);
   return (
     <Fragment>
       { !clientProfile || loading ? <Spinner /> :
@@ -58,7 +58,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                   <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add Weight
             </Link>
-                <Link href={ `/dashboard/get-programs/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                <Link href={ `/dashboard/get-programs/${clientProfile._id}` } style={ { color: '#61c9a8' } }>
                   <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Get Programs
             </Link>

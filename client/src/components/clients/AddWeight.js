@@ -24,7 +24,7 @@ const AddWeight = ({ match, addWeight, getClientProfile, profile: { clientProfil
   const onClick = (e) => {
     window.location.replace(`/dashboard/client/${clientProfile._id}`);
   };
-
+  console.log(match.params.id);
   return (
     <section className="add-new-rm">
       <div className="add-rm-container">

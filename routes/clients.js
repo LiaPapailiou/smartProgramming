@@ -24,9 +24,10 @@ router.get('/search/:client_id', auth, async (req, res) => {
     let client = await Clients.findById(req.params.client_id);
     if (!client)
       return res.status(404).json({ msg: 'Client not found in the database' });
+    console.log(client);
     res.json(client);
   } catch (err) {
-
+    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 });

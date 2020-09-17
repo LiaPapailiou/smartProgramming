@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import shortid from 'shortid';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { getClientPrograms, getClientProfile } from '../../actions/profile';
 import ShowClientPrograms from './ShowClientPrograms';
 
-const ClientProgramItem = (props) => {
+const ClientProgramItem = ({ match, getClientPrograms, getClientProfile, profile: { clientProfile, programs, loading } }) => {
   const [program, setProgram] = useState({ programId: '' });
 
-  const {
-    visible,
-    programs,
-    clientProfile,
-  } = props;
 
   const onChange = (e) => {
     setProgram({ ...program, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    getClientProfile(match.params.id);
+    getClientPrograms(match.params.id);
+  }, [loading, getClientProfile, getClientPrograms, match.params.id]);
   return (
     <>
       {
-        clientProfile && programs ?
+        programs ?
           (
             <select name="programId" onChange={ (e) => onChange(e) } value={ program.programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
               <option value="">Programs</option>
@@ -31,12 +34,22 @@ const ClientProgramItem = (props) => {
             </select>
           ) : null
       }
-      { visible && clientProfile && programs &&
+
+      {
+        clientProfile && programs &&
         <ShowClientPrograms programId={ program.programId } />
       }
     </>
   );
 };
 
+ClientProgramItem.propTypes = {
+  getClientPrograms: PropTypes.func.isRequired,
+  getClientProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+};
 
-export default ClientProgramItem;
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+export default connect(mapStateToProps, { getClientPrograms, getClientProfile })(withRouter(ClientProgramItem));

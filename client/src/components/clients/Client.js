@@ -58,6 +58,10 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                   <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
             Add Weight
             </Link>
+                <Link href={ `/dashboard/get-programs/${match.params.id}` } style={ { color: '#61c9a8' } }>
+                  <i className="fas fa-plus-square" style={ { color: '#61c9a8', paddingRight: 8 } }></i>
+            Get Programs
+            </Link>
                 <Link onClick={ handleClickOpen } style={ { color: '#61c9a8', fontSize: 14, fontWeight: 500 } }>
                   <i className="fas fa-trash-alt" style={ { color: '#61c9a8', paddingRight: 8 } } ></i>
                     Delete</Link>

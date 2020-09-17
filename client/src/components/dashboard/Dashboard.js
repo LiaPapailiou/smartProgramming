@@ -36,7 +36,7 @@ const Dashboard = () => {
           <PrivateRoute exact path='/dashboard/add' component={ AddClient } />
           <PrivateRoute exact path='/dashboard/add-rm/:id' component={ AddNewRM } />
           <PrivateRoute exact path='/dashboard/add-weight/:id' component={ AddWeight } />
-          <PrivateRoute exact path='/dashboard/get-programs' component={ ClientPrograms } />
+          <PrivateRoute exact path='/dashboard/get-programs/:client_id' component={ ClientPrograms } />
           <PrivateRoute exact path='/dashboard/edit/:id' component={ EditClientProfile } />
           <PrivateRoute exact path='/dashboard/exercises' component={ ShowAllExercises } />
           <PrivateRoute exact path='/dashboard/add-exercise' component={ AddExercise } />

@@ -24,7 +24,7 @@ router.get('/search/:client_id', auth, async (req, res) => {
     let client = await Clients.findById(req.params.client_id);
     if (!client)
       return res.status(404).json({ msg: 'Client not found in the database' });
-    console.log(client);
+
     res.json(client);
   } catch (err) {
     console.log(err.message);
@@ -69,10 +69,6 @@ router.get('/get-program/:program_id', auth, async (req, res) => {
     const setsWeekThree = programArray[2].programs.sets;
     const setsWeekFour = programArray[3].programs.sets;
 
-    const repsMin = [];
-    const repsMax = [];
-    const sets = [];
-    console.log(repsMinWeekOne);
     // Get data
     programArray.map((item) => {
       percentages.push(item.programs.percentages);

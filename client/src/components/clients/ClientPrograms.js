@@ -5,6 +5,7 @@ import { getClientProfile, getClientPrograms, getAllProfiles } from '../../actio
 import CustomAlert from '../layout/CustomAlert';
 import shortid from 'shortid';
 import ShowClientPrograms from './ShowClientPrograms';
+import Spinner from '../layout/Spinner';
 
 const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, profile: { clientProfile, clientProfiles, programs } }) => {
   const [client, setClient] = useState({ clientId: '', programId: '' });
@@ -42,17 +43,22 @@ const ClientPrograms = ({ getClientProfile, getClientPrograms, getAllProfiles, p
             )
           }
         </select>
-        <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
-          <option value="">Programs</option>
+        <>
           {
-            clientProfile && programs &&
-            programs.map((program) => (
+            clientProfile && programs ?
+              (
+                <select name="programId" onChange={ (e) => onChange(e) } value={ programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
+                  <option value="">Programs</option>
+                  {
+                    programs.map((program) => (
 
-              <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>
-            )
-            )
+                      <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>
+                    )
+                    ) }
+                </select>
+              ) : null
           }
-        </select>
+        </>
         <button
           style={ { marginTop: -140, width: 20, marginLeft: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
           type="submit"

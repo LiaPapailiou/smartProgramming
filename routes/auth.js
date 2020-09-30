@@ -51,7 +51,7 @@ router.post('/',
 
 router.post('/refresh-token', async (req, res) => {
   try {
-    const refToken = req.cookies.refreshToken;
+    const refToken = req.cookies.refreshTokens;
     let user;
     let token;
 

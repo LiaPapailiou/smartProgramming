@@ -243,7 +243,7 @@ button {
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 28vw;
+  width: 23vw;
   height: 45vh;
   border: 1px solid #6d6d6d;
   background-color: #00000080;
@@ -267,6 +267,7 @@ button {
 
 .input-group form-group {
   display: flex;
+  align-self: center;
   flex-direction: column;
   align-content: center;
   justify-content: center;

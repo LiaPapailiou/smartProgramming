@@ -10,8 +10,8 @@ module.exports = (req, res, next) => {
   if (!token) return res.status(401).json({ msg: 'Authorization denied' });
 
   try {
-    const decoded = jwt.verify(token, key);
-    req.user = decoded.user;
+    const { user } = jwt.verify(token, key);
+    req.user = user;
     next();
   } catch (err) {
     res.status(401).json({ msg: 'Non valid token' });

@@ -51,13 +51,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 onChange={ (e) => onChange(e) }
                 placeholder=" First Name *"
               />
+              <br />
               <input
                 type="text"
                 className="form-control-extra"
                 name="lastName"
                 value={ lastName }
                 onChange={ (e) => onChange(e) }
-                placeholder=" Last Name" />
+                placeholder=" Last Name"
+              />
+              <br />
               <input
                 type="text"
                 className="form-control-extra"
@@ -67,6 +70,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 placeholder=" Email *"
                 required
               />
+              <br />
               <input
                 type="password"
                 className="form-control-extra"
@@ -75,7 +79,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 value={ password }
                 onChange={ (e) => onChange(e) }
                 placeholder=" Password *"
-                required />
+                required
+              />
+              <br />
               <input
                 type="password"
                 className="form-control-extra"
@@ -84,7 +90,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 value={ passwordRepeat }
                 onChange={ (e) => onChange(e) }
                 placeholder=" Confirm Password *"
-                required />
+                required
+              />
+              <br />
             </div>
             <input
               type="submit"

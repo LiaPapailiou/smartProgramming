@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 const path = require('path');
 
@@ -7,13 +8,13 @@ connectDB();
 
 const PORT = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
+app.use(cookieParser());
 
 
 app.use('/clients', require('./routes/clients'));
 app.use('/user', require('./routes/user'));
 app.use('/exercises', require('./routes/exercises'));
 app.use('/exercise-library', require('./routes/exerciseLog'));
-// app.use('/programs', require('./routes/programs'));
 app.use('/programs', require('./routes/programsNew'));
 app.use('/auth', require('./routes/auth'));
 

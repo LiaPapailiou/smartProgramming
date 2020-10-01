@@ -1,5 +1,5 @@
 node_modules/
 client/node_modules/
 .env
-temp.js
 SelectExercises.js
+client/src/components/clients/ClientPaginationTest.js

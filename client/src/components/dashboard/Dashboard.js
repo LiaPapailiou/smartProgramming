@@ -20,6 +20,7 @@ import CreatePrograms from '../programs/CreatePrograms';
 import PrivateRoute from '../routing/PrivateRoute';
 import ClientPrograms from '../clients/ClientPrograms';
 import ManagePrograms from '../programs/ManagePrograms';
+import ClientPaginationTest from '../clients/ClientPaginationTest';
 
 const Dashboard = () => {
 
@@ -43,6 +44,7 @@ const Dashboard = () => {
           <PrivateRoute exact path='/dashboard/edit-exercise/:id' component={ EditExercise } />
           <PrivateRoute exact path='/dashboard/create' component={ CreatePrograms } />
           <PrivateRoute exact path='/dashboard/manage' component={ ManagePrograms } />
+          <PrivateRoute exact path='/dashboard/test' component={ ClientPaginationTest } />
         </Switch>
       </div>
     </section>

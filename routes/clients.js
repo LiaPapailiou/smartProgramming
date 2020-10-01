@@ -23,10 +23,11 @@ router.get('/log/:page?', auth, async (req, res) => {
   try {
     const nPerPage = 10;
     const page = Math.max(0, req.query.n);
-    console.log(page);
+
+    let count = (await Clients.find({ user: req.user.id }).countDocuments()) / nPerPage;
     let clients = await Clients.find({ user: req.user.id }).limit(nPerPage).skip(nPerPage * page).sort({ clientLastName: 1, clientFirstName: 1 });
 
-    res.json(clients);
+    res.json({ clientProfiles: clients, numPages: count });
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Internal Server Error');

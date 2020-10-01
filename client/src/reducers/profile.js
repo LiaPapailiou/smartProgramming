@@ -3,6 +3,7 @@ import {
   CLIENT_PROFILE_ERROR,
   CLEAR_PROFILE,
   GET_ALL_PROFILES,
+  GET_ALL_PROFILES_PAGINATED,
   PROFILES_ERROR,
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
@@ -20,6 +21,7 @@ const initialState = {
   programs: [],
   program: [],
   notes: null,
+  numPages: null,
   loading: true,
   error: {}
 };
@@ -64,6 +66,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         clientProfiles: payload,
+        loading: false,
+      };
+    case GET_ALL_PROFILES_PAGINATED:
+      return {
+        ...state,
+        clientProfiles: payload.clientProfiles,
+        numPages: payload.numPages,
         loading: false,
       };
     case CLIENT_PROFILE_ERROR:

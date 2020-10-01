@@ -2,11 +2,11 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import {
   GET_EXERCISES,
+  GET_EXERCISES_PAGINATED,
   GET_EXERCISE,
   GET_EXERCISES_ERROR,
   EDIT_EXERCISE,
   DELETE_EXERCISE,
-  // GET_EXERCISES_CLEAR
 } from './types';
 
 // Get all exercises
@@ -26,11 +26,26 @@ export const getExercises = () => async (dispatch) => {
   }
 };
 
+// Get all exercises with pagination
+export const getExercisesPaginated = (pageNumber) => async (dispatch) => {
+  try {
+
+    const res = await axios.get(`/exercises/log/:page?n=${pageNumber}`);
+    dispatch({
+      type: GET_EXERCISES_PAGINATED,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_EXERCISES_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Get exercise by ID
 export const getExerciseById = (ex_id) => async (dispatch) => {
   try {
-
-    // dispatch({ type: GET_EXERCISES_CLEAR });
     const res = await axios.get(`/exercises/search/${ex_id}`);
     dispatch({
       type: GET_EXERCISE,

@@ -1,5 +1,6 @@
 import {
   GET_EXERCISES,
+  GET_EXERCISES_PAGINATED,
   GET_EXERCISE,
   GET_EXERCISES_ERROR,
   GET_EXERCISES_CLEAR,
@@ -10,6 +11,7 @@ import {
 const initialState = {
   exerciseName: null,
   exercises: [],
+  numPages: null,
   loading: true,
   error: {}
 };
@@ -35,6 +37,13 @@ export default function (state = initialState, action) {
         ...state,
         exercises: payload,
         loading: false
+      };
+    case GET_EXERCISES_PAGINATED:
+      return {
+        ...state,
+        exercises: payload.exercises,
+        numPages: payload.numPages,
+        loading: false,
       };
     case GET_EXERCISES_ERROR:
       return {

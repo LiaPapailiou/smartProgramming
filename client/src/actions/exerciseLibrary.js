@@ -2,20 +2,35 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import {
   GET_EXERCISE_LIBRARY,
+  GET_EXERCISE_LIBRARY_PAGINATED,
   GET_SINGLE_EXERCISE,
   EDIT_SINGLE_EXERCISE,
   DELETE_SINGLE_EXERCISE,
   GET_EXERCISE_LIBRARY_ERROR,
-  // GET_EXERCISE_LIBRARY_CLEAR
 } from './types';
 
 // Get all exercises in the library
 export const getExerciseLibrary = () => async (dispatch) => {
   try {
-    // dispatch({ type: GET_EXERCISE_LIBRARY_CLEAR });
     const res = await axios.get(`/exercise-library`);
     dispatch({
       type: GET_EXERCISE_LIBRARY,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_EXERCISE_LIBRARY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get library with pagination
+export const getExerciseLibraryPaginated = (pageNumber) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/exercise-library/log/:page?n=${pageNumber}`);
+    dispatch({
+      type: GET_EXERCISE_LIBRARY_PAGINATED,
       payload: res.data,
     });
   } catch (err) {

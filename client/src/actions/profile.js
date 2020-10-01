@@ -5,6 +5,7 @@ import {
   CLIENT_PROFILE_ERROR,
   CLEAR_PROFILE,
   GET_ALL_PROFILES,
+  GET_ALL_PROFILES_PAGINATED,
   PROFILES_ERROR,
   UPDATE_RM,
   EDIT_CLIENT_PROFILE,
@@ -42,6 +43,25 @@ export const getAllProfiles = () => async (dispatch) => {
     const res = await axios.get(`/clients`);
     dispatch({
       type: GET_ALL_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILES_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get all profiles with pagination
+export const getAllProfilesPaginated = (pageNumber) => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
+
+  try {
+
+    const res = await axios.get(`/clients/log/:page?n=${pageNumber}`);
+    dispatch({
+      type: GET_ALL_PROFILES_PAGINATED,
       payload: res.data,
     });
   } catch (err) {

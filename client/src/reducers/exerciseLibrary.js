@@ -1,6 +1,7 @@
 import {
   GET_EXERCISE_LIBRARY,
   GET_SINGLE_EXERCISE,
+  GET_EXERCISE_LIBRARY_PAGINATED,
   EDIT_SINGLE_EXERCISE,
   DELETE_SINGLE_EXERCISE,
   GET_EXERCISE_LIBRARY_ERROR,
@@ -10,6 +11,7 @@ import {
 const initialState = {
   singleExercise: null,
   exerciseLibraryList: [],
+  numPages: null,
   loading: true,
   error: {}
 };
@@ -35,6 +37,13 @@ export default function (state = initialState, action) {
         ...state,
         exerciseLibraryList: payload,
         loading: false
+      };
+    case GET_EXERCISE_LIBRARY_PAGINATED:
+      return {
+        ...state,
+        exerciseLibraryList: payload.exerciseLibraryList,
+        numPages: payload.numPages,
+        loading: false,
       };
     case GET_EXERCISE_LIBRARY_ERROR:
       return {

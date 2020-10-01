@@ -8,12 +8,27 @@ const Programs = require('../model/ProgramsNew');
 const ObjectId = require('mongodb').ObjectID;
 const shortid = require('shortid');
 
-// Get the list of all clients in the DB
+// Get all
 router.get('/', auth, async (req, res) => {
   try {
     const clients = await Clients.find({ user: req.user.id }).sort({ clientLastName: 1, clientFirstName: 1 }).populate('Clients', ['clientFirstName', 'clientLastName']);
     res.json(clients);
   } catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Get - paginated
+router.get('/log/:page?', auth, async (req, res) => {
+  try {
+    const nPerPage = 10;
+    const page = Math.max(0, req.query.n);
+    console.log(page);
+    let clients = await Clients.find({ user: req.user.id }).limit(nPerPage).skip(nPerPage * page).sort({ clientLastName: 1, clientFirstName: 1 });
+
+    res.json(clients);
+  } catch (err) {
+    console.log(err.message);
     res.status(500).send('Internal Server Error');
   }
 });

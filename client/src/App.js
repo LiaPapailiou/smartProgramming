@@ -4,7 +4,7 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import { Provider } from 'react-redux';
-import { loadUser } from './actions/auth';
+import { loadUser, refresh } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store';
 import './App.css';
@@ -15,6 +15,7 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     setAuthToken(localStorage.token);
+    // store.dispatch(refresh());
     store.dispatch(loadUser());
   }, []);
 

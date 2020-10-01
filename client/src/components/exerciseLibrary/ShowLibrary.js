@@ -3,21 +3,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
-import { getExerciseLibrary } from '../../actions/exerciseLibrary';
+import { getExerciseLibraryPaginated } from '../../actions/exerciseLibrary';
 import SingleExerciseItem from './SingleExerciseItem';
-const ShowLibrary = ({ getExerciseLibrary, exerciseLibrary: { exerciseLibraryList, loading }, auth: { isAuthenticated } }) => {
+import ReactPaginate from 'react-paginate';
+
+const ShowLibrary = ({ getExerciseLibraryPaginated, exerciseLibrary: { exerciseLibraryList, loading, numPages }, auth: { isAuthenticated } }) => {
   useEffect(() => {
-    getExerciseLibrary();
-  }, [getExerciseLibrary, loading]);
+    getExerciseLibraryPaginated(0);
+  }, [getExerciseLibraryPaginated, loading]);
+
+  const handleClick = (e) => {
+    getExerciseLibraryPaginated(`${e.selected}`);
+  };
+
   return (
     <Fragment>
       { loading ? (
         <Spinner />
       ) : (
-          isAuthenticated && exerciseLibraryList.length > 0 ?
-            (
-              <div className="exercises-container">
 
+          isAuthenticated && exerciseLibraryList.length > 0 ?
+            (<>
+              <div className="exercises-container">
                 <div className="exercise-headers">
                   <table>
                     <thead>
@@ -38,6 +45,20 @@ const ShowLibrary = ({ getExerciseLibrary, exerciseLibrary: { exerciseLibraryLis
                   </table>
                 </div>
               </div>
+              <ReactPaginate
+                previousLabel={ 'previous' }
+                nextLabel={ 'next' }
+                breakLabel={ '...' }
+                breakClassName={ 'break-me' }
+                pageCount={ numPages }
+                marginPagesDisplayed={ 2 }
+                pageRangeDisplayed={ 5 }
+                onPageChange={ handleClick }
+                containerClassName={ 'pagination' }
+                subContainerClassName={ 'pages pagination' }
+                activeClassName={ 'active' }
+              />
+            </>
             ) : (<p style={ { color: '#fff', fontSize: 20, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-library">here</Link> to add them.</p>)
         )
       }
@@ -45,7 +66,7 @@ const ShowLibrary = ({ getExerciseLibrary, exerciseLibrary: { exerciseLibraryLis
   );
 };
 ShowLibrary.propTypes = {
-  getExerciseLibrary: PropTypes.func.isRequired,
+  getExerciseLibraryPaginated: PropTypes.func.isRequired,
   exerciseLibrary: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
 };
@@ -55,4 +76,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getExerciseLibrary })(ShowLibrary);
+export default connect(mapStateToProps, { getExerciseLibraryPaginated })(ShowLibrary);

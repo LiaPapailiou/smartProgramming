@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
 //Get - paginated
 router.get('/log/:page?', auth, async (req, res) => {
   try {
-    const nPerPage = 10;
+    const nPerPage = 11;
     const page = Math.max(0, req.query.n);
 
     let count = (await ExerciseLog.find({ user: req.user.id }).countDocuments()) / nPerPage;

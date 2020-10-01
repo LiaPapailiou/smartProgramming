@@ -7,7 +7,7 @@ npm install
 # Run from root
 npm run dev
 
-# Deployed version
+# Deployed version (can only view the database contents after authorization)
 https://smart-programming.herokuapp.com/
 ```
 

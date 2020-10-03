@@ -17,6 +17,9 @@ for (let i = 2020;i < 2051;i += 1) {
 }
 
 const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstimates, profile: { clientProfiles, exerciseList }, exercises: { exercises } }) => {
+  // const serializedState = localStorage.getItem('programs') || {};
+  // JSON.parse(serializedState);
+  // const [test, setTest] = useState(serializedState);
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({
     client: '',
@@ -25,6 +28,7 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
     daysPerWeek: 0,
     level: '',
   });
+
   const [programs, setPrograms] = useState([
     {
       percentages: '',
@@ -95,7 +99,6 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
   ],
   );
 
-
   const {
     client,
     month,
@@ -126,8 +129,9 @@ const CreatePrograms = ({ getAllProfiles, insertProgram, getExercises, getEstima
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // setPrograms(programs);
     insertProgram(formData);
+    // const serializedState = JSON.stringify(programs);
+    // localStorage.setItem('programs', serializedState);
     setFormData({
       client: '',
       month: '',

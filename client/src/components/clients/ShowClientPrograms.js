@@ -43,9 +43,9 @@ const ShowClientPrograms = ({ programId, getClientProgramById, profile: { progra
             </ExcelSheet>
           </ExcelFile> }
       </div>
-      <div className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 40 } }>
+      <div className="table-wrapper" style={ { width: '46vw', maxHeight: '80vh', minHeight: '50vh', backgroundColor: '#00000080', marginLeft: 40 } }>
         { program && program.weekOne && clientProfile && program.weekTwo && program.weekThree && program.weekFour &&
-          <table className="program-container" style={ { color: '#fff', width: '45vw', borderCollapse: 'collapse', } }>
+          <table className="program-container" style={ { color: '#fff', width: '45vw', borderCollapse: 'collapse', maxHeight: '80vh', minHeight: '50vh', } }>
             { days.map((day) => (
               <Fragment key={ shortid.generate() }>
                 <thead>

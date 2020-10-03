@@ -30,7 +30,7 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
 
   return (
     <>
-      <div className="icon-static"><i className="fas fa-plus" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i></div>
+      <div className="icon-static"><i className="fas fa-clipboard" onClick={ onClick } style={ { color: '#61c9a8af', fontSize: 15, padding: '0.25em' } }></i></div>
       <div className="note-container" > {
         visible &&
         <form className="add-notes" onSubmit={ handleSubmit }>

@@ -14,6 +14,7 @@ const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,
+  clientEmail: null,
   user: null,
 };
 
@@ -31,9 +32,11 @@ export default function (state = initialState, action) {
     case LOGIN_SUCCESS:
     case REFRESH_SUCCESS:
       localStorage.setItem('token', payload.token);
+      localStorage.setItem('userEmail', payload.user);
       return {
         ...state,
         payload,
+        clientEmail: payload.user,
         isAuthenticated: true,
         loading: false,
       };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   BarChart,
   XAxis,
@@ -16,7 +16,7 @@ const VolumeChart = (props) => {
     return <span style={ { color, fontSize: 14, paddingRight: '0.25em' } }>{ value }</span>;
   };
   return (
-    <>
+    <Fragment>
       <div style={ { position: 'relative', marginLeft: 800, marginTop: -600 } }>
         <BarChart width={ 750 } height={ 300 } data={ volumeChart }>
           <CartesianGrid strokeDasharray="3 3" />
@@ -42,7 +42,7 @@ const VolumeChart = (props) => {
           <Bar dataKey="workPercentage" name="work %" fill="#69DDFF" />
         </BarChart>
       </div>
-    </>
+    </Fragment>
 
   );
 };

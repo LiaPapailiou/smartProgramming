@@ -100,7 +100,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value="Register" />
           </form>
           <div className="card-footer">
-            <div className="d-flex justify-content-center links">
+            <div className="d-flex justify-content-center links" style={ { paddingTop: '1em', paddingBottom: '1em' } }>
               Have an account?<Link to="/">Login</Link>
             </div>
           </div>

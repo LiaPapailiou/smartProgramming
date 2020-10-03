@@ -75,7 +75,7 @@ const AddClient = ({ insertClient, history }) => {
   return (
     <section>
       <CustomAlert />
-      <div className="add-card">
+      <div className="add-card" style={ { minHeight: '55vh', maxHeight: '80vh', maxWidth: '40vw' } }>
         <h3 style={ { fontSize: 24, height: '6vh' } }>Client Information</h3>
         <div className="add-card-body">
           <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
@@ -87,7 +87,8 @@ const AddClient = ({ insertClient, history }) => {
                 name="clientFirstName"
                 value={ clientFirstName }
                 onChange={ (e) => onChange(e) }
-                required />
+                required
+              />
               <h4>Last Name *</h4>
               <input
                 type="text"
@@ -96,7 +97,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ clientLastName }
                 onChange={ (e) => onChange(e) }
                 required />
-              <h4 style={ { marginLeft: -505 } }>Email</h4>
+              <h4>Client Email</h4>
               <input
                 type="text"
                 className="form-control"
@@ -104,7 +105,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ clientEmail }
                 onChange={ (e) => onChange(e) }
               />
-              <h4 style={ { marginLeft: -500 } }>Phone</h4>
+              <h4>Client Phone</h4>
               <input
                 type="text"
                 className="form-control"
@@ -112,7 +113,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ clientPhone }
                 onChange={ (e) => onChange(e) }
               />
-              <h4 style={ { marginLeft: -500 } }>Sport</h4>
+              <h4>Client Sport</h4>
               <input
                 type="text"
                 className="form-control"
@@ -121,7 +122,7 @@ const AddClient = ({ insertClient, history }) => {
                 onChange={ (e) => onChange(e) }
               />
               <span style={ { borderBottom: '1px solid #6d6d6d', width: '29vw', marginBottom: 10 } }></span>
-              <h4 style={ { marginLeft: -520 } }>Age</h4>
+              <h4 style={ { marginLeft: -470 } }>Client Age</h4>
               <input
                 type="text"
                 className="form-control"
@@ -129,7 +130,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ clientAge }
                 onChange={ (e) => onChange(e) }
               />
-              <h4 style={ { marginLeft: -498 } }>Weight</h4>
+              <h4>Client Weight</h4>
               <input
                 type="text"
                 className="form-control"
@@ -137,7 +138,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ weight }
                 onChange={ (e) => onChange(e) }
               />
-              <h4 style={ { marginLeft: -498 } }>Height</h4>
+              <h4>Client Height</h4>
               <input
                 type="text"
                 className="form-control"
@@ -145,7 +146,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ clientHeight }
                 onChange={ (e) => onChange(e) }
               />
-              <h4 style={ { marginLeft: -315 } }>Years of previous experience</h4>
+              <h4 style={ { marginLeft: -400 } }>Previous Experience</h4>
               <input
                 type="text"
                 className="form-control"
@@ -153,7 +154,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ clientYearsOfTrainingExperience }
                 onChange={ (e) => onChange(e) }
               />
-              <h4 style={ { marginLeft: -440 } }>Bench Press *</h4>
+              <h4>Bench Press *</h4>
               <input
                 type="text"
                 className="form-control"
@@ -161,7 +162,7 @@ const AddClient = ({ insertClient, history }) => {
                 value={ benchPress }
                 onChange={ (e) => onChange(e) }
                 required />
-              <h4 style={ { marginLeft: -494 } }>Squat *</h4>
+              <h4 style={ { marginLeft: -500 } }>Squat *</h4>
               <input
                 type="text"
                 className="form-control"
@@ -170,7 +171,7 @@ const AddClient = ({ insertClient, history }) => {
                 onChange={ (e) => onChange(e) }
                 required />
               <span style={ { borderBottom: '1px solid #6d6d6d', width: '29vw', marginBottom: 10 } }></span>
-              <h4>Past Injuries</h4>
+              <h4 style={ { marginLeft: -455 } }>Past Injuries</h4>
               <textarea cols="65" rows="5" name="pastInjuries" value={ pastInjuries } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
               <br />
               <h4 style={ { marginLeft: -425 } }>Current Injuries</h4>
@@ -189,7 +190,7 @@ const AddClient = ({ insertClient, history }) => {
               <textarea cols="65" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
               <br />
             </div>
-            <div className="lib-buttons" style={ { marginLeft: 350 } }>
+            <div style={ { marginBottom: 15 } }>
               <input
                 type="button"
                 className="input-add"
@@ -203,7 +204,7 @@ const AddClient = ({ insertClient, history }) => {
           </form>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

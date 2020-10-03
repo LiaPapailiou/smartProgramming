@@ -93,7 +93,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Refresh
-export const refresh = () => async (dispatch) => {
+export const refresh = (userEmail) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ export const refresh = () => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post('/refresh-token', config);
+    const res = await axios.post('/refresh-token', config, userEmail);
 
     dispatch({
       type: REFRESH_SUCCESS,

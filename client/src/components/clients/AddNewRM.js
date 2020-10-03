@@ -57,7 +57,7 @@ const AddNewRM = ({ match, addRM, getClientProfile, profile: { clientProfile, lo
                   placeholder=" Squat"
                   required />
               </div>
-              <div className="lib-buttons-extra">
+              <div style={ { marginBottom: 15 } }>
                 <input
                   type="button"
                   className="input-add"

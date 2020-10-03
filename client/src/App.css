@@ -103,7 +103,6 @@ img {
   color: #fff;
 }
 
-.btn-primary,
 .alert-primary {
   background: var(--primary-color);
   color: #fff;
@@ -153,7 +152,6 @@ img {
   border: none;
   outline: 0;
   width: 200px;
-  /* overflow:auto; */
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -237,7 +235,6 @@ button {
    background: url('./images/gloves.jpg') no-repeat center center/cover;
    height: 100vh; 
    display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -250,8 +247,8 @@ button {
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 23vw;
-  height: 45vh;
+  max-width: 23vw;
+  max-height: 48vh;
   border: 1px solid #6d6d6d;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
@@ -350,12 +347,12 @@ a:hover {
 .register-card {
   padding-top: 20px;
   border: solid #6d6d6d 1px;
-  height: 63vh;
+  max-height: 65vh;
   margin-top: 150px;
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 28vw;
+  max-width: 24vw;
   background-color: #00000080;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -514,29 +511,13 @@ register-input-group-text i {
   flex-direction: column;
   text-align: left;
 }
-/* .add-modal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  background-color: #696666;
-  margin-top: 315px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 18.5vw;
-  height: 44vh;
 
-} */
 .add-card {
   margin-top: 40px;
   margin-bottom: auto;
   overflow: auto;
   padding-top: 10px;
   border:1px solid #6d6d6d;
-  height: 80vh;
-  width: 58vw;
   margin-left: auto;
   margin-right: auto;
   background-color: #00000080;
@@ -546,9 +527,6 @@ register-input-group-text i {
   border-top-right-radius: 0.3em; 
 }
 
-.add-card-body {
-  text-align: left;
-}
 .add-card::-webkit-scrollbar {
   width: 10px;
 }
@@ -632,13 +610,6 @@ a:hover {
   color: #4696db;
 }
 
-.add-select {
-  margin-left: 105px; 
-}
-.lib-buttons {
- margin-left: 190px;
- margin-bottom: 15px;
-}
 .lib-buttons-extra {
  margin-left: 80px;
  margin-bottom: 15px;
@@ -740,8 +711,9 @@ font-size: 25px;
 .add-rm-card {
   padding-top: 10px;
   border: solid #fff 1px;
-  height: 38vh;
-  width: 25vw;
+  min-height: 30vh;
+  max-height: 35vh;
+  min-width: 22vw;
   background-color: #00000080;
   border: 1px solid #6d6d6d;
   border-bottom-left-radius: 0.3em;
@@ -765,6 +737,11 @@ font-size: 25px;
 
 .add-form {
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .input-add-rm {
@@ -875,8 +852,7 @@ a:hover {
   background-color: #00000080;
   height: 90vh;
   max-width: 40vw;
-  margin-left: 450px;
-  margin-top: 10px;
+  margin:auto;
   border: solid #535252 1px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -885,9 +861,6 @@ a:hover {
 }
 .rm-chart {
   margin-top: 100px;
-  max-width: 40vw;
-  min-width: 25vw;
-  max-height: 40vh;
   margin-left: -70px;
   border-bottom-left-radius: 0.3em;
   border-top-left-radius: 0.3em;
@@ -900,7 +873,7 @@ a:hover {
   align-items: center;
   flex-direction: row;
 }
-.calculate-form {
+/* .calculate-form {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -910,7 +883,7 @@ a:hover {
   align-self: center;
   align-content: center;
   max-width: 20vw;
-}
+} */
 
 .note-container {
   position: absolute;
@@ -922,13 +895,7 @@ a:hover {
   color: '#fff';
   padding-right: 8px;
   max-width: 30vw;
-  margin-top: -490px;
-}
-
-.icon-static {
-  position: absolute;
-  margin-left: 500px;
-  margin-top: -640px;
+  margin-top: -465px;
 }
 
 .add-notes textarea {

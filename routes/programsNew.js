@@ -8,7 +8,7 @@ const Clients = require('../model/Clients');
 // Get all
 router.get('/', auth, async (req, res) => {
   try {
-    const programs = await ProgramsNew.find();
+    const programs = await ProgramsNew.find({ user: req.user.id });
     res.json(programs);
   } catch (err) {
     res.status(500).send('Internal Server Error');

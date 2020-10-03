@@ -43,7 +43,7 @@ const OneRMChart = ({ profile: { clientProfile } }) => {
       { selected.type === "true" && (
 
         <LineChart
-          width={ 450 }
+          width={ 500 }
           height={ 300 }
           data={ invertedData }
           margin={ {

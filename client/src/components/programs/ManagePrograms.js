@@ -17,8 +17,7 @@ const ManagePrograms = ({ programs: { programs }, getPrograms, getAllProfiles })
     <>
       {
         programs.length !== 0 ? (
-          <div className="table-wrapper" style={ { width: '41vw', maxHeight: '80vh', backgroundColor: '#00000080', marginLeft: 450, } }>
-
+          <div className="table-wrapper" style={ { maxWidth: '41vw', maxHeight: '80vh', backgroundColor: '#00000080', margin: 'auto', } }>
             <table className="program-container" style={ { color: '#fff', width: '40vw', borderCollapse: 'collapse', } }>
               <thead>
                 <tr>

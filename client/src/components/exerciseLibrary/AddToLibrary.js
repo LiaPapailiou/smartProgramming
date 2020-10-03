@@ -30,7 +30,7 @@ const AddToLibrary = ({ insertSingleExercise }) => {
   return (
     <>
       <CustomAlert />
-      <div className="add-card" style={ { height: '45vh', width: '38vw' } }>
+      <div className="add-card" style={ { minHeight: '35vh', maxHeight: '45vh', maxWidth: '33vw' } }>
         <h3 style={ { fontSize: 22, paddingTop: '0.25em', paddingRight: '1.8em', paddingBottom: '0.15em', paddingLeft: '0.7em', marginBottom: '20px', height: '6vh' } }>Add to Library</h3>
         <div className="add-card-body" style={ { marginTop: '2em', } }>
           <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
@@ -61,7 +61,7 @@ const AddToLibrary = ({ insertSingleExercise }) => {
                 placeholder=" Video Link"
                 required />
             </div>
-            <div className="lib-buttons">
+            <div style={ { marginBottom: 15 } }>
               <input
                 type="button"
                 className="input-add"

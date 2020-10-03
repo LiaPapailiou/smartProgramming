@@ -44,7 +44,7 @@ const Landing = ({ login, isAuthenticated }) => {
             </div>
             <input type="submit" className="input-login" value="Login" />
           </form>
-          <div className="d-flex justify-content-center links" style={ { paddingTop: '2em' } }>
+          <div className="d-flex justify-content-center links" style={ { paddingTop: '1em', paddingBottom: '1em' } }>
             Don't have an account?<Link to="/register">Sign Up</Link>
           </div>
         </div>

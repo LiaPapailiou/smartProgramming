@@ -51,12 +51,13 @@ router.post('/',
 
 router.post('/refresh-token', async (req, res) => {
   try {
-    const refToken = req.cookies.refreshTokens;
+    const { userEmail } = req.body;
+    const refToken = req.cookies.refreshToken;
     let user;
     let token;
 
     if (refToken in refreshTokens) {
-      user = await User.findOne({ email: refreshTokens[refToken] });
+      user = await User.findOne({ email: userEmail });
       if (!user) return res.status(404).json({ errors: [{ msg: "User Not Found" }] });
       const payload = { user: { id: user.id } };
       const privateKey = fs.readFileSync(

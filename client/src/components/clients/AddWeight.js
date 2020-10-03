@@ -28,7 +28,7 @@ const AddWeight = ({ match, addWeight, getClientProfile, profile: { clientProfil
   return (
     <section className="add-new-rm">
       <div className="add-rm-container">
-        <div className="add-rm-card" style={ { height: '27vh' } }>
+        <div className="add-rm-card" style={ { height: '26vh' } }>
           <h3 style={ { paddingLeft: '1em' } }>Add Weight</h3>
           <div className="add-card-body">
             <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>
@@ -42,8 +42,7 @@ const AddWeight = ({ match, addWeight, getClientProfile, profile: { clientProfil
                   placeholder=" Weight in kg"
                   required />
               </div>
-              <div className="lib-buttons-extra">
-
+              <div style={ { marginBottom: 15 } }>
                 <input
                   type="button"
                   className="input-add"

@@ -26,19 +26,23 @@ const Landing = ({ login, isAuthenticated }) => {
   return (
     <section className="landing">
       <div className="dark-overlay">
-        <div style={ { marginLeft: 500 } }>
+        <div style={ { position: 'absolute', marginLeft: 600 } }>
           <CustomAlert />
         </div>
-        <div className="card">
+        <div className="card" style={ {
+          minWidth: '20vw', maxWidth: '23vw', maxHight: '30vh'
+        } }>
           <h3>Sign In</h3>
           <form onSubmit={ (e) => onSubmit(e) }>
             <div className="input-group form-group">
               <span className="input-group-text"><i className="fas fa-user"></i>
-                <input type="text" required className="form-control-extra" name="email" value={ email } onChange={ (e) => onChange(e) } placeholder=" Email" />
+                <input type="text" required className="form-control-extra" name="email" value={ email } onChange={ (e) => onChange(e) } placeholder=" Email"
+                />
               </span>
               <br />
               <span className="input-group-text"><i className="fas fa-key"></i>
-                <input type="password" className="form-control-extra" required name="password" value={ password } minLength="6" maxLength="12" onChange={ (e) => onChange(e) } placeholder=" Password" />
+                <input type="password" className="form-control-extra" required name="password" value={ password } minLength="6" maxLength="12" onChange={ (e) => onChange(e) } placeholder=" Password"
+                />
               </span>
 
             </div>
@@ -50,7 +54,7 @@ const Landing = ({ login, isAuthenticated }) => {
         </div>
 
       </div>
-    </section>
+    </section >
   );
 };
 

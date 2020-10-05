@@ -104,7 +104,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
       <div>
         <CustomAlert />
         <div>
-          <div className="add-card">
+          <div className="add-card" style={ { minHeight: '55vh', maxHeight: '80vh', maxWidth: '40vw' } }>
             <h3 style={ { fontSize: 24, height: '6vh' } }>Client Information</h3>
             <div className="add-card-body">
               <form className="add-form" onSubmit={ (e) => onSubmit(e) }>
@@ -218,7 +218,7 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
                   <textarea cols="65" rows="5" name="clientBodyScreening" value={ clientBodyScreening } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', color: '#000' } } />
                   <br />
                 </div>
-                <div className="lib-buttons" style={ { marginLeft: 360 } }>
+                <div style={ { marginBottom: 15 } }>
                   <input
                     type="button"
                     className="input-add"

@@ -7,7 +7,7 @@ import { getExerciseLibraryPaginated } from '../../actions/exerciseLibrary';
 import SingleExerciseItem from './SingleExerciseItem';
 import ReactPaginate from 'react-paginate';
 
-const ShowLibrary = ({ getExerciseLibraryPaginated, exerciseLibrary: { exerciseLibraryList, loading, numPages }, auth: { isAuthenticated } }) => {
+const ShowLibrary = ({ getExerciseLibraryPaginated, exerciseLibrary: { exerciseLibraryList, loading, numPages } }) => {
   useEffect(() => {
     getExerciseLibraryPaginated(0);
   }, [getExerciseLibraryPaginated, loading]);
@@ -22,7 +22,7 @@ const ShowLibrary = ({ getExerciseLibraryPaginated, exerciseLibrary: { exerciseL
         <Spinner />
       ) : (
 
-          isAuthenticated && exerciseLibraryList.length > 0 ?
+          exerciseLibraryList.length > 0 ?
             (<>
               <div className="exercises-container">
                 <div className="exercise-headers">
@@ -68,12 +68,10 @@ const ShowLibrary = ({ getExerciseLibraryPaginated, exerciseLibrary: { exerciseL
 ShowLibrary.propTypes = {
   getExerciseLibraryPaginated: PropTypes.func.isRequired,
   exerciseLibrary: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   exerciseLibrary: state.exerciseLibrary,
-  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getExerciseLibraryPaginated })(ShowLibrary);

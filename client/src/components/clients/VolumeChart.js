@@ -17,7 +17,7 @@ const VolumeChart = (props) => {
   };
   return (
     <Fragment>
-      <div style={ { position: 'relative', marginLeft: 800, marginTop: -600 } }>
+      <div className="volume-chart" style={ { marginTop: -580 } }>
         <BarChart width={ 750 } height={ 300 } data={ volumeChart }>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis unit=" Week" dataKey="week" tick={ { fontSize: 12, fill: '#fff' } } />
@@ -29,7 +29,7 @@ const VolumeChart = (props) => {
           <Bar dataKey="work" barSize={ 13 } fill="#69DDFF" />
         </BarChart>
       </div>
-      <div style={ { position: 'relative', marginLeft: 800 } }>
+      <div className="volume-chart">
         <BarChart width={ 750 } height={ 300 } data={ volumeChart }>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis unit=" Week " dataKey="week" tick={ { fontSize: 12, fill: '#fff' } } />

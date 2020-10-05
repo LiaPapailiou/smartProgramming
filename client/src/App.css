@@ -1166,9 +1166,41 @@ a:hover {
   border-top-right-radius: 0.3em;
   align-self: center;
 }
+
+
+.volume-chart {
+  position: relative;
+  margin-left: 800px;
+}
 @-ms-viewport{
   width: device-width;
 }
 /* Responsive Styles */
-@media screen and (max-width: 800px) {
+@media screen and (min-device-width: 1700px) {
+  .volume-chart {
+    margin-left: 900px;
+    position: relative;
+  }
+}
+
+@media screen and (min-device-width: 1850px) {
+  .volume-chart {
+    margin-left: 1000px;
+    position: relative;
+  }
+}
+
+@media screen and (min-device-width: 2080px) {
+  .volume-chart {
+    margin-left: 1100px;
+    position: relative;
+  }
+}
+
+
+@media screen and (min-device-width: 2200px) {
+  .volume-chart {
+    margin-left: 1200px;
+    position: relative;
+  }
 }

@@ -35,30 +35,35 @@ const ClientPrograms = ({ match, getClientProfile, getClientPrograms, profile: {
         <CustomAlert />
       </div>
       <form onSubmit={ (e) => onSubmit(e) } style={ { marginLeft: 50, marginTop: 20 } }>
-        <button
-          style={ { marginTop: -140, width: 20, marginLeft: 20, marginRight: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
-          type="submit"
-          className="button-add"
-          value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
+
         {
+
           programs ?
             (
-              <select name="programId" onChange={ (e) => onChange(e) } value={ program.programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
-                <option value="">Programs</option>
-                {
-                  programs.map((program) => (
+              <>
+                <select name="programId" onChange={ (e) => onChange(e) } value={ program.programId } style={ { color: '#000', fontSize: 14, marginTop: 5, padding: '0.15em', borderRadius: '0.3em', marginRight: 15 } } required>
+                  <option value="">Programs</option>
+                  {
+                    programs.map((program) => (
 
-                    <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>
-                  )
-                  ) }
-              </select>
+                      <option value={ `${program._id}` } key={ shortid.generate() }>{ program.month } { program.year }</option>
+                    )
+                    ) }
+                </select>
+                <button
+                  style={ { marginTop: -140, width: 20, marginLeft: 20, marginRight: 20, backgroundColor: 'transparent', border: 0, outline: 'none' } }
+                  type="submit"
+                  className="button-add"
+                  value="Next"><i className="fas fa-angle-double-right" style={ { width: 20, fontSize: 20, paddingRight: '0.25em' } }></i> </button>
+              </>
             ) : null
-        }
 
+        }
         {
           clientProfile && programs && visible &&
           <ShowClientPrograms programId={ program.programId } />
         }
+
       </form>
     </Fragment>
   );

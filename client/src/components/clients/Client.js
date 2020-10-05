@@ -99,7 +99,7 @@ const Client = ({ match, getClientProfile, deleteClient, getClientPrograms, prof
                 </span>)
               ) }
             </p>
-            <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative', fontSize: 14, marginLeft: -420 } }>Notes for { clientProfile.clientFirstName }</h3>
+            <h3 style={ { color: '#61c9a8', fontWeight: 100, paddingBottom: '0.25em', position: 'relative', fontSize: 14, alignSelf: 'flex-start', marginLeft: 60 } }>Notes for { clientProfile.clientFirstName }</h3>
             <div className="notes">
 
               { clientProfile.notes }

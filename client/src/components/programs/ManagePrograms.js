@@ -34,7 +34,7 @@ const ManagePrograms = ({ programs: { programs }, getPrograms, getAllProfiles })
               </tbody>
             </table>
           </div>
-        ) : (<p style={ { color: '#fff', fontSize: 22, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/create">here</Link> to add one!</p>)
+        ) : (<p className="info">There are currently no programs. Click <Link to="/dashboard/create">here</Link> to add one!</p>)
       }
 
     </>

@@ -1167,6 +1167,14 @@ a:hover {
   align-self: center;
 }
 
+.info {
+ color: #fff;
+ font-size: 20px;
+ margin-left: 500px;
+ margin-right: auto;
+ margin-top: 300px;
+ position: relative;
+}
 
 .volume-chart {
   position: relative;
@@ -1181,20 +1189,32 @@ a:hover {
     margin-left: 900px;
     position: relative;
   }
+
+  .info {
+    margin-left: 600px;
+   }
 }
 
-@media screen and (min-device-width: 1850px) {
+@media screen and (min-device-width: 1800px) {
   .volume-chart {
     margin-left: 1000px;
     position: relative;
   }
+
+  .info {
+    margin-left: 700px;
+   }
 }
 
-@media screen and (min-device-width: 2080px) {
+@media screen and (min-device-width: 2000px) {
   .volume-chart {
     margin-left: 1100px;
     position: relative;
   }
+
+  .info {
+    margin-left: 800px;
+   }
 }
 
 
@@ -1203,4 +1223,8 @@ a:hover {
     margin-left: 1200px;
     position: relative;
   }
+
+  .info {
+    margin-left: 900px;
+   }
 }

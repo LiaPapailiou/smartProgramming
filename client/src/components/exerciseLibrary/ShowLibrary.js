@@ -59,7 +59,7 @@ const ShowLibrary = ({ getExerciseLibraryPaginated, exerciseLibrary: { exerciseL
                 activeClassName={ 'active' }
               />
             </>
-            ) : (<p style={ { color: '#fff', fontSize: 20, marginLeft: 500, marginRight: 'auto', marginTop: 300, position: 'absolute' } }>There are currently no programs. Click <Link to="/dashboard/add-library">here</Link> to add them.</p>)
+            ) : (<p className="info">There are currently no exercises. Click <Link to="/dashboard/add-library">here</Link> to add them.</p>)
         )
       }
     </Fragment >

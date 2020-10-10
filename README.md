@@ -42,10 +42,10 @@ npm run dev
 ## Screenshots
 This is how the web applicaton looks after adding exercises and clients to the database.
 
-* ![Create a program sample](https://imgur.com/a/96LgVWX)
-* ![Exercise Library sample](https://imgur.com/L1oAqx8)
-* ![Monthly program with charts](https://imgur.com/bfJ22wB)
-* ![Client Menu with charts and actions](https://imgur.com/3SCL7aE)
+* ![Create monthly programs](https://i.imgur.com/iIvXpxL.png)
+* ![Exercise Library sample](https://imgur.com/L1oAqx8.png)
+* ![Monthly program with charts](https://imgur.com/bfJ22wB.png)
+* ![Client Menu with charts and actions](https://imgur.com/3SCL7aE.png)
 
 ## Demo
 Here is a live demo:

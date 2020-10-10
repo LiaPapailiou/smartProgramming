@@ -42,6 +42,11 @@ npm run dev
 ## Screenshots
 This is how the web applicaton looks after adding exercises and clients to the database.
 
+* ![Create a program sample](https://imgur.com/a/96LgVWX)
+* ![Exercise Library sample](https://imgur.com/L1oAqx8)
+* ![Monthly program with charts](https://imgur.com/bfJ22wB)
+* ![Client Menu with charts and actions](https://imgur.com/3SCL7aE)
+
 ## Demo
 Here is a live demo:
 https://smart-programming.herokuapp.com/

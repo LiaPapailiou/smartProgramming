@@ -28,6 +28,7 @@ This project is created with:
 ## To-do
 * Add refresh tokens
 * Make the design more responsive
+* Improve performance
 * Build a client portal
 
 ## Setup

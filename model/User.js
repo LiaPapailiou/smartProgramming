@@ -19,9 +19,6 @@ const userSchema = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
   },
-  clientId: {
-    type: mongoose.Types.ObjectId
-  },
   createdAt: {
     type: Date,
     default: Date.now,

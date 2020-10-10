@@ -3,3 +3,4 @@ client/node_modules/
 .env
 SelectExercises.js
 client/src/components/clients/ClientPaginationTest.js
+debug.log

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from '../src/components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
 import { loadUser, refresh } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -14,8 +15,10 @@ if (localStorage.token) {
 }
 const App = () => {
   useEffect(() => {
+    // if (!localStorage.token) {
+    //   store.dispatch(refresh(localStorage.userEmail, localStorage.refreshToken));
+    // }
     setAuthToken(localStorage.token);
-    // store.dispatch(refresh(localStorage.userEmail));
     store.dispatch(loadUser());
   }, []);
 
@@ -28,7 +31,7 @@ const App = () => {
             <Route exact path='/' component={ Landing } />
             <Route exact path='/register' component={ Register } />
             <>
-              <Route component={ Dashboard } />
+              <PrivateRoute component={ Dashboard } />
             </>
           </Switch>
         </Fragment>

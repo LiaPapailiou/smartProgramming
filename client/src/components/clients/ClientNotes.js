@@ -34,7 +34,7 @@ const ClientNotes = ({ addNotes, getClientProfile, profile: { clientProfile, loa
       <div className="note-container" > {
         visible &&
         <form className="add-notes" onSubmit={ handleSubmit }>
-          <textarea placeholder="Add notes..." cols="64" rows="8" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080', color: '#fff', fontSize: 16, overflow: 'auto' } }>
+          <textarea placeholder="Add notes..." cols="50" rows="8" name="notes" value={ notes } onChange={ (e) => onChange(e) } style={ { resize: 'vertical', maxWidth: '100%', backgroundColor: '#00000080', color: '#fff', fontSize: 16, overflow: 'auto' } }>
           </textarea>
           <br />
           <input

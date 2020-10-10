@@ -32,6 +32,7 @@ export default function (state = initialState, action) {
     case LOGIN_SUCCESS:
     case REFRESH_SUCCESS:
       localStorage.setItem('token', payload.token);
+      localStorage.setItem('refreshToken', payload.refreshToken);
       localStorage.setItem('userEmail', payload.user);
       return {
         ...state,

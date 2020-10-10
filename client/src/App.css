@@ -1180,10 +1180,26 @@ a:hover {
   position: relative;
   margin-left: 800px;
 }
+
+.custom-alert {
+  position: absolute;
+  margin-left: 600px;
+}
+
+.custom-alert-exercises {
+  margin-left: 600px;
+}
+
 @-ms-viewport{
   width: device-width;
 }
 /* Responsive Styles */
+@media screen and (min-device-width:1620px) {
+  .note-container {
+    margin-left: 1150px;
+  }
+}
+
 @media screen and (min-device-width: 1700px) {
   .volume-chart {
     margin-left: 900px;
@@ -1193,6 +1209,19 @@ a:hover {
   .info {
     margin-left: 600px;
    }
+
+   .note-container {
+    margin-left: 1250px;
+  }
+
+  .custom-alert {
+    margin-left: 650px;
+  }
+  
+  .custom-alert-exercises {
+    margin-left: 700px;
+  }
+
 }
 
 @media screen and (min-device-width: 1800px) {
@@ -1204,6 +1233,44 @@ a:hover {
   .info {
     margin-left: 700px;
    }
+
+   .note-container {
+    margin-left: 1350px;
+  }
+
+  .custom-alert {
+    margin-left: 700px;
+  }
+
+  .custom-alert-exercises {
+    margin-left: 700px;
+  }
+
+  .register-card {
+    width: 20vw;
+  }
+}
+
+@media screen and (min-device-width: 1900px) { 
+  .note-container {
+    margin-left: 1450px;
+  }
+
+  .custom-alert {
+    margin-left: 750px;
+  }
+
+  .custom-alert-exercises {
+    margin-left: 750px;
+  }
+
+  .register-card {
+    width: 20vw;
+  }
+
+  .card {
+    width: 16vw;
+  }
 }
 
 @media screen and (min-device-width: 2000px) {
@@ -1215,6 +1282,27 @@ a:hover {
   .info {
     margin-left: 800px;
    }
+
+   .note-container {
+    margin-left: 1500px;
+  }
+
+  
+  .custom-alert {
+    margin-left: 800px;
+  }
+
+  .custom-alert-exercises {
+    margin-left: 800px;
+  }
+
+  .register-card {
+    width: 18vw;
+  }
+
+  .card {
+    width: 16vw;
+  }
 }
 
 
@@ -1227,4 +1315,37 @@ a:hover {
   .info {
     margin-left: 900px;
    }
+
+   .note-container {
+    margin-left: 1600px;
+  }
+
+  .custom-alert {
+    margin-left: 1000px;
+  }
+
+  .custom-alert-exercises {
+    margin-left: 900px;
+  }
+
+  .register-card {
+    width: 18vw;
+  }
+
+  .card {
+    width: 16vw;
+  }
+}
+
+
+@media screen and (min-device-width: 2400px) { 
+  .custom-alert-exercises {
+    margin-left: 1000px;
+  }
+}
+
+@media screen and (min-device-width: 2500px) { 
+  .custom-alert-exercises {
+    margin-left: 1050px;
+  }
 }

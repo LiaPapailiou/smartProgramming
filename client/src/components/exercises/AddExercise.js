@@ -37,8 +37,10 @@ const AddExercise = ({ insertExercise }) => {
 
   return (
     <>
-      <CustomAlert />
-      <div className="add-card" style={ { height: '45vh', maxHeight: '60vh', width: '34vw' } }>
+      <div className="custom-alert-exercises">
+        <CustomAlert />
+      </div>
+      <div className="add-card" style={ { minHeight: '45vh', maxHeight: '60vh', width: '34vw' } }>
         <h3 style={ {
           fontSize: 22, paddingTop: '0.25em', paddingRight: '2.2em', paddingBottom: '0.35em', paddingLeft: '0.7em', height: '6vh',
           marginBottom: '20px'

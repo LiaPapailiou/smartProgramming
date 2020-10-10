@@ -41,7 +41,7 @@ router.post('/',
       const refreshToken = randtoken.uid(256);
       refreshTokens[refreshToken] = email;
       setTokenCookie(res, refreshToken);
-      res.json({ token, user: user.email });
+      res.json({ token, user: user.email, refreshToken: refreshToken });
 
     } catch (err) {
       res.status(500).send('Internal Server Error');
@@ -51,12 +51,12 @@ router.post('/',
 
 router.post('/refresh-token', async (req, res) => {
   try {
-    const { userEmail } = req.body;
-    const refToken = req.cookies.refreshToken;
+    const { userEmail, refreshToken } = req.body;
+    // const refToken = req.cookies.refreshToken;
     let user;
     let token;
 
-    if (refToken in refreshTokens) {
+    if (refreshToken in refreshTokens) {
       user = await User.findOne({ email: userEmail });
       if (!user) return res.status(404).json({ errors: [{ msg: "User Not Found" }] });
       const payload = { user: { id: user.id } };
@@ -68,10 +68,10 @@ router.post('/refresh-token', async (req, res) => {
       };
 
       token = jwt.sign(payload, privateKey, signOptions);
-      const refreshToken = randtoken.uid(256);
-      refreshTokens[refreshToken] = user.email;
-      setTokenCookie(res, refreshToken);
-      res.json({ token, user: user.email });
+      const refToken = randtoken.uid(256);
+      refreshTokens[refToken] = user.email;
+      // setTokenCookie(res, refreshToken);
+      res.json({ token, user: user.email, refreshToken: refToken });
     } else {
       res.status(401).json({ msg: 'Not Authorized' });
     }

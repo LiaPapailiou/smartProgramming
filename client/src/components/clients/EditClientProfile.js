@@ -102,7 +102,9 @@ const EditClientProfile = ({ match, editClient, getClientProfile, profile: { cli
   return (
     <section>
       <div>
-        <CustomAlert />
+        <div className="custom-alert-exercises">
+          <CustomAlert />
+        </div>
         <div>
           <div className="add-card" style={ { minHeight: '55vh', maxHeight: '80vh', maxWidth: '40vw' } }>
             <h3 style={ { fontSize: 24, height: '6vh' } }>Client Information</h3>

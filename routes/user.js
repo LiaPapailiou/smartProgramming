@@ -5,8 +5,10 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 const { check, validationResult } = require('express-validator');
+const ObjectId = require('mongodb').ObjectID;
 
 const User = require('../model/User');
+
 
 // Register user
 router.post('/',
@@ -27,7 +29,7 @@ router.post('/',
 
       if (user) return res.status(400).json({ errors: [{ msg: 'User allready exists in the database' }] });
 
-      user = new User({ firstName, lastName, email, password });
+      user = new User({ firstName, lastName, email, password, isAdmin: false });
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 

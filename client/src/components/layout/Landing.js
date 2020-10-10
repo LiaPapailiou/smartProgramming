@@ -26,7 +26,7 @@ const Landing = ({ login, isAuthenticated }) => {
   return (
     <section className="landing">
       <div className="dark-overlay">
-        <div style={ { position: 'absolute', marginLeft: 600 } }>
+        <div className="custom-alert">
           <CustomAlert />
         </div>
         <div className="card" style={ {

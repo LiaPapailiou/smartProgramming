@@ -37,7 +37,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   if (isAuthenticated) return <Redirect to="/dashboard/clients" />;
   return (
     <section className="register">
-      <div style={ { position: 'absolute', marginLeft: 600 } }>
+      <div className="custom-alert">
         <CustomAlert />
       </div>
       <div className="dark-overlay">

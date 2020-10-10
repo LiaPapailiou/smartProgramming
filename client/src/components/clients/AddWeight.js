@@ -28,7 +28,7 @@ const AddWeight = ({ match, addWeight, getClientProfile, profile: { clientProfil
   return (
     <section className="add-new-rm">
       <div className="add-rm-container">
-        <div className="add-rm-card" style={ { height: '26vh' } }>
+        <div className="add-rm-card" style={ { maxHeight: '26vh', minHeight: '22vh', minWidth: '18vw', maxWidth: '22vw' } }>
           <h3 style={ { paddingLeft: '1em' } }>Add Weight</h3>
           <div className="add-card-body">
             <form className="add-form" onSubmit={ (e) => onSubmit(e) } style={ { marginTop: '2em', } }>

@@ -1,7 +1,7 @@
 # Workout Programming Planner
 
 ## Table of Contents
-* General Info
+* [General Info](#General-Info)
 * Technologies
 * To-do
 * Setup

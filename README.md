@@ -3,7 +3,9 @@
 ## Table of Contents
 * General Info
 * Technologies
+* To-do
 * Setup
+* Screenshots
 * Demo
 
 ## General Info
@@ -23,6 +25,11 @@ This project is created with:
 * material-ui
 * recharts
 
+## To-do
+* Add refresh tokens
+* Make the design more responsive
+* Build a client portal
+
 ## Setup
 ```bash
 # Installation
@@ -32,6 +39,9 @@ npm install
 npm run dev
 
 ```
+## Screenshots
+This is how the web applicaton looks after adding exercises and clients to the database.
+
 ## Demo
 Here is a live demo:
 https://smart-programming.herokuapp.com/

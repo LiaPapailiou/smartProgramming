@@ -9,7 +9,7 @@
 * [Demo](#Demo)
 
 ## General Info
-The aim of this application is to help personal trainers in the creation of monthly programs for their clients, as well as, to provide a visualization of their client's progress.
+The aim of this application is to help personal trainers in the creation of monthly programs for their clients, as well as to provide a visualization of their client's progress.
 
 ## Technologies
 This project is created with:
